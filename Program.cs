@@ -1,7 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using SMS_MVCDTO.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+var configuration = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<ApplicationContext>(options => options.UseMySql(configuration, ServerVersion.AutoDetect(configuration)));
 
 var app = builder.Build();
 

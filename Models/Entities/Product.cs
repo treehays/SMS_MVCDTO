@@ -2,15 +2,17 @@
 {
     public class Product : BaseEntity
     {
-        public string Barcode { get; set; }
+        //public string Barcode { get; set; }
         public string TransactionId { get; set; }
         public IList<ProductTransaction> ProductTransactions { get; set; }
-        public string ProductName { get; set; }
-        public string ProductDescription { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
         public double SellingPrice { get; set; }
         public int Quantity { get; set; }
         public int ReorderLevel { get; set; }
-        public bool IdAvailable { get; set; }
+        public bool IsAvailable { get; set; }
+        public ProductCategory ProductCategory { get; set; }
+        public string ProductCategoryId { get; set; }
 
     }
 }
