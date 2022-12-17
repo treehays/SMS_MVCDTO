@@ -6,4 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Enums\" />
+    <Folder Include="DTOs\" />
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
 </Project>
