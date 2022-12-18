@@ -11,8 +11,8 @@ using SMS_MVCDTO.Context;
 namespace SMSMVCDTO.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20221218064158_Secondt Migration")]
-    partial class SecondtMigration
+    [Migration("20221218121126_First Migration")]
+    partial class FirstMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -118,10 +118,6 @@ namespace SMSMVCDTO.Migrations
                     b.Property<double>("SellingPrice")
                         .HasColumnType("double");
 
-                    b.Property<string>("TransactionId")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ProductCategoryId");
@@ -188,6 +184,7 @@ namespace SMSMVCDTO.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("CustomerId")
+                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.Property<bool>("IsDeleted")
@@ -195,10 +192,6 @@ namespace SMSMVCDTO.Migrations
 
                     b.Property<DateTime>("Modified")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<string>("ProductId")
-                        .IsRequired()
-                        .HasColumnType("longtext");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -210,11 +203,16 @@ namespace SMSMVCDTO.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
+                    b.Property<string>("WalletsId")
+                        .HasColumnType("varchar(255)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
 
                     b.HasIndex("UserId");
+
+                    b.HasIndex("WalletsId");
 
                     b.ToTable("Transactions");
                 });
@@ -326,6 +324,10 @@ namespace SMSMVCDTO.Migrations
 
                     b.Property<string>("TransactionId")
                         .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
@@ -333,7 +335,7 @@ namespace SMSMVCDTO.Migrations
                     b.HasIndex("CustomerId")
                         .IsUnique();
 
-                    b.HasIndex("TransactionId")
+                    b.HasIndex("UserId")
                         .IsUnique();
 
                     b.ToTable("Wallets");
@@ -371,15 +373,27 @@ namespace SMSMVCDTO.Migrations
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Transaction", b =>
                 {
-                    b.HasOne("SMS_MVCDTO.Models.Entities.Customer", null)
+                    b.HasOne("SMS_MVCDTO.Models.Entities.Customer", "Customer")
                         .WithMany("Transactions")
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("SMS_MVCDTO.Models.Entities.User", null)
+                    b.HasOne("SMS_MVCDTO.Models.Entities.User", "User")
                         .WithMany("Transactions")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("SMS_MVCDTO.Models.Entities.Wallet", "Wallets")
+                        .WithMany("Transactions")
+                        .HasForeignKey("WalletsId");
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("User");
+
+                    b.Navigation("Wallets");
                 });
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Wallet", b =>
@@ -390,15 +404,15 @@ namespace SMSMVCDTO.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SMS_MVCDTO.Models.Entities.Transaction", "Transaction")
+                    b.HasOne("SMS_MVCDTO.Models.Entities.User", "User")
                         .WithOne("Wallets")
-                        .HasForeignKey("SMS_MVCDTO.Models.Entities.Wallet", "TransactionId")
+                        .HasForeignKey("SMS_MVCDTO.Models.Entities.Wallet", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Customer");
 
-                    b.Navigation("Transaction");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Customer", b =>
@@ -422,12 +436,17 @@ namespace SMSMVCDTO.Migrations
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Transaction", b =>
                 {
                     b.Navigation("ProductTransactions");
+                });
+
+            modelBuilder.Entity("SMS_MVCDTO.Models.Entities.User", b =>
+                {
+                    b.Navigation("Transactions");
 
                     b.Navigation("Wallets")
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SMS_MVCDTO.Models.Entities.User", b =>
+            modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Wallet", b =>
                 {
                     b.Navigation("Transactions");
                 });

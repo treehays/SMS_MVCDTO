@@ -1,10 +1,18 @@
-﻿using SMS_MVCDTO.Interfaces.Repositories;
+﻿using Microsoft.EntityFrameworkCore;
+using SMS_MVCDTO.Context;
+using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Models.Entities;
 
 namespace SMS_MVCDTO.Implementations.Repositories
 {
     public class UserRepository : IUserRepository
     {
+        private readonly ApplicationContext _context;
+        public UserRepository(ApplicationContext context)
+        {
+            _context = context;
+        }
+
         public User Create(User user)
         {
             throw new NotImplementedException();
@@ -18,6 +26,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
         public IList<User> GetAttendants()
         {
             throw new NotImplementedException();
+
         }
 
         public User GetByEmail(string email)

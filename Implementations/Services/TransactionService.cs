@@ -5,47 +5,47 @@ namespace SMS_MVCDTO.Implementations.Services
 {
     public class TransactionService : ITransactionService
     {
-        public Customer Create(Customer customer)
+        public Transaction Create(Transaction transaction)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Customer customer)
+        public void Delete(Transaction transaction)
         {
             throw new NotImplementedException();
         }
 
-        public IList<Customer> DownloadExcel()
+        public IList<Transaction> DownloadExcel()
         {
             throw new NotImplementedException();
         }
 
-        public IList<Customer> GetAll()
+        public IList<Transaction> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public IList<Customer> GetByCustomerName(string customer)
+        public IList<Transaction> GetByDate()
         {
             throw new NotImplementedException();
         }
 
-        public IList<Customer> GetByDate()
+        public Transaction GetById(string Id)
         {
             throw new NotImplementedException();
         }
 
-        public Customer GetById(string Id)
+        public IList<Transaction> GetByStaffId(string staffId)
         {
             throw new NotImplementedException();
         }
 
-        public IList<Customer> GetByStaffId(string staffId)
+        public IList<Transaction> GetByTransactionName(string transaction)
         {
             throw new NotImplementedException();
         }
 
-        public Customer Update(Customer customer)
+        public Transaction Update(Transaction transaction)
         {
             throw new NotImplementedException();
         }

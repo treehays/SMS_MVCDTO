@@ -1,18 +1,27 @@
-﻿using SMS_MVCDTO.Interfaces.Repositories;
+﻿using SMS_MVCDTO.Context;
+using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Models.Entities;
 
 namespace SMS_MVCDTO.Implementations.Repositories
 {
     public class CustomerRepository : ICustomerRepository
     {
+        private readonly ApplicationContext _context;
+        public CustomerRepository(ApplicationContext context)
+        {
+            _context = context;
+        }
         public Customer Create(Customer customer)
         {
-            throw new NotImplementedException();
+            _context.Customers.Add(customer);
+            _context.SaveChanges();
+            return customer;
         }
 
         public void Delete(Customer customer)
         {
-            throw new NotImplementedException();
+            _context.Customers.Remove(customer);
+            _context.SaveChanges();
         }
 
         public IList<Customer> GetAll()

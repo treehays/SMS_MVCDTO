@@ -1,51 +1,58 @@
-﻿using SMS_MVCDTO.Interfaces.Repositories;
+﻿using SMS_MVCDTO.Context;
+using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Models.Entities;
 
 namespace SMS_MVCDTO.Implementations.Repositories
 {
     public class TransactionRepository : ITransactionRepository
     {
-        public Customer Create(Customer customer)
+        private readonly ApplicationContext _context;
+        public TransactionRepository(ApplicationContext context)
+        {
+            _context = context;
+        }
+
+        public Transaction Create(Transaction transaction)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Customer customer)
+        public void Delete(Transaction transaction)
         {
             throw new NotImplementedException();
         }
 
-        public IList<Customer> DownloadExcel()
+        public IList<Transaction> DownloadExcel()
         {
             throw new NotImplementedException();
         }
 
-        public IList<Customer> GetAll()
+        public IList<Transaction> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public IList<Customer> GetByCustomerName(string customer)
+        public IList<Transaction> GetByDate()
         {
             throw new NotImplementedException();
         }
 
-        public IList<Customer> GetByDate()
+        public Transaction GetById(string Id)
         {
             throw new NotImplementedException();
         }
 
-        public Customer GetById(string Id)
+        public IList<Transaction> GetByStaffId(string staffId)
         {
             throw new NotImplementedException();
         }
 
-        public IList<Customer> GetByStaffId(string staffId)
+        public IList<Transaction> GetByTransactionName(string transaction)
         {
             throw new NotImplementedException();
         }
 
-        public Customer Update(Customer customer)
+        public Transaction Update(Transaction transaction)
         {
             throw new NotImplementedException();
         }

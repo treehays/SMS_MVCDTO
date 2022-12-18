@@ -1,10 +1,18 @@
-﻿using SMS_MVCDTO.Interfaces.Repositories;
+﻿using Microsoft.EntityFrameworkCore;
+using SMS_MVCDTO.Context;
+using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Models.Entities;
 
 namespace SMS_MVCDTO.Implementations.Repositories
 {
     public class ProductRepository : IProductRepository
     {
+        private readonly ApplicationContext _context;
+        public ProductRepository(ApplicationContext context)
+        {
+            _context = context;
+        }
+
         public Product Create(Product product)
         {
             throw new NotImplementedException();

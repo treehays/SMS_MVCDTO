@@ -4,14 +4,14 @@ namespace SMS_MVCDTO.Interfaces.Services
 {
     public interface ITransactionService
     {
-        Customer Create(Customer customer);
-        Customer Update(Customer customer);
-        void Delete(Customer customer);
-        IList<Customer> GetAll();
-        IList<Customer> GetByDate();
-        Customer GetById(string Id);
-        IList<Customer> GetByStaffId(string staffId);
-        IList<Customer> GetByCustomerName(string customer);
-        IList<Customer> DownloadExcel();
+        Transaction Create(Transaction transaction);
+        Transaction Update(Transaction transaction);
+        void Delete(Transaction transaction);
+        IList<Transaction> GetAll();
+        IList<Transaction> GetByDate();
+        Transaction GetById(string Id);
+        IList<Transaction> GetByStaffId(string staffId);
+        IList<Transaction> GetByTransactionName(string transaction);
+        IList<Transaction> DownloadExcel();
     }
 }
