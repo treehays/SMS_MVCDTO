@@ -17,18 +17,6 @@ namespace SMS_MVCDTO.Implementations.Services
         public CustomerDTO CreateCustomer(CreateCustomerRequestModel model)
         {
             throw new NotImplementedException();
-            var customerExist = _customerRepository.GetByEmail(model.Email);
-            if (customerExist == null)
-            {
-                var customer = new Customer
-                { 
-                    Email = model.Email,
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-
-                };
-
-            }
         }
 
         public void DeleteCustomer(string customerId)
@@ -75,5 +63,67 @@ namespace SMS_MVCDTO.Implementations.Services
         {
             throw new NotImplementedException();
         }
+
+        //public CustomerDTO CreateCustomer(CreateCustomerRequestModel model)
+        //{
+        //    throw new NotImplementedException();
+        //    var customerExist = _customerRepository.GetByEmail(model.Email);
+        //    if (customerExist == null)
+        //    {
+        //        var customer = new Customer
+        //        { 
+        //            Email = model.Email,
+        //            FirstName = model.FirstName,
+        //            LastName = model.LastName,
+
+        //        };
+
+        //    }
+        //}
+
+        //public void DeleteCustomer(string customerId)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public IList<CustomerDTO> GetAll()
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public CustomerDTO GetByEmail(string email)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public CustomerDTO GetById(string customerId)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public IList<CustomerDTO> GetByName(string name)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public CustomerDTO GetPhoneNumber(string phoneNumber)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public CustomerDTO LoginCustomer(LoginRequestModel model)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public CustomerDTO UpdateCustomer(UpdateCustomerRequestModel model)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public CustomerDTO UpdateCustomerPasswordDTO(UpdateCustomerPasswordRequestModel model)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

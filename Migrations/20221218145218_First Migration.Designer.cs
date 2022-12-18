@@ -11,7 +11,7 @@ using SMS_MVCDTO.Context;
 namespace SMSMVCDTO.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20221218141514_First Migration")]
+    [Migration("20221218145218_First Migration")]
     partial class FirstMigration
     {
         /// <inheritdoc />
@@ -27,53 +27,18 @@ namespace SMSMVCDTO.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("Gender")
-                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("MaritalStatus")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Modified")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<bool>("Status")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("varchar(255)");
-
-                    b.Property<int>("userRole")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -178,6 +143,52 @@ namespace SMSMVCDTO.Migrations
                     b.ToTable("ProductTransaction");
                 });
 
+            modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Staff", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("BankAccountNumber")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("BankName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("GuarantorName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("GuarantorPhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("ResidentialAddress")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("Staff");
+                });
+
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Transaction", b =>
                 {
                     b.Property<string>("Id")
@@ -225,14 +236,6 @@ namespace SMSMVCDTO.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<string>("BankAccountNumber")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("BankName")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime(6)");
 
@@ -249,14 +252,6 @@ namespace SMSMVCDTO.Migrations
 
                     b.Property<int>("Gender")
                         .HasColumnType("int");
-
-                    b.Property<string>("GuarantorName")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("GuarantorPhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("longtext");
 
                     b.Property<string>("HomeAddress")
                         .IsRequired()
@@ -283,10 +278,6 @@ namespace SMSMVCDTO.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("Pin")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("ResidentialAddress")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -335,8 +326,7 @@ namespace SMSMVCDTO.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerId")
-                        .IsUnique();
+                    b.HasIndex("CustomerId");
 
                     b.HasIndex("UserId")
                         .IsUnique();
@@ -385,10 +375,21 @@ namespace SMSMVCDTO.Migrations
                     b.Navigation("Transaction");
                 });
 
+            modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Staff", b =>
+                {
+                    b.HasOne("SMS_MVCDTO.Models.Entities.User", "User")
+                        .WithOne("Staff")
+                        .HasForeignKey("SMS_MVCDTO.Models.Entities.Staff", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Transaction", b =>
                 {
                     b.HasOne("SMS_MVCDTO.Models.Entities.Customer", "Customer")
-                        .WithMany("Transactions")
+                        .WithMany()
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -413,8 +414,8 @@ namespace SMSMVCDTO.Migrations
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Wallet", b =>
                 {
                     b.HasOne("SMS_MVCDTO.Models.Entities.Customer", "Customer")
-                        .WithOne("Wallets")
-                        .HasForeignKey("SMS_MVCDTO.Models.Entities.Wallet", "CustomerId")
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -427,14 +428,6 @@ namespace SMSMVCDTO.Migrations
                     b.Navigation("Customer");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Customer", b =>
-                {
-                    b.Navigation("Transactions");
-
-                    b.Navigation("Wallets")
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Product", b =>
@@ -455,6 +448,9 @@ namespace SMSMVCDTO.Migrations
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.User", b =>
                 {
                     b.Navigation("Customer")
+                        .IsRequired();
+
+                    b.Navigation("Staff")
                         .IsRequired();
 
                     b.Navigation("Transactions");

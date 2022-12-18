@@ -1,8 +1,6 @@
-﻿using SMS_MVCDTO.Enums;
-
-namespace SMS_MVCDTO.Models.Entities
+﻿namespace SMS_MVCDTO.Models.Entities
 {
-    public class Customer //: BaseEntity 
+    public class Customer : BaseEntity 
     {
         //public IList<Transaction> Transactions { get; set; }
         //public Wallet Wallets { get; set; }
@@ -21,7 +19,7 @@ namespace SMS_MVCDTO.Models.Entities
         //public UserRoleType userRole { get; set; }
     }
 
-    public class Staff //: BaseEntity
+    public class Staff : BaseEntity
     {
         //public IList<Transaction> Transactions { get; set; }
         //public Wallet Wallets { get; set; }
