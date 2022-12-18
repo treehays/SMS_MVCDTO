@@ -11,7 +11,7 @@ using SMS_MVCDTO.Context;
 namespace SMSMVCDTO.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20221217150258_First Migration")]
+    [Migration("20221218051913_First Migration")]
     partial class FirstMigration
     {
         /// <inheritdoc />
@@ -21,6 +21,64 @@ namespace SMSMVCDTO.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Customer", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("MaritalStatus")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Pin")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("userRole")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Product", b =>
                 {
@@ -129,6 +187,9 @@ namespace SMSMVCDTO.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<string>("CustomerId")
+                        .HasColumnType("varchar(255)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
@@ -147,71 +208,13 @@ namespace SMSMVCDTO.Migrations
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("Transaction");
-                });
-
-            modelBuilder.Entity("SMS_MVCDTO.Models.Entities.User", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("Gender")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("MaritalStatus")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Modified")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Pin")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<bool>("Status")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<int>("userRole")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Wallet", b =>
@@ -219,8 +222,21 @@ namespace SMSMVCDTO.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
 
+                    b.Property<double>("Balance")
+                        .HasColumnType("double");
+
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<double>("Credit")
+                        .HasColumnType("double");
+
+                    b.Property<string>("CustomerId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<double>("Debit")
+                        .HasColumnType("double");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
@@ -228,13 +244,16 @@ namespace SMSMVCDTO.Migrations
                     b.Property<DateTime>("Modified")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("UserId")
+                    b.Property<string>("TransactionId")
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId")
+                    b.HasIndex("CustomerId")
+                        .IsUnique();
+
+                    b.HasIndex("TransactionId")
                         .IsUnique();
 
                     b.ToTable("Wallet");
@@ -272,22 +291,36 @@ namespace SMSMVCDTO.Migrations
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Transaction", b =>
                 {
-                    b.HasOne("SMS_MVCDTO.Models.Entities.User", null)
+                    b.HasOne("SMS_MVCDTO.Models.Entities.Customer", null)
                         .WithMany("Transactions")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerId");
                 });
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Wallet", b =>
                 {
-                    b.HasOne("SMS_MVCDTO.Models.Entities.User", "Users")
+                    b.HasOne("SMS_MVCDTO.Models.Entities.Customer", "Customer")
                         .WithOne("Wallets")
-                        .HasForeignKey("SMS_MVCDTO.Models.Entities.Wallet", "UserId")
+                        .HasForeignKey("SMS_MVCDTO.Models.Entities.Wallet", "CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Users");
+                    b.HasOne("SMS_MVCDTO.Models.Entities.Transaction", "Transaction")
+                        .WithOne("Wallets")
+                        .HasForeignKey("SMS_MVCDTO.Models.Entities.Wallet", "TransactionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Transaction");
+                });
+
+            modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Customer", b =>
+                {
+                    b.Navigation("Transactions");
+
+                    b.Navigation("Wallets")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Product", b =>
@@ -303,11 +336,6 @@ namespace SMSMVCDTO.Migrations
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Transaction", b =>
                 {
                     b.Navigation("ProductTransactions");
-                });
-
-            modelBuilder.Entity("SMS_MVCDTO.Models.Entities.User", b =>
-                {
-                    b.Navigation("Transactions");
 
                     b.Navigation("Wallets")
                         .IsRequired();

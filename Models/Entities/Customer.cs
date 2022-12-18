@@ -4,10 +4,8 @@ namespace SMS_MVCDTO.Models.Entities
 {
     public class Customer : BaseEntity 
     {
-        //public string StaffId { get; set; }
         public IList<Transaction> Transactions { get; set; }
         public Wallet Wallets { get; set; }
-        //public string WalletId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }

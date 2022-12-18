@@ -2,8 +2,12 @@
 {
     public class Wallet : BaseEntity
     {
-        //public String Id { get; set; }
-        public Customer Users { get; set; }
-        public string UserId { get; set; }
+        public Transaction Transaction{ get; set; }
+        public string TransactionId { get; set; }
+        public Customer Customer{ get; set; }
+        public string CustomerId { get; set; }
+        public double Debit { get; set; }
+        public double Credit { get; set; }
+        public double Balance { get; set; }
     }
 }

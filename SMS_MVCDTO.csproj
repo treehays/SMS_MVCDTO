@@ -13,7 +13,8 @@
 	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	</PackageReference>
 	<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0-alpha.1" />
-	<Folder Include="DTOs\" />
+	<Folder Include="DTOs\TransactionDTOs\" />
+	<Folder Include="DTOs\WalletDTOs\" />
 	<Folder Include="ViewModels\" />
   </ItemGroup>
 

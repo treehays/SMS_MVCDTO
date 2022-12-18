@@ -9,6 +9,11 @@ namespace SMS_MVCDTO.Context
         {
 
         }
-        public DbSet<Customer> Users { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<Wallet> Wallets { get; set; }
     }
 }

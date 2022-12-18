@@ -2,7 +2,6 @@
 {
     public class Product : BaseEntity
     {
-        //public string Barcode { get; set; }
         public string TransactionId { get; set; }
         public IList<ProductTransaction> ProductTransactions { get; set; }
         public string Name { get; set; }
