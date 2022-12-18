@@ -3,7 +3,7 @@
     public class Wallet : BaseEntity
     {
         //public String Id { get; set; }
-        public User Users { get; set; }
+        public Customer Users { get; set; }
         public string UserId { get; set; }
     }
 }

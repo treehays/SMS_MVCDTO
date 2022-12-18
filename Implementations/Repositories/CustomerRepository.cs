@@ -1,9 +1,9 @@
-﻿using SMS_MVCDTO.Interfaces.Services;
+﻿using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Models.Entities;
 
-namespace SMS_MVCDTO.Implementations.Services
+namespace SMS_MVCDTO.Implementations.Repositories
 {
-    public class TransactionService : ITransactionService
+    public class CustomerRepository : ICustomerRepository
     {
         public Customer Create(Customer customer)
         {
@@ -15,37 +15,42 @@ namespace SMS_MVCDTO.Implementations.Services
             throw new NotImplementedException();
         }
 
-        public IList<Customer> DownloadExcel()
-        {
-            throw new NotImplementedException();
-        }
-
         public IList<Customer> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public IList<Customer> GetByCustomerName(string customer)
+        public Customer GetByEmail(string email)
         {
             throw new NotImplementedException();
         }
 
-        public IList<Customer> GetByDate()
+        public Customer GetById(string staffId)
         {
             throw new NotImplementedException();
         }
 
-        public Customer GetById(string Id)
+        public IList<Customer> GetByName(string name)
         {
             throw new NotImplementedException();
         }
 
-        public IList<Customer> GetByStaffId(string staffId)
+        public Customer GetPhoneNumber(string phoneNumber)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Customer Login(Customer customer)
         {
             throw new NotImplementedException();
         }
 
         public Customer Update(Customer customer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Customer UpdatePassword(Customer customer)
         {
             throw new NotImplementedException();
         }
