@@ -11,7 +11,7 @@ using SMS_MVCDTO.Context;
 namespace SMSMVCDTO.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20221218121126_First Migration")]
+    [Migration("20221218141514_First Migration")]
     partial class FirstMigration
     {
         /// <inheritdoc />
@@ -65,17 +65,20 @@ namespace SMSMVCDTO.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Pin")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<bool>("Status")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<int>("userRole")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Customers");
                 });
@@ -341,6 +344,17 @@ namespace SMSMVCDTO.Migrations
                     b.ToTable("Wallets");
                 });
 
+            modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Customer", b =>
+                {
+                    b.HasOne("SMS_MVCDTO.Models.Entities.User", "User")
+                        .WithOne("Customer")
+                        .HasForeignKey("SMS_MVCDTO.Models.Entities.Customer", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Product", b =>
                 {
                     b.HasOne("SMS_MVCDTO.Models.Entities.ProductCategory", "ProductCategory")
@@ -440,6 +454,9 @@ namespace SMSMVCDTO.Migrations
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.User", b =>
                 {
+                    b.Navigation("Customer")
+                        .IsRequired();
+
                     b.Navigation("Transactions");
 
                     b.Navigation("Wallets")

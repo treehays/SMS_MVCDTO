@@ -4,9 +4,20 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SMS_MVCDTO.DTOs.CustomerDTOs
 {
-    public class CustomerDTOs
+    public class CustomerDTO
     {
-
+        public string Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string Pin { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Address { get; set; }
+        public bool Status { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public GenderType Gender { get; set; }
+        public MaritalStatusType MaritalStatus { get; set; }
+        public UserRoleType userRole { get; set; }
     }
 
     public class CreateCustomerRequestModel
@@ -36,11 +47,11 @@ namespace SMS_MVCDTO.DTOs.CustomerDTOs
         public string Pin { get; set; }
     }
 
-    public class LoginRequestModel
-    {
-        [Required]
-        public string StaffId { get; set; }
-        [Required]
-        public string Password { get; set; }
-    }
+    //public class LoginRequestModel
+    //{
+    //    [Required]
+    //    public string StaffId { get; set; }
+    //    [Required]
+    //    public string Password { get; set; }
+    //}
 }
