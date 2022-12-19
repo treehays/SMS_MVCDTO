@@ -1,7 +1,13 @@
-﻿using SMS_MVCDTO.Enums;
+﻿using Microsoft.EntityFrameworkCore;
+using SMS_MVCDTO.Enums;
+using System.ComponentModel.DataAnnotations;
+using System.Xml.Linq;
 
 namespace SMS_MVCDTO.Models.Entities
 {
+    [Index(nameof(Email), IsUnique = true)]
+    [Index(nameof(PhoneNumber), IsUnique = true)]
+
     public class Attendant : BaseEntity
     {
         public User User { get; set; }
@@ -9,7 +15,9 @@ namespace SMS_MVCDTO.Models.Entities
         public Wallet Wallets { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        [Required]
         public string Email { get; set; }
+        [Required]
         public string PhoneNumber { get; set; }
         public string HomeAddress { get; set; }
         public string ResidentialAddress { get; set; }

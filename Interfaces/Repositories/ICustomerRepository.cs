@@ -11,7 +11,7 @@ namespace SMS_MVCDTO.Interfaces.Repositories
         Customer GetByEmail(string email);
         Customer GetPhoneNumber(string phoneNumber);
         IList<Customer> GetByName(string name);
-        IList<Customer> GetAll();
+        IList<Customer> GetCustomers();
         Customer Update(Customer customer);
         Customer UpdatePassword(Customer customer);
     }

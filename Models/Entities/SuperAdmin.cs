@@ -1,14 +1,20 @@
-﻿using SMS_MVCDTO.Enums;
+﻿using Microsoft.EntityFrameworkCore;
+using SMS_MVCDTO.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace SMS_MVCDTO.Models.Entities
 {
-    public class Admin : BaseEntity
+    [Index(nameof(Email), IsUnique = true)]
+    [Index(nameof(PhoneNumber), IsUnique = true)]
+    public class SuperAdmin : BaseEntity
     {
         public User User { get; set; }
         public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        [Required]
         public string Email { get; set; }
+        [Required]
         public string PhoneNumber { get; set; }
         public string HomeAddress { get; set; }
         public string ResidentialAddress { get; set; }

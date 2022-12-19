@@ -11,20 +11,13 @@ namespace SMS_MVCDTO.Implementations.Repositories
         {
             _context = context;
         }
+
         public Customer Create(Customer customer)
         {
-            _context.Customers.Add(customer);
-            _context.SaveChanges();
-            return customer;
+            throw new NotImplementedException();
         }
 
         public void Delete(Customer customer)
-        {
-            _context.Customers.Remove(customer);
-            _context.SaveChanges();
-        }
-
-        public IList<Customer> GetAll()
         {
             throw new NotImplementedException();
         }
@@ -40,6 +33,11 @@ namespace SMS_MVCDTO.Implementations.Repositories
         }
 
         public IList<Customer> GetByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Customer> GetCustomers()
         {
             throw new NotImplementedException();
         }
@@ -63,5 +61,57 @@ namespace SMS_MVCDTO.Implementations.Repositories
         {
             throw new NotImplementedException();
         }
+        //public Customer Create(Customer customer)
+        //{
+        //    _context.Customers.Add(customer);
+        //    _context.SaveChanges();
+        //    return customer;
+        //}
+
+        //public void Delete(Customer customer)
+        //{
+        //    _context.Customers.Remove(customer);
+        //    _context.SaveChanges();
+        //}
+
+        //public IList<Customer> GetAll()
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public Customer GetByEmail(string email)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public Customer GetById(string staffId)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public IList<Customer> GetByName(string name)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public Customer GetPhoneNumber(string phoneNumber)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public Customer Login(Customer customer)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public Customer Update(Customer customer)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public Customer UpdatePassword(Customer customer)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

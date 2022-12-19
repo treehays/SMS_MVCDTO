@@ -1,12 +1,18 @@
-﻿namespace SMS_MVCDTO.Models.Entities
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+
+namespace SMS_MVCDTO.Models.Entities
 {
+    [Index(nameof(StaffId), IsUnique = true)]
     public class User : BaseEntity
     {
-        public Admin Admin { get; set; }
+        public SalesManager SalesManager { get; set; }
         public SuperAdmin SuperAdmin { get; set; }
         public Customer Customer { get; set; }
         public Attendant Attendant { get; set; }
+        [Required]
         public string StaffId { get; set; }
+        [Required]
         public string Password { get; set; }
 
         //public IList<Transaction> Transactions { get; set; }

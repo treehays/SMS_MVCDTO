@@ -1,4 +1,5 @@
 ﻿using SMS_MVCDTO.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace SMS_MVCDTO.Models.Entities
 {
@@ -10,7 +11,9 @@ namespace SMS_MVCDTO.Models.Entities
         public Wallet Wallets { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        [Required]
         public string Email { get; set; }
+        [Required]
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
         public bool Status { get; set; }
