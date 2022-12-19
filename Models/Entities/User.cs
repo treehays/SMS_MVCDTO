@@ -1,6 +1,6 @@
 ﻿namespace SMS_MVCDTO.Models.Entities
 {
-    public class User : BaseEntity 
+    public class User : BaseEntity
     {
         public Admin Admin { get; set; }
         public SuperAdmin SuperAdmin { get; set; }

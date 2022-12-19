@@ -2,11 +2,10 @@
 
 namespace SMS_MVCDTO.Models.Entities
 {
-    public class Attendant : BaseEntity 
+    public class Attendant : BaseEntity
     {
         public User User { get; set; }
         public int UserId { get; set; }
-        public IList<Transaction> Transactions { get; set; }
         public Wallet Wallets { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -23,6 +22,7 @@ namespace SMS_MVCDTO.Models.Entities
         public string BankName { get; set; }
         public string GuarantorName { get; set; }
         public string GuarantorPhoneNumber { get; set; }
+        //public IList<Transaction> Transactions { get; set; }
         /*
          parent,upload photo, upload proof of residence, valid id card
          */

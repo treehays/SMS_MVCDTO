@@ -2,10 +2,10 @@
 {
     public class Product : BaseEntity
     {
-        //public string TransactionId { get; set; }
-        public IList<ProductTransaction> ProductTransactions { get; set; }
-        public ProductCategory ProductCategory { get; set; }
-        public string ProductCategoryId { get; set; }
+        public IList<ProductCategoryProduct> ProductCategoryProducts { get; set; }
+        public IList<ProductCategory> productCategories { get; set; }
+        public int TransactionId { get; set; }
+        public Transaction Transaction { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public double SellingPrice { get; set; }

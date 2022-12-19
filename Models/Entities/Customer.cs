@@ -2,11 +2,11 @@
 
 namespace SMS_MVCDTO.Models.Entities
 {
-    public class Customer : BaseEntity 
+    public class Customer : BaseEntity
     {
+
         public User User { get; set; }
         public int UserId { get; set; }
-        public IList<Transaction> Transactions { get; set; }
         public Wallet Wallets { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -18,5 +18,6 @@ namespace SMS_MVCDTO.Models.Entities
         public GenderType Gender { get; set; }
         public MaritalStatusType MaritalStatus { get; set; }
         public UserRoleType userRole { get; set; }
+        //public IList<Transaction> Transactions { get; set; }
     }
 }
