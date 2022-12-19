@@ -37,6 +37,11 @@ namespace SMS_MVCDTO.Implementations.Repositories
             throw new NotImplementedException();
         }
 
+        public Customer GetByPhoneNumber(string phoneNumber)
+        {
+            throw new NotImplementedException();
+        }
+
         public IList<Customer> GetCustomers()
         {
             throw new NotImplementedException();

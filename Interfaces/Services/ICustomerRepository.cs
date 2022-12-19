@@ -9,9 +9,9 @@ namespace SMS_MVCDTO.Interfaces.Services
         void Delete(Customer customer);
         Customer GetById(string staffId);
         Customer GetByEmail(string email);
-        Customer GetPhoneNumber(string phoneNumber);
+        Customer GetByPhoneNumber(string phoneNumber);
         IList<Customer> GetByName(string name);
-        IList<Customer> GetAll();
+        IList<Customer> GetCustomers();
         Customer Update(Customer customer);
         Customer UpdatePassword(Customer customer);
     }

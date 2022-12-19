@@ -1,13 +1,13 @@
 ﻿using SMS_MVCDTO.Models.Entities;
 
-namespace SMS_MVCDTO.Interfaces.Repositories
+namespace SMS_MVCDTO.Interfaces.Services
 {
-    public interface IAttendantRepository
+    public interface IAttendantService
     {
         Attendant Create(Attendant attendant);
         User Login(User user);
         void Delete(Attendant attendant);
-        //Attendant GetById(string staffId);
+        Attendant GetById(string staffId);
         Attendant GetByEmail(string email);
         Attendant GetByPhoneNumber(string phoneNumber);
         IList<Attendant> GetByName(string name);

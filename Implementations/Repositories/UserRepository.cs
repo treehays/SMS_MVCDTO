@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SMS_MVCDTO.Context;
+﻿using SMS_MVCDTO.Context;
 using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Models.Entities;
 
@@ -40,6 +39,11 @@ namespace SMS_MVCDTO.Implementations.Repositories
         }
 
         public IList<User> GetByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public User GetByPhoneNumber(string phoneNumber)
         {
             throw new NotImplementedException();
         }

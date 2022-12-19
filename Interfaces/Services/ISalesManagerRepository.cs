@@ -1,13 +1,13 @@
 ﻿using SMS_MVCDTO.Models.Entities;
 
-namespace SMS_MVCDTO.Interfaces.Repositories
+namespace SMS_MVCDTO.Interfaces.Services
 {
-    public interface ISalesManagerRepository
+    public interface ISalesManagerService
     {
         SalesManager Create(SalesManager salesManager);
         SalesManager Login(SalesManager salesManager);
         void Delete(SalesManager salesManager);
-        //SalesManager GetById(string staffId);
+        SalesManager GetById(string staffId);
         SalesManager GetByEmail(string email);
         SalesManager GetByPhoneNumber(string phoneNumber);
         IList<SalesManager> GetByName(string name);

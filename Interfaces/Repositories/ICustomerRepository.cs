@@ -7,9 +7,9 @@ namespace SMS_MVCDTO.Interfaces.Repositories
         Customer Create(Customer customer);
         Customer Login(Customer customer);
         void Delete(Customer customer);
-        Customer GetById(string staffId);
+        //Customer GetById(string staffId);
         Customer GetByEmail(string email);
-        Customer GetPhoneNumber(string phoneNumber);
+        Customer GetByPhoneNumber(string phoneNumber);
         IList<Customer> GetByName(string name);
         IList<Customer> GetCustomers();
         Customer Update(Customer customer);

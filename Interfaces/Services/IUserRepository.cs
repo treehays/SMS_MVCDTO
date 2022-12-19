@@ -9,7 +9,7 @@ namespace SMS_MVCDTO.Interfaces.Services
         void Delete(User user);
         User GetById(string staffId);
         User GetByEmail(string email);
-        User GetPhoneNumber(string phoneNumber);
+        User GetByPhoneNumber(string phoneNumber);
         IList<User> GetByName(string name);
         IList<User> GetUsers();
         IList<User> GetAttendants();

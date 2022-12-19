@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SMS_MVCDTO.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace SMS_MVCDTO.Models.Entities
@@ -14,6 +15,7 @@ namespace SMS_MVCDTO.Models.Entities
         public string StaffId { get; set; }
         [Required]
         public string Password { get; set; }
+        public UserRoleType Role { get; set; }
 
         //public IList<Transaction> Transactions { get; set; }
         //public Wallet Wallets { get; set; }

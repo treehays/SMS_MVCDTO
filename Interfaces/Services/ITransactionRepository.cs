@@ -11,7 +11,8 @@ namespace SMS_MVCDTO.Interfaces.Services
         IList<Transaction> GetByDate();
         Transaction GetById(string Id);
         IList<Transaction> GetByStaffId(string staffId);
-        IList<Transaction> GetByTransactionName(string transaction);
+        IList<Transaction> GetTransactionByCustomerName(string transaction);
         IList<Transaction> DownloadExcel();
+
     }
 }

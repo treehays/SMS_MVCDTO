@@ -1,13 +1,13 @@
 ﻿using SMS_MVCDTO.Models.Entities;
 
-namespace SMS_MVCDTO.Interfaces.Repositories
+namespace SMS_MVCDTO.Interfaces.Services
 {
-    public interface ISuperAdminRepository
+    public interface ISuperAdminService
     {
         SuperAdmin Create(SuperAdmin superAdmin);
         SuperAdmin Login(SuperAdmin superAdmin);
         void Delete(SuperAdmin superAdmin);
-        //SuperAdmin GetById(string staffId);
+        SuperAdmin GetById(string staffId);
         SuperAdmin GetByEmail(string email);
         SuperAdmin GetByPhoneNumber(string phoneNumber);
         IList<SuperAdmin> GetByName(string name);

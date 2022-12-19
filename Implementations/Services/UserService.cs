@@ -35,6 +35,11 @@ namespace SMS_MVCDTO.Implementations.Services
             throw new NotImplementedException();
         }
 
+        public User GetByPhoneNumber(string phoneNumber)
+        {
+            throw new NotImplementedException();
+        }
+
         public User GetPhoneNumber(string phoneNumber)
         {
             throw new NotImplementedException();

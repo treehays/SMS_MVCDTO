@@ -52,6 +52,11 @@ namespace SMS_MVCDTO.Implementations.Repositories
             throw new NotImplementedException();
         }
 
+        public IList<Transaction> GetTransactionByCustomerName(string transaction)
+        {
+            throw new NotImplementedException();
+        }
+
         public Transaction Update(Transaction transaction)
         {
             throw new NotImplementedException();
