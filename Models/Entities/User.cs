@@ -17,6 +17,15 @@ namespace SMS_MVCDTO.Models.Entities
         public string Password { get; set; }
         public UserRoleType Role { get; set; }
 
+
+        public static string GenerateRandomId(string secondLetter)
+        {
+            var alphabet = "abcdefghijklmnopqrstuvwxyz".ToUpper();
+            var r1 = new Random().Next(25);
+            var r2 = new Random().Next(25);
+            var staffId = $"{secondLetter}{alphabet[r1]}{alphabet[r2]}" + new Random().Next(1100000);
+            return staffId;
+        }
         //public IList<Transaction> Transactions { get; set; }
         //public Wallet Wallets { get; set; }
         //public string FirstName { get; set; }

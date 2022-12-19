@@ -7,7 +7,7 @@ namespace SMS_MVCDTO.DTOs.AttendantDTOs
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        public string Pin { get; set; }
+        public string Password { get; set; }
         public string PhoneNumber { get; set; }
         public string HomeAddress { get; set; }
         public string ResidentialAddress { get; set; }
@@ -26,7 +26,7 @@ namespace SMS_MVCDTO.DTOs.AttendantDTOs
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        public string Pin { get; set; }
+        public string Password { get; set; }
         public string PhoneNumber { get; set; }
         public string HomeAddress { get; set; }
         public string ResidentialAddress { get; set; }
@@ -43,7 +43,11 @@ namespace SMS_MVCDTO.DTOs.AttendantDTOs
 
     public class UpdateAttendantPasswordRequestModel
     {
-        public string Pin { get; set; }
+        public string Password { get; set; }
+    }
+    public class UpdateAttendantRoleRequestModel
+    {
+        public UserRoleType UserRole { get; set; }
     }
 
 
@@ -51,7 +55,7 @@ namespace SMS_MVCDTO.DTOs.AttendantDTOs
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Pin { get; set; }
+        public string Password { get; set; }
         public string ResidentialAddress { get; set; }
         public MaritalStatusType MaritalStatus { get; set; }
         public string BankAccountNumber { get; set; }

@@ -1,20 +1,22 @@
-﻿using SMS_MVCDTO.Models.Entities;
+﻿using SMS_MVCDTO.DTOs.AttendantDTOs;
+using SMS_MVCDTO.DTOs.CustomerDTOs;
+using SMS_MVCDTO.Models.Entities;
 
 namespace SMS_MVCDTO.Interfaces.Services
 {
     public interface IAttendantService
     {
-        Attendant Create(Attendant attendant);
-        User Login(User user);
-        void Delete(Attendant attendant);
+        CreateAttendantRequestModel Create(CreateAttendantRequestModel attendant);
+        LoginRequestModel Login(LoginRequestModel user);
+        void Delete(string staffId);
         Attendant GetById(string staffId);
         Attendant GetByEmail(string email);
         Attendant GetByPhoneNumber(string phoneNumber);
         IList<Attendant> GetByName(string name);
         IList<Attendant> GetAttendants();
-        Attendant Update(Attendant attendant);
-        Attendant UpdatePassword(Attendant attendant);
-        Attendant UpdateRole(Attendant attendant);
+        UpdateAttendantRequestModel Update(UpdateAttendantRequestModel attendant);
+        UpdateAttendantPasswordRequestModel UpdatePassword(UpdateAttendantPasswordRequestModel attendant);
+        UpdateAttendantRoleRequestModel UpdateRole(UpdateAttendantRoleRequestModel attendant);
         //bool IsActive(Attendant attendant);
     }
 }
