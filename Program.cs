@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SMS_MVCDTO.Context;
 using SMS_MVCDTO.Implementations.Repositories;
+using SMS_MVCDTO.Implementations.Service;
 using SMS_MVCDTO.Implementations.Services;
 using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Interfaces.Services;
@@ -13,6 +14,8 @@ var configuration = builder.Configuration.GetConnectionString("DefaultConnection
 builder.Services.AddDbContext<ApplicationContext>(options => options.UseMySql(configuration, ServerVersion.AutoDetect(configuration)));
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IAttendantRepository, AttendantRepository>();
+builder.Services.AddScoped<IAttendantService, AttendantService>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
