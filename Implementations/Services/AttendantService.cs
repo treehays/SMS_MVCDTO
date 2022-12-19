@@ -8,11 +8,11 @@ namespace SMS_MVCDTO.Implementations.Service
 {
     public class AttendantService : IAttendantService
     {
-        private readonly IAttendantRepository _attendantRepository;
+        private readonly IAttendantRepository _attendant;
         private readonly IUserRepository _userRepository;
         public AttendantService(IAttendantRepository attendantRepository, IUserRepository userRepository)
         {
-            _attendantRepository = attendantRepository;
+            _attendant = attendantRepository;
             _userRepository = userRepository;
         }
 
@@ -45,48 +45,48 @@ namespace SMS_MVCDTO.Implementations.Service
                 GuarantorName = attendant.GuarantorName,
                 GuarantorPhoneNumber = attendant.GuarantorPhoneNumber
             };
-            _attendantRepository.Create(attend);
+            _attendant.Create(attend);
 
             return attendant;
         }
 
         public void Delete(string staffId)
         {
-            var attendant = _attendantRepository.GetById(staffId);
+            var attendant = _attendant.GetById(staffId);
             //if (attendant == null)
             //{
 
             //}
-            _attendantRepository.Delete(attendant);
+            _attendant.Delete(attendant);
         }
 
         public IList<Attendant> GetAttendants()
         {
-            var attendants = _attendantRepository.GetAttendants();
+            var attendants = _attendant.GetAttendants();
             return attendants;
         }
 
         public Attendant GetByEmail(string email)
         {
-            var attendant = _attendantRepository.GetByEmail(email);
+            var attendant = _attendant.GetByEmail(email);
             return attendant;
         }
 
         public Attendant GetById(string staffId)
         {
-            var attendant = _attendantRepository.GetById(staffId);
+            var attendant = _attendant.GetById(staffId);
             return attendant;
         }
 
         public IList<Attendant> GetByName(string name)
         {
-            var attendants = _attendantRepository.GetByName(name);
+            var attendants = _attendant.GetByName(name);
             return attendants;
         }
 
         public Attendant GetByPhoneNumber(string phoneNumber)
         {
-            var attendant = _attendantRepository.GetByPhoneNumber(phoneNumber);
+            var attendant = _attendant.GetByPhoneNumber(phoneNumber);
             return attendant;
         }
 
@@ -104,7 +104,7 @@ namespace SMS_MVCDTO.Implementations.Service
 
         public UpdateAttendantRequestModel Update(UpdateAttendantRequestModel attendant)
         {
-            var attendan = _attendantRepository.GetById(attendant.StaffId);
+            var attendan = _attendant.GetById(attendant.StaffId);
             if (attendan == null)
             {
                 return null;
@@ -116,7 +116,7 @@ namespace SMS_MVCDTO.Implementations.Service
             attendan.BankName = attendant.BankName ?? attendan.BankName;
             attendan.BankAccountNumber = attendant.BankAccountNumber ?? attendan.BankAccountNumber;
             attendan.Modified = DateTime.Now;
-            _attendantRepository.Update(attendan);
+            _attendant.Update(attendan);
             return attendant;
         }
 
