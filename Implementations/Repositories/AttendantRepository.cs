@@ -73,11 +73,11 @@ namespace SMS_MVCDTO.Implementations.Repositories
         //    return isAdmin;
         //}
 
-        public User Login(User user)
-        {
-            var userLogin = _context.Users.SingleOrDefault(w => w.StaffId == user.StaffId && w.Password == user.Password);
-            return userLogin;
-        }
+        //public User Login(User user)
+        //{
+        //    var userLogin = _context.Users.SingleOrDefault(w => w.StaffId == user.StaffId && w.Password == user.Password);
+        //    return userLogin;
+        //}
 
         public Attendant Update(Attendant attendant)
         {

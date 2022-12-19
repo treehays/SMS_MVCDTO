@@ -4,6 +4,7 @@ namespace SMS_MVCDTO.DTOs.AttendantDTOs
 {
     public class AttendantDTOs
     {
+        public string StaffId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
@@ -43,16 +44,19 @@ namespace SMS_MVCDTO.DTOs.AttendantDTOs
 
     public class UpdateAttendantPasswordRequestModel
     {
+        public string StaffId { get; set; }
         public string Password { get; set; }
     }
     public class UpdateAttendantRoleRequestModel
     {
+        public string StaffId { get; set; }
         public UserRoleType UserRole { get; set; }
     }
 
 
     public class UpdateAttendantRequestModel
     {
+        public string StaffId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Password { get; set; }

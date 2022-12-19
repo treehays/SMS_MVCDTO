@@ -12,6 +12,8 @@ namespace SMS_MVCDTO.Models.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         [Required]
+        public string StaffId { get; set; }
+        [Required]
         public string Email { get; set; }
         [Required]
         public string PhoneNumber { get; set; }

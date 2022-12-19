@@ -101,6 +101,10 @@ namespace SMSMVCDTO.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("StaffId")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -162,6 +166,10 @@ namespace SMSMVCDTO.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("StaffId")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -371,6 +379,10 @@ namespace SMSMVCDTO.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("StaffId")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -455,6 +467,10 @@ namespace SMSMVCDTO.Migrations
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("ResidentialAddress")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("StaffId")
                         .IsRequired()
                         .HasColumnType("longtext");
 

@@ -5,9 +5,9 @@ namespace SMS_MVCDTO.Interfaces.Repositories
     public interface IAttendantRepository
     {
         Attendant Create(Attendant attendant);
-        User Login(User user);
+        //User Login(User user);
         void Delete(Attendant attendant);
-        //Attendant GetById(string staffId);
+        Attendant GetById(string staffId);
         Attendant GetByEmail(string email);
         Attendant GetByPhoneNumber(string phoneNumber);
         IList<Attendant> GetByName(string name);
