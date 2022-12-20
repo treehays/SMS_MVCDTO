@@ -26,12 +26,14 @@ namespace SMS_MVCDTO.Implementations.Service
                 Role = UserRoleType.Attendant
 
             };
-            _userRepository.Create(user);
+            var isdd = _userRepository.Create(user);
 
             var attend = new Attendant
             {
                 StaffId = sid,
                 Email = attendant.Email,
+                FirstName = attendant.FirstName,
+                LastName = attendant.LastName,
                 PhoneNumber = attendant.PhoneNumber,
                 HomeAddress = attendant.HomeAddress,
                 ResidentialAddress = attendant.ResidentialAddress,

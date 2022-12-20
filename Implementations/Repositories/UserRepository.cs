@@ -14,7 +14,9 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public User Create(User user)
         {
-            throw new NotImplementedException();
+            _context.Users.Add(user);
+            _context.SaveChanges();
+            return user;
         }
 
         public void Delete(User user)
@@ -35,7 +37,8 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public User GetById(string staffId)
         {
-            throw new NotImplementedException();
+            var user = _context.Users.SingleOrDefault(x => x.StaffId == staffId);
+            return user;
         }
 
         public IList<User> GetByName(string name)

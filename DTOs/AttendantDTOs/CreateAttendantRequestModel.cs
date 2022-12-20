@@ -1,9 +1,9 @@
 ﻿using SMS_MVCDTO.Enums;
+
 namespace SMS_MVCDTO.DTOs.AttendantDTOs
 {
-    public class AttendantDTOs
+    public class CreateAttendantRequestModel
     {
-        public string StaffId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
@@ -20,4 +20,5 @@ namespace SMS_MVCDTO.DTOs.AttendantDTOs
         public string GuarantorPhoneNumber { get; set; }
         public UserRoleType userRole { get; set; }
     }
+
 }

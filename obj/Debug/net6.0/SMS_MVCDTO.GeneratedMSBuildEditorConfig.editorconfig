@@ -15,6 +15,34 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Treehays\Documents\CLH\New folder\SMS_MVCDTO
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/all/SampleCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = YWxsXFNhbXBsZUNyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/all/SampleDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = YWxsXFNhbXBsZURlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/all/SampleDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = YWxsXFNhbXBsZURldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/all/SampleEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = YWxsXFNhbXBsZUVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/all/SampleIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = YWxsXFNhbXBsZUluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/Attendant/CreateAttendant.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXR0ZW5kYW50XENyZWF0ZUF0dGVuZGFudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/Attendant/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXR0ZW5kYW50XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
