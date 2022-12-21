@@ -23,11 +23,6 @@ namespace SMS_MVCDTO.Controllers
 
         public IActionResult CreateAttendant()
         {
-            //var elections = _electionService.GetElections();
-            //ViewData["Elections"] = new SelectList(elections.Data, "Id", "Name");
-            //var positions = _positionService.GetPositions();
-            //ViewData["Positions"] = new SelectList(positions.Data, "Id", "Name");
-            
             return View();
         }
 
@@ -53,5 +48,52 @@ namespace SMS_MVCDTO.Controllers
                 return View();
             }
         }
+
+        public IActionResult UpdateAttendantDetail(string staffId)
+        {
+            //var attendant = _attendant.GetById(staffId);
+            //if (attendant == null)
+            //{
+            //    return NotFound();
+            //}
+            //return View(attendant);
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult UpdateAttendantDetail(UpdateAttendantRequestModel updateAttendant)
+        {
+            //var matricNumber = HttpContext.Session.GetString("MatricNumber");
+            //var candidate = _candidateService.GetCandidateByMatricNumber(matricNumber);
+            //var attendant = _attendant.GetById(updateAttendant.StaffId);
+            //if (attendant == null)
+            //{
+            //    return NotFound($"Attendant does not Exist");
+            //}
+
+            _attendant.Update(updateAttendant);
+            TempData["success"] = "Profile Updated Successfully.";
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+// public IActionResult CreateAttendant()
+//{
+//    //var elections = _electionService.GetElections();
+//    //ViewData["Elections"] = new SelectList(elections.Data, "Id", "Name");
+//    //var positions = _positionService.GetPositions();
+//    //ViewData["Positions"] = new SelectList(positions.Data, "Id", "Name");
+
+//    return View();
+//}

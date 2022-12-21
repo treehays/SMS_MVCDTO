@@ -18,7 +18,7 @@ namespace SMS_MVCDTO.DTOs.AttendantDTOs
         public string BankName { get; set; }
         public string GuarantorName { get; set; }
         public string GuarantorPhoneNumber { get; set; }
-        public UserRoleType userRole { get; set; }
+        //public UserRoleType userRole { get; set; }
     }
 
 }

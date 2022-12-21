@@ -3,6 +3,7 @@ using SMS_MVCDTO.Enums;
 using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.Entities;
+using System.Security.Cryptography;
 
 namespace SMS_MVCDTO.Implementations.Service
 {
@@ -15,6 +16,8 @@ namespace SMS_MVCDTO.Implementations.Service
             _attendant = attendantRepository;
             _userRepository = userRepository;
         }
+
+        //Done
 
         public CreateAttendantRequestModel Create(CreateAttendantRequestModel attendant)
         {
@@ -42,7 +45,7 @@ namespace SMS_MVCDTO.Implementations.Service
                 DateOfBirth = attendant.DateOfBirth,
                 Gender = attendant.Gender,
                 MaritalStatus = attendant.MaritalStatus,
-                userRole = attendant.userRole,
+                userRole = UserRoleType.Attendant,
                 BankAccountNumber = attendant.BankAccountNumber,
                 BankName = attendant.BankName,
                 GuarantorName = attendant.GuarantorName,
@@ -77,10 +80,20 @@ namespace SMS_MVCDTO.Implementations.Service
             return attendant;
         }
 
-        public Attendant GetById(string staffId)
+        public UpdateAttendantRequestModel GetById(string staffId)
         {
             var attendant = _attendant.GetById(staffId);
-            return attendant;
+            var attendantRequest = new UpdateAttendantRequestModel
+            {
+                StaffId = attendant.StaffId,
+                FirstName = attendant.FirstName,
+                LastName = attendant.LastName,
+                ResidentialAddress = attendant.ResidentialAddress,
+                MaritalStatus = attendant.MaritalStatus,
+                BankAccountNumber = attendant.BankAccountNumber,
+                BankName = attendant.BankName,
+            };
+            return attendantRequest;
         }
 
         public IList<Attendant> GetByName(string name)
@@ -114,6 +127,7 @@ namespace SMS_MVCDTO.Implementations.Service
             {
                 return null;
             }
+
             attendan.FirstName = attendant.FirstName ?? attendan.FirstName;
             attendan.LastName = attendant.LastName ?? attendan.LastName;
             attendan.ResidentialAddress = attendant.ResidentialAddress ?? attendan.ResidentialAddress;

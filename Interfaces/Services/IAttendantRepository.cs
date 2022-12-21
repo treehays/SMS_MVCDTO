@@ -7,9 +7,10 @@ namespace SMS_MVCDTO.Interfaces.Services
     public interface IAttendantService
     {
         CreateAttendantRequestModel Create(CreateAttendantRequestModel attendant);
+
         //LoginRequestModel Login(LoginRequestModel user);
         void Delete(string staffId);
-        Attendant GetById(string staffId);
+        UpdateAttendantRequestModel GetById(string staffId);
         Attendant GetByEmail(string email);
         Attendant GetByPhoneNumber(string phoneNumber);
         IList<Attendant> GetByName(string name);
