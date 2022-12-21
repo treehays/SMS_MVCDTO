@@ -1,4 +1,5 @@
-﻿@model SMS_MVCDTO.DTOs.AttendantDTOs.CreateAttendantRequestModel
+﻿@using SMS_MVCDTO.Enums
+@model SMS_MVCDTO.DTOs.AttendantDTOs.CreateAttendantRequestModel
 
 @{
 	ViewData["Title"] = "Create";
@@ -79,25 +80,46 @@
 
 
 
+
+
 				<div class="form-group">
 					<label asp-for="Gender" class="control-label" for="Gender"></label>
-					<select name="Gender" id="Gender">
-						<!--	<optgroup label="Swedish Cars"> -->
-						<option value="1">Male</option>
-						<option value="2">Female</option>
-						<!--	</optgroup> -->
-					</select>
+					<select asp-for="Gender" asp-items="Html.GetEnumSelectList<GenderType>()"></select>
 					<span asp-validation-for="Gender" class="text-danger"></span>
 				</div>
 
+				<!--	<div class="form-group">
+						<label asp-for="Gender" class="control-label" for="Gender"></label>
+						<select name="Gender" id="Gender"> -->
+				<!--	<optgroup label="Swedish Cars"> -->
+				<!--	<option value="1">Male</option>
+				<option value="2">Female</option>	-->
+				<!--	</optgroup> -->
+				<!--		</select>
+						<span asp-validation-for="Gender" class="text-danger"></span>
+					</div>
 
+					-->
 
-
+				<p></p>
 				<!--	<div class="form-group">
 					<label asp-for="Gender" class="control-label"></label>
 					<select asp-for="Gender" class="form-control"></select>
 					<span asp-validation-for="Gender" class="text-danger"></span>
 				</div>
+				-->
+				<!--<div class="form-group">
+								   <label asp-for="MaritalStatus" class="control-label" for="MaritalStatus"></label>
+								   <select name="MaritalStatus" id="MaritalStatus">
+										   //<optgroup label="Swedish Cars">
+									   <option value="1">Single</option>
+									   <option value="2">Married</option>
+									   <option value="3">Divorced</option>
+									   <option value="4">Widowed</option>
+								   //</optgroup>
+								   </select>
+								   <span asp-validation-for="MaritalStatus" class="text-danger"></span>
+							   </div>
 				-->
 
 
@@ -105,18 +127,9 @@
 
 				<div class="form-group">
 					<label asp-for="MaritalStatus" class="control-label" for="MaritalStatus"></label>
-					<select name="MaritalStatus" id="MaritalStatus">
-						<!--	<optgroup label="Swedish Cars"> -->
-						<option value="1">Single</option>
-						<option value="2">Married</option>
-						<option value="3">Divorced</option>
-						<option value="4">Widowed</option>
-						<!--	</optgroup> -->
-					</select>
-					<span asp-validation-for="MaritalStatus" class="text-danger"></span>
+					<select asp-for="MaritalStatus" asp-items="Html.GetEnumSelectList<MaritalStatusType>()"></select>
+					<span asp-validation-for="Gender" class="text-danger"></span>
 				</div>
-
-
 
 
 				<!--	<div class="form-group">
@@ -153,9 +166,9 @@
 					<input asp-for="GuarantorPhoneNumber" class="form-control" />
 					<span asp-validation-for="GuarantorPhoneNumber" class="text-danger"></span>
 				</div>
-				
-				
-				
+
+
+
 				<div class="form-group">
 					<label asp-for="Password" class="control-label"></label>
 					<input asp-for="Password" class="form-control" />

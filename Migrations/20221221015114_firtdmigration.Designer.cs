@@ -11,8 +11,8 @@ using SMS_MVCDTO.Context;
 namespace SMSMVCDTO.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20221219182007_firstmigration")]
-    partial class firstmigration
+    [Migration("20221221015114_firtdmigration")]
+    partial class firtdmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,9 +39,8 @@ namespace SMSMVCDTO.Migrations
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Attendant", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("StaffId")
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("BankAccountNumber")
                         .IsRequired()
@@ -104,17 +103,14 @@ namespace SMSMVCDTO.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("StaffId")
+                    b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<int>("userRole")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("StaffId");
 
                     b.HasIndex("Email")
                         .IsUnique();
@@ -130,9 +126,8 @@ namespace SMSMVCDTO.Migrations
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Customer", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("StaffId")
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -172,20 +167,17 @@ namespace SMSMVCDTO.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("StaffId")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<bool>("Status")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<int>("userRole")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("StaffId");
 
                     b.HasIndex("UserId")
                         .IsUnique();
@@ -317,9 +309,8 @@ namespace SMSMVCDTO.Migrations
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.SalesManager", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("StaffId")
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("BankAccountNumber")
                         .IsRequired()
@@ -382,17 +373,14 @@ namespace SMSMVCDTO.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("StaffId")
+                    b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<int>("userRole")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("StaffId");
 
                     b.HasIndex("Email")
                         .IsUnique();
@@ -408,9 +396,8 @@ namespace SMSMVCDTO.Migrations
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.SuperAdmin", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("StaffId")
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("BankAccountNumber")
                         .IsRequired()
@@ -473,17 +460,14 @@ namespace SMSMVCDTO.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("StaffId")
+                    b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<int>("userRole")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("StaffId");
 
                     b.HasIndex("Email")
                         .IsUnique();
@@ -506,8 +490,9 @@ namespace SMSMVCDTO.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
+                    b.Property<string>("CustomerId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
@@ -530,9 +515,8 @@ namespace SMSMVCDTO.Migrations
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.User", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("StaffId")
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime(6)");
@@ -550,11 +534,7 @@ namespace SMSMVCDTO.Migrations
                     b.Property<int>("Role")
                         .HasColumnType("int");
 
-                    b.Property<string>("StaffId")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)");
-
-                    b.HasKey("Id");
+                    b.HasKey("StaffId");
 
                     b.HasIndex("StaffId")
                         .IsUnique();
@@ -568,8 +548,9 @@ namespace SMSMVCDTO.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("AttendantId")
-                        .HasColumnType("int");
+                    b.Property<string>("AttendantId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<double>("Balance")
                         .HasColumnType("double");
@@ -580,8 +561,9 @@ namespace SMSMVCDTO.Migrations
                     b.Property<double>("Credit")
                         .HasColumnType("double");
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
+                    b.Property<string>("CustomerId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<double>("Debit")
                         .HasColumnType("double");

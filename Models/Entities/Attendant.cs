@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SMS_MVCDTO.Enums;
 using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SMS_MVCDTO.Models.Entities
 {
@@ -11,11 +11,13 @@ namespace SMS_MVCDTO.Models.Entities
     public class Attendant : BaseEntity
     {
         public User User { get; set; }
-        public int UserId { get; set; }
+        [ForeignKey("User")]
+        public string UserId { get; set; }
         public Wallet Wallets { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         [Required]
+        [Key]
         public string StaffId { get; set; }
         [Required]
         public string Email { get; set; }

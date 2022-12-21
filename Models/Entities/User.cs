@@ -12,6 +12,7 @@ namespace SMS_MVCDTO.Models.Entities
         public Customer Customer { get; set; }
         public Attendant Attendant { get; set; }
         [Required]
+        [Key]
         public string StaffId { get; set; }
         [Required]
         public string Password { get; set; }

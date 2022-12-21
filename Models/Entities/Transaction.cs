@@ -2,7 +2,8 @@
 {
     public class Transaction : BaseEntity
     {
-        public int CustomerId { get; set; }
+        public int Id { get; set; }
+        public string CustomerId { get; set; }
         public Customer Customer { get; set; }
         public IList<Product> Products { get; set; }
         public int Quantity { get; set; }

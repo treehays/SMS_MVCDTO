@@ -6,6 +6,7 @@ namespace SMS_MVCDTO.Models.Entities
     [Index(nameof(Barcode), IsUnique = true)]
     public class Product : BaseEntity
     {
+        public int Id { get; set; }
         public IList<ProductCategoryProduct> ProductCategoryProducts { get; set; }
         public IList<ProductCategory> productCategories { get; set; }
         public int TransactionId { get; set; }

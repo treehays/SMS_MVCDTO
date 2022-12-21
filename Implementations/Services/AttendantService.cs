@@ -23,7 +23,8 @@ namespace SMS_MVCDTO.Implementations.Service
             {
                 StaffId = sid,
                 Password = attendant.Password,
-                Role = UserRoleType.Attendant
+                Role = UserRoleType.Attendant,
+                Created = DateTime.Now
 
             };
             var isdd = _userRepository.Create(user);
@@ -45,7 +46,9 @@ namespace SMS_MVCDTO.Implementations.Service
                 BankAccountNumber = attendant.BankAccountNumber,
                 BankName = attendant.BankName,
                 GuarantorName = attendant.GuarantorName,
-                GuarantorPhoneNumber = attendant.GuarantorPhoneNumber
+                GuarantorPhoneNumber = attendant.GuarantorPhoneNumber,
+                Created = DateTime.Now,
+                UserId = sid
             };
             _attendant.Create(attend);
 

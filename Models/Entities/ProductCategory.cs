@@ -2,6 +2,7 @@
 {
     public class ProductCategory : BaseEntity
     {
+        public int Id { get; set; }
         public IList<ProductCategoryProduct> ProductCategoryProducts { get; set; }
         public IList<Product> Products { get; set; }
         public string CategoryCode { get; set; }
