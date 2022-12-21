@@ -27,6 +27,7 @@ namespace SMS_MVCDTO.Controllers
             //ViewData["Elections"] = new SelectList(elections.Data, "Id", "Name");
             //var positions = _positionService.GetPositions();
             //ViewData["Positions"] = new SelectList(positions.Data, "Id", "Name");
+            
             return View();
         }
 

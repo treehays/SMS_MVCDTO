@@ -83,8 +83,8 @@
 					<label asp-for="Gender" class="control-label" for="Gender"></label>
 					<select name="Gender" id="Gender">
 						<!--	<optgroup label="Swedish Cars"> -->
-						<option value="Male">Male</option>
-						<option value="Female">Female</option>
+						<option value="1">Male</option>
+						<option value="2">Female</option>
 						<!--	</optgroup> -->
 					</select>
 					<span asp-validation-for="Gender" class="text-danger"></span>
@@ -107,10 +107,10 @@
 					<label asp-for="MaritalStatus" class="control-label" for="MaritalStatus"></label>
 					<select name="MaritalStatus" id="MaritalStatus">
 						<!--	<optgroup label="Swedish Cars"> -->
-						<option value="Single">Single</option>
-						<option value="Married">Married</option>
-						<option value="Divorced">Divorced</option>
-						<option value="Widowed">Widowed</option>
+						<option value="1">Single</option>
+						<option value="2">Married</option>
+						<option value="3">Divorced</option>
+						<option value="4">Widowed</option>
 						<!--	</optgroup> -->
 					</select>
 					<span asp-validation-for="MaritalStatus" class="text-danger"></span>
