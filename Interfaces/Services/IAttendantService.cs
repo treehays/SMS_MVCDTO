@@ -10,11 +10,11 @@ namespace SMS_MVCDTO.Interfaces.Services
 
         //LoginRequestModel Login(LoginRequestModel user);
         void Delete(string staffId);
-        UpdateAttendantRequestModel GetById(string staffId);
-        Attendant GetByEmail(string email);
-        Attendant GetByPhoneNumber(string phoneNumber);
-        IList<Attendant> GetByName(string name);
-        IList<Attendant> GetAttendants();
+        AttendantResponseModel GetById(string staffId);
+        AttendantResponseModel GetByEmail(string email);
+        AttendantResponseModel GetByPhoneNumber(string phoneNumber);
+        IList<AttendantResponseModel> GetByName(string name);
+        IList<AttendantResponseModel> GetAttendants();
         UpdateAttendantRequestModel Update(UpdateAttendantRequestModel attendant);
         UpdateAttendantPasswordRequestModel UpdatePassword(UpdateAttendantPasswordRequestModel attendant);
         UpdateAttendantRoleRequestModel UpdateRole(UpdateAttendantRoleRequestModel attendant);

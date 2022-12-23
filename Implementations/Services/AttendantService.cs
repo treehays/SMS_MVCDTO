@@ -4,6 +4,7 @@ using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.Entities;
 using System.Security.Cryptography;
+using System.Xml.Linq;
 
 namespace SMS_MVCDTO.Implementations.Service
 {
@@ -68,44 +69,161 @@ namespace SMS_MVCDTO.Implementations.Service
             _attendant.Delete(attendant);
         }
 
-        public IList<Attendant> GetAttendants()
+        public IList<AttendantResponseModel> GetAttendants()
         {
             var attendants = _attendant.GetAttendants();
-            return attendants;
+            var attendantResponseModels = new List<AttendantResponseModel>();
+            foreach (var item in attendants)
+            {
+                var attendantResponseModel = new AttendantResponseModel
+                {
+                    Message = "Attendant retrieved Successfully",
+                    Status = true,
+                    Data = new AttendantDTOs
+                    {
+                        BankAccountNumber = item.BankAccountNumber,
+                        GuarantorName = item.GuarantorName,
+                        BankName = item.BankName,
+                        DateOfBirth = item.DateOfBirth,
+                        Email = item.Email,
+                        FirstName = item.FirstName,
+                        Gender = item.Gender,
+                        LastName = item.LastName,
+                        GuarantorPhoneNumber = item.GuarantorPhoneNumber,
+                        HomeAddress = item.HomeAddress,
+                        MaritalStatus = item.MaritalStatus,
+                        PhoneNumber = item.PhoneNumber,
+                        ResidentialAddress = item.ResidentialAddress,
+                        StaffId = item.StaffId,
+                    }
+                };
+                attendantResponseModels.Add(attendantResponseModel);
+            }
+            return attendantResponseModels;
         }
 
-        public Attendant GetByEmail(string email)
+        public AttendantResponseModel GetByEmail(string email)
         {
             var attendant = _attendant.GetByEmail(email);
-            return attendant;
+            var attendantResponseModel = new AttendantResponseModel
+            {
+                Message = "Attendant retrieved Successfully",
+                Status = true,
+                Data = new AttendantDTOs
+                {
+                    BankAccountNumber = attendant.BankAccountNumber,
+                    GuarantorName = attendant.GuarantorName,
+                    BankName = attendant.BankName,
+                    DateOfBirth = attendant.DateOfBirth,
+                    Email = attendant.Email,
+                    FirstName = attendant.FirstName,
+                    Gender = attendant.Gender,
+                    LastName = attendant.LastName,
+                    GuarantorPhoneNumber = attendant.GuarantorPhoneNumber,
+                    HomeAddress = attendant.HomeAddress,
+                    MaritalStatus = attendant.MaritalStatus,
+                    PhoneNumber = attendant.PhoneNumber,
+                    ResidentialAddress = attendant.ResidentialAddress,
+                    StaffId = attendant.StaffId,
+                }
+
+            };
+            return attendantResponseModel;
+            //var attendant = _attendant.GetByEmail(email);
+            //return attendant;
         }
 
-        public UpdateAttendantRequestModel GetById(string staffId)
+        public AttendantResponseModel GetById(string staffId)
         {
             var attendant = _attendant.GetById(staffId);
-            var attendantRequest = new UpdateAttendantRequestModel
+            var attendantResponseModel = new AttendantResponseModel
             {
-                StaffId = attendant.StaffId,
-                FirstName = attendant.FirstName,
-                LastName = attendant.LastName,
-                ResidentialAddress = attendant.ResidentialAddress,
-                MaritalStatus = attendant.MaritalStatus,
-                BankAccountNumber = attendant.BankAccountNumber,
-                BankName = attendant.BankName,
+                Message = "Attendant retrieved Successfully",
+                Status = true,
+                Data = new AttendantDTOs
+                {
+                    BankAccountNumber = attendant.BankAccountNumber,
+                    GuarantorName = attendant.GuarantorName,
+                    BankName = attendant.BankName,
+                    DateOfBirth = attendant.DateOfBirth,
+                    Email = attendant.Email,
+                    FirstName = attendant.FirstName,
+                    Gender = attendant.Gender,
+                    LastName = attendant.LastName,
+                    GuarantorPhoneNumber = attendant.GuarantorPhoneNumber,
+                    HomeAddress = attendant.HomeAddress,
+                    MaritalStatus = attendant.MaritalStatus,
+                    PhoneNumber = attendant.PhoneNumber,
+                    ResidentialAddress = attendant.ResidentialAddress,
+                    StaffId = attendant.StaffId,
+                }
+
             };
-            return attendantRequest;
+            return attendantResponseModel;
         }
 
-        public IList<Attendant> GetByName(string name)
+        public IList<AttendantResponseModel> GetByName(string name)
         {
             var attendants = _attendant.GetByName(name);
-            return attendants;
+            var attendantResponseModels = new List<AttendantResponseModel>();
+            foreach (var item in attendants)
+            {
+                var attendantResponseModel = new AttendantResponseModel
+                {
+                    Message = "Attendant retrieved Successfully",
+                    Status = true,
+                    Data = new AttendantDTOs
+                    {
+                        BankAccountNumber = item.BankAccountNumber,
+                        GuarantorName = item.GuarantorName,
+                        BankName = item.BankName,
+                        DateOfBirth = item.DateOfBirth,
+                        Email = item.Email,
+                        FirstName = item.FirstName,
+                        Gender = item.Gender,
+                        LastName = item.LastName,
+                        GuarantorPhoneNumber = item.GuarantorPhoneNumber,
+                        HomeAddress = item.HomeAddress,
+                        MaritalStatus = item.MaritalStatus,
+                        PhoneNumber = item.PhoneNumber,
+                        ResidentialAddress = item.ResidentialAddress,
+                        StaffId = item.StaffId,
+                    }
+                };
+                attendantResponseModels.Add(attendantResponseModel);
+            }
+            return attendantResponseModels;
         }
 
-        public Attendant GetByPhoneNumber(string phoneNumber)
+        public AttendantResponseModel GetByPhoneNumber(string phoneNumber)
         {
             var attendant = _attendant.GetByPhoneNumber(phoneNumber);
-            return attendant;
+            var attendantResponseModel = new AttendantResponseModel
+            {
+                Message = "Attendant retrieved Successfully",
+                Status = true,
+                Data = new AttendantDTOs
+                {
+                    BankAccountNumber = attendant.BankAccountNumber,
+                    GuarantorName = attendant.GuarantorName,
+                    BankName = attendant.BankName,
+                    DateOfBirth = attendant.DateOfBirth,
+                    Email = attendant.Email,
+                    FirstName = attendant.FirstName,
+                    Gender = attendant.Gender,
+                    LastName = attendant.LastName,
+                    GuarantorPhoneNumber = attendant.GuarantorPhoneNumber,
+                    HomeAddress = attendant.HomeAddress,
+                    MaritalStatus = attendant.MaritalStatus,
+                    PhoneNumber = attendant.PhoneNumber,
+                    ResidentialAddress = attendant.ResidentialAddress,
+                    StaffId = attendant.StaffId,
+                }
+
+            };
+
+            //var attendant = _attendant.GetByPhoneNumber(phoneNumber);
+            return attendantResponseModel;
         }
 
         //public User Login(LoginRequestModel user)

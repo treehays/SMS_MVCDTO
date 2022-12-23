@@ -51,13 +51,12 @@ namespace SMS_MVCDTO.Controllers
 
         public IActionResult UpdateAttendantDetail(string staffId)
         {
-            //var attendant = _attendant.GetById(staffId);
-            //if (attendant == null)
-            //{
-            //    return NotFound();
-            //}
-            //return View(attendant);
-            return View();
+            var attendant = _attendant.GetById(staffId);
+            if (attendant == null)
+            {
+                return NotFound();
+            }
+            return View(attendant);
         }
 
         [HttpPost]
