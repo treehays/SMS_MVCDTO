@@ -1,12 +1,13 @@
 ﻿@using SMS_MVCDTO.Enums
+@using SMS_MVCDTO.DTOs.AttendantDTOs
 @model SMS_MVCDTO.DTOs.AttendantDTOs.UpdateAttendantRequestModel
 
 @{
 	ViewData["Title"] = "Edit";
 	ViewData["Title"] = "Create";
-	if (TempData["Sucess"] != null)
+	if (TempData["Success"] != null)
 	{
-		<h2>@TempData["sucess"]</h2>
+		<h2>@TempData["success"]</h2>
 	}
 }
 
