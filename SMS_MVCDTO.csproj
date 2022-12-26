@@ -7,30 +7,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="Controllers\CustomerController.cs.temp" />
-	  <None Remove="Views\Customer\Create.cshtml.temp" />
-	  <None Remove="Views\Customer\Delete.cshtml.temp" />
-	  <None Remove="Views\Customer\Details.cshtml.temp" />
-	  <None Remove="Views\Customer\Edit.cshtml.temp" />
-	  <None Remove="Views\Customer\Index.cshtml.temp" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Include="Controllers\CustomerController.cs.temp" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Content Include="Views\Customer\Create.cshtml.temp" />
-	  <Content Include="Views\Customer\Delete.cshtml.temp" />
-	  <Content Include="Views\Customer\Details.cshtml.temp" />
-	  <Content Include="Views\Customer\Edit.cshtml.temp" />
-	  <Content Include="Views\Customer\Index.cshtml.temp" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.12" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
