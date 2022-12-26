@@ -221,8 +221,6 @@ namespace SMS_MVCDTO.Implementations.Service
                 }
 
             };
-
-            //var attendant = _attendant.GetByPhoneNumber(phoneNumber);
             return attendantResponseModel;
         }
 
