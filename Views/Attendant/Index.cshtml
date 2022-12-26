@@ -1,150 +1,164 @@
-﻿@model IEnumerable<SMS_MVCDTO.Models.Entities.Attendant>
+﻿@*@model IList<SMS_MVCDTO.Models.Entities.Attendant>*@
+@model IEnumerable<SMS_MVCDTO.DTOs.AttendantDTOs.AttendantResponseModel>
 
 @{
-    ViewData["Title"] = "Index";
+	ViewData["Title"] = "Index";
 }
 
 <h1>Index</h1>
 
 <p>
-    <a asp-action="CreateAttendant">Create New</a>
+	<a asp-action="CreateAttendant">Create New</a>
 </p>
+@{
+	int i = 0;
+}
 <table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.User)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StaffId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HomeAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ResidentialAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsActive)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateOfBirth)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Gender)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MaritalStatus)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.userRole)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BankAccountNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BankName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GuarantorName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GuarantorPhoneNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsDeleted)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Created)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Modified)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.User.Password)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StaffId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PhoneNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HomeAddress)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ResidentialAddress)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsActive)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateOfBirth)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Gender)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MaritalStatus)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.userRole)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BankAccountNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BankName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.GuarantorName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.GuarantorPhoneNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsDeleted)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Created)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Modified)
-                </td>
-                <td>
-                    <a asp-action="UpdateAttendantDetail" asp-route-staffId="@item.StaffId">Edit</a> |
-                    <a asp-action="Details" asp-route-staffId="@item.StaffId">Details</a> |
-                    <a asp-action="Delete" asp-route-staffId="@item.StaffId">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.Data.Email)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Data.FirstName)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Data.LastName)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Data.StaffId)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Data.Email)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Data.PhoneNumber)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Data.HomeAddress)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Data.ResidentialAddress)
+			</th>
+			@* <th>
+			@Html.DisplayNameFor(model => model.Data.IsActive)
+			</th>*@
+			<th>
+				@Html.DisplayNameFor(model => model.Data.DateOfBirth)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Data.Gender)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Data.MaritalStatus)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Data.userRole)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Data.BankAccountNumber)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Data.BankName)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Data.GuarantorName)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Data.GuarantorPhoneNumber)
+			</th>
+			@*<th>
+			@Html.DisplayNameFor(model => model.Data.IsDeleted)
+			</th>
+			<th>
+			@Html.DisplayNameFor(model => model.Data.Created)
+			</th>
+			<th>
+			@Html.DisplayNameFor(model => model.Data.Modified)
+			</th>*@
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@*@Html.DisplayFor(modelItem => item.Data.Password)*@
+					@{
+						<p>
+							@{
+								i++;
+							}
+						</p>
+						//@Html.DisplayText(i.ToString())
+						//@Html.Display(i.ToString())
+					}
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Data.FirstName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Data.LastName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Data.StaffId)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Data.Email)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Data.PhoneNumber)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Data.HomeAddress)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Data.ResidentialAddress)
+				</td>
+				@* <td>
+			@Html.DisplayFor(modelItem => item.Data.IsActive)
+			</td>*@
+				<td>
+					@Html.DisplayFor(modelItem => item.Data.DateOfBirth)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Data.Gender)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Data.MaritalStatus)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Data.userRole)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Data.BankAccountNumber)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Data.BankName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Data.GuarantorName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Data.GuarantorPhoneNumber)
+				</td>
+				@* <td>
+			@Html.DisplayFor(modelItem => item.Data.IsDeleted)
+			</td>
+			<td>
+			@Html.DisplayFor(modelItem => item.Data.Created)
+			</td>
+			<td>
+			@Html.DisplayFor(modelItem => item.Data.Modified)
+			</td>*@
+				<td>
+					<a asp-action="UpdateAttendantDetail" asp-route-staffId="@item.Data.StaffId">Edit</a> |
+					<a asp-action="Details" asp-route-staffId="@item.Data.StaffId">Details</a> |
+					<a asp-action="Delete" asp-route-staffId="@item.Data.StaffId">Delete</a>
+				</td>
+			</tr>
+		}
+	</tbody>
 </table>

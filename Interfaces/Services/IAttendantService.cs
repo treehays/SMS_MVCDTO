@@ -14,7 +14,7 @@ namespace SMS_MVCDTO.Interfaces.Services
         AttendantResponseModel GetByEmail(string email);
         AttendantResponseModel GetByPhoneNumber(string phoneNumber);
         IList<AttendantResponseModel> GetByName(string name);
-        IList<AttendantResponseModel> GetAttendants();
+        IEnumerable<AttendantResponseModel> GetAttendants();
         UpdateAttendantRequestModel Update(UpdateAttendantRequestModel attendant);
         UpdateAttendantPasswordRequestModel UpdatePassword(UpdateAttendantPasswordRequestModel attendant);
         UpdateAttendantRoleRequestModel UpdateRole(UpdateAttendantRoleRequestModel attendant);

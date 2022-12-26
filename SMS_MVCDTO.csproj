@@ -7,6 +7,29 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="all\Copy.cs.temp" />
+	  <None Remove="all\SampleAttendantsController.cs.temp" />
+	  <None Remove="all\SampleCreate.cshtml.temp" />
+	  <None Remove="all\SampleDelete.cshtml.temp" />
+	  <None Remove="all\SampleDetails.cshtml.temp" />
+	  <None Remove="all\SampleEdit.cshtml.temp" />
+	  <None Remove="all\SampleIndex.cshtml.temp" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Include="all\Copy.cs.temp" />
+	  <Compile Include="all\SampleAttendantsController.cs.temp" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="all\SampleCreate.cshtml.temp" />
+	  <Content Include="all\SampleDelete.cshtml.temp" />
+	  <Content Include="all\SampleDetails.cshtml.temp" />
+	  <Content Include="all\SampleEdit.cshtml.temp" />
+	  <Content Include="all\SampleIndex.cshtml.temp" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.12" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.0">
@@ -18,7 +41,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="ViewModels\" />
+		<Folder Include="ViewModels\NewFolder\" />
 	</ItemGroup>
 
 </Project>

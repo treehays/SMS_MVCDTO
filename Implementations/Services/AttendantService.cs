@@ -69,7 +69,7 @@ namespace SMS_MVCDTO.Implementations.Service
             _attendant.Delete(attendant);
         }
 
-        public IList<AttendantResponseModel> GetAttendants()
+        public IEnumerable<AttendantResponseModel> GetAttendants()
         {
             var attendants = _attendant.GetAttendants();
             var attendantResponseModels = new List<AttendantResponseModel>();
@@ -104,7 +104,12 @@ namespace SMS_MVCDTO.Implementations.Service
 
         public AttendantResponseModel GetByEmail(string email)
         {
+
             var attendant = _attendant.GetByEmail(email);
+            if (attendant == null)
+            {
+                return null;
+            }
             var attendantResponseModel = new AttendantResponseModel
             {
                 Message = "Attendant retrieved Successfully",
@@ -126,9 +131,10 @@ namespace SMS_MVCDTO.Implementations.Service
                     ResidentialAddress = attendant.ResidentialAddress,
                     StaffId = attendant.StaffId,
                 }
-
             };
             return attendantResponseModel;
+
+
             //var attendant = _attendant.GetByEmail(email);
             //return attendant;
         }
@@ -221,6 +227,8 @@ namespace SMS_MVCDTO.Implementations.Service
                 }
 
             };
+
+            //var attendant = _attendant.GetByPhoneNumber(phoneNumber);
             return attendantResponseModel;
         }
 

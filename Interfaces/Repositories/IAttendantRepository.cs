@@ -11,7 +11,7 @@ namespace SMS_MVCDTO.Interfaces.Repositories
         Attendant GetByEmail(string email);
         Attendant GetByPhoneNumber(string phoneNumber);
         IList<Attendant> GetByName(string name);
-        IList<Attendant> GetAttendants();
+        IEnumerable<Attendant> GetAttendants();
         Attendant Update(Attendant attendant);
         Attendant UpdatePassword(Attendant attendant);
         Attendant UpdateRole(Attendant attendant);

@@ -26,7 +26,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
             _context.SaveChanges();
         }
 
-        public IList<Attendant> GetAttendants()
+        public IEnumerable<Attendant> GetAttendants()
         {
             var attendants = _context.Attendants.ToList();
             //var attendants = _context.Attendants.Include(w => )
