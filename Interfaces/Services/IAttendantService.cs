@@ -1,6 +1,4 @@
 ﻿using SMS_MVCDTO.DTOs.AttendantDTOs;
-using SMS_MVCDTO.DTOs.CustomerDTOs;
-using SMS_MVCDTO.Models.Entities;
 
 namespace SMS_MVCDTO.Interfaces.Services
 {
@@ -13,9 +11,9 @@ namespace SMS_MVCDTO.Interfaces.Services
         AttendantResponseModel GetById(string staffId);
         AttendantResponseModel GetByEmail(string email);
         AttendantResponseModel GetByPhoneNumber(string phoneNumber);
-        IList<AttendantResponseModel> GetByName(string name);
+        IEnumerable<AttendantResponseModel> GetByName(string name);
         IEnumerable<AttendantResponseModel> GetAttendants();
-        UpdateAttendantRequestModel Update(UpdateAttendantRequestModel attendant);
+        AttendantResponseModel Update(AttendantResponseModel attendant);
         UpdateAttendantPasswordRequestModel UpdatePassword(UpdateAttendantPasswordRequestModel attendant);
         UpdateAttendantRoleRequestModel UpdateRole(UpdateAttendantRoleRequestModel attendant);
         //bool IsActive(Attendant attendant);

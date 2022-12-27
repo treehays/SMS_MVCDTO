@@ -19,7 +19,7 @@
 <h1>Index</h1>
 
 <p>
-	<a asp-action="CreateAttendant">Create New</a>
+	<a asp-action="Create">Create New</a>
 </p>
 @{
 	int i = 0;
@@ -165,9 +165,9 @@
 			@Html.DisplayFor(modelItem => item.Data.Modified)
 			</td>*@
 				<td>
-					<a asp-action="UpdateAttendantDetail" asp-route-staffId="@item.Data.StaffId">Edit</a> |
+					<a asp-action="Edit" asp-route-staffId="@item.Data.StaffId">Edit</a> |
 					<a asp-action="Details" asp-route-staffId="@item.Data.StaffId">Details</a> |
-					<a asp-action="Delete" asp-route-staffId="@item.Data.StaffId">Delete</a>
+					<a asp-action="DeletePreview" asp-route-staffId="@item.Data.StaffId">Delete</a>
 				</td>
 			</tr>
 		}

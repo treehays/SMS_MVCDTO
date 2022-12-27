@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SMSMVCDTO.Migrations
 {
     /// <inheritdoc />
-    public partial class firtdmigration : Migration
+    public partial class thelastnworkingmigrtion : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

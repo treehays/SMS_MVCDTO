@@ -28,7 +28,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public IEnumerable<Attendant> GetAttendants()
         {
-            var attendants = _context.Attendants.ToList();
+            var attendants = _context.Attendants.Where(w => w.IsDeleted == false && w.IsActive == true).ToList();
             //var attendants = _context.Attendants.Include(w => )
             return attendants;
         }
@@ -47,10 +47,10 @@ namespace SMS_MVCDTO.Implementations.Repositories
             return attendant;
         }
 
-        public IList<Attendant> GetByName(string name)
+        public IEnumerable<Attendant> GetByName(string name)
         {
             //var customer = _context.Customers.Include(m => m.Transactions).Where(x => name.All(y => (x.FirstName + x.LastName).Contains(y))).ToList();
-            var attendants = _context.Attendants.Where(w => name.All(x => (w.LastName + w.FirstName).Contains(x))).ToList();
+            var attendants = _context.Attendants.Where(w => w.IsActive == true && w.IsDeleted == false && name.All(x => (w.LastName + w.FirstName).Contains(x))).ToList();
             return attendants;
         }
 

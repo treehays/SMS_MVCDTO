@@ -11,8 +11,8 @@ using SMS_MVCDTO.Context;
 namespace SMSMVCDTO.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20221221015114_firtdmigration")]
-    partial class firtdmigration
+    [Migration("20221227065856_the lastnworking migrtion")]
+    partial class thelastnworkingmigrtion
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

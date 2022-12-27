@@ -95,6 +95,7 @@ namespace SMS_MVCDTO.Implementations.Service
                         PhoneNumber = item.PhoneNumber,
                         ResidentialAddress = item.ResidentialAddress,
                         StaffId = item.StaffId,
+                        userRole = item.userRole,
                     }
                 };
                 attendantResponseModels.Add(attendantResponseModel);
@@ -168,7 +169,7 @@ namespace SMS_MVCDTO.Implementations.Service
             return attendantResponseModel;
         }
 
-        public IList<AttendantResponseModel> GetByName(string name)
+        public IEnumerable<AttendantResponseModel> GetByName(string name)
         {
             var attendants = _attendant.GetByName(name);
             var attendantResponseModels = new List<AttendantResponseModel>();
@@ -244,20 +245,20 @@ namespace SMS_MVCDTO.Implementations.Service
 
         //}
 
-        public UpdateAttendantRequestModel Update(UpdateAttendantRequestModel attendant)
+        public AttendantResponseModel Update(AttendantResponseModel attendant)
         {
-            var attendan = _attendant.GetById(attendant.StaffId);
+            var attendan = _attendant.GetById(attendant.Data.StaffId);
             if (attendan == null)
             {
                 return null;
             }
 
-            attendan.FirstName = attendant.FirstName ?? attendan.FirstName;
-            attendan.LastName = attendant.LastName ?? attendan.LastName;
-            attendan.ResidentialAddress = attendant.ResidentialAddress ?? attendan.ResidentialAddress;
-            attendan.MaritalStatus = attendant.MaritalStatus;
-            attendan.BankName = attendant.BankName ?? attendan.BankName;
-            attendan.BankAccountNumber = attendant.BankAccountNumber ?? attendan.BankAccountNumber;
+            attendan.FirstName = attendant.Data.FirstName ?? attendan.FirstName;
+            attendan.LastName = attendant.Data.LastName ?? attendan.LastName;
+            attendan.ResidentialAddress = attendant.Data.ResidentialAddress ?? attendan.ResidentialAddress;
+            attendan.MaritalStatus = attendant.Data.MaritalStatus;
+            attendan.BankName = attendant.Data.BankName ?? attendan.BankName;
+            attendan.BankAccountNumber = attendant.Data.BankAccountNumber ?? attendan.BankAccountNumber;
             attendan.Modified = DateTime.Now;
             _attendant.Update(attendan);
             return attendant;

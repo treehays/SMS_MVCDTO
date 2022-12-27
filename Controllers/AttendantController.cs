@@ -21,14 +21,14 @@ namespace SMS_MVCDTO.Controllers
             return View(attendants);
         }
 
-        public IActionResult CreateAttendant()
+        public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult CreateAttendant(CreateAttendantRequestModel createAttendant)
+        public IActionResult Create(CreateAttendantRequestModel createAttendant)
         {
             if (createAttendant != null)
             {
@@ -49,7 +49,7 @@ namespace SMS_MVCDTO.Controllers
             }
         }
 
-        public IActionResult UpdateAttendantDetail(string staffId)
+        public IActionResult Edit(string staffId)
         {
             var attendant = _attendant.GetById(staffId);
             if (attendant == null)
@@ -61,7 +61,7 @@ namespace SMS_MVCDTO.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult UpdateAttendantDetail(UpdateAttendantRequestModel updateAttendant)
+        public IActionResult Edit(AttendantResponseModel updateAttendant)
         {
             //var matricNumber = HttpContext.Session.GetString("MatricNumber");
             //var candidate = _candidateService.GetCandidateByMatricNumber(matricNumber);
@@ -74,6 +74,40 @@ namespace SMS_MVCDTO.Controllers
             _attendant.Update(updateAttendant);
             TempData["success"] = "Profile Updated Successfully.";
             return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult DeletePreview(string staffId)
+        {
+            if (staffId != null)
+            {
+                var attendant = _attendant.GetById(staffId);
+
+                if (attendant != null)
+                {
+                    return View(attendant);
+                }
+                return NotFound();
+            }
+
+            return NotFound();
+        }
+
+        //[ValidateAntiForgeryToken]
+        //[HttpPost, ActionName("Delete")]
+        public IActionResult Delete(string staffId)
+        {
+            if (staffId != null)
+            {
+                _attendant.Delete(staffId);
+                return RedirectToAction(nameof(Index));
+            }
+            return NotFound();
+        }
+
+        public IActionResult Detail(string staffId)
+        {
+
+            return View();
         }
     }
 }
