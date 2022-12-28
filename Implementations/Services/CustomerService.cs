@@ -38,7 +38,9 @@ namespace SMS_MVCDTO.Implementations.Services
                 Address = customer.Address,
                 DateOfBirth = customer.DateOfBirth,
                 Gender = customer.Gender,
-                MaritalStatus = customer.MaritalStatus
+                MaritalStatus = customer.MaritalStatus,
+                Created = DateTime.Now,
+
             };
             _customer.Create(custome);
 

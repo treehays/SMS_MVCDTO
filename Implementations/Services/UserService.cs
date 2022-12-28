@@ -20,27 +20,7 @@ namespace SMS_MVCDTO.Implementations.Services
             throw new NotImplementedException();
         }
 
-        public User GetByEmail(string email)
-        {
-            throw new NotImplementedException();
-        }
-
         public User GetById(string staffId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IList<User> GetByName(string name)
-        {
-            throw new NotImplementedException();
-        }
-
-        public User GetByPhoneNumber(string phoneNumber)
-        {
-            throw new NotImplementedException();
-        }
-
-        public User GetPhoneNumber(string phoneNumber)
         {
             throw new NotImplementedException();
         }

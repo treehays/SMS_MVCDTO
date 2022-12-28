@@ -274,18 +274,18 @@ namespace SMS_MVCDTO.Implementations.Service
             return attendant;
         }
 
-        public UpdateAttendantRoleRequestModel UpdateRole(UpdateAttendantRoleRequestModel attendant)
-        {
+        //public UpdateAttendantRoleRequestModel UpdateRole(UpdateAttendantRoleRequestModel attendant)
+        //{
 
-            var user = _userRepository.GetById(attendant.StaffId);
-            if (user == null)
-            {
-                return null;
-            }
-            user.Role = attendant.UserRole;
-            _userRepository.UpdateRole(user);
-            return attendant;
-        }
+        //    var user = _userRepository.GetById(attendant.StaffId);
+        //    if (user == null)
+        //    {
+        //        return null;
+        //    }
+        //    user.Role = attendant.UserRole;
+        //    _userRepository.UpdateRole(user);
+        //    return attendant;
+        //}
     }
 
 

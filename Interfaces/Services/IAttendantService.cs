@@ -15,7 +15,7 @@ namespace SMS_MVCDTO.Interfaces.Services
         IEnumerable<AttendantResponseModel> GetAttendants();
         AttendantResponseModel Update(AttendantResponseModel attendant);
         UpdateAttendantPasswordRequestModel UpdatePassword(UpdateAttendantPasswordRequestModel attendant);
-        UpdateAttendantRoleRequestModel UpdateRole(UpdateAttendantRoleRequestModel attendant);
+        //UpdateAttendantRoleRequestModel UpdateRole(UpdateAttendantRoleRequestModel attendant);
         //bool IsActive(Attendant attendant);
     }
 }

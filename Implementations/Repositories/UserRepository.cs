@@ -27,31 +27,9 @@ namespace SMS_MVCDTO.Implementations.Repositories
         public IList<User> GetAttendants()
         {
             throw new NotImplementedException();
-
-        }
-
-        public User GetByEmail(string email)
-        {
-            throw new NotImplementedException();
         }
 
         public User GetById(string staffId)
-        {
-            var user = _context.Users.SingleOrDefault(x => x.StaffId == staffId);
-            return user;
-        }
-
-        public IList<User> GetByName(string name)
-        {
-            throw new NotImplementedException();
-        }
-
-        public User GetByPhoneNumber(string phoneNumber)
-        {
-            throw new NotImplementedException();
-        }
-
-        public User GetPhoneNumber(string phoneNumber)
         {
             throw new NotImplementedException();
         }

@@ -44,6 +44,7 @@ namespace SMS_MVCDTO.DTOs.UserDTOs
     public class UpdateUserPasswordRequestModel
     {
         public string Password { get; set; }
+        public string StaffId { get; set; }
     }
 
 

@@ -8,9 +8,6 @@ namespace SMS_MVCDTO.Interfaces.Services
         User Login(User user);
         void Delete(User user);
         User GetById(string staffId);
-        User GetByEmail(string email);
-        User GetByPhoneNumber(string phoneNumber);
-        IList<User> GetByName(string name);
         IList<User> GetUsers();
         IList<User> GetAttendants();
         IList<User> GetSalesManagers();
