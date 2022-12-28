@@ -224,12 +224,16 @@ namespace SMSMVCDTO.Migrations
                     b.Property<int>("TransactionId")
                         .HasColumnType("int");
 
+                    b.Property<string>("TransactionReferenceNo")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("Barcode")
                         .IsUnique();
 
-                    b.HasIndex("TransactionId");
+                    b.HasIndex("TransactionReferenceNo");
 
                     b.ToTable("Products");
                 });
@@ -480,9 +484,8 @@ namespace SMSMVCDTO.Migrations
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Transaction", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("ReferenceNo")
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime(6)");
@@ -503,7 +506,7 @@ namespace SMSMVCDTO.Migrations
                     b.Property<double>("TotalAmount")
                         .HasColumnType("double");
 
-                    b.HasKey("Id");
+                    b.HasKey("ReferenceNo");
 
                     b.HasIndex("CustomerId");
 
@@ -623,7 +626,7 @@ namespace SMSMVCDTO.Migrations
                 {
                     b.HasOne("SMS_MVCDTO.Models.Entities.Transaction", "Transaction")
                         .WithMany("Products")
-                        .HasForeignKey("TransactionId")
+                        .HasForeignKey("TransactionReferenceNo")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

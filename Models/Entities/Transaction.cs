@@ -1,11 +1,14 @@
-﻿namespace SMS_MVCDTO.Models.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SMS_MVCDTO.Models.Entities
 {
     public class Transaction : BaseEntity
     {
-        public int Id { get; set; }
         public string CustomerId { get; set; }
         public Customer Customer { get; set; }
         public IList<Product> Products { get; set; }
+        [Key]
+        public string ReferenceNo { get; set; }
         public int Quantity { get; set; }
         public double TotalAmount { get; set; }
         //public string ProductId { get; set; }

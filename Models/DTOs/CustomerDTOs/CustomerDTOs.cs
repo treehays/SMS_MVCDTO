@@ -1,32 +1,34 @@
 ﻿using SMS_MVCDTO.Enums;
+using SMS_MVCDTO.Models.Entities;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SMS_MVCDTO.Models.Entities
+namespace SMS_MVCDTO.DTOs.CustomerDTOs
 {
-    public class Customer : BaseEntity
+    public class CustomerDTOs
     {
-
-        public User User { get; set; }
-        [ForeignKey("User")]
-        public string UserId { get; set; }
-        public Wallet Wallets { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         [Required]
-        [Key]
         public string StaffId { get; set; }
         [Required]
         public string Email { get; set; }
+        public string Password { get; set; }
         [Required]
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
         public bool IsActive { get; set; }
-        public bool IsDeleted { get; set; }
+        public bool IsDelete { get; set; }
         public DateTime DateOfBirth { get; set; }
         public GenderType Gender { get; set; }
         public MaritalStatusType MaritalStatus { get; set; }
-        public UserRoleType userRole { get; set; }
-        //public IList<Transaction> Transactions { get; set; }
+        public UserRoleType UserRole { get; set; }
     }
+
+    //public class LoginRequestModel
+    //{
+    //    [Required]
+    //    public string StaffId { get; set; }
+    //    [Required]
+    //    public string Password { get; set; }
+    //}
 }

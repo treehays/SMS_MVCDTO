@@ -14,7 +14,7 @@ namespace SMS_MVCDTO.Interfaces.Repositories
         IEnumerable<Attendant> GetAttendants();
         Attendant Update(Attendant attendant);
         Attendant UpdatePassword(Attendant attendant);
-        Attendant UpdateRole(Attendant attendant);
+        //Attendant UpdateRole(Attendant attendant);
         //bool IsActive(Attendant attendant);
     }
 }

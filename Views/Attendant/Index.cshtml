@@ -24,12 +24,12 @@
 @{
 	int i = 0;
 }
-<table class="table">
+<table class="table table-info">
 	<thead>
 		<tr>
-			<th>
-				@Html.DisplayNameFor(model => model.Data.Email)
-			</th>
+			@*<th>
+			@Html.DisplayNameFor(model => model.Data.Email)
+			</th>*@
 			<th>
 				@Html.DisplayNameFor(model => model.Data.FirstName)
 			</th>
@@ -95,18 +95,18 @@
 		@foreach (var item in Model)
 		{
 			<tr>
-				<td>
-					@*@Html.DisplayFor(modelItem => item.Data.Password)*@
-					@{
-						<p>
-							@{
-								i++;
-							}
-						</p>
-						//@Html.DisplayText(i.ToString())
-						//@Html.Display(i.ToString())
-					}
-				</td>
+				@*<td>
+			@Html.DisplayFor(modelItem => item.Data.Password)
+			@{
+			<p>
+			@{
+			i++;
+			}
+			</p>
+			//@Html.DisplayText(i.ToString())
+			//@Html.Display(i.ToString())
+			}
+			</td>*@
 				<td>
 					@Html.DisplayFor(modelItem => item.Data.FirstName)
 				</td>

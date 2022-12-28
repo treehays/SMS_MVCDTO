@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SMSMVCDTO.Migrations
 {
     /// <inheritdoc />
-    public partial class thelastnworkingmigrtion : Migration
+    public partial class addedtransactionref : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -246,8 +246,8 @@ namespace SMSMVCDTO.Migrations
                 name: "Transactions",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ReferenceNo = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     CustomerId = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Quantity = table.Column<int>(type: "int", nullable: false),
@@ -258,7 +258,7 @@ namespace SMSMVCDTO.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Transactions", x => x.Id);
+                    table.PrimaryKey("PK_Transactions", x => x.ReferenceNo);
                     table.ForeignKey(
                         name: "FK_Transactions_Customers_CustomerId",
                         column: x => x.CustomerId,
@@ -310,6 +310,8 @@ namespace SMSMVCDTO.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     TransactionId = table.Column<int>(type: "int", nullable: false),
+                    TransactionReferenceNo = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     Barcode = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Name = table.Column<string>(type: "longtext", nullable: false)
@@ -328,10 +330,10 @@ namespace SMSMVCDTO.Migrations
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_Transactions_TransactionId",
-                        column: x => x.TransactionId,
+                        name: "FK_Products_Transactions_TransactionReferenceNo",
+                        column: x => x.TransactionReferenceNo,
                         principalTable: "Transactions",
-                        principalColumn: "Id",
+                        principalColumn: "ReferenceNo",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
@@ -441,9 +443,9 @@ namespace SMSMVCDTO.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_TransactionId",
+                name: "IX_Products_TransactionReferenceNo",
                 table: "Products",
-                column: "TransactionId");
+                column: "TransactionReferenceNo");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SalesManagers_Email",

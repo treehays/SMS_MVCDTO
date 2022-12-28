@@ -5,9 +5,9 @@ namespace SMS_MVCDTO.Interfaces.Repositories
     public interface ICustomerRepository
     {
         Customer Create(Customer customer);
-        Customer Login(Customer customer);
+        //Customer Login(Customer customer);
         void Delete(Customer customer);
-        //Customer GetById(string staffId);
+        Customer GetById(string staffId);
         Customer GetByEmail(string email);
         Customer GetByPhoneNumber(string phoneNumber);
         IList<Customer> GetByName(string name);

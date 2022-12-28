@@ -1,18 +1,19 @@
-﻿using SMS_MVCDTO.Models.Entities;
+﻿using SMS_MVCDTO.DTOs.CustomerDTOs;
+using SMS_MVCDTO.Models.Entities;
 
 namespace SMS_MVCDTO.Interfaces.Services
 {
     public interface ICustomerService
     {
-        Customer Create(Customer customer);
-        Customer Login(Customer customer);
-        void Delete(Customer customer);
-        Customer GetById(string staffId);
-        Customer GetByEmail(string email);
-        Customer GetByPhoneNumber(string phoneNumber);
-        IList<Customer> GetByName(string name);
-        IList<Customer> GetCustomers();
-        Customer Update(Customer customer);
-        Customer UpdatePassword(Customer customer);
+        CreateCustomerRequestModel Create(CreateCustomerRequestModel customer);
+        //Customer Login(Customer customer);
+        void Delete(string staffId);
+        CustomerResponseModel GetById(string staffId);
+        CustomerResponseModel GetByEmail(string email);
+        CustomerResponseModel GetByPhoneNumber(string phoneNumber);
+        IEnumerable<CustomerResponseModel> GetByName(string name);
+        IEnumerable<CustomerResponseModel> GetCustomers();
+        UpdateCustomerRequestModel Update(UpdateCustomerRequestModel customer);
+        UpdateCustomerPasswordRequestModel UpdatePassword(UpdateCustomerPasswordRequestModel customer);
     }
 }

@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using SMS_MVCDTO.DTOs.AttendantDTOs;
 using SMS_MVCDTO.Interfaces.Services;
-using System.ComponentModel.Design;
 
 namespace SMS_MVCDTO.Controllers
 {
@@ -104,10 +101,20 @@ namespace SMS_MVCDTO.Controllers
             return NotFound();
         }
 
-        public IActionResult Detail(string staffId)
+        public IActionResult Details(string staffId)
         {
+            if (staffId != null)
+            {
+                var attendant = _attendant.GetById(staffId);
 
-            return View();
+                if (attendant != null)
+                {
+                    return View(attendant);
+                }
+                return NotFound();
+            }
+
+            return NotFound();
         }
     }
 }

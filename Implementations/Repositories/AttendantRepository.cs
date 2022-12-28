@@ -93,11 +93,11 @@ namespace SMS_MVCDTO.Implementations.Repositories
             return attendant;
         }
 
-        public Attendant UpdateRole(Attendant attendant)
-        {
-            _context.Attendants.Update(attendant);
-            _context.SaveChanges();
-            return attendant;
-        }
+        //public Attendant UpdateRole(Attendant attendant)
+        //{
+        //    _context.Attendants.Update(attendant);
+        //    _context.SaveChanges();
+        //    return attendant;
+        //}
     }
 }

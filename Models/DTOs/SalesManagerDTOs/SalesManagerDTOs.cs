@@ -22,6 +22,11 @@ namespace SMS_MVCDTO.DTOs.SalesManagerDTOs
         public UserRoleType userRole { get; set; }
     }
 
+    public class SalesManagerResponseModel : BaseResponse
+    {
+        public SalesManagerDTOs Data { get; set; }
+    }
+
     public class CreateSalesManagerRequestModel
     {
         public string FirstName { get; set; }

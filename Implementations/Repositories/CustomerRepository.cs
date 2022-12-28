@@ -14,109 +14,67 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public Customer Create(Customer customer)
         {
-            throw new NotImplementedException();
+            _context.Customers.Add(customer);
+            _context.SaveChanges();
+            return customer;
         }
 
         public void Delete(Customer customer)
         {
-            throw new NotImplementedException();
+            _context.Customers.Update(customer);
+            _context.SaveChanges();
         }
 
         public Customer GetByEmail(string email)
         {
-            throw new NotImplementedException();
+            var customer = _context.Customers.FirstOrDefault(x => x.Email == email);
+            return customer;
         }
 
         public Customer GetById(string staffId)
         {
-            throw new NotImplementedException();
+            var customer = _context.Customers.SingleOrDefault(x => x.StaffId == staffId);
+            return customer;
         }
 
         public IList<Customer> GetByName(string name)
         {
-            throw new NotImplementedException();
+            var customers = _context.Customers.Where(w => w.IsActive == true && w.IsDeleted == false && name.All(x => (w.LastName + w.FirstName).Contains(x))).ToList();
+            return customers;
         }
 
         public Customer GetByPhoneNumber(string phoneNumber)
         {
-            throw new NotImplementedException();
+            var customer = _context.Customers.FirstOrDefault(x => x.PhoneNumber == phoneNumber);
+            return customer;
         }
 
         public IList<Customer> GetCustomers()
         {
-            throw new NotImplementedException();
+            var customers = _context.Customers.Where(w => w.IsDeleted == false && w.IsActive == true).ToList();
+            return customers;
         }
-
-        public Customer GetPhoneNumber(string phoneNumber)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Customer Login(Customer customer)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Customer Update(Customer customer)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Customer UpdatePassword(Customer customer)
-        {
-            throw new NotImplementedException();
-        }
-        //public Customer Create(Customer customer)
-        //{
-        //    _context.Customers.Add(customer);
-        //    _context.SaveChanges();
-        //    return customer;
-        //}
-
-        //public void Delete(Customer customer)
-        //{
-        //    _context.Customers.Remove(customer);
-        //    _context.SaveChanges();
-        //}
-
-        //public IList<Customer> GetAll()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public Customer GetByEmail(string email)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public Customer GetById(string staffId)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public IList<Customer> GetByName(string name)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public Customer GetPhoneNumber(string phoneNumber)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
         //public Customer Login(Customer customer)
         //{
         //    throw new NotImplementedException();
         //}
 
-        //public Customer Update(Customer customer)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
-        //public Customer UpdatePassword(Customer customer)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public Customer Update(Customer customer)
+        {
+            _context.Customers.Update(customer);
+            _context.SaveChanges();
+            return customer;
+        }
+
+
+        public Customer UpdatePassword(Customer customer)
+        {
+            _context.Customers.Update(customer);
+            _context.SaveChanges();
+            return customer;
+        }
+
     }
 }
