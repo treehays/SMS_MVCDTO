@@ -10,8 +10,8 @@ namespace SMS_MVCDTO.Interfaces.Repositories
         Customer GetById(string staffId);
         Customer GetByEmail(string email);
         Customer GetByPhoneNumber(string phoneNumber);
-        IList<Customer> GetByName(string name);
-        IList<Customer> GetCustomers();
+        IEnumerable<Customer> GetByName(string name);
+        IEnumerable<Customer> GetCustomers();
         Customer Update(Customer customer);
         Customer UpdatePassword(Customer customer);
     }

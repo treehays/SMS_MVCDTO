@@ -7,12 +7,12 @@ namespace SMS_MVCDTO.Interfaces.Repositories
         Transaction Create(Transaction transaction);
         Transaction Update(Transaction transaction);
         void Delete(Transaction transaction);
-        IList<Transaction> GetAll();
-        IList<Transaction> GetByDate();
+        IEnumerable<Transaction> GetAll();
+        IEnumerable<Transaction> GetByDate();
         Transaction GetById(string Id);
-        IList<Transaction> GetByStaffId(string staffId);
-        IList<Transaction> GetTransactionByCustomerName(string transaction);
-        IList<Transaction> DownloadExcel();
+        IEnumerable<Transaction> GetByStaffId(string staffId);
+        IEnumerable<Transaction> GetTransactionByCustomerName(string transaction);
+        IEnumerable<Transaction> DownloadExcel();
 
     }
 }

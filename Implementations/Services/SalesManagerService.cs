@@ -1,11 +1,10 @@
-﻿using NuGet.Protocol;
-using SMS_MVCDTO.DTOs.SalesManagerDTOs;
+﻿using SMS_MVCDTO.DTOs.SalesManagerDTOs;
 using SMS_MVCDTO.DTOs.UserDTOs;
 using SMS_MVCDTO.Enums;
 using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.Entities;
-using System.Xml.Linq;
+//using System.Xml.Linq;
 
 namespace SMS_MVCDTO.Implementations.Service
 {

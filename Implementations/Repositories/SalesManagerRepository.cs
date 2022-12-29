@@ -39,7 +39,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public IEnumerable<SalesManager> GetByName(string name)
         {
-            var salesManagers = _context.SalesManagers.Where(s => s.IsDeleted == false && s.IsActive == true && name.All(t => (s.LastName + s.FirstName).Contains(t))).ToList();
+            var salesManagers = _context.SalesManagers.Where(s => s.IsDeleted == false && s.IsActive == true && name.All(t => (s.LastName + s.FirstName).Contains(t)));
             return salesManagers;
         }
 
@@ -51,7 +51,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public IEnumerable<SalesManager> GetSalesManagers()
         {
-            var salesManagers = _context.SalesManagers.Where(s => s.IsActive == true && s.IsDeleted == false).ToList();
+            var salesManagers = _context.SalesManagers.Where(s => s.IsActive == true && s.IsDeleted == false);
             return salesManagers;
         }
 

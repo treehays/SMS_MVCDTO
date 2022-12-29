@@ -50,7 +50,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
         public IEnumerable<Attendant> GetByName(string name)
         {
             //var customer = _context.Customers.Include(m => m.Transactions).Where(x => name.All(y => (x.FirstName + x.LastName).Contains(y))).ToList();
-            var attendants = _context.Attendants.Where(w => w.IsActive == true && w.IsDeleted == false && name.All(x => (w.LastName + w.FirstName).Contains(x))).ToList();
+            var attendants = _context.Attendants.Where(w => w.IsActive == true && w.IsDeleted == false && name.All(x => (w.LastName + w.FirstName).Contains(x)));
             return attendants;
         }
 

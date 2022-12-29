@@ -8,9 +8,9 @@ namespace SMS_MVCDTO.Interfaces.Repositories
         User Login(User user);
         void Delete(User user);
         User GetById(string staffId);
-        IList<User> GetUsers();
-        IList<User> GetAttendants();
-        IList<User> GetSalesManagers();
+        IEnumerable<User> GetUsers();
+        IEnumerable<User> GetAttendants();
+        IEnumerable<User> GetSalesManagers();
         //IList<User> GetUsers();
         User Update(User user);
         User UpdatePassword(User user);

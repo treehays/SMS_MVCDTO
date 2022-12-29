@@ -24,7 +24,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
             throw new NotImplementedException();
         }
 
-        public IList<User> GetAttendants()
+        public IEnumerable<User> GetAttendants()
         {
             throw new NotImplementedException();
         }
@@ -34,12 +34,12 @@ namespace SMS_MVCDTO.Implementations.Repositories
             throw new NotImplementedException();
         }
 
-        public IList<User> GetSalesManagers()
+        public IEnumerable<User> GetSalesManagers()
         {
             throw new NotImplementedException();
         }
 
-        public IList<User> GetUsers()
+        public IEnumerable<User> GetUsers()
         {
             throw new NotImplementedException();
         }

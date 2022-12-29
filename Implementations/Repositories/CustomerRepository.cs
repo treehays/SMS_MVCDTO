@@ -37,9 +37,9 @@ namespace SMS_MVCDTO.Implementations.Repositories
             return customer;
         }
 
-        public IList<Customer> GetByName(string name)
+        public IEnumerable<Customer> GetByName(string name)
         {
-            var customers = _context.Customers.Where(w => w.IsActive == true && w.IsDeleted == false && name.All(x => (w.LastName + w.FirstName).Contains(x))).ToList();
+            var customers = _context.Customers.Where(w => w.IsActive == true && w.IsDeleted == false && name.All(x => (w.LastName + w.FirstName).Contains(x)));
             return customers;
         }
 
@@ -49,9 +49,9 @@ namespace SMS_MVCDTO.Implementations.Repositories
             return customer;
         }
 
-        public IList<Customer> GetCustomers()
+        public IEnumerable<Customer> GetCustomers()
         {
-            var customers = _context.Customers.Where(w => w.IsDeleted == false && w.IsActive == true).ToList();
+            var customers = _context.Customers.Where(w => w.IsDeleted == false && w.IsActive == true);
             return customers;
         }
 
