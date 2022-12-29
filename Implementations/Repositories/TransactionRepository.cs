@@ -22,17 +22,17 @@ namespace SMS_MVCDTO.Implementations.Repositories
             throw new NotImplementedException();
         }
 
-        public IList<Transaction> DownloadExcel()
+        public IEnumerable<Transaction> DownloadExcel()
         {
             throw new NotImplementedException();
         }
 
-        public IList<Transaction> GetAll()
+        public IEnumerable<Transaction> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public IList<Transaction> GetByDate()
+        public IEnumerable<Transaction> GetByDate()
         {
             throw new NotImplementedException();
         }
@@ -42,17 +42,12 @@ namespace SMS_MVCDTO.Implementations.Repositories
             throw new NotImplementedException();
         }
 
-        public IList<Transaction> GetByStaffId(string staffId)
+        public IEnumerable<Transaction> GetByStaffId(string staffId)
         {
             throw new NotImplementedException();
         }
 
-        public IList<Transaction> GetByTransactionName(string transaction)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IList<Transaction> GetTransactionByCustomerName(string transaction)
+        public IEnumerable<Transaction> GetTransactionByCustomerName(string transaction)
         {
             throw new NotImplementedException();
         }

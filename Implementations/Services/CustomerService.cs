@@ -221,6 +221,7 @@ namespace SMS_MVCDTO.Implementations.Services
             custome.LastName = customer.LastName ?? custome.LastName;
             custome.Address = customer.Address ?? custome.Address;
             custome.MaritalStatus = customer.MaritalStatus;
+            custome.Modified = DateTime.Now;
             _customer.Update(custome);
             return customer;
 
@@ -228,14 +229,15 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public UpdateCustomerPasswordRequestModel UpdatePassword(UpdateCustomerPasswordRequestModel customer)
         {
-            var custome = _customer.GetById(customer.StaffId);
+            //var custome = _customer.GetById(customer.StaffId);
 
             var user = _user.GetById(customer.StaffId);
             if (user == null)
             {
                 return null;
             }
-
+            user.Password = customer.Password;
+            user.Modified = DateTime.Now;
             _user.UpdatePassword(user);
             return customer;
 

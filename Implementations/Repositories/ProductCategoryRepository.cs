@@ -1,33 +1,52 @@
-﻿using SMS_MVCDTO.Interfaces.Repositories;
+﻿using SMS_MVCDTO.Context;
+using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Models.Entities;
 
 namespace SMS_MVCDTO.Implementations.Repositories
 {
     public class ProductCategoryRepository : IProductCategoryRepository
     {
+        private readonly ApplicationContext _context;
+        public ProductCategoryRepository(ApplicationContext context)
+        {
+            _context = context;
+        }
+
         public ProductCategory Create(ProductCategory productCategory)
         {
-            throw new NotImplementedException();
+            _context.ProductCategories.Add(productCategory);
+            _context.SaveChanges();
+            return productCategory;
         }
 
         public void Delete(ProductCategory productCategory)
         {
-            throw new NotImplementedException();
+            _context.ProductCategories.Update(productCategory);
+            _context.SaveChanges();
         }
 
-        public IList<ProductCategory> GetAll()
+        public IEnumerable<ProductCategory> GetAll()
         {
-            throw new NotImplementedException();
+            var productCategory = _context.ProductCategories.Where(w => w.IsDeleted == false && w.IsActive == true);
+            return productCategory;
         }
 
-        public bool IsAvailable(ProductCategory productCategory)
+        public ProductCategory GetById(string categoryCode)
         {
-            throw new NotImplementedException();
+            var productCategory = _context.ProductCategories.SingleOrDefault(x => x.CategoryCode == categoryCode);
+            return productCategory;
         }
+
+        //public bool IsAvailable(ProductCategory productCategory)
+        //{
+
+        //}
 
         public ProductCategory Update(ProductCategory productCategory)
         {
-            throw new NotImplementedException();
+            _context.ProductCategories.Update(productCategory);
+            _context.SaveChanges();
+            return productCategory;
         }
     }
 }

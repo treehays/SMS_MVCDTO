@@ -230,6 +230,7 @@ namespace SMS_MVCDTO.Implementations.Service
             salesManage.MaritalStatus = salesManager.MaritalStatus;
             salesManage.BankName = salesManager.BankName;
             salesManage.BankAccountNumber = salesManager.BankAccountNumber ?? salesManage.BankAccountNumber;
+            salesManage.Modified = DateTime.Now;
             _salesManager.Update(salesManage);
             return salesManager;
         }

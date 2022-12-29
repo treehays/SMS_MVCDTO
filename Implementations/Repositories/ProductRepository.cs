@@ -15,22 +15,27 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public Product Create(Product product)
         {
-            throw new NotImplementedException();
+            _context.Products.Add(product);
+            _context.SaveChanges();
+            return product;
         }
 
         public void Delete(Product product)
         {
-            throw new NotImplementedException();
+            _context.Products.Update(product);
+            _context.SaveChanges();
         }
 
-        public IList<Product> GetAll()
+        public IEnumerable<Product> GetAll()
         {
-            throw new NotImplementedException();
+            var products = _context.Products.Where(s => s.IsAvailable == true && s.IsDeleted == false);
+            return products;
         }
 
-        public IList<Product> GetByCategory(string productCategory)
+        public IEnumerable<Product> GetByCategory(string productCategory)
         {
-            throw new NotImplementedException();
+            var products = _context.Products.Where(s => s.IsAvailable == true && s.IsDeleted == false);
+            return products;
         }
 
         public Product GetById(string id)
@@ -38,39 +43,47 @@ namespace SMS_MVCDTO.Implementations.Repositories
             throw new NotImplementedException();
         }
 
-        public IList<Product> GetByName(string name)
+        public IEnumerable<Product> GetByName(string name)
         {
             throw new NotImplementedException();
         }
 
-        public IList<Product> GetByQuantityRemaining(int quantity)
+        public IEnumerable<Product> GetByQuantityRemaining(int quantity)
         {
             throw new NotImplementedException();
         }
 
-        public int InventoryQuantityAlert()
-        {
-            throw new NotImplementedException();
-        }
+        //public int InventoryQuantityAlert()
+        //{
+        //    var product
+        //}
 
-        public bool IsAvailable(Product product)
-        {
-            throw new NotImplementedException();
-        }
+        //public bool IsAvailable(Product product)
+        //{
+        //    _context.Products.Update(product);
+        //    _context.SaveChanges();
+        //    return product;
+        //}
 
         public Product RestockProduct(Product product)
         {
-            throw new NotImplementedException();
+            _context.Products.Update(product);
+            _context.SaveChanges();
+            return product;
         }
 
         public Product Update(Product product)
         {
-            throw new NotImplementedException();
+            _context.Products.Update(product);
+            _context.SaveChanges();
+            return product;
         }
 
         public Product UpdateProductQuantity(Product product)
         {
-            throw new NotImplementedException();
+            _context.Products.Update(product);
+            _context.SaveChanges();
+            return product;
         }
     }
 }

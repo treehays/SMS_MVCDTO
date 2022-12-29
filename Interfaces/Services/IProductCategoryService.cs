@@ -1,13 +1,14 @@
-﻿using SMS_MVCDTO.Models.Entities;
+﻿using SMS_MVCDTO.DTOs.ProductCategoriesDTOs;
+using SMS_MVCDTO.Models.Entities;
 
 namespace SMS_MVCDTO.Interfaces.Services
 {
     public interface IProductCategoryService
     {
-        ProductCategory Create(ProductCategory productCategory);
-        ProductCategory Update(ProductCategory productCategory);
-        void Delete(ProductCategory productCategory);
-        IList<ProductCategory> GetAll();
-        bool IsAvailable(ProductCategory productCategory);
+        CreateProductCategoryRequestModel Create(CreateProductCategoryRequestModel productCategory);
+        UpdateProductCategoryRequestModel Update(UpdateProductCategoryRequestModel productCategory);
+        void Delete(string categoryCode);
+        IEnumerable<ProductCategoryResponseModel> GetAll();
+        //bool IsAvailable(ProductCategory productCategory);
     }
 }

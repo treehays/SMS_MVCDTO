@@ -226,6 +226,7 @@ namespace SMS_MVCDTO.Implementations.Service
             superAdmi.MaritalStatus = superAdmin.MaritalStatus;
             superAdmi.BankName = superAdmin.BankName;
             superAdmi.BankAccountNumber = superAdmin.BankAccountNumber ?? superAdmi.BankAccountNumber;
+            superAdmi.Modified = DateTime.Now;
             _superAdmin.Update(superAdmi);
             return superAdmin;
         }

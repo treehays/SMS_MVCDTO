@@ -8,6 +8,7 @@ namespace SMS_MVCDTO.Interfaces.Repositories
         ProductCategory Update(ProductCategory productCategory);
         void Delete(ProductCategory productCategory);
         IEnumerable<ProductCategory> GetAll();
-        bool IsAvailable(ProductCategory productCategory);
+        ProductCategory GetById(string categoryCode);
+        //bool IsAvailable(ProductCategory productCategory);
     }
 }
