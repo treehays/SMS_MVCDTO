@@ -38,19 +38,22 @@ namespace SMS_MVCDTO.Implementations.Repositories
             return products;
         }
 
-        public Product GetById(string id)
+        public Product GetById(string barCode)
         {
-            throw new NotImplementedException();
+            var product = _context.Products.SingleOrDefault(a => a.IsDeleted == false && a.IsAvailable == true && a.Barcode == barCode);
+            return product;
         }
 
         public IEnumerable<Product> GetByName(string name)
         {
-            throw new NotImplementedException();
+            var products = _context.Products.Where(a => a.IsAvailable == true && a.IsDeleted == false && name.All(b => a.Name.Contains(b)));
+            return products;
         }
 
         public IEnumerable<Product> GetByQuantityRemaining(int quantity)
         {
-            throw new NotImplementedException();
+            var products = _context.Products.Where(a => a.IsAvailable == true && a.IsDeleted == false && a.Quantity <= quantity);
+            return products;
         }
 
         //public int InventoryQuantityAlert()
@@ -79,11 +82,11 @@ namespace SMS_MVCDTO.Implementations.Repositories
             return product;
         }
 
-        public Product UpdateProductQuantity(Product product)
-        {
-            _context.Products.Update(product);
-            _context.SaveChanges();
-            return product;
-        }
+        //public Product UpdateProductQuantity(Product product)
+        //{
+        //    _context.Products.Update(product);
+        //    _context.SaveChanges();
+        //    return product;
+        //}
     }
 }

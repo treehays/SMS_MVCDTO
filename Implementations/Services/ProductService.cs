@@ -1,68 +1,198 @@
-﻿using SMS_MVCDTO.Interfaces.Services;
+﻿using SMS_MVCDTO.DTOs.ProductDTOs;
+using SMS_MVCDTO.Interfaces.Repositories;
+using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.Entities;
 
 namespace SMS_MVCDTO.Implementations.Services
 {
     public class ProductService : IProductService
     {
-        public Product Create(Product product)
+        private readonly IProductRepository _product;
+        public ProductService(IProductRepository product)
         {
-            throw new NotImplementedException();
+            _product = product;
         }
 
-        public void Delete(Product product)
+        public CreateProductRequestModel Create(CreateProductRequestModel product)
         {
-            throw new NotImplementedException();
+            var produc = new Product
+            {
+                Barcode = product.Barcode,
+                Name = product.Name,
+                Description = product.Description,
+                SellingPrice = product.SellingPrice,
+                Quantity = product.Quantity,
+                ReorderLevel = product.ReorderLevel,
+                Created = DateTime.Now,
+            };
+            _product.Create(produc);
+            return product;
+        }
+        public int ReorderLevel { get; set; }
+
+        public void Delete(string barCode)
+        {
+            var product = _product.GetById(barCode);
+            if (product == null)
+            {
+                return;
+            }
+            product.IsDeleted = true;
+            _product.Delete(product);
         }
 
-        public IList<Product> GetAll()
+        public IEnumerable<ProductResponseModel> GetAll()
         {
-            throw new NotImplementedException();
+            var produc = _product.GetAll();
+            var products = new List<ProductResponseModel>();
+            foreach (var product in produc)
+            {
+                var productResponseModel = new ProductResponseModel
+                {
+                    Message = "product retrieved successfully.",
+                    Status = true,
+                    Data = new ProductDTOs
+                    {
+                        Barcode = product.Barcode,
+                        Name = product.Name,
+                        Description = product.Description,
+                        SellingPrice = product.SellingPrice,
+                        Quantity = product.Quantity,
+                        ReorderLevel = product.ReorderLevel,
+                    }
+                };
+                products.Add(productResponseModel);
+            }
+            return products;
         }
 
-        public IList<Product> GetByCategory(string productCategory)
+        public IEnumerable<ProductResponseModel> GetByCategory(string productCategory)
         {
-            throw new NotImplementedException();
+            var produc = _product.GetByCategory(productCategory);
+            var products = new List<ProductResponseModel>();
+            foreach (var product in produc)
+            {
+                var productResponseModel = new ProductResponseModel
+                {
+                    Message = "product retrieved successfully.",
+                    Status = true,
+                    Data = new ProductDTOs
+                    {
+                        Barcode = product.Barcode,
+                        Name = product.Name,
+                        Description = product.Description,
+                        SellingPrice = product.SellingPrice,
+                        Quantity = product.Quantity,
+                        ReorderLevel = product.ReorderLevel,
+                    }
+                };
+                products.Add(productResponseModel);
+            }
+            return products;
+
         }
 
-        public Product GetById(string id)
+        public ProductResponseModel GetById(string barCode)
         {
-            throw new NotImplementedException();
+            var product = _product.GetById(barCode);
+            var produc = new ProductResponseModel
+            {
+                Message = "product retrieved successfully.",
+                Status = true,
+                Data = new ProductDTOs
+                {
+                    Barcode = product.Barcode,
+                    Name = product.Name,
+                    Description = product.Description,
+                    SellingPrice = product.SellingPrice,
+                    Quantity = product.Quantity,
+                    ReorderLevel = product.ReorderLevel,
+                }
+            };
+            return produc;
         }
 
-        public IList<Product> GetByName(string name)
+        public IEnumerable<ProductResponseModel> GetByName(string name)
         {
-            throw new NotImplementedException();
+            var produc = _product.GetByName(name);
+            var products = new List<ProductResponseModel>();
+            foreach (var product in produc)
+            {
+                var productResponseModel = new ProductResponseModel
+                {
+                    Message = "product retrieved successfully.",
+                    Status = true,
+                    Data = new ProductDTOs
+                    {
+                        Barcode = product.Barcode,
+                        Name = product.Name,
+                        Description = product.Description,
+                        SellingPrice = product.SellingPrice,
+                        Quantity = product.Quantity,
+                        ReorderLevel = product.ReorderLevel,
+                    }
+                };
+                products.Add(productResponseModel);
+            }
+            return products;
+
         }
 
-        public IList<Product> GetByQuantityRemaining(int quantity)
+        //public IEnumerable<ProductResponseModel> GetByQuantityRemaining(int quantity)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        public RestockProductRequestModel RestockProduct(RestockProductRequestModel product)
         {
-            throw new NotImplementedException();
+            var produc = _product.GetById(product.Barcode);
+            if (produc == null)
+            {
+                return null;
+            }
+            if (produc.Quantity < 0)
+            {
+                return product;
+            }
+            produc.Quantity = product.Quantity + produc.Quantity;
+            _product.RestockProduct(produc);
+            return product;
         }
 
-        public int InventoryQuantityAlert()
+        public UpdateProductRequestModel Update(UpdateProductRequestModel product)
         {
-            throw new NotImplementedException();
+            var produc = _product.GetById(product.Barcode);
+            produc.SellingPrice = product.SellingPrice;
+            produc.Name = product.Name ?? produc.Name;
+            produc.Description = product.Description ?? produc.Description;
+            produc.ReorderLevel = product.ReorderLevel;
+            _product.Update(produc);
+            return product;
         }
 
-        public bool IsAvailable(Product product)
+        public IEnumerable<ProductResponseModel> GetByQuantityRemaining(int quantity)
         {
-            throw new NotImplementedException();
-        }
-
-        public Product RestockProduct(Product product)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Product Update(Product product)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Product UpdateProductQuantity(Product product)
-        {
-            throw new NotImplementedException();
+            var produc = _product.GetByQuantityRemaining(quantity);
+            var products = new List<ProductResponseModel>();
+            foreach (var product in produc)
+            {
+                var productResponse = new ProductResponseModel
+                {
+                    Message = "product retrieved successfully.",
+                    Status = true,
+                    Data = new ProductDTOs
+                    {
+                        Barcode = product.Barcode,
+                        Name = product.Name,
+                        Description = product.Description,
+                        SellingPrice = product.SellingPrice,
+                        Quantity = product.Quantity,
+                        ReorderLevel = product.ReorderLevel,
+                    }
+                };
+                products.Add(productResponse);
+            }
+            return products;
         }
     }
 }

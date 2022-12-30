@@ -14,47 +14,57 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public Transaction Create(Transaction transaction)
         {
-            throw new NotImplementedException();
+            _context.Transactions.Add(transaction);
+            _context.SaveChanges();
+            return transaction;
         }
 
         public void Delete(Transaction transaction)
         {
-            throw new NotImplementedException();
+            _context.Transactions.Update(transaction);
+            _context.SaveChanges();
         }
 
-        public IEnumerable<Transaction> DownloadExcel()
-        {
-            throw new NotImplementedException();
-        }
+        //public IEnumerable<Transaction> DownloadExcel()
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         public IEnumerable<Transaction> GetAll()
         {
-            throw new NotImplementedException();
+            var transactions = _context.Transactions.Where(a => a.IsDeleted == false);
+            return transactions;
         }
 
-        public IEnumerable<Transaction> GetByDate()
+        public IEnumerable<Transaction> GetByDate(DateTime dateTime)
         {
-            throw new NotImplementedException();
+            var transactions = _context.Transactions.Where(a => a.IsDeleted == false && a.Created.Day == dateTime.Day);
+            return transactions;
         }
 
-        public Transaction GetById(string Id)
+        public Transaction GetById(string refNumber)
         {
-            throw new NotImplementedException();
+            var transaction = _context.Transactions.SingleOrDefault(a => a.ReferenceNo == refNumber);
+            return transaction;
         }
 
         public IEnumerable<Transaction> GetByStaffId(string staffId)
         {
-            throw new NotImplementedException();
+            var transactions = _context.Transactions.Where(a => a.CustomerId == staffId);
+            return transactions;
         }
 
-        public IEnumerable<Transaction> GetTransactionByCustomerName(string transaction)
+        public IEnumerable<Transaction> GetTransactionByCustomerName(string customerName)
         {
-            throw new NotImplementedException();
+            var transactions = _context.Transactions.Where(a => customerName.All(b => (a.Customer.FirstName + a.Customer.LastName).Contains(b)));
+            return transactions;
         }
 
-        public Transaction Update(Transaction transaction)
-        {
-            throw new NotImplementedException();
-        }
+        //public Transaction Update(Transaction transaction)
+        //{
+        //    _context.Transactions.Update(transaction);
+        //    _context.SaveChanges();
+        //    return transaction;
+        //}
     }
 }

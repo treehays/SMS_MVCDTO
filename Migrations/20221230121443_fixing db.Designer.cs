@@ -11,8 +11,8 @@ using SMS_MVCDTO.Context;
 namespace SMSMVCDTO.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20221229160339_fixing")]
-    partial class fixing
+    [Migration("20221230121443_fixing db")]
+    partial class fixingdb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,6 +37,9 @@ namespace SMSMVCDTO.Migrations
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<string>("CustomerStaffId")
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime(6)");
@@ -96,6 +99,8 @@ namespace SMSMVCDTO.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("StaffId");
+
+                    b.HasIndex("CustomerStaffId");
 
                     b.HasIndex("Email")
                         .IsUnique();
@@ -433,6 +438,10 @@ namespace SMSMVCDTO.Migrations
                     b.Property<string>("ReferenceNo")
                         .HasColumnType("varchar(255)");
 
+                    b.Property<string>("AttendantId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime(6)");
 
@@ -446,6 +455,10 @@ namespace SMSMVCDTO.Migrations
                     b.Property<DateTime>("Modified")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<string>("ProductId")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
@@ -453,6 +466,8 @@ namespace SMSMVCDTO.Migrations
                         .HasColumnType("double");
 
                     b.HasKey("ReferenceNo");
+
+                    b.HasIndex("AttendantId");
 
                     b.HasIndex("CustomerId");
 
@@ -533,6 +548,10 @@ namespace SMSMVCDTO.Migrations
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Attendant", b =>
                 {
+                    b.HasOne("SMS_MVCDTO.Models.Entities.Customer", null)
+                        .WithMany("Attendants")
+                        .HasForeignKey("CustomerStaffId");
+
                     b.HasOne("SMS_MVCDTO.Models.Entities.User", "User")
                         .WithOne("Attendant")
                         .HasForeignKey("SMS_MVCDTO.Models.Entities.Attendant", "UserId")
@@ -596,11 +615,19 @@ namespace SMSMVCDTO.Migrations
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Transaction", b =>
                 {
-                    b.HasOne("SMS_MVCDTO.Models.Entities.Customer", "Customer")
+                    b.HasOne("SMS_MVCDTO.Models.Entities.Attendant", "Attendant")
                         .WithMany()
+                        .HasForeignKey("AttendantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SMS_MVCDTO.Models.Entities.Customer", "Customer")
+                        .WithMany("Transactions")
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Attendant");
 
                     b.Navigation("Customer");
                 });
@@ -632,6 +659,10 @@ namespace SMSMVCDTO.Migrations
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Customer", b =>
                 {
+                    b.Navigation("Attendants");
+
+                    b.Navigation("Transactions");
+
                     b.Navigation("Wallets")
                         .IsRequired();
                 });

@@ -13,6 +13,8 @@ namespace SMS_MVCDTO.Models.Entities
         public Wallet Wallets { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public List<Transaction> Transactions { get; set; }
+        public List<Attendant> Attendants { get; set; }
         [Required]
         [Key]
         public string StaffId { get; set; }

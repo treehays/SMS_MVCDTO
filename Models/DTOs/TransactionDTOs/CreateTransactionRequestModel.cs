@@ -1,14 +1,12 @@
 ﻿namespace SMS_MVCDTO.DTOs.TransactionDTOs
 {
-    public class TransactionDTOs
+    public class CreateTransactionRequestModel
     {
-        public DateTime Created { get; set; }
         public string ReferenceNo { get; set; }
         public string AttendantId { get; set; }
         public string CustomerId { get; set; }
         public string BarCode { get; set; }
         public int Quantity { get; set; }
         public double TotalAmount { get; set; }
-
     }
 }
