@@ -1,63 +1,79 @@
-﻿using SMS_MVCDTO.Interfaces.Services;
+﻿using SMS_MVCDTO.DTOs.UserDTOs;
+using SMS_MVCDTO.Interfaces.Repositories;
+using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.Entities;
 
 namespace SMS_MVCDTO.Implementations.Services
 {
     public class UserService : IUserService
     {
-        public User Create(User user)
+        private readonly IUserRepository _user;
+        public UserService(IUserRepository user)
         {
-            throw new NotImplementedException();
+            _user = user;
         }
 
-        public void Delete(User user)
+        public CreateUserRequestModel Create(CreateUserRequestModel user)
         {
-            throw new NotImplementedException();
+            var userr = new User
+            {
+                Password = user.Password,
+                StaffId = user.StaffId,
+                Role = user.Role,
+                Created = DateTime.Now,
+            };
+            _user.Create(userr);
+            return user;
         }
 
-        public IList<User> GetAttendants()
+        public void Delete(string staffId)
         {
-            throw new NotImplementedException();
+            var user = _user.GetById(staffId);
+            _user.Delete(user);
         }
 
-        public User GetById(string staffId)
+        public UserResponseModel GetById(string staffId)
         {
-            throw new NotImplementedException();
+            var user = _user.GetById(staffId);
+            var userr = new UserResponseModel
+            {
+                Message = "User successfully retrieved.",
+                Status = true,
+                Data = new UserDTOs
+                {
+                    Password = user.Password,
+                    StaffId = user.StaffId,
+                    Role = user.Role,
+                }
+            };
+            return userr;
         }
 
-        public IList<User> GetSalesManagers()
+
+        public LoginRequestModel Login(LoginRequestModel user)
         {
-            throw new NotImplementedException();
+
+            var userr = new User
+            {
+                StaffId = user.StaffId,
+                Password = user.Password,
+            };
+            _user.Login(userr);
+            return user;
         }
 
-        public IList<User> GetUsers()
+        public UpdateUserPasswordRequestModel UpdatePassword(UpdateUserPasswordRequestModel user)
         {
-            throw new NotImplementedException();
+            var userr = _user.GetById(user.StaffId);
+            userr.Password = user.Password ?? userr.Password;
+            return user;
         }
 
-        public bool IsActive(User user)
+        public UpdateUserRoleRequestModel UpdateRole(UpdateUserRoleRequestModel user)
         {
-            throw new NotImplementedException();
-        }
-
-        public User Login(User user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public User Update(User user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public User UpdatePassword(User user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public User UpdateRole(User user)
-        {
-            throw new NotImplementedException();
+            var userr = _user.GetById(user.StaffId);
+            userr.Role = user.Role;
+            return user;
         }
     }
 }

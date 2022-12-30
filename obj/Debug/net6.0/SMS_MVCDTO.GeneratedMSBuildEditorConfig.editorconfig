@@ -8,61 +8,61 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SMS_MVCDTO
 build_property.RootNamespace = SMS_MVCDTO
-build_property.ProjectDir = C:\Users\Treehays\Documents\CLH\New folder\SMS_MVCDTO\
+build_property.ProjectDir = c:\Users\Treehays\Documents\CLH\New folder\SMS_MVCDTO\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Treehays\Documents\CLH\New folder\SMS_MVCDTO
+build_property.MSBuildProjectDirectory = c:\Users\Treehays\Documents\CLH\New folder\SMS_MVCDTO
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/Attendant/Create.cshtml]
+[c:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/Attendant/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXR0ZW5kYW50XENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/Attendant/Delete.cshtml]
+[c:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/Attendant/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXR0ZW5kYW50XERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/Attendant/DeletePreview.cshtml]
+[c:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/Attendant/DeletePreview.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXR0ZW5kYW50XERlbGV0ZVByZXZpZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/Attendant/Details.cshtml]
+[c:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/Attendant/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXR0ZW5kYW50XERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/Attendant/Edit.cshtml]
+[c:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/Attendant/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXR0ZW5kYW50XEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/Attendant/Index.cshtml]
+[c:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/Attendant/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXR0ZW5kYW50XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/Home/Index.cshtml]
+[c:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/Home/Privacy.cshtml]
+[c:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/Shared/Error.cshtml]
+[c:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/Shared/_ValidationScriptsPartial.cshtml]
+[c:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/_ViewImports.cshtml]
+[c:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/_ViewStart.cshtml]
+[c:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/Shared/_Layout.cshtml]
+[c:/Users/Treehays/Documents/CLH/New folder/SMS_MVCDTO/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-345a1dt2ov

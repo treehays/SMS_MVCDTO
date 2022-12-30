@@ -1,21 +1,15 @@
-﻿using SMS_MVCDTO.Models.Entities;
+﻿using SMS_MVCDTO.DTOs.UserDTOs;
+using SMS_MVCDTO.Models.Entities;
 
 namespace SMS_MVCDTO.Interfaces.Services
 {
     public interface IUserService
     {
-        User Create(User user);
-        User Login(User user);
-        void Delete(User user);
-        User GetById(string staffId);
-        IList<User> GetUsers();
-        IList<User> GetAttendants();
-        IList<User> GetSalesManagers();
-        //IList<User> GetUsers();
-        User Update(User user);
-        User UpdatePassword(User user);
-        User UpdateRole(User user);
-        bool IsActive(User user);
-
+        CreateUserRequestModel Create(CreateUserRequestModel user);
+        LoginRequestModel Login(LoginRequestModel user);
+        void Delete(string staffId);
+        UserResponseModel GetById(string staffId);
+        UpdateUserPasswordRequestModel UpdatePassword(UpdateUserPasswordRequestModel user);
+        UpdateUserRoleRequestModel UpdateRole(UpdateUserRoleRequestModel user);
     }
 }

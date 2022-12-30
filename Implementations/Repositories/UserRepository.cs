@@ -21,52 +21,34 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public void Delete(User user)
         {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<User> GetAttendants()
-        {
-            throw new NotImplementedException();
+            _context.Users.Update(user);
+            _context.SaveChanges();
         }
 
         public User GetById(string staffId)
         {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<User> GetSalesManagers()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<User> GetUsers()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool IsActive(User user)
-        {
-            throw new NotImplementedException();
+            var user = _context.Users.SingleOrDefault(x => x.StaffId == staffId);
+            return user;
         }
 
         public User Login(User user)
         {
-            throw new NotImplementedException();
-        }
-
-        public User Update(User user)
-        {
-            throw new NotImplementedException();
+            var userr = _context.Users.SingleOrDefault(a => a.StaffId == user.StaffId && a.Password == user.Password);
+            return userr;
         }
 
         public User UpdatePassword(User user)
         {
-            throw new NotImplementedException();
+            _context.Users.Update(user);
+            _context.SaveChanges();
+            return user;
         }
 
         public User UpdateRole(User user)
         {
-            throw new NotImplementedException();
+            _context.Users.Update(user);
+            _context.SaveChanges();
+            return user;
         }
     }
 }
