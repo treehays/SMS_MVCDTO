@@ -1,5 +1,5 @@
-﻿using SMS_MVCDTO.DTOs.ProductCategoriesDTOs;
-using SMS_MVCDTO.Models.Entities;
+﻿
+using SMS_MVCDTO.Models.DTOs.ProductCategoriesDTOs;
 
 namespace SMS_MVCDTO.Interfaces.Services
 {

@@ -1,5 +1,4 @@
-﻿using SMS_MVCDTO.DTOs.SuperAdminDTOs;
-using SMS_MVCDTO.Models.Entities;
+﻿using SMS_MVCDTO.Models.DTOs.SuperAdminDTOs;
 
 namespace SMS_MVCDTO.Interfaces.Services
 {

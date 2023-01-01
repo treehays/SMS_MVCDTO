@@ -1,4 +1,4 @@
-﻿using SMS_MVCDTO.DTOs.ProductDTOs;
+﻿using SMS_MVCDTO.Models.DTOs.ProductDTOs;
 using SMS_MVCDTO.Models.Entities;
 
 namespace SMS_MVCDTO.Interfaces.Services

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SMS_MVCDTO.DTOs.CustomerDTOs;
 using SMS_MVCDTO.Interfaces.Services;
+using SMS_MVCDTO.Models.DTOs.CustomerDTOs;
 
 namespace SMS_MVCDTO.Controllers
 {
@@ -14,7 +14,8 @@ namespace SMS_MVCDTO.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var customers = _customer.GetCustomers();
+            return View(customers);
         }
 
         public IActionResult Create()

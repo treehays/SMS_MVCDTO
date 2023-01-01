@@ -1,4 +1,5 @@
-﻿using SMS_MVCDTO.DTOs.AttendantDTOs;
+﻿
+using SMS_MVCDTO.Models.DTOs.AttendantDTOs;
 
 namespace SMS_MVCDTO.Interfaces.Services
 {

@@ -1,5 +1,94 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<SMS_MVCDTO.Models.DTOs.CustomerDTOs.CustomerResponseModel>
 @{
+    ViewData["Title"] = "Create";
+    if (TempData["success"] != null)
+    {
+        <h2>@TempData["success"]</h2>
+    }
+    if (TempData["failed"] != null)
+    {
+        <h2>@TempData["failed"]</h2>
+    }
 }
+
+
+<h1>Customer Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+@{
+    //int i = 0;
+}
+<table class="table table-info col-md-4">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Data.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data.StaffId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data.DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data.MaritalStatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data.StaffId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data.PhoneNumber)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data.DateOfBirth)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data.Gender)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data.MaritalStatus)
+                </td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-staffId="@item.Data.StaffId">Edit</a> |
+                    <a asp-action="Details" asp-route-staffId="@item.Data.StaffId">Details</a> |
+                    <a asp-action="DeletePreview" asp-route-staffId="@item.Data.StaffId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

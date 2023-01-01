@@ -1,9 +1,8 @@
-﻿using SMS_MVCDTO.DTOs.SuperAdminDTOs;
-using SMS_MVCDTO.Enums;
+﻿using SMS_MVCDTO.Enums;
 using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Interfaces.Services;
+using SMS_MVCDTO.Models.DTOs.SuperAdminDTOs;
 using SMS_MVCDTO.Models.Entities;
-using System.Xml.Linq;
 
 namespace SMS_MVCDTO.Implementations.Service
 {

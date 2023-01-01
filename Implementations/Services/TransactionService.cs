@@ -1,6 +1,6 @@
-﻿using SMS_MVCDTO.DTOs.TransactionDTOs;
-using SMS_MVCDTO.Interfaces.Repositories;
+﻿using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Interfaces.Services;
+using SMS_MVCDTO.Models.DTOs.TransactionDTOs;
 using SMS_MVCDTO.Models.Entities;
 
 namespace SMS_MVCDTO.Implementations.Services

@@ -4,10 +4,10 @@ using SMS_MVCDTO.Models.Entities;
 
 namespace SMS_MVCDTO.Implementations.Repositories
 {
-    public class SalesManagerService : ISalesManagerRepository
+    public class SalesManagerRepository : ISalesManagerRepository
     {
         private readonly ApplicationContext _context;
-        public SalesManagerService(ApplicationContext context)
+        public SalesManagerRepository(ApplicationContext context)
         {
             _context = context;
         }

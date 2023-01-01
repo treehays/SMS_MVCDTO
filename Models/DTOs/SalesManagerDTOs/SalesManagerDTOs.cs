@@ -5,10 +5,10 @@ namespace SMS_MVCDTO.Models.DTOs.SalesManagerDTOs
 {
     public class SalesManagerDTOs
     {
+        public string StaffId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        //public string Password { get; set; }
         public string PhoneNumber { get; set; }
         public string HomeAddress { get; set; }
         public string ResidentialAddress { get; set; }
@@ -25,7 +25,6 @@ namespace SMS_MVCDTO.Models.DTOs.SalesManagerDTOs
     //public class LoginRequestModel
     //{
     //    [Required]
-    //    public string StaffId { get; set; }
     //    [Required]
     //    public string Password { get; set; }
     //}

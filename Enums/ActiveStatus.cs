@@ -3,7 +3,8 @@
     public enum ActiveStatus
     {
         //tobe used later
-        isActive,
-        notActive
+        Active,
+        notActive,
+        Suspended
     }
 }

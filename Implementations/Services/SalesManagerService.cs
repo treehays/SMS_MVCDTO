@@ -1,8 +1,8 @@
-﻿using SMS_MVCDTO.DTOs.SalesManagerDTOs;
-using SMS_MVCDTO.DTOs.UserDTOs;
-using SMS_MVCDTO.Enums;
+﻿using SMS_MVCDTO.Enums;
 using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Interfaces.Services;
+using SMS_MVCDTO.Models.DTOs.SalesManagerDTOs;
+using SMS_MVCDTO.Models.DTOs.UserDTOs;
 using SMS_MVCDTO.Models.Entities;
 //using System.Xml.Linq;
 
@@ -33,6 +33,7 @@ namespace SMS_MVCDTO.Implementations.Service
             var salesManage = new SalesManager
             {
                 StaffId = sid,
+                UserId = sid,
                 FirstName = salesManager.FirstName,
                 LastName = salesManager.LastName,
                 Email = salesManager.Email,
@@ -47,6 +48,7 @@ namespace SMS_MVCDTO.Implementations.Service
                 GuarantorName = salesManager.GuarantorName,
                 GuarantorPhoneNumber = salesManager.GuarantorPhoneNumber,
                 userRole = UserRoleType.SuperAdmin,
+                IsActive = true,
                 Created = DateTime.Now,
 
             };
@@ -68,6 +70,10 @@ namespace SMS_MVCDTO.Implementations.Service
         public SalesManagerResponseModel GetByEmail(string email)
         {
             var salesManager = _salesManager.GetByEmail(email);
+            if (salesManager == null)
+            {
+                return null;
+            }
             var salesManage = new SalesManagerResponseModel
             {
                 Status = true,
@@ -198,6 +204,7 @@ namespace SMS_MVCDTO.Implementations.Service
                     Message = "Sales Manager retrieved sucessfully.",
                     Data = new SalesManagerDTOs
                     {
+                        StaffId = salesManager.StaffId,
                         FirstName = salesManager.FirstName,
                         LastName = salesManager.LastName,
                         Email = salesManager.Email,
@@ -221,15 +228,15 @@ namespace SMS_MVCDTO.Implementations.Service
 
         }
 
-        public UpdateSalesManagerRequestModel Update(UpdateSalesManagerRequestModel salesManager)
+        public SalesManagerResponseModel Update(SalesManagerResponseModel salesManager)
         {
-            var salesManage = _salesManager.GetById(salesManager.StaffId);
-            salesManage.FirstName = salesManager.FirstName ?? salesManage.FirstName;
-            salesManage.LastName = salesManager.LastName ?? salesManage.LastName;
-            salesManage.ResidentialAddress = salesManager.ResidentialAddress ?? salesManage.ResidentialAddress;
-            salesManage.MaritalStatus = salesManager.MaritalStatus;
-            salesManage.BankName = salesManager.BankName;
-            salesManage.BankAccountNumber = salesManager.BankAccountNumber ?? salesManage.BankAccountNumber;
+            var salesManage = _salesManager.GetById(salesManager.Data.StaffId);
+            salesManage.FirstName = salesManager.Data.FirstName ?? salesManage.FirstName;
+            salesManage.LastName = salesManager.Data.LastName ?? salesManage.LastName;
+            salesManage.ResidentialAddress = salesManager.Data.ResidentialAddress ?? salesManage.ResidentialAddress;
+            salesManage.MaritalStatus = salesManager.Data.MaritalStatus;
+            salesManage.BankName = salesManager.Data.BankName;
+            salesManage.BankAccountNumber = salesManager.Data.BankAccountNumber ?? salesManage.BankAccountNumber;
             salesManage.Modified = DateTime.Now;
             _salesManager.Update(salesManage);
             return salesManager;

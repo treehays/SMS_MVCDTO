@@ -1,7 +1,7 @@
-﻿using SMS_MVCDTO.DTOs.CustomerDTOs;
-using SMS_MVCDTO.Enums;
+﻿using SMS_MVCDTO.Enums;
 using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Interfaces.Services;
+using SMS_MVCDTO.Models.DTOs.CustomerDTOs;
 using SMS_MVCDTO.Models.Entities;
 
 namespace SMS_MVCDTO.Implementations.Services
@@ -40,6 +40,8 @@ namespace SMS_MVCDTO.Implementations.Services
                 Gender = customer.Gender,
                 MaritalStatus = customer.MaritalStatus,
                 Created = DateTime.Now,
+                IsActive = true,
+                UserId = sid,
 
             };
             _customer.Create(custome);

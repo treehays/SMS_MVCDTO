@@ -1,7 +1,7 @@
-﻿using SMS_MVCDTO.DTOs.AttendantDTOs;
-using SMS_MVCDTO.Enums;
+﻿using SMS_MVCDTO.Enums;
 using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Interfaces.Services;
+using SMS_MVCDTO.Models.DTOs.AttendantDTOs;
 using SMS_MVCDTO.Models.Entities;
 
 namespace SMS_MVCDTO.Implementations.Service

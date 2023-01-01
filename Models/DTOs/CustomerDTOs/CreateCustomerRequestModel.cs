@@ -1,13 +1,23 @@
 ﻿using SMS_MVCDTO.Enums;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace SMS_MVCDTO.Models.DTOs.CustomerDTOs
 {
     public class CreateCustomerRequestModel
     {
+        [Required]
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        [Required(ErrorMessage = "Enter Valid password")]
         public string Email { get; set; }
+        [Required(ErrorMessage = "Enter Valid password")]
+        [DisplayName("Password")]
         public string Password { get; set; }
+        [Required]
+        [DisplayName("Confirm Password")]
+        [Compare("Password", ErrorMessage = "pass not match")]
+        public string ConfirmPassword { get; set; }
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
         public DateTime DateOfBirth { get; set; }

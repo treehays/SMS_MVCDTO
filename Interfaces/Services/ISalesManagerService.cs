@@ -1,8 +1,8 @@
-﻿using SMS_MVCDTO.DTOs.SalesManagerDTOs;
-using SMS_MVCDTO.DTOs.UserDTOs;
-using SMS_MVCDTO.Models.Entities;
+﻿
+using SMS_MVCDTO.Models.DTOs.SalesManagerDTOs;
+using SMS_MVCDTO.Models.DTOs.UserDTOs;
 
-namespace SMS_MVCDTO.Interfaces.Services
+namespace SMS_MVCDTO.Interfaces.Services  
 {
     public interface ISalesManagerService
     {
@@ -14,7 +14,7 @@ namespace SMS_MVCDTO.Interfaces.Services
         SalesManagerResponseModel GetByPhoneNumber(string phoneNumber);
         IEnumerable<SalesManagerResponseModel> GetByName(string name);
         IEnumerable<SalesManagerResponseModel> GetSalesManagers();
-        UpdateSalesManagerRequestModel Update(UpdateSalesManagerRequestModel salesManager);
+        SalesManagerResponseModel Update (SalesManagerResponseModel salesManager);
         UpdateUserPasswordRequestModel UpdatePassword(UpdateUserPasswordRequestModel salesManager);
         //SalesManager UpdateRole(SalesManager salesManager);
         //bool IsActive(SalesManager salesManager);

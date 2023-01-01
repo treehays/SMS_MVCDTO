@@ -16,6 +16,8 @@ builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IAttendantRepository, AttendantRepository>();
 builder.Services.AddScoped<IAttendantService, AttendantService>();
+builder.Services.AddScoped<ISalesManagerService, SalesManagerService>();
+builder.Services.AddScoped<ISalesManagerRepository, SalesManagerRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();

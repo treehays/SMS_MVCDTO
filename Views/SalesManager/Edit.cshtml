@@ -1,5 +1,5 @@
 ﻿@using SMS_MVCDTO.Enums
-@model SMS_MVCDTO.Models.DTOs.CustomerDTOs.CustomerResponseModel
+@model SMS_MVCDTO.Models.DTOs.SalesManagerDTOs.SalesManagerResponseModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -10,19 +10,17 @@
 }
 
 
-<h1>Customer Profile Update.</h1>
+<h1>Sales Manager Profile Update.</h1>
 
-<h4>Customer</h4>
+<h4>Sales Manager</h4>
 <hr />
 
-<div asp-controller="Customer" asp-action="Edit" style="font-size: 130%;">
+<div asp-controller="SalesManager" asp-action="Edit" style="font-size: 130%;">
     <div class="row">
         <div class="col-md-4">
             <form asp-action="Edit">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="Data.StaffId" />
-
-
 
                 <div class="form-group">
                     <label asp-for="Data.FirstName" class="control-label"></label>
@@ -38,10 +36,27 @@
 
 
                 <div class="form-group">
+                    <label asp-for="Data.ResidentialAddress" class="control-label"></label>
+                    <input asp-for="Data.ResidentialAddress" class="form-control" />
+                    <span asp-validation-for="Data.ResidentialAddress" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
                     <label asp-for="Data.MaritalStatus" class="control-label"></label>
                     <select asp-for="Data.MaritalStatus" asp-items="Html.GetEnumSelectList<MaritalStatusType>()"></select>
 
                     <span asp-validation-for="Data.MaritalStatus" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Data.BankAccountNumber" class="control-label"></label>
+                    <input asp-for="Data.BankAccountNumber" class="form-control" />
+                    <span asp-validation-for="Data.BankAccountNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Data.BankName" class="control-label"></label>
+                    <input asp-for="Data.BankName" class="form-control" />
+                    <span asp-validation-for="Data.BankName" class="text-danger"></span>
                 </div>
 
 
@@ -51,14 +66,14 @@
             </form>
         </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
 
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
     }
-    }
+

@@ -1,38 +1,38 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SMS_MVCDTO.Interfaces.Services;
-using SMS_MVCDTO.Models.DTOs.AttendantDTOs;
+using SMS_MVCDTO.Models.DTOs.SalesManagerDTOs;
 
 namespace SMS_MVCDTO.Controllers
 {
-    public class AttendantController : Controller
+    public class SalesManagerController : Controller
     {
-        private readonly IAttendantService _attendant;
-        public AttendantController(IAttendantService attendant)
+        private readonly ISalesManagerService _saleManager;
+        public SalesManagerController(ISalesManagerService saleManager)
         {
-            _attendant = attendant;
+            _saleManager = saleManager;
         }
 
         public IActionResult Index()
         {
-            var attendants = _attendant.GetAttendants();
-            return View(attendants);
+            var saleManager = _saleManager.GetSalesManagers();
+            return View(saleManager);
         }
 
         public IActionResult Create()
         {
             return View();
         }
-
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(CreateAttendantRequestModel createAttendant)
+        public IActionResult Create(CreateSalesManagerRequestModel createSaleManager)
         {
-            if (createAttendant != null)
+            if (createSaleManager != null)
             {
-                var existByEmail = _attendant.GetByEmail(createAttendant.Email);
+                var existByEmail = _saleManager.GetByEmail(createSaleManager.Email);
                 if (existByEmail == null)
                 {
-                    _attendant.Create(createAttendant);
+                    _saleManager.Create(createSaleManager);
                     TempData["success"] = "Registration Successful.    ";
                     return RedirectToAction("Index");
                 }
@@ -48,20 +48,20 @@ namespace SMS_MVCDTO.Controllers
 
         public IActionResult Edit(string staffId)
         {
-            var attendant = _attendant.GetById(staffId);
-            if (attendant == null)
+            var saleManager = _saleManager.GetById(staffId);
+            if (saleManager == null)
             {
                 return NotFound();
             }
-            return View(attendant);
+            return View(saleManager);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(AttendantResponseModel updateAttendant)
+        public IActionResult Edit(SalesManagerResponseModel updateSaleManager)
         {
-
-            _attendant.Update(updateAttendant);
+            
+            _saleManager.Update(updateSaleManager);
             TempData["success"] = "Profile Updated Successfully.";
             return RedirectToAction(nameof(Index));
         }
@@ -70,11 +70,11 @@ namespace SMS_MVCDTO.Controllers
         {
             if (staffId != null)
             {
-                var attendant = _attendant.GetById(staffId);
+                var saleManager = _saleManager.GetById(staffId);
 
-                if (attendant != null)
+                if (saleManager != null)
                 {
-                    return View(attendant);
+                    return View(saleManager);
                 }
                 return NotFound();
             }
@@ -88,7 +88,7 @@ namespace SMS_MVCDTO.Controllers
         {
             if (staffId != null)
             {
-                _attendant.Delete(staffId);
+                _saleManager.Delete(staffId);
                 return RedirectToAction(nameof(Index));
             }
             return NotFound();
@@ -98,11 +98,11 @@ namespace SMS_MVCDTO.Controllers
         {
             if (staffId != null)
             {
-                var attendant = _attendant.GetById(staffId);
+                var saleManager = _saleManager.GetById(staffId);
 
-                if (attendant != null)
+                if (saleManager != null)
                 {
-                    return View(attendant);
+                    return View(saleManager);
                 }
                 return NotFound();
             }
@@ -112,21 +112,3 @@ namespace SMS_MVCDTO.Controllers
     }
 }
 
-
-
-
-
-
-
-
-
-
-// public IActionResult CreateAttendant()
-//{
-//    //var elections = _electionService.GetElections();
-//    //ViewData["Elections"] = new SelectList(elections.Data, "Id", "Name");
-//    //var positions = _positionService.GetPositions();
-//    //ViewData["Positions"] = new SelectList(positions.Data, "Id", "Name");
-
-//    return View();
-//}

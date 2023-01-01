@@ -1,5 +1,4 @@
-﻿using SMS_MVCDTO.DTOs.TransactionDTOs;
-using SMS_MVCDTO.Models.Entities;
+﻿using SMS_MVCDTO.Models.DTOs.TransactionDTOs;
 
 namespace SMS_MVCDTO.Interfaces.Services
 {
