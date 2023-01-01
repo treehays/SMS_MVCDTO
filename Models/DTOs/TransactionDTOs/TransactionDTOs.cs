@@ -1,4 +1,4 @@
-﻿namespace SMS_MVCDTO.DTOs.TransactionDTOs
+﻿namespace SMS_MVCDTO.Models.DTOs.TransactionDTOs
 {
     public class TransactionDTOs
     {

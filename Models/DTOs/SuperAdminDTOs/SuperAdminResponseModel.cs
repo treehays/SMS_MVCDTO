@@ -1,4 +1,4 @@
-﻿namespace SMS_MVCDTO.DTOs.SuperAdminDTOs
+﻿namespace SMS_MVCDTO.Models.DTOs.SuperAdminDTOs
 {
     public class SuperAdminResponseModel : BaseResponse
     {

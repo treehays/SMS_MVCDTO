@@ -1,4 +1,4 @@
-﻿namespace SMS_MVCDTO.DTOs.ProductCategoriesDTOs
+﻿namespace SMS_MVCDTO.Models.DTOs.ProductCategoriesDTOs
 {
     public class ProductCategoryResponseModel : BaseResponse
     {

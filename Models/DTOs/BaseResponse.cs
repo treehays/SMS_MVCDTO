@@ -1,4 +1,4 @@
-﻿namespace SMS_MVCDTO.DTOs
+﻿namespace SMS_MVCDTO.Models.DTOs
 {
     public class BaseResponse
     {

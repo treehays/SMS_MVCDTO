@@ -1,6 +1,6 @@
 ﻿using SMS_MVCDTO.Enums;
 
-namespace SMS_MVCDTO.DTOs.AttendantDTOs
+namespace SMS_MVCDTO.Models.DTOs.AttendantDTOs
 {
     public class UpdateAttendantRequestModel
     {

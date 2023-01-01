@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SMS_MVCDTO.DTOs.ProductDTOs
+namespace SMS_MVCDTO.Models.DTOs.ProductDTOs
 {
     public class ProductDTOs
     {

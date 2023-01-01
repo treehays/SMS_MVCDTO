@@ -2,7 +2,7 @@
 using SMS_MVCDTO.Models.Entities;
 using System.ComponentModel.DataAnnotations;
 
-namespace SMS_MVCDTO.DTOs.CustomerDTOs
+namespace SMS_MVCDTO.Models.DTOs.CustomerDTOs
 {
     public class CustomerDTOs
     {

@@ -1,4 +1,4 @@
-﻿namespace SMS_MVCDTO.DTOs.SalesManagerDTOs
+﻿namespace SMS_MVCDTO.Models.DTOs.SalesManagerDTOs
 {
     public class SalesManagerResponseModel : BaseResponse
     {

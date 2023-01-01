@@ -1,6 +1,6 @@
 ﻿using SMS_MVCDTO.Enums;
 
-namespace SMS_MVCDTO.DTOs.SalesManagerDTOs
+namespace SMS_MVCDTO.Models.DTOs.SalesManagerDTOs
 {
     public class CreateSalesManagerRequestModel
     {

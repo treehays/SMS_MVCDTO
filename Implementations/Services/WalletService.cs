@@ -37,7 +37,7 @@ namespace SMS_MVCDTO.Implementations.Services
 
         }
 
-        public CreateWalletRequestModel Debit(CreateWalletRequestModel wallet)
+        public DebitWalletRequestModel Debit(DebitWalletRequestModel wallet)
         {
             var walle = new Wallet
             {

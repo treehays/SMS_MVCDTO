@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace SMS_MVCDTO.DTOs.AttendantDTOs
+namespace SMS_MVCDTO.Models.DTOs.AttendantDTOs
 {
     public class CreateAttendantRequestModel
     {

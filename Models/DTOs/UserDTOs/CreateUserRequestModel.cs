@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SMS_MVCDTO.Models.DTOs.UserDTOs
 {
-    public class UserDTOs
+    public class CreateUserRequestModel
     {
         [Required]
         public string StaffId { get; set; }
