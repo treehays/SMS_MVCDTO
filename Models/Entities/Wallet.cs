@@ -10,7 +10,6 @@
         public double Debit { get; set; }
         public double Credit { get; set; }
         public double Balance { get; set; }
-        //public IList<Transaction> Transactions { get; set; }
-        //public string TransactionId { get; set; }
+    
     }
 }

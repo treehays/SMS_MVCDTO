@@ -1,23 +1,58 @@
-﻿using SMS_MVCDTO.Interfaces.Services;
+﻿using SMS_MVCDTO.DTOs.WalletDTOs;
+using SMS_MVCDTO.Interfaces.Repositories;
+using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.Entities;
 
 namespace SMS_MVCDTO.Implementations.Services
 {
     public class WalletService : IWalletService
     {
-        public Wallet Create(Wallet wallet)
+        private readonly IWalletRepository _wallet;
+        public WalletService(IWalletRepository wallet)
         {
-            throw new NotImplementedException();
+            _wallet = wallet;
         }
 
-        public double GetBalance(Wallet wallet)
+        public CreateWalletRequestModel Create(CreateWalletRequestModel wallet)
         {
-            throw new NotImplementedException();
+            var walle = new Wallet
+            {
+                CustomerId= wallet.CustomerId,
+                Debit = wallet.Debit,
+                Credit = wallet.Credit,
+            };
+        _wallet.Create(walle);
+            return wallet;
         }
 
-        public Wallet Update(Wallet wallet)
+        public CreditWalletRequestModel Credit(CreditWalletRequestModel wallet)
         {
-            throw new NotImplementedException();
+            var walle = new Wallet
+            {
+                CustomerId= wallet.CustomerId,
+                Credit = wallet.Credit,
+            };
+            _wallet.Credit(walle);
+            return wallet;
+
+        }
+
+        public CreateWalletRequestModel Debit(CreateWalletRequestModel wallet)
+        {
+            var walle = new Wallet
+            {
+                CustomerId = wallet.CustomerId,
+                Debit = wallet.Debit,
+            };
+            _wallet.Credit(walle);
+            return wallet;
+
+        }
+
+        public double GetBalance()
+        {
+            var balance = _wallet.GetBalance();
+            return balance;
         }
     }
 }
