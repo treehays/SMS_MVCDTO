@@ -13,7 +13,7 @@ namespace SMS_MVCDTO.Interfaces.Services
         CustomerResponseModel GetByPhoneNumber(string phoneNumber);
         IEnumerable<CustomerResponseModel> GetByName(string name);
         IEnumerable<CustomerResponseModel> GetCustomers();
-        UpdateCustomerRequestModel Update(UpdateCustomerRequestModel customer);
+        CustomerResponseModel Update(CustomerResponseModel customer);
         UpdateCustomerPasswordRequestModel UpdatePassword(UpdateCustomerPasswordRequestModel customer);
     }
 }

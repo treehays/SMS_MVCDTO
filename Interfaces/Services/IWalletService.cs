@@ -7,7 +7,7 @@ namespace SMS_MVCDTO.Interfaces.Services
     {
         CreateWalletRequestModel Create (CreateWalletRequestModel wallet);
         double GetBalance ();
-        CreateWalletRequestModel Credit (CreateWalletRequestModel wallet);
-        CreateWalletRequestModel Debit (CreateWalletRequestModel wallet);
+        CreditWalletRequestModel Credit (CreditWalletRequestModel wallet);
+        DebitWalletRequestModel Debit (DebitWalletRequestModel wallet);
     }
 }

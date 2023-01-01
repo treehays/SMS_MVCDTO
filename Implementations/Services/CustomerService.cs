@@ -210,17 +210,17 @@ namespace SMS_MVCDTO.Implementations.Services
         }
 
 
-        public UpdateCustomerRequestModel Update(UpdateCustomerRequestModel customer)
+        public CustomerResponseModel Update(CustomerResponseModel customer)
         {
-            var custome = _customer.GetById(customer.StaffId);
+            var custome = _customer.GetById(customer.Data.StaffId);
             if (custome == null)
             {
                 return null;
             }
-            custome.FirstName = customer.FirstName ?? custome.FirstName;
-            custome.LastName = customer.LastName ?? custome.LastName;
-            custome.Address = customer.Address ?? custome.Address;
-            custome.MaritalStatus = customer.MaritalStatus;
+            custome.FirstName = customer.Data.FirstName ?? custome.FirstName;
+            custome.LastName = customer.Data.LastName ?? custome.LastName;
+            custome.Address = customer.Data.Address ?? custome.Address;
+            custome.MaritalStatus = customer.Data.MaritalStatus;
             custome.Modified = DateTime.Now;
             _customer.Update(custome);
             return customer;
