@@ -35,6 +35,7 @@ namespace SMS_MVCDTO.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(NewProductViewModel product)
         {
+           
             if (product != null)
             {
                 var existByName = _product.GetById(product.CreateProduct.Barcode);

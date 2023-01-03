@@ -11,8 +11,8 @@ using SMS_MVCDTO.Context;
 namespace SMSMVCDTO.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20230102142113_tryings")]
-    partial class tryings
+    [Migration("20230103160816_first")]
+    partial class first
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -180,6 +180,10 @@ namespace SMSMVCDTO.Migrations
                     b.Property<string>("Barcode")
                         .HasColumnType("varchar(255)");
 
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime(6)");
 
@@ -204,11 +208,11 @@ namespace SMSMVCDTO.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
+                    b.Property<double>("Quantity")
+                        .HasColumnType("double");
 
-                    b.Property<int>("ReorderLevel")
-                        .HasColumnType("int");
+                    b.Property<double>("ReorderLevel")
+                        .HasColumnType("double");
 
                     b.Property<double>("SellingPrice")
                         .HasColumnType("double");

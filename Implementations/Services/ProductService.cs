@@ -19,6 +19,7 @@ namespace SMS_MVCDTO.Implementations.Services
             {
                 Barcode = product.Barcode,
                 Name = product.Name,
+                Category = product.Category,
                 Description = product.Description,
                 SellingPrice = product.SellingPrice,
                 Quantity = product.Quantity,
@@ -95,6 +96,10 @@ namespace SMS_MVCDTO.Implementations.Services
         public ProductResponseModel GetById(string barCode)
         {
             var product = _product.GetById(barCode);
+            if (product == null)
+            {
+                return null;
+            }
             var produc = new ProductResponseModel
             {
                 Message = "product retrieved successfully.",
