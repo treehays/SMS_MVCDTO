@@ -1,4 +1,6 @@
-﻿namespace SMS_MVCDTO.Models.DTOs.ProductDTOs
+﻿using System.ComponentModel;
+
+namespace SMS_MVCDTO.Models.DTOs.ProductDTOs
 {
     public class UpdateProductRequestModel
     {
@@ -7,7 +9,7 @@
         public string Description { get; set; }
         public double SellingPrice { get; set; }
         //public int Quantity { get; set; }
-        public int ReorderLevel { get; set; }
+        public double ReorderLevel { get; set; }
     }
 
 }

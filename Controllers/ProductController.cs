@@ -23,7 +23,6 @@ namespace SMS_MVCDTO.Controllers
 
         public IActionResult Create()
         {
-            //var createProduct = new CreateProductRequestModel();
             var categories = _category.GetAll().ToList();
             var viewModel = new NewProductViewModel
             {
@@ -115,4 +114,3 @@ namespace SMS_MVCDTO.Controllers
         }
     }
 }
-
