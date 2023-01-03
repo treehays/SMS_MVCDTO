@@ -12,7 +12,7 @@ namespace SMS_MVCDTO.Interfaces.Services
         SuperAdminResponseModel GetByPhoneNumber(string phoneNumber);
         IEnumerable<SuperAdminResponseModel> GetByName(string name);
         IEnumerable<SuperAdminResponseModel> GetSuperAdmins();
-        UpdateSuperAdminRequestModel Update(UpdateSuperAdminRequestModel superAdmin);
+        SuperAdminResponseModel Update(SuperAdminResponseModel superAdmin);
         //SuperAdmin UpdatePassword(SuperAdmin superAdmin);
         //SuperAdmin UpdateRole(SuperAdmin superAdmin);
         //bool IsActive(SuperAdmin superAdmin);

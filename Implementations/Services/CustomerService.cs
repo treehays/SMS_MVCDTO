@@ -82,6 +82,7 @@ namespace SMS_MVCDTO.Implementations.Services
                     IsActive = customer.IsActive,
                     IsDelete = customer.IsDeleted,
                     UserRole = customer.userRole,
+                    
                 }
             };
             return customerResponseModel;

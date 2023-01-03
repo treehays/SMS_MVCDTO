@@ -6,7 +6,7 @@ namespace SMS_MVCDTO.Interfaces.Services
     public interface IProductService
     {
         CreateProductRequestModel Create(CreateProductRequestModel product);
-        UpdateProductRequestModel Update(UpdateProductRequestModel product);
+        ProductResponseModel Update(ProductResponseModel product);
         void Delete(string barCode);
         ProductResponseModel GetById(string barCode);
         IEnumerable<ProductResponseModel> GetByName(string name);
@@ -14,8 +14,5 @@ namespace SMS_MVCDTO.Interfaces.Services
         IEnumerable<ProductResponseModel> GetAll();
         IEnumerable<ProductResponseModel> GetByQuantityRemaining(int quantity);
         RestockProductRequestModel RestockProduct(RestockProductRequestModel product);
-        //Product RestockProduct(Product product);
-        //int InventoryQuantityAlert();
-        //bool IsAvailable(Product product);
     }
 }

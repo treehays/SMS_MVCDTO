@@ -1,0 +1,48 @@
+﻿@model SMS_MVCDTO.Models.DTOs.ProductCategoriesDTOs.ProductCategoryResponseModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+@{
+    if (TempData["success"] != null)
+    {
+        <h2> @TempData["success"]</h2>
+    }
+}
+@{
+    if (TempData["failed"] != null)
+    {
+        <h2> @TempData["failed"]</h2>
+    }
+}
+
+<h1>Product Category</h1>
+<hr />
+
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(x => x.Data.CategoryCode)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(x => x.Data.CategoryCode)
+    </dd>
+
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(x => x.Data.Name)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(x => x.Data.Name)
+    </dd>
+    
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(x => x.Data.Description)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(x => x.Data.Description)
+    </dd>
+</dl>
+
+<div>
+    <a asp-action="Delete" asp-route-CategoryCode="@Model.Data.CategoryCode" class="btn btn-warning">Delete</a>
+    <a asp-action="Index" class="btn btn-link">Index</a>
+</div>

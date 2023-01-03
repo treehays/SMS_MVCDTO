@@ -47,7 +47,7 @@ namespace SMS_MVCDTO.Implementations.Service
                 BankName = salesManager.BankName,
                 GuarantorName = salesManager.GuarantorName,
                 GuarantorPhoneNumber = salesManager.GuarantorPhoneNumber,
-                userRole = UserRoleType.SuperAdmin,
+                userRole = UserRoleType.SalesManager,
                 IsActive = true,
                 Created = DateTime.Now,
 
@@ -80,6 +80,8 @@ namespace SMS_MVCDTO.Implementations.Service
                 Message = "Sales Manager retrieved sucessfully.",
                 Data = new SalesManagerDTOs
                 {
+                    StaffId= salesManager.StaffId,
+                    userRole = salesManager.userRole,
                     FirstName = salesManager.FirstName,
                     LastName = salesManager.LastName,
                     Email = salesManager.Email,
@@ -93,7 +95,6 @@ namespace SMS_MVCDTO.Implementations.Service
                     BankName = salesManager.BankName,
                     GuarantorName = salesManager.GuarantorName,
                     GuarantorPhoneNumber = salesManager.GuarantorPhoneNumber,
-                    userRole = UserRoleType.SalesManager,
                 }
             };
             return salesManage;
@@ -122,7 +123,8 @@ namespace SMS_MVCDTO.Implementations.Service
                     BankName = salesManager.BankName,
                     GuarantorName = salesManager.GuarantorName,
                     GuarantorPhoneNumber = salesManager.GuarantorPhoneNumber,
-                    userRole = UserRoleType.SalesManager,
+                    StaffId = salesManager.StaffId,
+                    userRole = salesManager.userRole,
                 }
             };
             return salesManage;
@@ -154,7 +156,8 @@ namespace SMS_MVCDTO.Implementations.Service
                         BankName = salesManager.BankName,
                         GuarantorName = salesManager.GuarantorName,
                         GuarantorPhoneNumber = salesManager.GuarantorPhoneNumber,
-                        userRole = UserRoleType.SalesManager,
+                        StaffId = salesManager.StaffId,
+                        userRole = salesManager.userRole,
                     }
                 };
                 salesManagerResponseModels.Add(salesManage);
@@ -185,7 +188,8 @@ namespace SMS_MVCDTO.Implementations.Service
                     BankName = salesManager.BankName,
                     GuarantorName = salesManager.GuarantorName,
                     GuarantorPhoneNumber = salesManager.GuarantorPhoneNumber,
-                    userRole = UserRoleType.SalesManager,
+                    StaffId = salesManager.StaffId,
+                    userRole = salesManager.userRole,
                 }
             };
             return salesManage;
@@ -218,7 +222,7 @@ namespace SMS_MVCDTO.Implementations.Service
                         BankName = salesManager.BankName,
                         GuarantorName = salesManager.GuarantorName,
                         GuarantorPhoneNumber = salesManager.GuarantorPhoneNumber,
-                        userRole = UserRoleType.SalesManager,
+                        userRole = salesManager.userRole,
                     }
                 };
                 salesManagerResponseModels.Add(salesManage);
@@ -246,6 +250,7 @@ namespace SMS_MVCDTO.Implementations.Service
         {
             var user = _user.GetById(salesManager.StaffId);
             user.Password = salesManager.Password ?? user.Password;
+            user.Modified= DateTime.Now;
             _user.UpdatePassword(user);
             return salesManager;
         }

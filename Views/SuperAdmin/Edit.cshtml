@@ -1,0 +1,79 @@
+﻿@using SMS_MVCDTO.Enums
+@model SMS_MVCDTO.Models.DTOs.SuperAdminDTOs.SuperAdminResponseModel
+
+@{
+    ViewData["Title"] = "Edit";
+    if (TempData["Success"] != null)
+    {
+        <h2>@TempData["success"]</h2>
+    }
+}
+
+
+<h1>Super Admin Profile Update.</h1>
+
+<h4>Super Admin</h4>
+<hr />
+
+<div asp-controller="SuperAdmin" asp-action="Edit" style="font-size: 130%;">
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Data.StaffId" />
+
+                <div class="form-group">
+                    <label asp-for="Data.FirstName" class="control-label"></label>
+                    <input asp-for="Data.FirstName" class="form-control" />
+                    <span asp-validation-for="Data.FirstName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Data.LastName" class="control-label"></label>
+                    <input asp-for="Data.LastName" class="form-control" />
+                    <span asp-validation-for="Data.LastName" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="Data.ResidentialAddress" class="control-label"></label>
+                    <input asp-for="Data.ResidentialAddress" class="form-control" />
+                    <span asp-validation-for="Data.ResidentialAddress" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="Data.MaritalStatus" class="control-label"></label>
+                    <select asp-for="Data.MaritalStatus" asp-items="Html.GetEnumSelectList<MaritalStatusType>()"></select>
+
+                    <span asp-validation-for="Data.MaritalStatus" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Data.BankAccountNumber" class="control-label"></label>
+                    <input asp-for="Data.BankAccountNumber" class="form-control" />
+                    <span asp-validation-for="Data.BankAccountNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Data.BankName" class="control-label"></label>
+                    <input asp-for="Data.BankName" class="form-control" />
+                    <span asp-validation-for="Data.BankName" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-success" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+

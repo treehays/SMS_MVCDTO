@@ -1,5 +1,4 @@
 ﻿using SMS_MVCDTO.Enums;
-using SMS_MVCDTO.Models.Entities;
 using System.ComponentModel.DataAnnotations;
 
 namespace SMS_MVCDTO.Models.DTOs.CustomerDTOs

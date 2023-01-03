@@ -9,6 +9,7 @@ using SMS_MVCDTO.Interfaces.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+//if you dont want to it your decision
 builder.Services.AddControllersWithViews();
 var configuration = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationContext>(options => options.UseMySql(configuration, ServerVersion.AutoDetect(configuration)));
@@ -18,6 +19,8 @@ builder.Services.AddScoped<IAttendantRepository, AttendantRepository>();
 builder.Services.AddScoped<IAttendantService, AttendantService>();
 builder.Services.AddScoped<ISalesManagerService, SalesManagerService>();
 builder.Services.AddScoped<ISalesManagerRepository, SalesManagerRepository>();
+builder.Services.AddScoped<ISuperAdminRepository, SuperAdminRepository>();
+builder.Services.AddScoped<ISuperAdminService, SuperAdminService>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();

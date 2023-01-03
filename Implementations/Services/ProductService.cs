@@ -159,13 +159,13 @@ namespace SMS_MVCDTO.Implementations.Services
             return product;
         }
 
-        public UpdateProductRequestModel Update(UpdateProductRequestModel product)
+        public ProductResponseModel Update(ProductResponseModel product)
         {
-            var produc = _product.GetById(product.Barcode);
-            produc.SellingPrice = product.SellingPrice;
-            produc.Name = product.Name ?? produc.Name;
-            produc.Description = product.Description ?? produc.Description;
-            produc.ReorderLevel = product.ReorderLevel;
+            var produc = _product.GetById(product.Data.Barcode);
+            produc.SellingPrice = product.Data.SellingPrice;
+            produc.Name = product.Data.Name ?? produc.Name;
+            produc.Description = product.Data.Description ?? produc.Description;
+            produc.ReorderLevel = product.Data.ReorderLevel;
             _product.Update(produc);
             return product;
         }

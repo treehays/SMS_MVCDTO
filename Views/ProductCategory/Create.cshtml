@@ -1,0 +1,48 @@
+﻿@model SMS_MVCDTO.Models.DTOs.ProductCategoriesDTOs.CreateProductCategoryRequestModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+@{
+    if (TempData["success"] != null)
+    {
+        <h2>@TempData["success"]</h2>
+    }
+    if (TempData["failed"] != null)
+    {
+        <h2>@TempData["failed"]</h2>
+    }
+}
+
+<h1> ADD CATEGORY</h1>
+<hr />
+<div class="col-md-4">
+    @using (Html.BeginForm("Create", "ProductCategory"))
+    {
+        <div class="form-group">
+            @Html.LabelFor(x => x.Name, new {@class = "control-label"})
+            @Html.TextBoxFor(x => x.Name, new {@class = "form-control"})
+            @Html.ValidationMessageFor(x => x.Name,"", new {@class="text-danger"})
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.ConfirmName, new {@class = "control-label"})
+            @Html.TextBoxFor(x => x.ConfirmName, new {@class = "form-control"})
+            @Html.ValidationMessageFor(x => x.ConfirmName,"", new {@class="text-danger"})
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Description, new {@class = "control-label"})
+            @Html.TextBoxFor(x => x.Description, new {@class = "form-control"})
+            @Html.ValidationMessageFor(x => x.Description,"", new {@class="text-danger"})
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Add</button>
+        </div>
+    }
+</div>
+@section scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

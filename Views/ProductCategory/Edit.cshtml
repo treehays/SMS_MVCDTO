@@ -1,0 +1,86 @@
+﻿@model SMS_MVCDTO.Models.DTOs.ProductCategoriesDTOs.ProductCategoryResponseModel
+
+@{
+    ViewData["Title"] = "Edit";
+    if (TempData["Success"] != null)
+    {
+        <h2>@TempData["success"]</h2>
+    }
+}
+
+
+
+<h1>Product Category.</h1>
+
+<hr />
+@{
+
+    <div class="col-md-4">
+        @using (Html.BeginForm("Edit", "ProductCategory"))
+        {
+            <div class="form-group">
+                @Html.TextBoxFor(x => x.Data.CategoryCode,  new {@type="hidden", @class = "form-control"})
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(x => x.Data.Name, new {@class = "control-label"})
+                @Html.TextBoxFor(x => x.Data.Name, new {@class = "form-control"})
+                @Html.ValidationMessageFor(x => x.Data.Name,"", new {@class="text-danger"})
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Data.Description, new {@class = "control-label"})
+                @Html.TextBoxFor(x => x.Data.Description, new {@class = "form-control"})
+                @Html.ValidationMessageFor(x => x.Data.Description,"", new {@class="text-danger"})
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Add</button>
+            </div>
+        }
+    </div>
+
+}
+
+
+
+@{
+            /*
+
+
+<div asp-controller="ProductCategory" asp-action="Edit" style="font-size: 130%;">
+    <div class="row">
+        <div class="col-md-4">
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Data.CategoryCode" />
+
+        <div class="form-group">
+            <label asp-for="Data.Name" class="control-label"></label>
+            <input asp-for="Data.Name" class="form-control" />
+            <span asp-validation-for="Data.Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Data.Description" class="control-label"></label>
+            <input asp-for="Data.Description" class="form-control" />
+            <span asp-validation-for="Data.Description" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-success" />
+    </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+    @section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
+    */
+}

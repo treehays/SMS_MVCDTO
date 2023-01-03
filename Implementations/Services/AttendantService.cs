@@ -60,10 +60,7 @@ namespace SMS_MVCDTO.Implementations.Service
         public void Delete(string staffId)
         {
             var attendant = _attendant.GetById(staffId);
-            //if (attendant == null)
-            //{
-
-            //}
+            
             _attendant.Delete(attendant);
         }
 
@@ -93,7 +90,7 @@ namespace SMS_MVCDTO.Implementations.Service
                         PhoneNumber = item.PhoneNumber,
                         ResidentialAddress = item.ResidentialAddress,
                         StaffId = item.StaffId,
-                        userRole = item.userRole,
+                        UserRole = item.userRole,
                     }
                 };
                 attendantResponseModels.Add(attendantResponseModel);
@@ -129,6 +126,7 @@ namespace SMS_MVCDTO.Implementations.Service
                     PhoneNumber = attendant.PhoneNumber,
                     ResidentialAddress = attendant.ResidentialAddress,
                     StaffId = attendant.StaffId,
+                    UserRole = attendant.userRole,
                 }
             };
             return attendantResponseModel;
@@ -161,6 +159,7 @@ namespace SMS_MVCDTO.Implementations.Service
                     PhoneNumber = attendant.PhoneNumber,
                     ResidentialAddress = attendant.ResidentialAddress,
                     StaffId = attendant.StaffId,
+                    UserRole = attendant.userRole,
                 }
 
             };
@@ -193,6 +192,7 @@ namespace SMS_MVCDTO.Implementations.Service
                         PhoneNumber = item.PhoneNumber,
                         ResidentialAddress = item.ResidentialAddress,
                         StaffId = item.StaffId,
+                        UserRole = item.userRole,
                     }
                 };
                 attendantResponseModels.Add(attendantResponseModel);
@@ -223,25 +223,14 @@ namespace SMS_MVCDTO.Implementations.Service
                     PhoneNumber = attendant.PhoneNumber,
                     ResidentialAddress = attendant.ResidentialAddress,
                     StaffId = attendant.StaffId,
+                    UserRole = attendant.userRole,
                 }
 
             };
 
-            //var attendant = _attendant.GetByPhoneNumber(phoneNumber);
             return attendantResponseModel;
         }
 
-        //public User Login(LoginRequestModel user)
-        //{
-        //    var userD = new User
-        //    {
-        //        StaffId = user.StaffId,
-        //        Password = user.Password
-        //    };
-        //    var users = _userRepository.Login(userD);
-        //    return users;
-
-        //}
 
         public AttendantResponseModel Update(AttendantResponseModel attendant)
         {
@@ -273,21 +262,6 @@ namespace SMS_MVCDTO.Implementations.Service
             _userRepository.UpdatePassword(user);
             return attendant;
         }
-
-        //public UpdateAttendantRoleRequestModel UpdateRole(UpdateAttendantRoleRequestModel attendant)
-        //{
-
-        //    var user = _userRepository.GetById(attendant.StaffId);
-        //    if (user == null)
-        //    {
-        //        return null;
-        //    }
-        //    user.Role = attendant.UserRole;
-        //    _userRepository.UpdateRole(user);
-        //    return attendant;
-        //}
     }
-
-
 }
 

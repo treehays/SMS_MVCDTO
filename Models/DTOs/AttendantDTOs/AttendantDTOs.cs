@@ -30,6 +30,6 @@ namespace SMS_MVCDTO.Models.DTOs.AttendantDTOs
         public string GuarantorName { get; set; }
         [DisplayName("Ref. Name")]
         public string GuarantorPhoneNumber { get; set; }
-        public UserRoleType userRole { get; set; }
+        public UserRoleType UserRole { get; set; }
     }
 }

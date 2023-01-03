@@ -1,0 +1,44 @@
+﻿@model IEnumerable<SMS_MVCDTO.Models.DTOs.ProductCategoriesDTOs.ProductCategoryResponseModel>
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Index</h1>
+<p> <a asp-action="Create"> Add new category </a> || <a asp-controller="Product" asp-action="Create"> Add Product</a></p>
+
+
+
+<ol>
+    <table class="table table-info">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Data.CategoryCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Data.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Data.Description)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+        <li>@Html.DisplayFor(modelItem => item.Data.CategoryCode)</li></td>
+        <td>@Html.DisplayFor(modelItem => item.Data.Name)</td>
+        <td>@Html.DisplayFor(modelItem => item.Data.Description)</td>
+        <td>
+            <a asp-action="Edit" asp-route-CategoryCode="@item.Data.CategoryCode">Edit</a> ||
+            <a asp-action="DeletePreview" asp-route-CategoryCode="@item.Data.CategoryCode">Delete</a>
+        </td>
+        </tr>
+            }
+    </tbody>
+    </table>
+    
+
+</ol>
