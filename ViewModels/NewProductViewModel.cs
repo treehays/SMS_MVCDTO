@@ -11,5 +11,6 @@ namespace SMS_MVCDTO.ViewModels
         [DisplayName("Product Category")]
         public IList<ProductCategoryResponseModel> PCategory{ get; set; }
         public CreateProductRequestModel CreateProduct { get; set; }
+        public ProductResponseModel UpdateProduct { get; set; }
     }
 }

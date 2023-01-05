@@ -59,7 +59,7 @@
         
         <div>
             @Html.LabelFor(x => x.PCategory, new {@class = "control-label"})
-            @Html.DropDownListFor(x => x.PCategory, new SelectList(Model.PCategory,"Data.CategoryCode","Data.Name"),"Select Category" ,new {@class = "form-control"})
+            @Html.DropDownListFor(x => x.CreateProduct.Category, new SelectList(Model.PCategory,"Data.CategoryCode","Data.Name"),"Select Category" ,new {@class = "form-control"})
             @Html.ValidationMessageFor(x => x.PCategory,"", new {@class="text-danger"})
 
         </div>

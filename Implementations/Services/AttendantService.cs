@@ -130,10 +130,6 @@ namespace SMS_MVCDTO.Implementations.Service
                 }
             };
             return attendantResponseModel;
-
-
-            //var attendant = _attendant.GetByEmail(email);
-            //return attendant;
         }
 
         public AttendantResponseModel GetById(string staffId)

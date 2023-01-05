@@ -20,6 +20,8 @@ namespace SMS_MVCDTO.Implementations.Services
                 Barcode = product.Barcode,
                 Name = product.Name,
                 Category = product.Category,
+                ProductCategoryId = product.Category,
+                IsAvailable = true,
                 Description = product.Description,
                 SellingPrice = product.SellingPrice,
                 Quantity = product.Quantity,
@@ -143,11 +145,6 @@ namespace SMS_MVCDTO.Implementations.Services
 
         }
 
-        //public IEnumerable<ProductResponseModel> GetByQuantityRemaining(int quantity)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
         public RestockProductRequestModel RestockProduct(RestockProductRequestModel product)
         {
             var produc = _product.GetById(product.Barcode);
@@ -174,6 +171,17 @@ namespace SMS_MVCDTO.Implementations.Services
             _product.Update(produc);
             return product;
         }
+        
+        //public ProductResponseModel Update(ProductResponseModel product)
+        //{
+        //    var produc = _product.GetById(product.Data.Barcode);
+        //    produc.SellingPrice = product.Data.SellingPrice;
+        //    produc.Name = product.Data.Name ?? produc.Name;
+        //    produc.Description = product.Data.Description ?? produc.Description;
+        //    produc.ReorderLevel = product.Data.ReorderLevel;
+        //    _product.Update(produc);
+        //    return product;
+        //}
 
         public IEnumerable<ProductResponseModel> GetByQuantityRemaining(int quantity)
         {

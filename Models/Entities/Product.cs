@@ -11,8 +11,8 @@ namespace SMS_MVCDTO.Models.Entities
         //public IList<ProductCategory> productCategories { get; set; }
         public string ProductCategoryId { get; set; }
         public ProductCategory ProductCategory { get; set; }
-        public int TransactionId { get; set; }
-        public Transaction Transaction { get; set; }
+        //public int TransactionId { get; set; }
+        //public Transaction Transaction { get; set; }
         [Required]
         [Key]
         public string Barcode { get; set; }

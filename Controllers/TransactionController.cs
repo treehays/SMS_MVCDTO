@@ -1,17 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SMS_MVCDTO.Interfaces.Services;
-using SMS_MVCDTO.Models.DTOs.ProductDTOs;
 using SMS_MVCDTO.Models.DTOs.TransactionDTOs;
-using SMS_MVCDTO.Models.Entities;
+using SMS_MVCDTO.ViewModels;
 
 namespace SMS_MVCDTO.Controllers
 {
     public class TransactionController : Controller
     {
         private readonly ITransactionService _transaction;
-        public TransactionController(ITransactionService transaction)
+        private readonly IProductService _product;
+        public TransactionController(ITransactionService transaction, IProductService product)
         {
             _transaction = transaction;
+            _product = product;
         }
 
         public IActionResult Index()
@@ -21,9 +22,16 @@ namespace SMS_MVCDTO.Controllers
         }
 
 
-        public IActionResult Create()
+        public IActionResult Create(string barCode)
         {
-            return View();
+            var product = _product.GetById(barCode);
+            
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return View(product);
         }
 
         [HttpPost]

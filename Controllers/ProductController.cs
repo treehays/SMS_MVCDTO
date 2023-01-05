@@ -35,7 +35,7 @@ namespace SMS_MVCDTO.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(NewProductViewModel product)
         {
-           
+
             if (product != null)
             {
                 var existByName = _product.GetById(product.CreateProduct.Barcode);
@@ -56,24 +56,53 @@ namespace SMS_MVCDTO.Controllers
             return View();
         }
 
+
         public IActionResult Edit(string barCode)
         {
+
             var product = _product.GetById(barCode);
             if (product == null)
             {
                 return NotFound();
             }
-            return View(product);
+            var categories = _category.GetAll().ToList();
+            var viewModel = new NewProductViewModel
+            {
+                UpdateProduct = product,
+                PCategory = categories,
+            };
+            return View(viewModel);
+
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(ProductResponseModel product)
+        public IActionResult Edit(NewProductViewModel product)
         {
-            _product.Update(product);
-            TempData["success"] = "product updated Successfully.";
-            return RedirectToAction(nameof(Index));
+            if (product != null)
+            {
+                _product.Update(product.UpdateProduct);
+                TempData["success"] = "product updated Successfully.";
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                TempData["failed"] = "failed.";
+                return View(product);
+            }
+            return View();
+
+
+
+
         }
+
+        //public IActionResult Edit(ProductResponseModel product)
+        //{
+        //    _product.Update(product);
+        //    TempData["success"] = "product updated Successfully.";
+        //    return RedirectToAction(nameof(Index));
+        //}
 
         public IActionResult DeletePreview(string barCode)
         {

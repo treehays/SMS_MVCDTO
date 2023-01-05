@@ -214,18 +214,9 @@ namespace SMSMVCDTO.Migrations
                     b.Property<double>("SellingPrice")
                         .HasColumnType("double");
 
-                    b.Property<int>("TransactionId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TransactionReferenceNo")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)");
-
                     b.HasKey("Barcode");
 
                     b.HasIndex("ProductCategoryId");
-
-                    b.HasIndex("TransactionReferenceNo");
 
                     b.ToTable("Products");
                 });
@@ -581,15 +572,7 @@ namespace SMSMVCDTO.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SMS_MVCDTO.Models.Entities.Transaction", "Transaction")
-                        .WithMany("Products")
-                        .HasForeignKey("TransactionReferenceNo")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("ProductCategory");
-
-                    b.Navigation("Transaction");
                 });
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.SalesManager", b =>
@@ -669,11 +652,6 @@ namespace SMSMVCDTO.Migrations
                 });
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.ProductCategory", b =>
-                {
-                    b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Transaction", b =>
                 {
                     b.Navigation("Products");
                 });
