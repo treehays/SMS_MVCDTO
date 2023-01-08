@@ -48,12 +48,10 @@ namespace SMS_MVCDTO.Controllers
                 TempData["failed"] = "already exist.";
                 return View();
             }
-            else
-            {
+       
                 TempData["failed"] = "failed.";
                 return View(product);
-            }
-            return View();
+   
         }
 
 

@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\SMS_MVCDTO.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Abdul\\source\\repos\\treehays\\SMS_MVCDTO\\wwwroot\\css\\loginstyle.css",
+      "PackagePath": "staticwebassets\\css\\loginstyle.css"
+    },
+    {
       "Id": "C:\\Users\\Abdul\\source\\repos\\treehays\\SMS_MVCDTO\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -19,6 +23,14 @@
     {
       "Id": "C:\\Users\\Abdul\\source\\repos\\treehays\\SMS_MVCDTO\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\Abdul\\source\\repos\\treehays\\SMS_MVCDTO\\wwwroot\\lib\\bootstrap\\dist\\css\\all.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\all.css"
+    },
+    {
+      "Id": "C:\\Users\\Abdul\\source\\repos\\treehays\\SMS_MVCDTO\\wwwroot\\lib\\bootstrap\\dist\\css\\all.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\all.min.css"
     },
     {
       "Id": "C:\\Users\\Abdul\\source\\repos\\treehays\\SMS_MVCDTO\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",

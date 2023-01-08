@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "wanVrYPn3mNjCQVRnClTmdpai5ss4Vmy9tdHJMQdEdU=",
+  "Hash": "dFkxqmXuMho9cLaJ3syYGzATL2BOQqy4Mxjb9QpMsFk=",
   "Source": "SMS_MVCDTO",
   "BasePath": "_content/SMS_MVCDTO",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Abdul\\source\\repos\\treehays\\SMS_MVCDTO\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\SMS_MVCDTO.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\Abdul\\source\\repos\\treehays\\SMS_MVCDTO\\wwwroot\\css\\loginstyle.css",
+      "SourceId": "SMS_MVCDTO",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Abdul\\source\\repos\\treehays\\SMS_MVCDTO\\wwwroot\\",
+      "BasePath": "_content/SMS_MVCDTO",
+      "RelativePath": "css/loginstyle.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\loginstyle.css"
     },
     {
       "Identity": "C:\\Users\\Abdul\\source\\repos\\treehays\\SMS_MVCDTO\\wwwroot\\css\\site.css",
@@ -100,6 +117,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "C:\\Users\\Abdul\\source\\repos\\treehays\\SMS_MVCDTO\\wwwroot\\lib\\bootstrap\\dist\\css\\all.css",
+      "SourceId": "SMS_MVCDTO",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Abdul\\source\\repos\\treehays\\SMS_MVCDTO\\wwwroot\\",
+      "BasePath": "_content/SMS_MVCDTO",
+      "RelativePath": "lib/bootstrap/dist/css/all.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\all.css"
+    },
+    {
+      "Identity": "C:\\Users\\Abdul\\source\\repos\\treehays\\SMS_MVCDTO\\wwwroot\\lib\\bootstrap\\dist\\css\\all.min.css",
+      "SourceId": "SMS_MVCDTO",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Abdul\\source\\repos\\treehays\\SMS_MVCDTO\\wwwroot\\",
+      "BasePath": "_content/SMS_MVCDTO",
+      "RelativePath": "lib/bootstrap/dist/css/all.min.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\all.min.css"
     },
     {
       "Identity": "C:\\Users\\Abdul\\source\\repos\\treehays\\SMS_MVCDTO\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",

@@ -5,6 +5,7 @@ namespace SMS_MVCDTO.ViewModels
 {
     public class ProductTransactionViewModel
     {
+        public double TempTotal { get; set; }
         public ProductResponseModel Product{ get; set; }
         public CreateTransactionRequestModel Transaction{ get; set; }
     }

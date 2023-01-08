@@ -1,0 +1,9 @@
+        Enter 1 to Manage Attendant.
+        Enter 2 to Manage Products.
+        Enter 3 to Manage Inventory.
+        Enter 4 to View or Download sales Records.
+        Enter 5 to Update Profile.
+        Enter 6 to Update Password.
+        Enter 7 to check Wallet Balance.
+        Enter 8 to Logout.
+        Enter 0 to Close.

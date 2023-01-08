@@ -8,21 +8,24 @@ namespace SMS_MVCDTO.Implementations.Services
     public class TransactionService : ITransactionService
     {
         private readonly ITransactionRepository _transaction;
-        public TransactionService(ITransactionRepository transaction)
+        private readonly IProductRepository _product;
+        public TransactionService(ITransactionRepository transaction, IProductRepository product)
         {
             _transaction = transaction;
+            _product = product;
         }
 
         public CreateTransactionRequestModel Create(CreateTransactionRequestModel transaction)
         {
+            var sellingPrice = _product.GetById(transaction.BarCode);
             var transactio = new Transaction
             {
-                ReferenceNo = transaction.ReferenceNo,
+                ReferenceNo =Guid.NewGuid().ToString().Remove(10).Replace("-",""),
                 CustomerId = transaction.CustomerId,
                 AttendantId = transaction.AttendantId,
                 ProductId = transaction.BarCode,
                 Quantity = transaction.Quantity,
-                TotalAmount = transaction.TotalAmount,
+                TotalAmount = sellingPrice.SellingPrice * transaction.Quantity,
                 Created = DateTime.Now,
 
             };

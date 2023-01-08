@@ -38,11 +38,7 @@ namespace SMS_MVCDTO.Controllers
                 TempData["failed"] = "Email already exist.";
                 return View();
             }
-            else
-            {
-                TempData["failed"] = "Registration failed because of incomplete details.";
-                return View();
-            }
+            TempData["failed"] = "Registration failed because of incomplete details.";
             return View();
         }
 
@@ -101,7 +97,7 @@ namespace SMS_MVCDTO.Controllers
                 }
                 return NotFound();
             }
-                return NotFound();
+            return NotFound();
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models;
+using SMS_MVCDTO.Models.DTOs.UserDTOs;
 using System.Diagnostics;
 
 namespace SMS_MVCDTO.Controllers
@@ -7,15 +9,40 @@ namespace SMS_MVCDTO.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IUserService _user;
+        public HomeController(IUserService user, ILogger<HomeController> logger)
         {
+            _user = user;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
             return View();
+        }
+        public IActionResult Login ()
+        {
+
+            return View();
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Login (LoginRequestModel loginDetails)
+        {
+            if (loginDetails == null)
+            {
+                return NotFound();
+            }
+
+            var user = _user.Login(loginDetails);
+            if (user == null)
+            {
+                return BadRequest();
+            }
+            TempData["success"] = "Login successful";
+            return RedirectToAction(nameof(Login), "Attendant");
         }
 
         public IActionResult Privacy()

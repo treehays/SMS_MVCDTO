@@ -1,4 +1,6 @@
-﻿@model SMS_MVCDTO.Models.DTOs.ProductDTOs.ProductResponseModel
+﻿@*@model SMS_MVCDTO.Models.DTOs.ProductDTOs.ProductResponseModel*@
+@model SMS_MVCDTO.ViewModels.ProductTransactionViewModel
+
 
 @{/*
     ViewData["Title"] = "Edit";
@@ -23,45 +25,45 @@
     {
 
         <div class="form-group">
-            @Html.HiddenFor(x => x.UpdateProduct.Data.Barcode, new {@class = "form-control"})
+            @Html.HiddenFor(x => x.Product.Data.Barcode, new {@class = "form-control"})
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(x => x.UpdateProduct.Data.Name, new {@class = "control-label"})
-            @Html.TextBoxFor(x => x.UpdateProduct.Data.Name, new {@class = "form-control"})
-            @Html.ValidationMessageFor(x => x.UpdateProduct.Data.Name,"", new {@class="text-danger"})
+            @Html.LabelFor(x => x.Product.Data.Name, new {@class = "control-label"})
+            @Html.TextBoxFor(x => x.Product.Data.Name, new {@class = "form-control", @readonly="readonly"})
+            @Html.ValidationMessageFor(x => x.Product.Data.Name,"", new {@class="text-danger"})
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(x => x.UpdateProduct.Data.Description, new {@class = "control-label"})
-            @Html.TextBoxFor(x => x.UpdateProduct.Data.Description, new {@class = "form-control"})
-            @Html.ValidationMessageFor(x => x.UpdateProduct.Data.Description,"", new {@class="text-danger"})
+            @Html.LabelFor(x => x.Product.Data.SellingPrice, new {@class = "control-label"})
+            @Html.TextBoxFor(x => x.Product.Data.SellingPrice, new {@class = "form-control", @readonly = "readonly"} )
+            @Html.ValidationMessageFor(x => x.Product.Data.SellingPrice,"", new {@class="text-danger"})
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(x => x.UpdateProduct.Data.SellingPrice, new {@class = "control-label"})
-            @Html.TextBoxFor(x => x.UpdateProduct.Data.SellingPrice, new {@class = "form-control"})
-            @Html.ValidationMessageFor(x => x.UpdateProduct.Data.SellingPrice,"", new {@class="text-danger"})
+            @Html.LabelFor(x => x.Transaction.Quantity, new {@class = "control-label"})
+            @Html.TextBoxFor(x => x.Transaction.Quantity, new {@class = "form-control"})
+            @Html.ValidationMessageFor(x => x.Transaction.Quantity,"", new {@class="text-danger"})
         </div>
-
+        
         <div class="form-group">
-            @Html.LabelFor(x => x.UpdateProduct.Data.Quantity, new {@class = "control-label"})
-            @Html.TextBoxFor(x => x.UpdateProduct.Data.Quantity, new {@class = "form-control"})
-            @Html.ValidationMessageFor(x => x.UpdateProduct.Data.Quantity,"", new {@class="text-danger"})
+            @Html.LabelFor(x => x.Transaction.CustomerId, new {@class = "control-label"})
+            @Html.TextBoxFor(x => x.Transaction.CustomerId, new {@class = "form-control"})
+            @Html.ValidationMessageFor(x => x.Transaction.CustomerId,"", new {@class="text-danger"})
         </div>
-
+        
         <div class="form-group">
-            @Html.LabelFor(x => x.UpdateProduct.Data.ReorderLevel, new {@class = "control-label"})
-            @Html.TextBoxFor(x => x.UpdateProduct.Data.ReorderLevel, new {@class = "form-control"})
-            @Html.ValidationMessageFor(x => x.UpdateProduct.Data.ReorderLevel,"", new {@class="text-danger"})
+            @Html.LabelFor(x => x.Transaction.AttendantId, new {@class = "control-label"})
+            @Html.TextBoxFor(x => x.Transaction.AttendantId, new {@class = "form-control"})
+            @Html.ValidationMessageFor(x => x.Transaction.AttendantId,"", new {@class="text-danger"})
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(x => x.TempTotal, new {@class = "control-label"})
+            @Html.TextBoxFor(x => x.TempTotal, new {@class = "form-control"})
+            @Html.ValidationMessageFor(x => x.TempTotal,"", new {@class="text-danger"})
         </div>
 
-        <div>
-            @Html.LabelFor(x => x.PCategory, new {@class = "control-label"})
-            @Html.DropDownListFor(x => x.UpdateProduct.Data.Category, new SelectList(Model.PCategory,"Data.CategoryCode","Data.Name"),"Select Category" ,new {@class = "form-control"})
-            @Html.ValidationMessageFor(x => x.UpdateProduct.Data.Category,"", new {@class="text-danger"})
-
-        </div>
 
         <div class="form-group">
             <button type="submit" class="btn btn-success">Add</button>

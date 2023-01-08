@@ -25,19 +25,28 @@ namespace SMS_MVCDTO.Controllers
         public IActionResult Create(string barCode)
         {
             var product = _product.GetById(barCode);
-            
+
             if (product == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            var productTransact = new ProductTransactionViewModel
+            {
+                Product = product,
+            };
+
+            return View(productTransact);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(CreateTransactionRequestModel transaction)
+        public IActionResult Create(ProductTransactionViewModel productTransaction)
         {
+
+            var transaction = productTransaction.Transaction;
+
+            transaction.BarCode = productTransaction.Product.Data.Barcode;
             if (transaction != null)
             {
                 _transaction.Create(transaction);
@@ -73,7 +82,7 @@ namespace SMS_MVCDTO.Controllers
             return NotFound();
         }
 
-        public IActionResult Details (string referenceNo)
+        public IActionResult Details(string referenceNo)
         {
             if (referenceNo != null)
             {

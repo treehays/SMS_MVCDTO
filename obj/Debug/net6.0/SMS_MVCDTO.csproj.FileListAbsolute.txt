@@ -558,15 +558,28 @@ C:\Users\Treehays\Documents\CLH\New folder\SMS_MVCDTO\obj\Debug\net6.0\refint\SM
 C:\Users\Treehays\Documents\CLH\New folder\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.pdb
 C:\Users\Treehays\Documents\CLH\New folder\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.genruntimeconfig.cache
 C:\Users\Treehays\Documents\CLH\New folder\SMS_MVCDTO\obj\Debug\net6.0\ref\SMS_MVCDTO.dll
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\SMS_MVCDTO.exe
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\SMS_MVCDTO.dll
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\MySqlConnector.dll
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\System.Text.Json.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\appsettings.json
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\global.json
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\SMS_MVCDTO.staticwebassets.runtime.json
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\SMS_MVCDTO.exe
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\SMS_MVCDTO.deps.json
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\SMS_MVCDTO.runtimeconfig.json
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\SMS_MVCDTO.dll
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\SMS_MVCDTO.pdb
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Humanizer.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\MessagePack.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\MessagePack.Annotations.dll
@@ -591,21 +604,9 @@ C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.CodeA
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.DiaSymReader.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.DotNet.Scaffolding.Shared.dll
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.Identity.Client.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
@@ -623,7 +624,6 @@ C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.Visua
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Mono.TextTemplating.dll
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\MySqlConnector.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\NuGet.Common.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\NuGet.Configuration.dll
@@ -634,7 +634,6 @@ C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\NuGet.Packaging
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\NuGet.ProjectModel.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\NuGet.Protocol.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\NuGet.Versioning.dll
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\System.CodeDom.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\System.Composition.AttributedModel.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\System.Composition.Convention.dll
@@ -648,8 +647,6 @@ C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\System.Reflecti
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\System.Runtime.Caching.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\System.Security.Permissions.dll
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\System.Text.Encodings.Web.dll
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\System.Text.Json.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\System.Windows.Extensions.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\cs\Microsoft.CodeAnalysis.resources.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\de\Microsoft.CodeAnalysis.resources.dll
@@ -842,5 +839,3 @@ C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.cspr
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\refint\SMS_MVCDTO.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.pdb
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.genruntimeconfig.cache
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\ref\SMS_MVCDTO.dll
