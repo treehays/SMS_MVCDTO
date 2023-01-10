@@ -18,11 +18,16 @@ namespace SMS_MVCDTO.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.ShowElement1 = false;
+            return View();
+        }
+        public IActionResult Signup ()
+        {
+
             return View();
         }
         public IActionResult Login ()
         {
-
             return View();
         }
 
@@ -41,8 +46,9 @@ namespace SMS_MVCDTO.Controllers
             {
                 return BadRequest();
             }
+            // ViewBag.ShowElement1 = true;
             TempData["success"] = "Login successful";
-            return RedirectToAction(nameof(Login), "Attendant");
+            return RedirectToAction(nameof(Index), "Attendant");
         }
 
         public IActionResult Privacy()

@@ -1,4 +1,5 @@
-﻿using SMS_MVCDTO.Interfaces.Repositories;
+﻿using System.Reflection.Metadata;
+using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.DTOs.UserDTOs;
 using SMS_MVCDTO.Models.Entities;
@@ -50,16 +51,32 @@ namespace SMS_MVCDTO.Implementations.Services
         }
 
 
-        public LoginRequestModel Login(LoginRequestModel user)
+        public UserResponseModel Login(LoginRequestModel login)
         {
 
             var userr = new User
             {
-                StaffId = user.StaffId,
-                Password = user.Password,
+                StaffId = login.StaffId,
+                Password = login.Password,
             };
-            _user.Login(userr);
-            return user;
+           
+            var user = _user.Login(userr);
+            if (user != null)
+            {
+                var userResponse = new UserResponseModel
+                {
+                    Message = "SUccesfull",
+                    Status = true,
+                    Data = new UserDTOs
+                    {
+                        StaffId = user.StaffId,
+                        Password = user.Password,
+                        Role = user.Role
+                    }
+                };
+                return userResponse;
+            }
+            return null;
         }
 
         public UpdateUserPasswordRequestModel UpdatePassword(UpdateUserPasswordRequestModel user)

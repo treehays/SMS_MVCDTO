@@ -12,7 +12,7 @@ body {
     background-color: #080710;
 }
 
-.background {
+.background1 {
     width: 400px;
     height: 520px;
     position: absolute;
@@ -21,21 +21,21 @@ body {
     top: 50%;
 }
 
-.background .shape {
+.background1 .shape1 {
     height: 200px;
     width: 200px;
     position: absolute;
     border-radius: 50%;
 }
 
-.shape:first-child {
+.shape1:first-child {
     background: linear-gradient(#1845ad,
             #23a2f6);
     left: -80px;
     top: -80px;
 }
 
-.shape:last-child {
+.shape1:last-child {
     background: linear-gradient(to right,
             #ff512f,
             #f09819);
@@ -43,7 +43,7 @@ body {
     bottom: -80px;
 }
 
-form {
+.form1 {
     height: 420px;
     width: 400px;
     background-color: rgba(255, 255, 255, 0.13);
@@ -58,7 +58,7 @@ form {
     padding: 50px 35px;
 }
 
-form * {
+.form1 * {
     font-family: 'Poppins', sans-serif;
     color: #ffffff;
     letter-spacing: 0.5px;
@@ -66,7 +66,7 @@ form * {
     border: none;
 }
 
-form h3 {
+.form1 h3 {
     font-size: 32px;
     font-weight: 500;
     line-height: 42px;

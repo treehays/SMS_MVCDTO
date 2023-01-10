@@ -15,6 +15,7 @@ namespace SMS_MVCDTO.Controllers
         public IActionResult Index()
         {
             var attendants = _attendant.GetAttendants();
+            // ViewBag.ShowElement1 = true;
             return View(attendants);
         }
 

@@ -1,3 +1,35 @@
+.bodycontains {
+  position: relative;
+  width: 87%;
+  float: right;
+}
+
+.navigatebody {
+
+  position: relative;
+  width: 13%;
+  margin-top: 5px;
+  float: left;
+}
+
+.loginform {
+  position: absolute;
+  top: 50px;
+  width: 430px;
+  height: 520px;
+  /* position: absolute; */
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  background-color: #b3afaf;
+}
+
+.formcont {
+  position: absolute;
+  z-index: 1;
+  background-color: aqua;
+}
+
 html {
   font-size: 14px;
 }
@@ -7,6 +39,8 @@ html {
     font-size: 16px;
   }
 }
+
+
 
 html {
   position: relative;

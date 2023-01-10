@@ -6,7 +6,7 @@ namespace SMS_MVCDTO.Interfaces.Services
     public interface IUserService
     {
         CreateUserRequestModel Create(CreateUserRequestModel user);
-        LoginRequestModel Login(LoginRequestModel user);
+        UserResponseModel Login(LoginRequestModel user);
         void Delete(string staffId);
         UserResponseModel GetById(string staffId);
         UpdateUserPasswordRequestModel UpdatePassword(UpdateUserPasswordRequestModel user);
