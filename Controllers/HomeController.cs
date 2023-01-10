@@ -21,12 +21,12 @@ namespace SMS_MVCDTO.Controllers
             ViewBag.ShowElement1 = false;
             return View();
         }
-        public IActionResult Signup ()
+        public IActionResult Signup()
         {
 
             return View();
         }
-        public IActionResult Login ()
+        public IActionResult Login()
         {
             return View();
         }
@@ -34,21 +34,54 @@ namespace SMS_MVCDTO.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Login (LoginRequestModel loginDetails)
+        public IActionResult Login(LoginRequestModel loginDetails)
         {
             if (loginDetails == null)
             {
                 return NotFound();
             }
 
+
             var user = _user.Login(loginDetails);
             if (user == null)
             {
                 return BadRequest();
             }
-            // ViewBag.ShowElement1 = true;
-            TempData["success"] = "Login successful";
-            return RedirectToAction(nameof(Index), "Attendant");
+            else if (user.Data.Role == Enums.UserRoleType.Attendant)
+            {
+                // ViewBag.ShowElement1 = true;
+                TempData["success"] = "Login successful";
+                return RedirectToAction(nameof(Index), "Attendant");
+
+            }
+            else if (user.Data.Role == Enums.UserRoleType.SuperAdmin)
+            {
+                // ViewBag.ShowElement1 = true;
+                TempData["success"] = "Login successful";
+                return RedirectToAction(nameof(Index), "SuperAdmin");
+
+            }
+            else if (user.Data.Role == Enums.UserRoleType.Customer)
+            {
+                // ViewBag.ShowElement1 = true;
+                TempData["success"] = "Login successful";
+                return RedirectToAction(nameof(Index), "Customer");
+
+            }
+            else if (user.Data.Role == Enums.UserRoleType.SalesManager)
+            {
+                // ViewBag.ShowElement1 = true;
+                TempData["success"] = "Login successful";
+                return RedirectToAction(nameof(Index), "SalesManager");
+
+            }
+            else
+            {
+                // ViewBag.ShowElement1 = true;
+                TempData["success"] = "Your Account has not been activated.";
+                return RedirectToAction(nameof(Index), "Home");
+
+            }
         }
 
         public IActionResult Privacy()
