@@ -14,11 +14,13 @@
 	  <None Remove="all\SampleDetails.cshtml.temp" />
 	  <None Remove="all\SampleEdit.cshtml.temp" />
 	  <None Remove="all\SampleIndex.cshtml.temp" />
+	  <None Remove="Context\HideDivAttribute.cs.txt" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Compile Include="all\Copy.cs.temp" />
 	  <Compile Include="all\SampleAttendantsController.cs.temp" />
+	  <Compile Include="Context\HideDivAttribute.cs.txt" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -30,6 +32,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.9" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.12" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.0">

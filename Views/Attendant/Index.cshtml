@@ -19,7 +19,16 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+@*@if (!ViewBag.HideDiv)
+{
+    <div class="element1">I will be shown on certain views</div>
+}*@
 
+@*@if (HttpContext.Items["HideText"] == null || (bool)HttpContext.Items["HideText"] == false)
+{
+    <p>This text will be hidden on certain views</p>
+}
+*@
 <table class="table table-info">
     <thead>
         <tr>

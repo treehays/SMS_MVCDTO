@@ -6,7 +6,7 @@ namespace SMS_MVCDTO.Models.DTOs.CustomerDTOs
 {
     public class CreateCustomerRequestModel
     {
-        [Required]
+        [Required(ErrorMessage ="Name sholu valid")]
         public string FirstName { get; set; }
         public string LastName { get; set; }
         [Required(ErrorMessage = "Enter Valid password")]

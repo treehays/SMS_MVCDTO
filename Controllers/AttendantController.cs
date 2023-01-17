@@ -4,6 +4,7 @@ using SMS_MVCDTO.Models.DTOs.AttendantDTOs;
 
 namespace SMS_MVCDTO.Controllers
 {
+    //[HideDiv]
     public class AttendantController : Controller
     {
         private readonly IAttendantService _attendant;
@@ -15,7 +16,7 @@ namespace SMS_MVCDTO.Controllers
         public IActionResult Index()
         {
             var attendants = _attendant.GetAttendants();
-            // ViewBag.ShowElement1 = true;
+            //ViewBag.ShowElement1 = true;
             return View(attendants);
         }
 

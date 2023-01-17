@@ -1,0 +1,15 @@
+using System.Web.Mvc;
+
+namespace SMS_MVCDTO.Context
+{
+    public class HideDivAttribute : FilterAttribute, IResultFilter
+    {
+        public void OnResultExecuting(ResultExecutingContext filterContext)
+        {
+            filterContext.Controller.ViewBag.HideDiv = true;
+        }
+        public void OnResultExecuted(ResultExecutedContext filterContext)
+        {
+        }
+    }
+}

@@ -14,6 +14,7 @@ namespace SMS_MVCDTO.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.ShowElement1 = true;
             var saleManager = _saleManager.GetSalesManagers();
             return View(saleManager);
         }
@@ -22,7 +23,7 @@ namespace SMS_MVCDTO.Controllers
         {
             return View();
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(CreateSalesManagerRequestModel createSaleManager)
@@ -60,7 +61,7 @@ namespace SMS_MVCDTO.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(SalesManagerResponseModel updateSaleManager)
         {
-            
+
             _saleManager.Update(updateSaleManager);
             TempData["success"] = "Profile Updated Successfully.";
             return RedirectToAction(nameof(Index));

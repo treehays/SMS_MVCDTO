@@ -18,7 +18,7 @@ namespace SMS_MVCDTO.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.ShowElement1 = false;
+            ViewBag.ShowElement1 = true;
             return View();
         }
         public IActionResult Signup()
