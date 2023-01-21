@@ -20,6 +20,12 @@ namespace SMS_MVCDTO.Controllers
             return View(superAdmin);
         }
 
+        public IActionResult Dashboard ()
+        {
+            var superAdmin = _superAdmin.GetSuperAdmins();
+            return View(superAdmin);
+        }
+        //[Route("Example")]
         public IActionResult Create()
         {
             return View();
