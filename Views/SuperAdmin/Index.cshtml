@@ -110,9 +110,13 @@
 <div class="dropdown">
     <button class="dropbtn"> Manage Attendant</button>
     <div class="dropdown-menu">
-        <a asp-controller="Attendant" asp-action="Create">Add new attendant</a> <br />
-        <a asp-controller="Attendant" asp-action="">View all attendant</a><br />
-        <a asp-controller="Attendant" asp-action="">Search attendant</a><br />
+        <a asp-controller="Attendant" asp-action="Dashboard"> Dashboard </a>
+        <br />
+        <a asp-controller="Attendant" asp-action="Create">Add new attendant</a> 
+        <br />
+        <a asp-controller="Attendant" asp-action="Index">View all attendant</a>
+        <br />
+        @*<a asp-controller="Attendant" asp-action="">Search attendant</a><br />*@
         @*<a asp-controller="" asp-action="">Name</a><br />*@
         @*<a href="#">Delete Attendant</a>*@
     </div>
@@ -121,19 +125,25 @@
 <div class="dropdown">
     <button class="dropbtn"> Manage Product</button>
     <div class="dropdown-menu">
-        <a asp-controller="" asp-action="">Add new product</a>
+        <a asp-controller="Product" asp-action="Dashboard"> Dashboard</a>
         <br />
-        <a asp-controller="" asp-action="">View all products</a><br />
-        <a asp-controller="" asp-action="">Search Product</a><br />
+        <a asp-controller="Product" asp-action="Create">Add new product</a>
+        <br />
+        <a asp-controller="Product" asp-action="Index">View all products</a>
+        <br />
+        <a asp-controller="Product" asp-action="Index">Search Product</a>
+        <br />
         @*<a asp-controller="" asp-action="">Name</a><br />*@
         @*<a href="#">Delete Attendant</a>*@
     </div>
 </div>
 
-@*<div class="dropdown">
+@*
+    <div class="dropdown">
     <button class="dropbtn"> Manage Transactions</button>
-    <div class="dropdown-menu">*@
-<a asp-controller="" asp-action="">Manage Transactions</a>
+    <div class="dropdown-menu">
+        *@
+<a asp-controller="Transaction" asp-action="Index">Manage Transactions</a>
 <br />
 @*        <a asp-controller="" asp-action=""></a><br />
         <a asp-controller="" asp-action="">Name</a><br />
@@ -145,7 +155,7 @@
     <button class="dropbtn"> Manage Inventory</button>
     <div class="dropdown-menu">
 *@
-<a asp-controller="" asp-action="">Manage Inventory</a>
+<a asp-controller="Product" asp-action="Dashboard">Manage Inventory</a>
 <br />
 
 

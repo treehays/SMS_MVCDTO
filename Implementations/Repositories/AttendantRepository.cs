@@ -50,7 +50,18 @@ namespace SMS_MVCDTO.Implementations.Repositories
         public IEnumerable<Attendant> GetByName(string name)
         {
             //var customer = _context.Customers.Include(m => m.Transactions).Where(x => name.All(y => (x.FirstName + x.LastName).Contains(y))).ToList();
-            var attendants = _context.Attendants.Where(w => w.IsActive == true && w.IsDeleted == false && name.All(x => (w.LastName + w.FirstName).Contains(x)));
+            var attendants = _context.Attendants.AsEnumerable().Where(w => w.IsActive == true && w.IsDeleted == false && name.All(x => w.FirstName.Contains(x)));
+            //var attendants = _context.Attendants.Where(w => w.IsActive && !w.IsDeleted == false && w.FirstName.Intersect(name).Any());
+            //var result = myDbContext.Attendants.Where(x => searchLetters.Any(y => x.FirstName.Contains(y)));
+            //var attendants = _context.Attendants.Where(w => name.Any(x => w.FirstName.Contains(x)));
+            //myDbContext.Attendants.AsEnumerable().Where(x => searchLetters.Any(y => x.FirstName.Contains(y)));
+            ///var attendants = _context.Attendants.AsEnumerable().Where(w => name.Any(x => (w.FirstName + w.LastName).Contains(x)));
+            //var attendants1 = _context.Attendants.Where(w => w.IsActive == true && w.IsDeleted == false).Where(m => name.All(x => m.FirstName.Contains(x)));
+            //var result = myDbContext.Attendants.Where(x => x.FirstName.Intersect(searchLetters).Any());
+
+            //var result = myDbContext.Attendants.Where(x => searchLetters.Any(y => x.FirstName.Contains(y)));
+            //var matches = dataSource.Where(w => "string to saerch".All(l => w.Contains(l)));
+
             return attendants;
         }
 

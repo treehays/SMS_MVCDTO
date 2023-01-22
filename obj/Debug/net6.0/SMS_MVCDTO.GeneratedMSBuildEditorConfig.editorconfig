@@ -20,6 +20,10 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXR0ZW5kYW50XENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Abdul/source/repos/treehays/SMS_MVCDTO/Views/Attendant/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXR0ZW5kYW50XERhc2hib2FyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Abdul/source/repos/treehays/SMS_MVCDTO/Views/Attendant/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXR0ZW5kYW50XERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -34,6 +38,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Abdul/source/repos/treehays/SMS_MVCDTO/Views/Attendant/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXR0ZW5kYW50XEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Abdul/source/repos/treehays/SMS_MVCDTO/Views/Attendant/GetByEmail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXR0ZW5kYW50XEdldEJ5RW1haWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Abdul/source/repos/treehays/SMS_MVCDTO/Views/Attendant/GetByName.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXR0ZW5kYW50XEdldEJ5TmFtZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Abdul/source/repos/treehays/SMS_MVCDTO/Views/Attendant/GetByStaffId.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXR0ZW5kYW50XEdldEJ5U3RhZmZJZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Abdul/source/repos/treehays/SMS_MVCDTO/Views/Attendant/Index.cshtml]
@@ -162,6 +178,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Abdul/source/repos/treehays/SMS_MVCDTO/Views/SuperAdmin/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwZXJBZG1pblxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Abdul/source/repos/treehays/SMS_MVCDTO/Views/SuperAdmin/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwZXJBZG1pblxEYXNoYm9hcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Abdul/source/repos/treehays/SMS_MVCDTO/Views/SuperAdmin/Delete.cshtml]

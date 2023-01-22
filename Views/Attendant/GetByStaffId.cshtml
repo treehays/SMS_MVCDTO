@@ -1,0 +1,271 @@
+﻿@model SMS_MVCDTO.Models.DTOs.AttendantDTOs.AttendantResponseModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Attendant</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Data.UserRole)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Data.Password)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Data.FirstName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Data.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Data.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Data.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Data.StaffId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Data.StaffId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Data.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Data.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Data.PhoneNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Data.PhoneNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Data.HomeAddress)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Data.HomeAddress)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Data.ResidentialAddress)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Data.ResidentialAddress)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Data.DateOfBirth)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Data.DateOfBirth)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Data.Gender)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Data.Gender)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Data.MaritalStatus)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Data.MaritalStatus)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Data.UserRole)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Data.UserRole)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Data.BankAccountNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Data.BankAccountNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Data.BankName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Data.BankName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Data.GuarantorName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Data.GuarantorName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Data.GuarantorPhoneNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Data.GuarantorPhoneNumber)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-staffId="@Model.Data.StaffId" class="btn btn-success">Edit</a> |
+    <a asp-action="Index" class="btn btn-warning">Back to List</a>
+</div>
+
+
+
+
+
+
+@{
+            /*
+         * @*
+For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@*@model SMS_MVCDTO.Models.Entities.Attendant*@
+@model SMS_MVCDTO.Models.DTOs.AttendantDTOs.AttendantResponseModel
+
+@{
+ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+<h4>Attendant</h4>
+<hr />
+<dl class="row">
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Data.userRole)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Data.Password)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Data.FirstName)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Data.FirstName)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Data.LastName)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Data.LastName)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Data.StaffId)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Data.StaffId)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Data.Email)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Data.Email)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Data.PhoneNumber)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Data.PhoneNumber)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Data.HomeAddress)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Data.HomeAddress)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Data.ResidentialAddress)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Data.ResidentialAddress)
+</dd>
+@*<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Data.IsActive)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Data.IsActive)
+</dd>*@
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Data.DateOfBirth)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Data.DateOfBirth)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Data.Gender)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Data.Gender)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Data.MaritalStatus)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Data.MaritalStatus)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Data.userRole)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Data.userRole)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Data.BankAccountNumber)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Data.BankAccountNumber)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Data.BankName)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Data.BankName)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Data.GuarantorName)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Data.GuarantorName)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Data.GuarantorPhoneNumber)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Data.GuarantorPhoneNumber)
+</dd>
+@*<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Data.IsDeleted)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Data.IsDeleted)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Data.Created)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Data.Created)
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Data.Modified)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Data.Modified)
+</dd>*@</dl>
+</div>
+<div>
+<a asp-action="Edit" asp-route-staffId="@Model.Data.StaffId" class="btn btn-success">Edit</a> |
+<a asp-action="Index" class="btn btn-warning">Back to List</a>
+ </div>
+    *
+    */
+}

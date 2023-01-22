@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.DTOs.AttendantDTOs;
+using SMS_MVCDTO.Models.Entities;
 
 namespace SMS_MVCDTO.Controllers
 {
@@ -14,6 +15,13 @@ namespace SMS_MVCDTO.Controllers
         }
 
         public IActionResult Index()
+        {
+            var attendants = _attendant.GetAttendants();
+            //ViewBag.ShowElement1 = true;
+            return View(attendants);
+        }
+
+         public IActionResult Dashboard()
         {
             var attendants = _attendant.GetAttendants();
             //ViewBag.ShowElement1 = true;
@@ -111,6 +119,28 @@ namespace SMS_MVCDTO.Controllers
 
             return NotFound();
         }
+
+        //get  single  by stff id
+        public IActionResult GetByStaffId(string staffId)
+        {
+            var user = _attendant.GetById(staffId);
+            return View(user);
+        }
+
+        //get a single admin by email
+        public IActionResult GetByEmail(string email)
+        {
+            var user = _attendant.GetByEmail(email);
+            return View(user);
+        }
+        
+        //get a single admin by email
+        public IActionResult GetByName (string name)
+        {
+            var user = _attendant.GetByName(name);
+            return View(user);
+        }
+
     }
 }
 

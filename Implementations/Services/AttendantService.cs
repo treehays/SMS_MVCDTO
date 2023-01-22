@@ -165,6 +165,10 @@ namespace SMS_MVCDTO.Implementations.Service
         public IEnumerable<AttendantResponseModel> GetByName(string name)
         {
             var attendants = _attendant.GetByName(name);
+            if (attendants == null)
+            {
+                return null;
+            }
             var attendantResponseModels = new List<AttendantResponseModel>();
             foreach (var item in attendants)
             {
