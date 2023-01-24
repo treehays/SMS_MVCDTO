@@ -14,7 +14,14 @@ namespace SMS_MVCDTO.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.ShowElement1 = true;
+            //ViewBag.ShowElement1 = true;
+            var saleManager = _saleManager.GetSalesManagers();
+            return View(saleManager);
+        }
+
+        public IActionResult Dashboard()
+        {
+            //ViewBag.ShowElement1 = true;
             var saleManager = _saleManager.GetSalesManagers();
             return View(saleManager);
         }

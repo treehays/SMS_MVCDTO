@@ -558,14 +558,6 @@ C:\Users\Treehays\Documents\CLH\New folder\SMS_MVCDTO\obj\Debug\net6.0\refint\SM
 C:\Users\Treehays\Documents\CLH\New folder\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.pdb
 C:\Users\Treehays\Documents\CLH\New folder\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.genruntimeconfig.cache
 C:\Users\Treehays\Documents\CLH\New folder\SMS_MVCDTO\obj\Debug\net6.0\ref\SMS_MVCDTO.dll
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.csproj.AssemblyReference.cache
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.AssemblyInfoInputs.cache
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.AssemblyInfo.cs
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.csproj.CoreCompileInputs.cache
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.RazorAssemblyInfo.cache
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.RazorAssemblyInfo.cs
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\appsettings.json
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\global.json
@@ -828,6 +820,14 @@ C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\runtimes\win\li
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.csproj.AssemblyReference.cache
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.AssemblyInfoInputs.cache
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.AssemblyInfo.cs
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.csproj.CoreCompileInputs.cache
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.RazorAssemblyInfo.cache
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.RazorAssemblyInfo.cs
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\staticwebassets\msbuild.SMS_MVCDTO.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\staticwebassets\msbuild.build.SMS_MVCDTO.props
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.SMS_MVCDTO.props

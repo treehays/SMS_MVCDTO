@@ -28,45 +28,33 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public IEnumerable<Product> GetAll()
         {
-            var products = _context.Products.Where(s => s.IsAvailable == true && s.IsDeleted == false);
+            var products = _context.Products.Where(s => s.IsAvailable && !s.IsDeleted);
             return products;
         }
 
         public IEnumerable<Product> GetByCategory(string productCategory)
         {
-            var products = _context.Products.Where(s => s.IsAvailable == true && s.IsDeleted == false);
+            var products = _context.Products.Where(s => s.IsAvailable && !s.IsDeleted);
             return products;
         }
 
         public Product GetById(string barCode)
         {
-            var product = _context.Products.SingleOrDefault(a => a.IsDeleted == false && a.IsAvailable == true && a.Barcode == barCode);
+            var product = _context.Products.SingleOrDefault(a => !a.IsDeleted && a.IsAvailable && a.Barcode == barCode);
             return product;
         }
 
         public IEnumerable<Product> GetByName(string name)
         {
-            var products = _context.Products.Where(a => a.IsAvailable == true && a.IsDeleted == false && name.All(b => a.Name.Contains(b)));
+            var products = _context.Products.AsEnumerable().Where(a => a.IsAvailable && !a.IsDeleted && name.All(b => a.Name.Contains(b)));
             return products;
         }
 
         public IEnumerable<Product> GetByQuantityRemaining(int quantity)
         {
-            var products = _context.Products.Where(a => a.IsAvailable == true && a.IsDeleted == false && a.Quantity <= quantity);
+            var products = _context.Products.Where(a => a.IsAvailable && !a.IsDeleted && a.Quantity <= quantity);
             return products;
         }
-
-        //public int InventoryQuantityAlert()
-        //{
-        //    var product
-        //}
-
-        //public bool IsAvailable(Product product)
-        //{
-        //    _context.Products.Update(product);
-        //    _context.SaveChanges();
-        //    return product;
-        //}
 
         public Product RestockProduct(Product product)
         {
@@ -82,11 +70,5 @@ namespace SMS_MVCDTO.Implementations.Repositories
             return product;
         }
 
-        //public Product UpdateProductQuantity(Product product)
-        //{
-        //    _context.Products.Update(product);
-        //    _context.SaveChanges();
-        //    return product;
-        //}
     }
 }

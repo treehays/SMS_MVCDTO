@@ -1,9 +1,9 @@
-﻿@using SMS_MVCDTO.Models.DTOs.AttendantDTOs;
-@model IEnumerable<AttendantResponseModel>
+﻿@model IEnumerable<SMS_MVCDTO.Models.DTOs.AttendantDTOs.AttendantResponseModel>
 
 @{
     ViewData["Title"] = "Dashboard";
 }
+
 @{
     if (TempData["Success"] != null)
     {
@@ -15,28 +15,29 @@
     }
 }
 
+
 <h1>Index</h1>
 
 <div class="container1">
 
     <div class="box box2">
-        <p> Search by ID</p>
+        @*<p> Search by ID</p>*@
         <form asp-action="GetByStaffId">
-            <input type="search" placeholder="Enter Staff Id" aria-label="Search" name="staffId">
+            <input type="search" placeholder="Search by ID.." aria-label="Search" name="staffId">
             <button type="submit">Search</button>
         </form>
     </div>
     <div class="box box3">
-        <p> Search by Email</p>
+        @*<p> Search by Email</p>*@
         <form asp-controller="Attendant" asp-action="GetByEmail">
-            <input type="text" placeholder="Enter staff email.." name="email">
+            <input type="text" placeholder="Search by Email.." name="email">
             <button type="submit">Search</button>
         </form>
     </div>
     <div class="box box4">
-        <p> Search by Name</p>
+        @*<p> Search by Name</p>*@
         <form asp-action="GetByName">
-            <input type="text" placeholder="Enter staff name.." name="name">
+            <input type="text" placeholder="Search by Name.." name="name">
             <button type="submit">Search</button>
         </form>
     </div>
@@ -107,14 +108,12 @@
 
 
                 <td>
-                    <a asp-action="Edit" asp-route-staffId="@item.Data.StaffId">Edit</a> |
-                    <a asp-action="Details" asp-route-staffId="@item.Data.StaffId">Details</a> |
-                    <a asp-action="DeletePreview" asp-route-staffId="@item.Data.StaffId">Delete</a>
+
+                    <a asp-action="Details" asp-route-staffId="@item.Data.StaffId">Details</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
-
 
 

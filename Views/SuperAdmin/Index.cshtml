@@ -1,75 +1,9 @@
-﻿@{
-            /*
-            *
-    <!DOCTYPE html>
-    <html lang="en">
-
-    <head>
-    <style>
-    .dropbtn {
-    height: 40px;
-    width: 170px;
-    background-color: #04AA6D;
-    color: white;
-    padding: 1px;
-    font-size: 15px;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    border-radius: 22%;
-    }
-
-    .dropdown {
-    position: relative;
-    display: inline-block;
-    }
-
-    .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #1dbb64ce;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 5, 0.2);
-    z-index: 1;
-    border: 2px solid #3ead7f45;
-    border-radius: 22%;
-    }
-
-        .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-            display: block;
-    }
-
-    .dropdown-content a:hover {
-    background-color: #ddd;
-    }
-
-    .dropdown:hover .dropdown-content {
-            display: block;
-    }
-
-    .dropdown:hover .dropbtn {
-    background-color: #3e8e41;
-            }
-            </style>
-    </head>
-
-    <body>
-
-    </body>
-
-    */
-}
-
-
-
-@model IEnumerable<SMS_MVCDTO.Models.DTOs.SuperAdminDTOs.SuperAdminResponseModel>
+﻿@model IEnumerable<SMS_MVCDTO.Models.DTOs.SuperAdminDTOs.SuperAdminResponseModel>
 @{
     ViewData["Title"] = "Sales Manager Dashboard";
 }
 
 @{
-    ViewData["Title"] = "Create";
     if (TempData["Success"] != null)
     {
         <h2>@TempData["success"]</h2>
@@ -83,30 +17,6 @@
 <h1>Super Admin Dashboard</h1>
 
 
-@*
-<ul class="nav nav-pills flex-column">
-    @*  <li class="nav-item"><a class="nav-link">Manage Sales Manager</a></li>
-    <li class="nav-item"><a class="nav-link">Manage Attendant</a></li>
-    <li class="nav-item"><a class="nav-link">Manage Customer</a></li>
-    <li class="nav-item"><a class="nav-link">Manage Products</a></li>
-    <li class="nav-item"><a class="nav-link">Manage Products Categories</a></li>
-    <li class="nav-item"><a class="nav-link">Manage Transaction</a></li>
-    <li class="nav-item"><a class="nav-link">Manage Inventory</a></li>*@
-
-
-@*
-    <select>
-    <option value="option1">Option 1</option>
-    <option value="option2">Option 2</option>
-    <option value="option3">Option 3</option>
-    </select>
-
-
-
-</ul>
-<select>
-</select>*@
-
 <div class="dropdown">
     <button class="dropbtn"> Manage Attendant</button>
     <div class="dropdown-menu">
@@ -116,9 +26,7 @@
         <br />
         <a asp-controller="Attendant" asp-action="Index">View all attendant</a>
         <br />
-        @*<a asp-controller="Attendant" asp-action="">Search attendant</a><br />*@
-        @*<a asp-controller="" asp-action="">Name</a><br />*@
-        @*<a href="#">Delete Attendant</a>*@
+
     </div>
 </div>
 
@@ -129,189 +37,13 @@
         <br />
         <a asp-controller="Product" asp-action="Create">Add new product</a>
         <br />
-        <a asp-controller="Product" asp-action="Index">View all products</a>
+        <a asp-controller="Product" asp-action="Index">Manage all products</a>
         <br />
-        <a asp-controller="Product" asp-action="Index">Search Product</a>
-        <br />
-        @*<a asp-controller="" asp-action="">Name</a><br />*@
-        @*<a href="#">Delete Attendant</a>*@
     </div>
 </div>
-
-@*
-    <div class="dropdown">
-    <button class="dropbtn"> Manage Transactions</button>
-    <div class="dropdown-menu">
-        *@
 <a asp-controller="Transaction" asp-action="Index">Manage Transactions</a>
 <br />
-@*        <a asp-controller="" asp-action=""></a><br />
-        <a asp-controller="" asp-action="">Name</a><br />
-        <a asp-controller="" asp-action="">Name</a><br />*@
-@*<a href="#">Delete Attendant</a>*@
-@* </div>
-</div>
-<div class="dropdown">
-    <button class="dropbtn"> Manage Inventory</button>
-    <div class="dropdown-menu">
-*@
 <a asp-controller="Product" asp-action="Dashboard">Manage Inventory</a>
 <br />
-
-
-
-
-
-
-
-
-
-
-
-@*
-        <a asp-controller="" asp-action="">Name</a><br />
-        <a asp-controller="" asp-action="">Name</a><br />
-        <a asp-controller="" asp-action="">Name</a><br />
-
-        <a href="#">Delete Attendant</a>
-    </div>
-</div>
-
-<div class="dropdown">
-    <button class="dropbtn">Dropdown</button>
-    <div class="dropdown-menu">
-        <a href="#">Link 1</a>
-        <a href="#">Link 2</a>
-        <a href="#">Link 3</a>
-    </div>
-</div>
-        *@
-
-
-
-@{
-    /*
-    *
-    <p>
-    <a asp-action="Create">Create New</a>
-        </p>
-
-        <table class="table table-info">
-                <thead>
-                <tr>
-
-                <th>
-                @Html.DisplayNameFor(model => model.Data.FirstName)
-                </th>
-                <th>
-                @Html.DisplayNameFor(model => model.Data.LastName)
-                </th>
-                <th>
-                @Html.DisplayNameFor(model => model.Data.StaffId)
-                </th>
-                <th>
-                @Html.DisplayNameFor(model => model.Data.Email)
-                </th>
-                <th>
-                @Html.DisplayNameFor(model => model.Data.PhoneNumber)
-                </th>
-                <th>
-                @Html.DisplayNameFor(model => model.Data.HomeAddress)
-                </th>
-                <th>
-                @Html.DisplayNameFor(model => model.Data.ResidentialAddress)
-                </th>
-
-                <th>
-                @Html.DisplayNameFor(model => model.Data.DateOfBirth)
-                </th>
-                <th>
-                @Html.DisplayNameFor(model => model.Data.Gender)
-                </th>
-                <th>
-                @Html.DisplayNameFor(model => model.Data.MaritalStatus)
-                </th>
-                <th>
-                @Html.DisplayNameFor(model => model.Data.userRole)
-                </th>
-                <th>
-                @Html.DisplayNameFor(model => model.Data.BankAccountNumber)
-                </th>
-                <th>
-                @Html.DisplayNameFor(model => model.Data.BankName)
-                </th>
-                <th>
-                @Html.DisplayNameFor(model => model.Data.GuarantorName)
-                </th>
-                <th>
-                @Html.DisplayNameFor(model => model.Data.GuarantorPhoneNumber)
-        </th>
-
-        <th></th>
-        </tr>
-        </thead>
-        <tbody>
-
-        @foreach (var item in Model)
-                    {
-                    <tr>
-
-                    <td>
-                    @Html.DisplayFor(modelItem => item.Data.FirstName)
-                    </td>
-                    <td>
-                    @Html.DisplayFor(modelItem => item.Data.LastName)
-                    </td>
-                    <td>
-                    @Html.DisplayFor(modelItem => item.Data.StaffId)
-                    </td>
-                    <td>
-                    @Html.DisplayFor(modelItem => item.Data.Email)
-                    </td>
-                    <td>
-                    @Html.DisplayFor(modelItem => item.Data.PhoneNumber)
-                    </td>
-                    <td>
-                    @Html.DisplayFor(modelItem => item.Data.HomeAddress)
-                    </td>
-                    <td>
-                    @Html.DisplayFor(modelItem => item.Data.ResidentialAddress)
-                    </td>
-
-                    <td>
-                    @Html.DisplayFor(modelItem => item.Data.DateOfBirth)
-                    </td>
-                    <td>
-                    @Html.DisplayFor(modelItem => item.Data.Gender)
-                    </td>
-                    <td>
-                    @Html.DisplayFor(modelItem => item.Data.MaritalStatus)
-                    </td>
-                    <td>
-                    @Html.DisplayFor(modelItem => item.Data.userRole)
-                    </td>
-                    <td>
-                    @Html.DisplayFor(modelItem => item.Data.BankAccountNumber)
-                    </td>
-                    <td>
-                    @Html.DisplayFor(modelItem => item.Data.BankName)
-                    </td>
-                    <td>
-                    @Html.DisplayFor(modelItem => item.Data.GuarantorName)
-                    </td>
-                    <td>
-                    @Html.DisplayFor(modelItem => item.Data.GuarantorPhoneNumber)
-                    </td>
-
-                    <td>
-                    <a asp-action="Edit" asp-route-staffId="@item.Data.StaffId">Edit</a> |
-                    <a asp-action="Details" asp-route-staffId="@item.Data.StaffId">Details</a> |
-                    <a asp-action="DeletePreview" asp-route-staffId="@item.Data.StaffId">Delete</a>
-    </td>
-    </tr>
-    }
-    </tbody>
-    </table>
-
-    */
-}
+<br />
+<br />

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SMS_MVCDTO.Interfaces.Services;
-using SMS_MVCDTO.Models.DTOs.ProductDTOs;
 using SMS_MVCDTO.ViewModels;
 
 namespace SMS_MVCDTO.Controllers
@@ -16,6 +15,12 @@ namespace SMS_MVCDTO.Controllers
         }
 
         public IActionResult Index()
+        {
+            var product = _product.GetAll();
+            return View(product);
+        }
+
+        public IActionResult Dashboard()
         {
             var product = _product.GetAll();
             return View(product);
@@ -48,12 +53,11 @@ namespace SMS_MVCDTO.Controllers
                 TempData["failed"] = "already exist.";
                 return View();
             }
-       
-                TempData["failed"] = "failed.";
-                return View(product);
-   
-        }
 
+            TempData["failed"] = "failed.";
+            return View(product);
+
+        }
 
         public IActionResult Edit(string barCode)
         {
@@ -83,16 +87,8 @@ namespace SMS_MVCDTO.Controllers
                 TempData["success"] = "product updated Successfully.";
                 return RedirectToAction(nameof(Index));
             }
-            else
-            {
-                TempData["failed"] = "failed.";
-                return View(product);
-            }
-            return View();
-
-
-
-
+            TempData["failed"] = "failed.";
+            return View(product);
         }
 
         //public IActionResult Edit(ProductResponseModel product)
@@ -132,6 +128,34 @@ namespace SMS_MVCDTO.Controllers
             if (barCode != null)
             {
                 var product = _product.GetById(barCode);
+                if (product != null)
+                {
+                    return View(product);
+                }
+                return NotFound();
+            }
+            return NotFound();
+        }
+
+        public IActionResult GetById(string barCode)
+        {
+            if (barCode != null)
+            {
+                var product = _product.GetById(barCode);
+                if (product != null)
+                {
+                    return View(product);
+                }
+                return NotFound();
+            }
+            return NotFound();
+        }
+
+        public IActionResult GetByName(string name)
+        {
+            if (name != null)
+            {
+                var product = _product.GetByName(name);
                 if (product != null)
                 {
                     return View(product);

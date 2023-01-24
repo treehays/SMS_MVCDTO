@@ -9,7 +9,8 @@ namespace SMS_MVCDTO.ViewModels
     {
         //public int Id { get; set; }
         [DisplayName("Product Category")]
-        public IList<ProductCategoryResponseModel> PCategory{ get; set; }
+        public IList<ProductCategoryResponseModel> PCategory { get; set; }
+        //[DisplayName("")]
         public CreateProductRequestModel CreateProduct { get; set; }
         public ProductResponseModel UpdateProduct { get; set; }
     }

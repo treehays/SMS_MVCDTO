@@ -1,11 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.DTOs.AttendantDTOs;
-using SMS_MVCDTO.Models.Entities;
-
 namespace SMS_MVCDTO.Controllers
 {
-    //[HideDiv]
     public class AttendantController : Controller
     {
         private readonly IAttendantService _attendant;
@@ -21,7 +18,7 @@ namespace SMS_MVCDTO.Controllers
             return View(attendants);
         }
 
-         public IActionResult Dashboard()
+        public IActionResult Dashboard()
         {
             var attendants = _attendant.GetAttendants();
             //ViewBag.ShowElement1 = true;
@@ -58,12 +55,16 @@ namespace SMS_MVCDTO.Controllers
 
         public IActionResult Edit(string staffId)
         {
-            var attendant = _attendant.GetById(staffId);
-            if (attendant == null)
+            if (staffId != null)
             {
+                var attendant = _attendant.GetById(staffId);
+                if (attendant != null)
+                {
+                    return View(attendant);
+                }
                 return NotFound();
             }
-            return View(attendant);
+            return NotFound();
         }
 
         [HttpPost]
@@ -123,22 +124,54 @@ namespace SMS_MVCDTO.Controllers
         //get  single  by stff id
         public IActionResult GetByStaffId(string staffId)
         {
-            var user = _attendant.GetById(staffId);
-            return View(user);
+            if (staffId != null)
+            {
+                var user = _attendant.GetById(staffId);
+
+                if (user != null)
+                {
+                    return View(user);
+                }
+                return NotFound();
+            }
+
+            return NotFound();
+            //var user = _attendant.GetById(staffId);
+            //return View(user);
         }
 
         //get a single admin by email
         public IActionResult GetByEmail(string email)
         {
-            var user = _attendant.GetByEmail(email);
-            return View(user);
+
+            if (email != null)
+            {
+                var user = _attendant.GetByEmail(email);
+                if (user != null)
+                {
+                    return View(user);
+                }
+                return NotFound();
+            }
+            return NotFound();
+
+            //var user = _attendant.GetByEmail(email);
+            //return View(user);
         }
-        
+
         //get a single admin by email
-        public IActionResult GetByName (string name)
+        public IActionResult GetByName(string name)
         {
-            var user = _attendant.GetByName(name);
-            return View(user);
+            if (name != null)
+            {
+                var user = _attendant.GetByName(name);
+                if (user != null)
+                {
+                    return View(user);
+                }
+                return NotFound();
+            }
+            return NotFound();
         }
 
     }
