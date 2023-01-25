@@ -15,7 +15,23 @@ namespace SMS_MVCDTO.Controllers
             _product = product;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int id)
+        {
+            if (id != 0)
+            {
+                var transactions = _transaction.GetAll();
+                return View(transactions);
+            }
+            else
+            {
+                var transactions = _transaction.GetAllOrderByDate();
+                return View(transactions);
+            }
+
+        }
+
+
+        public IActionResult Dashboard()
         {
             var transactions = _transaction.GetAll();
             return View(transactions);
@@ -87,6 +103,34 @@ namespace SMS_MVCDTO.Controllers
             if (referenceNo != null)
             {
                 var transaction = _transaction.GetById(referenceNo);
+                if (transaction != null)
+                {
+                    return View(transaction);
+                }
+                return NotFound();
+            }
+            return NotFound();
+        }
+
+        public IActionResult GetByName(string name)
+        {
+            if (name != null)
+            {
+                var transaction = _transaction.GetTransactionByCustomerName(name);
+                if (transaction != null)
+                {
+                    return View(transaction);
+                }
+                return NotFound();
+            }
+            return NotFound();
+        }
+
+        public IActionResult GetByAttendant(string staffId)
+        {
+            if (staffId != null)
+            {
+                var transaction = _transaction.GetByStaffId(staffId);
                 if (transaction != null)
                 {
                     return View(transaction);

@@ -224,6 +224,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNhY3Rpb25cQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Abdul/source/repos/treehays/SMS_MVCDTO/Views/Transaction/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNhY3Rpb25cRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Abdul/source/repos/treehays/SMS_MVCDTO/Views/Transaction/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNhY3Rpb25cRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -234,6 +238,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Abdul/source/repos/treehays/SMS_MVCDTO/Views/Transaction/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNhY3Rpb25cRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Abdul/source/repos/treehays/SMS_MVCDTO/Views/Transaction/GetByAttendant.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNhY3Rpb25cR2V0QnlBdHRlbmRhbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Abdul/source/repos/treehays/SMS_MVCDTO/Views/Transaction/GetByName.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNhY3Rpb25cR2V0QnlOYW1lLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Abdul/source/repos/treehays/SMS_MVCDTO/Views/Transaction/Index.cshtml]

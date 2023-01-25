@@ -1,0 +1,124 @@
+﻿@model IEnumerable<SMS_MVCDTO.Models.DTOs.TransactionDTOs.TransactionResponseModel>
+
+@{
+
+    ViewData["Title"] = "Transaction";
+    if (TempData["success"] != null)
+    {
+        <h2>@TempData["success"]</h2>
+    }
+
+    if (TempData["failed"] != null)
+    {
+        <h2>@TempData["failed"]</h2>
+    }
+
+}
+
+<h1>Transactions</h1>
+<div class="container1">
+
+    <div class="box box2">
+        <form asp-action="Details">
+            <input type="search" placeholder="Search by Ref. No.." aria-label="Search" name="referenceNo">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <div class="box box3">
+        <form asp-action="GetByName">
+            <input type="text" placeholder="Search by Customer.." name="name">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <div class="box box4">
+        <form asp-action="GetByAttendant">
+            <input type="text" placeholder="Search by Attendant Id.." name="staffId">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+</div>
+
+<div class="container">
+
+    <div class="box box1"> side bar </div>
+</div>
+
+<p>
+    <a asp-action="Create">Sort by Customer</a>
+</p>
+
+<table class="table table-info col-md-4">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Data.ReferenceNo)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Data.Created)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Data.CustomerName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Data.AttendantId)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Data.BarCode)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Data.Quantity)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Data.TotalAmount)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data.ReferenceNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data.Created)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data.CustomerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data.AttendantId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data.BarCode)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data.Quantity)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data.TotalAmount)
+                </td>
+
+
+                <td>
+                    <a asp-action="Details" asp-route-referenceNo="@item.Data.ReferenceNo">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

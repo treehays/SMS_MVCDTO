@@ -9,6 +9,7 @@
         public string BarCode { get; set; }
         public int Quantity { get; set; }
         public double TotalAmount { get; set; }
+        public string CustomerName { get; set; }
 
     }
 }

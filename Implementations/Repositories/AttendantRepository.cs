@@ -36,14 +36,14 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public Attendant GetByEmail(string email)
         {
-            var attendant = _context.Attendants.SingleOrDefault(w => w.Email == email);
+            var attendant = _context.Attendants.SingleOrDefault(w => w.Email.ToLower() == email.ToLower());
             return attendant;
         }
 
         //To be fixed later
         public Attendant GetById(string staffId)
         {
-            var attendant = _context.Attendants.SingleOrDefault(x => x.StaffId == staffId);
+            var attendant = _context.Attendants.SingleOrDefault(x => x.StaffId.ToLower() == staffId.ToLower());
             if (attendant == null)
             {
                 return null;
@@ -53,8 +53,8 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public IEnumerable<Attendant> GetByName(string name)
         {
-           
-            var attendants = _context.Attendants.AsEnumerable().Where(w => w.IsActive && !w.IsDeleted && name.Any(x => w.FirstName.Contains(x)));
+
+            var attendants = _context.Attendants.AsEnumerable().Where(w => w.IsActive && !w.IsDeleted && name.Any(x => (w.FirstName + w.LastName).ToLower().Contains(x.ToString().ToLower())));
             return attendants;
         }
 

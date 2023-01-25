@@ -8,6 +8,7 @@ namespace SMS_MVCDTO.Interfaces.Services
         //Transaction Update(Transaction transaction);
         void Delete(string refNumber);
         IEnumerable<TransactionResponseModel> GetAll();
+        IEnumerable<TransactionResponseModel> GetAllOrderByDate();
         IEnumerable<TransactionResponseModel> GetByDate(DateTime dateTime);
         TransactionResponseModel GetById(string refrenceNo);
         IEnumerable<TransactionResponseModel> GetByStaffId(string staffId);

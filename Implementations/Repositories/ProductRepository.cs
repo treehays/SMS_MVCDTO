@@ -40,13 +40,13 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public Product GetById(string barCode)
         {
-            var product = _context.Products.SingleOrDefault(a => !a.IsDeleted && a.IsAvailable && a.Barcode == barCode);
+            var product = _context.Products.SingleOrDefault(a => !a.IsDeleted && a.IsAvailable && a.Barcode.ToLower() == barCode.ToLower());
             return product;
         }
 
         public IEnumerable<Product> GetByName(string name)
         {
-            var products = _context.Products.AsEnumerable().Where(a => a.IsAvailable && !a.IsDeleted && name.All(b => a.Name.Contains(b)));
+            var products = _context.Products.AsEnumerable().Where(a => a.IsAvailable && !a.IsDeleted && name.All(b => a.Name.ToLower().Contains(b.ToString().ToLower())));
             return products;
         }
 

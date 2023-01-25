@@ -1,5 +1,5 @@
 ﻿@using SMS_MVCDTO.Enums
-@model SMS_MVCDTO.Models.DTOs.SalesManagerDTOs.CreateSalesManagerRequestModel
+@model SMS_MVCDTO.Models.DTOs.AttendantDTOs.CreateAttendantRequestModel
 
 @{
 	ViewData["Title"] = "Create";
@@ -108,8 +108,8 @@
 
 				<div class="form-group">
 					<label asp-for="Password" class="control-label"></label>
-					<input asp-for="Password" class="form-control" />
-					<span asp-validation-for="Password" class="text-danger"></span>
+					<input asp-for="Password" type="password" class="form-control" />
+					<span asp-validation-for="Password"  class="text-danger"></span>
 				</div>
 				@Html.AntiForgeryToken()
 				<div class="form-group">
@@ -122,6 +122,11 @@
 	<div>
 		<a asp-action="Index" class="btn btn-warning">Back to List</a>
 	</div>
+
+	<br />
+	<br />
+	<br />
+	<br />
 }
 @section Scripts {
 @{

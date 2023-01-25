@@ -441,6 +441,10 @@ namespace SMSMVCDTO.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
+                    b.Property<string>("CustomerName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 

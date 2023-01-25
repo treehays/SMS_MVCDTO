@@ -1,6 +1,7 @@
 ﻿using SMS_MVCDTO.Context;
 using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Models.Entities;
+using System.Xml.Linq;
 
 namespace SMS_MVCDTO.Implementations.Repositories
 {
@@ -36,6 +37,12 @@ namespace SMS_MVCDTO.Implementations.Repositories
             return transactions;
         }
 
+        public IEnumerable<Transaction> GetAllOrderByDate()
+        {
+            var transactions = _context.Transactions.Where(a => a.IsDeleted == false).OrderBy(b => b.Created);
+            return transactions;
+        }
+
         public IEnumerable<Transaction> GetByDate(DateTime dateTime)
         {
             var transactions = _context.Transactions.Where(a => a.IsDeleted == false && a.Created.Day == dateTime.Day);
@@ -50,13 +57,13 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public IEnumerable<Transaction> GetByStaffId(string staffId)
         {
-            var transactions = _context.Transactions.Where(a => a.CustomerId == staffId);
+            var transactions = _context.Transactions.Where(a => a.AttendantId == staffId);
             return transactions;
         }
 
         public IEnumerable<Transaction> GetTransactionByCustomerName(string customerName)
         {
-            var transactions = _context.Transactions.Where(a => customerName.All(b => (a.Customer.FirstName + a.Customer.LastName).Contains(b)));
+            var transactions = _context.Transactions.AsEnumerable().Where(a => !a.IsDeleted && customerName.All(b => a.CustomerName.Contains(b)));
             return transactions;
         }
 
