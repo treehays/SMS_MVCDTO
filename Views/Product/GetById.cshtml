@@ -5,57 +5,160 @@
     ViewData["Title"] = "Details";
 }
 
+@{
+    if (TempData["Success"] != null)
+    {
+        <h2>@TempData["success"]</h2>
+    }
+    if (TempData["failed"] != null)
+    {
+        <h2>@TempData["failed"]</h2>
+    }
+}
 
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Data.Barcode)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Data.Barcode)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Data.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Data.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Data.Category)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Data.Category)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Data.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Data.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Data.Quantity)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Data.Quantity)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Data.SellingPrice)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Data.SellingPrice)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Data.ReorderLevel)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Data.ReorderLevel)
-        </dd>
-    </dl>
+
+
+<h1>Manage Product</h1>
+
+<div class="container1">
+    <div class="box box0">
+        <form>
+        </form>
+    </div>
+    <div class="box box2">
+        <form asp-controller="Product" asp-action="GetByName">
+            <input type="text" placeholder="Search by Name.." name="name">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <div class="box box3">
+        <form asp-action="GetById">
+            <input type="search" placeholder="Search by barcode.." aria-label="Search" name="barCode">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+
 </div>
+
+
+
+<div class="container">
+
+    <div class="box box1"> side bar </div>
+</div>
+
+
+<table class="table table-info col-md-4">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Data.Barcode)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Data.Name)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Data.Quantity)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Data.SellingPrice)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Data.Barcode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Data.Name)
+                </td>
+                <td>
+                @Html.DisplayFor(modelItem => Model.Data.Quantity)
+                </td>
+
+                <td>
+                @Html.DisplayFor(modelItem => Model.Data.SellingPrice)
+                </td>
+
+                <td>
+
+                <a asp-action="Details" asp-route-Barcode="@Model.Data.Barcode">Details</a> |
+                <a asp-controller="Transaction" asp-action="Create" asp-route-Barcode="@Model.Data.Barcode">Buy</a>
+                </td>
+            </tr>
+        
+    </tbody>
+</table>
+
+
+
+
+
+@{
+            /*
+    <div>
+        <h4>Product</h4>
+    <hr />
+    *
+    <dl class="row">
+    <dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Data.Barcode)
+    </dt>
+    <dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Data.Barcode)
+    </dd>
+    <dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Data.Name)
+    </dt>
+    <dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Data.Name)
+    </dd>
+    <dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Data.Category)
+    </dt>
+    <dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Data.Category)
+    </dd>
+    <dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Data.Description)
+    </dt>
+    <dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Data.Description)
+    </dd>
+    <dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Data.Quantity)
+    </dt>
+    <dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Data.Quantity)
+    </dd>
+    <dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Data.SellingPrice)
+    </dt>
+    <dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Data.SellingPrice)
+    </dd>
+    <dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Data.ReorderLevel)
+    </dt>
+    <dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Data.ReorderLevel)
+    </dd>
+    </dl>
+
+    </div>
 
 <div>
     <a asp-action="Edit" asp-route-Barcode="@Model.Data.Barcode" class="btn btn-success">Edit</a>
     <a asp-action="Index" class="btn btn-warning">Back to List</a>
-</div>
+    </div>
+    */
+}

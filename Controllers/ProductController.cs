@@ -91,12 +91,6 @@ namespace SMS_MVCDTO.Controllers
             return View(product);
         }
 
-        //public IActionResult Edit(ProductResponseModel product)
-        //{
-        //    _product.Update(product);
-        //    TempData["success"] = "product updated Successfully.";
-        //    return RedirectToAction(nameof(Index));
-        //}
 
         public IActionResult DeletePreview(string barCode)
         {

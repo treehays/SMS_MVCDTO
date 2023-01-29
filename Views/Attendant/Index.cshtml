@@ -14,24 +14,114 @@
     }
 }
 
-<h1>Index</h1>
+<h1>Attendant Dashboard</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-@*@if (!ViewBag.HideDiv)
-{
-    <div class="element1">I will be shown on certain views</div>
-}*@
+<div class="container1">
+    <div class="box box2">
+        <form asp-controller="Product" asp-action="GetById">
+            <input type="search" placeholder="Product barCode.." aria-label="Search" name="barCode">
+            <button type="submit">Search</button>
+        </form>
+    </div>
 
-@*@if (HttpContext.Items["HideText"] == null || (bool)HttpContext.Items["HideText"] == false)
-{
-    <p>This text will be hidden on certain views</p>
-}
-*@
+    <div class="box box2">
+        <form asp-controller="Product" asp-action="GetByName">
+            <input type="text" placeholder="Product Name.." name="name">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <div class="box box2">
+        <form asp-controller="" asp-action="GetByAttendant">
+            <input type="text" placeholder="nothin yet.." name="staffId">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+</div>
+
+<div class="container">
+
+    <div class="box box1"> side bar </div>
+</div>
+
+
+<div class="container">
+
+    <div class="box box1">
+        <h2>Recent transactions..</h2>
+
+        <table class="table table-info">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Data.StaffId)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Data.FirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Data.LastName)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Data.Gender)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Data.UserRole)
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Data.StaffId)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Data.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Data.LastName)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Data.Gender)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Data.UserRole)
+                        </td>
+
+
+                        <td>
+
+                            <a asp-action="Details" asp-route-staffId="@item.Data.StaffId">Details</a>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+        <br />
+    </div>
+
+    <div class="box box1">
+        <h2>New product..</h2>
+        
 <table class="table table-info">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Data.StaffId)
+            </th>
 
             <th>
                 @Html.DisplayNameFor(model => model.Data.FirstName)
@@ -39,45 +129,13 @@
             <th>
                 @Html.DisplayNameFor(model => model.Data.LastName)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.StaffId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.PhoneNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.HomeAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.ResidentialAddress)
-            </th>
 
-            <th>
-                @Html.DisplayNameFor(model => model.Data.DateOfBirth)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Data.Gender)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.MaritalStatus)
-            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.Data.UserRole)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.BankAccountNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.BankName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.GuarantorName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.GuarantorPhoneNumber)
             </th>
 
             <th></th>
@@ -88,6 +146,9 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data.StaffId)
+                </td>
 
                 <td>
                     @Html.DisplayFor(modelItem => item.Data.FirstName)
@@ -95,233 +156,31 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Data.LastName)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.StaffId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.PhoneNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.HomeAddress)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.ResidentialAddress)
-                </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.DateOfBirth)
-                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Data.Gender)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.MaritalStatus)
-                </td>
+
                 <td>
                     @Html.DisplayFor(modelItem => item.Data.UserRole)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.BankAccountNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.BankName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.GuarantorName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.GuarantorPhoneNumber)
-                </td>
+
 
                 <td>
-                    <a asp-action="Edit" asp-route-staffId="@item.Data.StaffId">Edit</a> |
-                    <a asp-action="Details" asp-route-staffId="@item.Data.StaffId">Details</a> |
-                    <a asp-action="DeletePreview" asp-route-staffId="@item.Data.StaffId">Delete</a>
+
+                    <a asp-action="Details" asp-route-staffId="@item.Data.StaffId">Details</a>
                 </td>
             </tr>
+
         }
     </tbody>
 </table>
+            <br />
+    </div>
+
+</div>
 
 
-
-@{
-            /*
-* @*@model IList<SMS_MVCDTO.Models.Entities.Attendant>*@
-@model IEnumerable<SMS_MVCDTO.Models.DTOs.AttendantDTOs.AttendantResponseModel>
-
-@{
-ViewData["Title"] = "Index";
-}
-@{
-ViewData["Title"] = "Create";
-if (TempData["Success"] != null)
-{
-<h2>@TempData["success"]</h2>
-}
-if (TempData["failed"] != null)
-{
-<h2>@TempData["failed"]</h2>
-}
-}
-
-<h1>Index</h1>
-
-<p>
-<a asp-action="Create">Create New</a>
-</p>
-@{
-//int i = 0;
-}
-<table class="table table-info">
-<thead>
-<tr>
-@*<th>
-@Html.DisplayNameFor(model => model.Data.Email)
-</th>*@<th>
-@Html.DisplayNameFor(model => model.Data.FirstName)
-</th>
-<th>
-@Html.DisplayNameFor(model => model.Data.LastName)
-</th>
-<th>
-@Html.DisplayNameFor(model => model.Data.StaffId)
-</th>
-<th>
-@Html.DisplayNameFor(model => model.Data.Email)
-</th>
-<th>
-@Html.DisplayNameFor(model => model.Data.PhoneNumber)
-</th>
-<th>
-@Html.DisplayNameFor(model => model.Data.HomeAddress)
-</th>
-<th>
-@Html.DisplayNameFor(model => model.Data.ResidentialAddress)
-</th>
-@* <th>
-@Html.DisplayNameFor(model => model.Data.IsActive)
-</th>*@<th>
-@Html.DisplayNameFor(model => model.Data.DateOfBirth)
-</th>
-<th>
-@Html.DisplayNameFor(model => model.Data.Gender)
-</th>
-<th>
-@Html.DisplayNameFor(model => model.Data.MaritalStatus)
-</th>
-<th>
-@Html.DisplayNameFor(model => model.Data.userRole)
-</th>
-<th>
-@Html.DisplayNameFor(model => model.Data.BankAccountNumber)
-</th>
-<th>
-@Html.DisplayNameFor(model => model.Data.BankName)
-</th>
-<th>
-@Html.DisplayNameFor(model => model.Data.GuarantorName)
-</th>
-<th>
-@Html.DisplayNameFor(model => model.Data.GuarantorPhoneNumber)
-</th>
-@*<th>
-@Html.DisplayNameFor(model => model.Data.IsDeleted)
-</th>
-<th>
-@Html.DisplayNameFor(model => model.Data.Created)
-</th>
-<th>
-@Html.DisplayNameFor(model => model.Data.Modified)
-</th>*@<th></th>
-</tr>
-</thead>
-<tbody>
-
-@foreach (var item in Model)
-{
-<tr>
-@*<td>
-@Html.DisplayFor(modelItem => item.Data.Password)
-@{
-<p>
-@{
-i++;
-}
-</p>
-//@Html.DisplayText(i.ToString())
-//@Html.Display(i.ToString())
-}
-</td>*@
-<td>
-@Html.DisplayFor(modelItem => item.Data.FirstName)
-</td>
-<td>
-@Html.DisplayFor(modelItem => item.Data.LastName)
-</td>
-<td>
-@Html.DisplayFor(modelItem => item.Data.StaffId)
-</td>
-<td>
-@Html.DisplayFor(modelItem => item.Data.Email)
-</td>
-<td>
-@Html.DisplayFor(modelItem => item.Data.PhoneNumber)
-</td>
-<td>
-@Html.DisplayFor(modelItem => item.Data.HomeAddress)
-</td>
-<td>
-@Html.DisplayFor(modelItem => item.Data.ResidentialAddress)
-</td>
-@* <td>
-@Html.DisplayFor(modelItem => item.Data.IsActive)
-</td>*@
-<td>
-@Html.DisplayFor(modelItem => item.Data.DateOfBirth)
-</td>
-<td>
-@Html.DisplayFor(modelItem => item.Data.Gender)
-</td>
-<td>
-@Html.DisplayFor(modelItem => item.Data.MaritalStatus)
-</td>
-<td>
-@Html.DisplayFor(modelItem => item.Data.userRole)
-</td>
-<td>
-@Html.DisplayFor(modelItem => item.Data.BankAccountNumber)
-</td>
-<td>
-@Html.DisplayFor(modelItem => item.Data.BankName)
-</td>
-<td>
-@Html.DisplayFor(modelItem => item.Data.GuarantorName)
-</td>
-<td>
-@Html.DisplayFor(modelItem => item.Data.GuarantorPhoneNumber)
-</td>
-@* <td>
-@Html.DisplayFor(modelItem => item.Data.IsDeleted)
-</td>
-<td>
-@Html.DisplayFor(modelItem => item.Data.Created)
-</td>
-<td>
-@Html.DisplayFor(modelItem => item.Data.Modified)
-</td>*@
-<td>
-<a asp-action="Edit" asp-route-staffId="@item.Data.StaffId">Edit</a> |
-<a asp-action="Details" asp-route-staffId="@item.Data.StaffId">Details</a> |
-<a asp-action="DeletePreview" asp-route-staffId="@item.Data.StaffId">Delete</a>
-</td>
-</tr>
-}
-</tbody>
-    </table>
-
-    */
-}
+<br />
+<br />
+<br />
