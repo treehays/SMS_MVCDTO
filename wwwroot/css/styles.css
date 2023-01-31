@@ -1,3 +1,4 @@
+
 /*  */
 *,
 *::before,
@@ -30,6 +31,47 @@ body {
 .bd-line {
     border: 10px solid red;
 }
+/* all for table  */
+table {
+    table-layout: fixed;
+    width: 980px;
+    border-collapse: collapse;
+    box-shadow: 10px 10px 5px #888888d2;
+
+}
+
+table th:first-child {
+    width: 50px;
+}
+
+
+th,
+td {
+    border: 0px solid rgb(0, 0, 0);
+    padding: 8px;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+th {
+    background-color: #00ABE4;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: linear-gradient(260deg, #f3f0f0b0 10%, #dbece1 90%, #ecfcf2 5%);
+}
+
+tr:nth-child(odd) {
+    background-color: hsla(250, 7%, 16%, 0.566);
+    color: #ffffff;
+}
+
+
+
+
 
 .bd-bline {
     border: 10px solid rgb(219, 9, 242);
