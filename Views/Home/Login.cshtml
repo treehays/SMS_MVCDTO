@@ -1,30 +1,87 @@
 ﻿@model SMS_MVCDTO.Models.DTOs.UserDTOs.LoginRequestModel
 <!-- Design by foolishdeveloper.com -->
 @{
-    ViewData["Title"] = "Login Page";
+    ViewData["Title"] = "Colon:: Staff Login Page";
 }
 
-<div class="col-md-3">
-    @using (Html.BeginForm("Login", "Home"))
-    {
-        <div class="form-group">
-            @Html.LabelFor(x => x.StaffId, new {@class = "control-label"})
-            @Html.TextBoxFor(x => x.StaffId, new {@class = "form-control"})
-            @Html.ValidationMessageFor(x => x.StaffId,"", new {@class="text-danger"})
+
+<main class="main">
+    <!-- <div class="dashboard"> -->
+    <div class="form-container">
+
+        <!-- Signup Form -->
+
+        <div id="signup-form">
+
+            @using (Html.BeginForm("Login", "Home"))
+            {
+                <div class="">
+                    @Html.LabelFor(x => x.StaffId)
+                    @Html.TextBoxFor(x => x.StaffId)
+                    @Html.ValidationMessageFor(x => x.StaffId)
+                </div>
+
+                <div class="">
+                    @Html.LabelFor(x => x.Password)
+                    @Html.TextBoxFor(x => x.Password)
+                    @Html.ValidationMessageFor(x => x.Password)
+                </div>
+
+                <div class="">
+                    <button type="submit" class=""> Sign up </button> 
+                    <button type="reset" class="">Clear</button>
+                    @* </div> *@
+                </div>
+                <p>Already have an account? <a href="#" onclick="showLoginForm()">Login
+                    </a></p>
+
+            }
+
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(x => x.Password, new {@class = "control-label"})
-            @Html.TextBoxFor(x => x.Password, new {@class = "form-control"})
-            @Html.ValidationMessageFor(x => x.Password,"", new {@class="text-danger"})
+        <!-- Login Form -->
+        <div id="login-form">
+
+            @using (Html.BeginForm("Login", "Home"))
+            {
+                <div class="">
+                    @Html.LabelFor(x => x.StaffId, new {@class = "control-label"})
+                    @Html.TextBoxFor(x => x.StaffId, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(x => x.StaffId,"", new
+                {@class="text-danger"})
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Password, new {@class = "control-label"})
+                    @Html.TextBoxFor(x => x.Password, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(x => x.Password,"", new
+                {@class="text-danger"})
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Login</button> ||
+                    <a asp-controller="Home" asp-action="resetPasswprd" class="btn
+                    btn-danger"> Forget Password</a>
+                </div>
+                <p>Don't have an account? <a asp-area="" asp-controller="Customer" asp-action="Create" onclick="showSignupForm()">Sign up</a></p>
+            }
         </div>
 
-        <div class="form-group">
-            <button type="submit" class="btn btn-success">Login</button>  || <a asp-controller ="Home" asp-action = "resetPasswprd" class="btn btn-danger"> Forget Password</a>
-        </div>
+    </div>
 
-    }
-</div>
+    <!-- search box  -->
+    <div class="search-container">
+        <form>
+            <input type="text" placeholder="Search...">
+            <button type="submit"><i class="fa fa-search"></i> Search </button>
+        </form>
+    </div>
+
+</main>
+@* ends here *@
+
+@* </div> *@
+
 
 
 
@@ -39,40 +96,42 @@
 
 
 @{
-          /*
-          <html>
-          <head>
-          <link rel="preconnect" href="https://fonts.gstatic.com">
-          <link rel="stylesheet" href="href="~/css/loginstyle.css">
-          <link rel="stylesheet" href="href="~/css/loginstyle.css">
-          <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
-          </head>
+    /*
+    <html>
+    <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="href="~/css/loginstyle.css">
+    <link rel="stylesheet" href="href="~/css/loginstyle.css">
+    <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
+    rel="stylesheet">
+    </head>
 
 
-          <div class="background">
-          <!-- <div class="shape"></div>-->
-          <div class="shape"></div>
-          <div class="shape"></div>
-          </div>
-          <form>
-          <h3>PIEMALLs</h3>
+    <div class="background">
+    <!-- <div class="shape"></div>-->
+    <div class="shape"></div>
+    <div class="shape"></div>
+    </div>
+    <form>
+    <h3>PIEMALLs</h3>
 
-          <label for="staffId">Staff ID <i class='far fa-address-card'></i></label>
-          <input type="text" placeholder="Staff Id " id="staffId">
+    <label for="staffId">Staff ID <i class='far fa-address-card'></i></label>
+    <input type="text" placeholder="Staff Id " id="staffId">
 
-          <label for="password">Password <i class='fas fa-user-secret'></i></label>
-          <input type="password" placeholder="Password" id="password">
+    <label for="password">Password <i class='fas fa-user-secret'></i></label>
+    <input type="password" placeholder="Password" id="password">
 
-          <button><i class='fas fa-user-check' style='color:#080710'></i> Log In</button>
-          <!-- <button>Register</button>-->
-          <!-- <div class="go"><i class='fas fa-user-check'></i> Login</div> -->
-          <div class="social">
-          <!-- <div class="go"><i class="fab fa-google"></i> Google</div>-->
-          <div class="go"><i class='fas fa-user-check'></i> Reset Password</div>
-          <div class="fb"><i class='fas fa-user-circle'></i> Register</div>
-          <!-- <div class="fb"><i class="fab fa-facebook"></i> Facebook</div>-->
-          </div>
-          </form>
-    </html>
+    <button><i class='fas fa-user-check' style='color:#080710'></i> Log In</button>
+    <!-- <button>Register</button>-->
+    <!-- <div class="go"><i class='fas fa-user-check'></i> Login</div> -->
+    <div class="social">
+    <!-- <div class="go"><i class="fab fa-google"></i> Google</div>-->
+    <div class="go"><i class='fas fa-user-check'></i> Reset Password</div>
+    <div class="fb"><i class='fas fa-user-circle'></i> Register</div>
+    <!-- <div class="fb"><i class="fab fa-facebook"></i> Facebook</div>-->
+    </div>
+    </form>
+            </html>
     */
 }

@@ -1,114 +1,122 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - SMS_MVCDTO</title>
-    @* compiling tags *@
-    <link rel="stylesheet" href="~/css/styles.css">
-    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />  *@
-    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" /> *@
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/SMS_MVCDTO.styles.css" asp-append-version="true" />
-    @*
-    <link rel="stylesheet" href="~lib/bootstrap/dist/css/all.css" />
-    <link rel="stylesheet" href="~/css/loginstyle.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
-    *@
-</head>
- @* rex  *@
-<body> 
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - SMS_MVCDTO</title>
+        <link rel="stylesheet" href="/FontAwesome-6.2-PRO/css/all.css">
+        <script src="~/js/site.js"></script>
 
-    <header>  @* nrex 
-nav
-navbar-expand-sm
-navbar-toggleable-sm
-navbar-light
+        <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous"> -->
+        <link rel="stylesheet" href="~/css/styles.css">
+        <link rel="stylesheet" href="~/SMS_MVCDTO.styles.css"
+            asp-append-version="true" />
 
-/
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
-aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-<span class="navbar-toggler-icon"></span></button>
-/
+    </head>
+
+    <body>
+            <header>
+                <nav class="navbar navbar-expand-sm navbar-toggleable-sm
+                    navbar-light bg-white border-bottom box-shadow mb-3">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" asp-area=""
+                            asp-controller="Home"
+                            asp-action="Index">Colon Sales Record</a>
+                    @* MDelete *@
+                        <button class="navbar-toggler" type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target=".navbar-collapse"
+                            aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle
+                            navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    @* MDelete *@
+
+                        <div class="navbar-collapse collapse d-sm-inline-flex
+                            justify-content-between">
+                            <ul class="navbar-nav flex-grow-1">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area=""
+                                        asp-controller="Home"
+                                        asp-action="Index">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area=""
+                                        asp-controller="Home"
+                                        asp-action="Privacy">About
+                                        us</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area=""
+                                        asp-controller="Home"
+                                        asp-action="Privacy">Contact
+                                        us</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area=""
+                                        asp-controller="Home"
+                                        asp-action="Privacy">Privacy</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area=""
+                                        asp-controller="Home"
+                                        asp-action="Privacy">News</a>
+                                </li>
+
+                            </ul>
 
 
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area=""
+                                        asp-controller="Home"
+                                        asp-action="Login">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area=""
+                                        asp-controller="Customer"
+                                        asp-action="Create">Sign-Up</a>
+                                </li>
+                            </ul>
 
+                        </div>
+                    </div>
+                </nav>
+            </header>
 
+        @* <div class="wrapper"> *@
+        @* <div class="bodycontain bd-bline"> *@
+            <div class="bodycontains">
+                <main role="main" class="pb-3">
+                    <div class="bd-line">
 
-
-4358    @media (min-width: 576px)
-4422    @media (min-width: 768px) 
-4486    @media (min-width: 992px) 
-4550    @media (min-width: 1200px)
-4614    @media (min-width: 1400px) 
-
-         *@
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SMS_MVCDTO TOP</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-
-                    </ul>
-
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Create">Sign-Up</a>
-                        </li>
-                    </ul>
-
-                </div>
+                    @RenderBody()
+                    </div>
+                </main>
             </div>
-        </nav>
-    </header>
+        
+    @* <div class="footercontain bd-gline"> *@
 
-    @* <div class="navbar navbar-expand-md navbar-dark bg-dark"> *@
-    @*  @if (ViewBag.ShowElement1 != null && ViewBag.ShowElement1 != false)
-    {*@
-   @* <div class="navigatebody">
-        <nav>
-            <h2>WELCOME</h2>
-            <ul>
-                <li><a href="/home">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/Services">Services</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-        </nav>
-    </div>*@
-    @*}*@
+        @* <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2022 - SMS_MVCDTO - <a asp-area=""
+                    asp-controller="Home"
+                    asp-action="Privacy">Privacy</a>
+            </div>
+        </footer> *@
+    @* </div> *@
 
-    <div class="bodycontains">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    @* </div> *@
 
-
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - SMS_MVCDTO - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-</body>
+    </body>
 
 </html>

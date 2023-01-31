@@ -562,13 +562,13 @@ progress {
         font-size: 4rem;
     }
 }
-
+/* rex   */
 .display-4 {
     font-size: calc(1.475rem + 2.7vw);
     font-weight: 300;
     line-height: 1.2;
 }
-
+/* rex   */
 @media (min-width: 1200px) {
     .display-4 {
         font-size: 3.5rem;
@@ -8561,7 +8561,7 @@ fieldset:disabled .btn {
 .text-end {
     text-align: right !important;
 }
-
+/* rex   */
 .text-center {
     text-align: center !important;
 }

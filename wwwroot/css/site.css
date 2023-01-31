@@ -160,3 +160,32 @@ body {
 input {
     border-radius: 15px;
   }
+
+
+
+
+
+  /*
+  nav
+navbar-expand-sm
+navbar-toggleable-sm
+navbar-light
+
+/
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span></button>
+/
+
+
+
+
+
+
+4358    @media (min-width: 576px)
+4422    @media (min-width: 768px) 
+4486    @media (min-width: 992px) 
+4550    @media (min-width: 1200px)
+4614    @media (min-width: 1400px) 
+
+  */
