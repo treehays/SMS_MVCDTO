@@ -29,8 +29,8 @@
             <!-- 
             @using (Html.BeginForm("Login", "Home"))
             {
-                    <p>Already have an account? <a href="#">Login
-                        </a></p>
+                        <p>Already have an account? <a href="#">Login
+                            </a></p>
             }
 
          -->
@@ -201,7 +201,7 @@
 
         @using (Html.BeginForm("Login", "Home"))
         {
-                        <p>Don't have an account? <a href="#">Sign up</a></p>
+                            <p>Don't have an account? <a href="#">Sign up</a></p>
 
         }
         </div>
@@ -210,12 +210,28 @@
     </div>
 
     <!-- search box  -->
-    <div class="search-container">
-        <form>
-            <input type="text" placeholder="Search...">
-            <button type="submit"><i class="fa fa-search"></i> Search </button>
-        </form>
+    <div class="search-container-side">
+
+        <!-- search box  -->
+        <div class="search-container">
+            <form>
+                <input type="text" placeholder="Search 2...">
+                <button type="submit"><i class="fa fa-search"></i> Search
+                </button>
+            </form>
+        </div>
+
+        <!-- search box  -->
+        <div class="search-container">
+            <form>
+                <input type="text" placeholder="Search1...">
+                <button type="submit"><i class="fa fa-search"></i> Search
+                </button>
+            </form>
+        </div>
+
     </div>
+
 
 </main>
 @*

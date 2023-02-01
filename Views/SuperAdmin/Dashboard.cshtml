@@ -1,11 +1,14 @@
 ﻿@using SMS_MVCDTO.Models.DTOs.SuperAdminDTOs;
 @model IEnumerable<SuperAdminResponseModel>
 
-
+@* @model
+IEnumerable<SMS_MVCDTO.Models.DTOs.SuperAdminDTOs.SuperAdminResponseModel> *@
 
 @{
-    ViewData["Title"] = "Super Admin Dashboard";
+    ViewData["Title"] = "Sales Manager Dashboard";
+}
 
+@{
     if (TempData["Success"] != null)
     {
         <h2>@TempData["success"]</h2>
@@ -15,129 +18,105 @@
         <h2>@TempData["failed"]</h2>
     }
 }
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 
-<table class="table table-info">
-    <thead>
-        <tr>
+<main class="main">
+    <!-- <div class="dashboard"> -->
+    <div class="form-container">
 
-            <th>
-                @Html.DisplayNameFor(model => model.Data.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.StaffId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.PhoneNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.HomeAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.ResidentialAddress)
-            </th>
+        <!-- Signup Form -->
+        <h1>Super Admin Dashboard</h1>
 
-            <th>
-                @Html.DisplayNameFor(model => model.Data.DateOfBirth)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.Gender)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.MaritalStatus)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.userRole)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.BankAccountNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.BankName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.GuarantorName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.GuarantorPhoneNumber)
-            </th>
 
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+        <div id="">
 
-        @foreach (var item in Model)
-        {
-            <tr>
+            <table class="table table-info">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.LastName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.StaffId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.PhoneNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.HomeAddress)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.ResidentialAddress)
-                </td>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Data.FirstName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Data.LastName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Data.Gender)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model =>
+                            model.Data.GuarantorName)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int serialNumber = 1;
+                    }
+                    @foreach (var item in Model)
+                    {
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.DateOfBirth,"{0:MM/dd/yyyy}")
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.Gender)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.MaritalStatus)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.userRole)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.BankAccountNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.BankName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.GuarantorName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.GuarantorPhoneNumber)
-                </td>
+                        <tr>
+                            <td>
+                                @serialNumber
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data.FirstName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data.LastName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data.Gender)
+                            </td>
 
-                <td>
-                    <a asp-action="Edit" asp-route-staffId="@item.Data.StaffId">Edit</a> |
-                    <a asp-action="Details" asp-route-staffId="@item.Data.StaffId">Details</a> |
-                    <a asp-action="DeletePreview" asp-route-staffId="@item.Data.StaffId">Delete</a>
-                </td>
-            </tr>
+                            <td>
+                                @Html.DisplayFor(modelItem =>
+                            item.Data.GuarantorName)
+                            </td>
+                            <td>
+                                <a asp-action="Edit"
+                                asp-route-staffId="@item.Data.StaffId">Edit</a>
+                                |
+                                <a asp-action="Details"
+                                asp-route-staffId="@item.Data.StaffId">Details</a>
+                                |
+                                <a asp-action="DeletePreview"
+                                asp-route-staffId="@item.Data.StaffId">Delete</a>
+                            </td>
+                        </tr>
+                        serialNumber++;
+                    }
+                </tbody>
+            </table>
 
-            <br />
-            <br />
-            <br />
-            <br />
-        }
-    </tbody>
-</table>
+        </div>
 
+    </div>
+
+    <!-- search box  -->
+    <div class="search-container-side">
+
+        <!-- search box  -->
+        <div class="search-container">
+            <form>
+                <input type="text" placeholder="Search 2...">
+                <button type="submit"><i class="fa fa-search"></i> Search
+                </button>
+            </form>
+        </div>
+
+        <!-- search box  -->
+        <div class="search-container">
+            <form>
+                <input type="text" placeholder="Search1...">
+                <button type="submit"><i class="fa fa-search"></i> Search
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+
+</main>
