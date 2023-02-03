@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SMS_MVCDTO.Interfaces.Services;
-using SMS_MVCDTO.ViewModels;
+using SMS_MVCDTO.Models.ViewModels;
 
 namespace SMS_MVCDTO.Controllers
 {

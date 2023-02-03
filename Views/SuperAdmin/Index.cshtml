@@ -1,4 +1,5 @@
-﻿@model IEnumerable<SMS_MVCDTO.Models.DTOs.SuperAdminDTOs.SuperAdminResponseModel>
+﻿@model SMS_MVCDTO.Models.ViewModels.TransactionProductListsViewModel
+
 @{
     ViewData["Title"] = "Sales Manager Dashboard";
 }
@@ -15,176 +16,76 @@
 }
 
 
-
-
 <main class="main">
     <!-- <div class="dashboard"> -->
     <div class="form-container">
 
         <!-- Signup Form -->
-        <h1>Super Admin Dashboard</h1>
+        <h1>Recent Transactions...</h1>
 
 
         <div id="">
-            <!-- 
-            @using (Html.BeginForm("Login", "Home"))
-            {
-                        <p>Already have an account? <a href="#">Login
-                            </a></p>
-            }
 
-         -->
             <table class="table table-info">
                 <thead>
                     <tr>
                         <th>S/N</th>
 
                         <th>
-                            @Html.DisplayNameFor(model => model.Data.FirstName)
+                            <label> Ref. No</label>
                         </th>
+                        
                         <th>
-                            @Html.DisplayNameFor(model => model.Data.LastName)
-                        </th>
-                        @*
-                        <th>
-                        @Html.DisplayNameFor(model => model.Data.StaffId)
-                        </th>
-                        <th>
-                        @Html.DisplayNameFor(model => model.Data.Email)
-                        </th>
-                        <th>
-                        @Html.DisplayNameFor(model =>
-                        model.Data.PhoneNumber)
-                        </th>
-                        <th>
-                        @Html.DisplayNameFor(model =>
-                        model.Data.HomeAddress)
-                        </th>
-                        <th>
-                        @Html.DisplayNameFor(model =>
-                        model.Data.ResidentialAddress)
+                            <label> Date</label>
                         </th>
 
                         <th>
-                        @Html.DisplayNameFor(model =>
-                        model.Data.DateOfBirth)
+                            <label> Customer</label>
                         </th>
-                        *@
+
                         <th>
-                            @Html.DisplayNameFor(model => model.Data.Gender)
+                            <label> Amount </label>
                         </th>
-                        @*
-                        <th>
-                        @Html.DisplayNameFor(model =>
-                        model.Data.MaritalStatus)
-                        </th>
-                        <th>
-                        @Html.DisplayNameFor(model => model.Data.userRole)
-                        </th>
-                        <th>
-                        @Html.DisplayNameFor(model =>
-                        model.Data.BankAccountNumber)
-                        </th>
-                        <th>
-                        @Html.DisplayNameFor(model => model.Data.BankName)
-                        </th>
-                        <th>
-                        @Html.DisplayNameFor(model =>
-                        model.Data.GuarantorName)
-                        </th>
-                        <th>
-                        @Html.DisplayNameFor(model =>
-                        model.Data.GuarantorPhoneNumber)
-                        </th> *@
-                        <th>
-                            @Html.DisplayNameFor(model =>
-                            model.Data.GuarantorName)
-                        </th>
+
                         <th></th>
+
                     </tr>
+
                 </thead>
+
                 <tbody>
                     @{
                         int serialNumber = 1;
                     }
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.Transaction)
                     {
-
-                        @* <tr style="background-color: @(serialNumber % 2 == 0 ?
-                    "#f0f0f0" : "#ffffff");"> *@
                         <tr>
                             <td>
+                                @* Numbering *@
                                 @serialNumber
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Data.FirstName)
+                                @Html.DisplayFor(modelItem => item.Data.ReferenceNo)
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Data.LastName)
-                            </td>
-                            @*
-                        <td>
-                        @Html.DisplayFor(modelItem => item.Data.StaffId)
-                        </td>
-                        <td>
-                        @Html.DisplayFor(modelItem => item.Data.Email)
-                        </td>
-                        <td>
-                        @Html.DisplayFor(modelItem => item.Data.PhoneNumber)
-                        </td>
-                        <td>
-                        @Html.DisplayFor(modelItem => item.Data.HomeAddress)
-                        </td>
-                        <td>
-                        @Html.DisplayFor(modelItem =>
-                        item.Data.ResidentialAddress)
-                        </td>
 
-                        <td>
-                        @Html.DisplayFor(modelItem =>
-                        item.Data.DateOfBirth,"{0:MM/dd/yyyy}")
-                        </td>
-                        *@
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Data.Gender)
+                              <td>
+                                @Html.DisplayFor(modelItem => item.Data.Created)
                             </td>
-                            @*
-                        <td>
-                        @Html.DisplayFor(modelItem =>
-                        item.Data.MaritalStatus)
-                        </td>
-                        <td>
-                        @Html.DisplayFor(modelItem => item.Data.userRole)
-                        </td>
-                        <td>
-                        @Html.DisplayFor(modelItem =>
-                        item.Data.BankAccountNumber)
-                        </td>
-                        <td>
-                        @Html.DisplayFor(modelItem => item.Data.BankName)
-                        </td>
-                        <td>
-                        @Html.DisplayFor(modelItem =>
-                        item.Data.GuarantorName)
-                        </td>
-                        <td>
-                        @Html.DisplayFor(modelItem =>
-                        item.Data.GuarantorPhoneNumber)
-                        </td> *@
 
                             <td>
                                 @Html.DisplayFor(modelItem =>
-                            item.Data.GuarantorName)
+                            item.Data.CustomerName)
                             </td>
+
+
                             <td>
-                                <a asp-action="Edit"
-                                asp-route-staffId="@item.Data.StaffId">Edit</a>
-                                |
-                                <a asp-action="Details"
-                                asp-route-staffId="@item.Data.StaffId">Details</a>
-                                |
-                                <a asp-action="DeletePreview"
-                                asp-route-staffId="@item.Data.StaffId">Delete</a>
+                                &#x20A6;@Html.DisplayFor(modelItem =>
+                            item.Data.TotalAmount)
+                            </td>
+
+                            <td>
+                                <a asp-controller="Transaction" asp-action="Details"
+                               asp-route-ReferenceNo="@item.Data.ReferenceNo">Details</a>
                             </td>
                         </tr>
                         serialNumber++;
@@ -194,19 +95,90 @@
 
         </div>
 
-        <!-- Login Form -->
-        <!-- 
+        <!-- Signup Form -->
+        <h1>Products going out of stock..</h1>
+
 
         <div id="">
 
-        @using (Html.BeginForm("Login", "Home"))
-        {
-                            <p>Don't have an account? <a href="#">Sign up</a></p>
+            <table class="table table-info">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
 
-        }
+                        <th>
+                            <label> Barcode</label>
+                        </th>
+
+                        <th>
+                            <label> Product Name</label>
+                        </th>
+                        
+                        <th>
+                            <label> Quantity</label>
+                        </th>
+                        
+                        <th>
+                            <label> Amount </label>
+                        </th>
+
+                       @* <th>
+                            <label> </label>
+                        </th>*@
+
+                        @*<th></th>*@
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+                    @{
+                        int serialNumber1 = 1;
+                    }
+                    @foreach (var item in Model.Product)
+                    {
+                        <tr>
+                            <td>
+                                @* Numbering *@
+                                @serialNumber1
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data.Barcode)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data.Name)
+                            </td>
+                            
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data.Quantity)
+                            </td>
+                           @* 
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data.Category)
+                            </td>
+*@
+
+                            <td>
+                                &#x20A6;@Html.DisplayFor(modelItem =>
+                            item.Data.SellingPrice)
+                            </td>
+
+                            <td>
+                               
+                                <a asp-action="Details"
+                               asp-route-Barcode="@item.Data.Barcode">Details</a>
+
+                            </td>
+                        </tr>
+                        serialNumber1++;
+                    }
+                </tbody>
+            </table>
+
         </div>
 
-        -->
     </div>
 
     <!-- search box  -->
@@ -214,8 +186,8 @@
 
         <!-- search box  -->
         <div class="search-container">
-            <form>
-                <input type="text" placeholder="Search 2...">
+            <form asp-controller="Product" asp-action="GetById">
+                <input type="text" placeholder="Barcode..." name="barCode">
                 <button type="submit"><i class="fa fa-search"></i> Search
                 </button>
             </form>
@@ -223,8 +195,8 @@
 
         <!-- search box  -->
         <div class="search-container">
-            <form>
-                <input type="text" placeholder="Search1...">
+            <form asp-controller="Transaction" asp-action="Details">
+                <input type="text" placeholder="Transaction ref..." name="referenceNo">
                 <button type="submit"><i class="fa fa-search"></i> Search
                 </button>
             </form>
@@ -234,39 +206,4 @@
 
 
 </main>
-@*
-<h1>Super Admin Dashboard</h1>
 
-
-<div class="dropdown">
-<button class="dropbtn"> Manage Attendant</button>
-<div class="dropdown-menu">
-<a asp-controller="Attendant" asp-action="Dashboard"> Dashboard </a>
-<br />
-<a asp-controller="Attendant" asp-action="Create">Add new attendant</a>
-<br />
-<a asp-controller="Attendant" asp-action="Index">View all attendant</a>
-<br />
-
-</div>
-</div>
-
-<div class="dropdown">
-<button class="dropbtn"> Manage Product</button>
-<div class="dropdown-menu">
-<a asp-controller="Product" asp-action="Dashboard"> Dashboard</a>
-<br />
-<a asp-controller="Product" asp-action="Create">Add new product</a>
-<br />
-<a asp-controller="Product" asp-action="Index">Manage all products</a>
-<br />
-</div>
-</div>
-<a asp-controller="Transaction" asp-action="Index">Manage Transactions</a>
-<br />
-<a asp-controller="Product" asp-action="Dashboard">Manage Inventory</a>
-
-*@
-<br />
-<br />
-<br />

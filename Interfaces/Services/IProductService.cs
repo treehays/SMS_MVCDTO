@@ -14,5 +14,7 @@ namespace SMS_MVCDTO.Interfaces.Services
         IEnumerable<ProductResponseModel> GetAll();
         IEnumerable<ProductResponseModel> GetByQuantityRemaining(int quantity);
         RestockProductRequestModel RestockProduct(RestockProductRequestModel product);
+        IEnumerable<ProductResponseModel> BelowReorderLevel(int quantity);
+
     }
 }

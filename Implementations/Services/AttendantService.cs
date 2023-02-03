@@ -70,40 +70,37 @@ namespace SMS_MVCDTO.Implementations.Service
         public IEnumerable<AttendantResponseModel> GetAttendants()
         {
             var attendants = _attendant.GetAttendants();
-            if (attendants != null)
+            if (attendants == null)
             {
-                var attendantResponseModels = new List<AttendantResponseModel>();
-                foreach (var item in attendants)
-                {
-                    var attendantResponseModel = new AttendantResponseModel
-                    {
-                        Message = "Attendant retrieved Successfully",
-                        Status = true,
-                        Data = new AttendantDTOs
-                        {
-                            BankAccountNumber = item.BankAccountNumber,
-                            GuarantorName = item.GuarantorName,
-                            BankName = item.BankName,
-                            DateOfBirth = item.DateOfBirth,
-                            Email = item.Email,
-                            FirstName = item.FirstName,
-                            Gender = item.Gender,
-                            LastName = item.LastName,
-                            GuarantorPhoneNumber = item.GuarantorPhoneNumber,
-                            HomeAddress = item.HomeAddress,
-                            MaritalStatus = item.MaritalStatus,
-                            PhoneNumber = item.PhoneNumber,
-                            ResidentialAddress = item.ResidentialAddress,
-                            StaffId = item.StaffId,
-                            UserRole = item.userRole,
-                        }
-                    };
-                    attendantResponseModels.Add(attendantResponseModel);
-                }
-                return attendantResponseModels;
+                return null;
             }
-            return null;
+            var attendantResponseModels = attendants.Select(item => new AttendantResponseModel
+            {
+                Message = "Attendant retrieved Successfully",
+                Status = true,
+                Data = new AttendantDTOs
+                {
+                    BankAccountNumber = item.BankAccountNumber,
+                    GuarantorName = item.GuarantorName,
+                    BankName = item.BankName,
+                    DateOfBirth = item.DateOfBirth,
+                    Email = item.Email,
+                    FirstName = item.FirstName,
+                    Gender = item.Gender,
+                    LastName = item.LastName,
+                    GuarantorPhoneNumber = item.GuarantorPhoneNumber,
+                    HomeAddress = item.HomeAddress,
+                    MaritalStatus = item.MaritalStatus,
+                    PhoneNumber = item.PhoneNumber,
+                    ResidentialAddress = item.ResidentialAddress,
+                    StaffId = item.StaffId,
+                    UserRole = item.userRole,
+                }
+            }).ToList();
+            return attendantResponseModels;
+
         }
+
 
         public AttendantResponseModel GetByEmail(string email)
         {
@@ -180,34 +177,29 @@ namespace SMS_MVCDTO.Implementations.Service
             {
                 return null;
             }
-            var attendantResponseModels = new List<AttendantResponseModel>();
-            foreach (var item in attendants)
+            var attendantResponseModels = attendants.Select(item => new AttendantResponseModel
             {
-                var attendantResponseModel = new AttendantResponseModel
+                Message = "Attendant retrieved Successfully",
+                Status = true,
+                Data = new AttendantDTOs
                 {
-                    Message = "Attendant retrieved Successfully",
-                    Status = true,
-                    Data = new AttendantDTOs
-                    {
-                        BankAccountNumber = item.BankAccountNumber,
-                        GuarantorName = item.GuarantorName,
-                        BankName = item.BankName,
-                        DateOfBirth = item.DateOfBirth,
-                        Email = item.Email,
-                        FirstName = item.FirstName,
-                        Gender = item.Gender,
-                        LastName = item.LastName,
-                        GuarantorPhoneNumber = item.GuarantorPhoneNumber,
-                        HomeAddress = item.HomeAddress,
-                        MaritalStatus = item.MaritalStatus,
-                        PhoneNumber = item.PhoneNumber,
-                        ResidentialAddress = item.ResidentialAddress,
-                        StaffId = item.StaffId,
-                        UserRole = item.userRole,
-                    }
-                };
-                attendantResponseModels.Add(attendantResponseModel);
-            }
+                    BankAccountNumber = item.BankAccountNumber,
+                    GuarantorName = item.GuarantorName,
+                    BankName = item.BankName,
+                    DateOfBirth = item.DateOfBirth,
+                    Email = item.Email,
+                    FirstName = item.FirstName,
+                    Gender = item.Gender,
+                    LastName = item.LastName,
+                    GuarantorPhoneNumber = item.GuarantorPhoneNumber,
+                    HomeAddress = item.HomeAddress,
+                    MaritalStatus = item.MaritalStatus,
+                    PhoneNumber = item.PhoneNumber,
+                    ResidentialAddress = item.ResidentialAddress,
+                    StaffId = item.StaffId,
+                    UserRole = item.userRole,
+                }
+            }).ToList();
             return attendantResponseModels;
         }
 

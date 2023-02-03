@@ -15,68 +15,121 @@
     }
 }
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 
-<table class="table table-info">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.StaffId)
-            </th>
 
-            <th>
-                @Html.DisplayNameFor(model => model.Data.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.LastName)
-            </th>
-           
-            <th>
-                @Html.DisplayNameFor(model => model.Data.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.PhoneNumber)
-            </th>
-           
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
 
-        @foreach (var item in Model)
-        {
-            <tr> 
+<main class="main">
+    <!-- <div class="dashboard"> -->
+    <div class="form-container">
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.StaffId)
-                </td>
+        <!-- Signup Form -->
+        <h1>Super Admin Dashboard</h1>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.LastName)
-                </td>
-               
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.PhoneNumber)
-                </td>
-               
 
-                <td>
-                    <a asp-action="Edit" asp-route-staffId="@item.Data.StaffId">Edit</a> |
-                    <a asp-action="Details" asp-route-staffId="@item.Data.StaffId">Details</a> |
-                    <a asp-action="DeletePreview" asp-route-staffId="@item.Data.StaffId">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+        <div id="">
+
+
+
+            <p>
+                <a asp-action="Create">Create New</a>
+            </p>
+
+            <table class="table table-info">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Data.StaffId)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Data.FirstName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Data.LastName)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Data.Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Data.PhoneNumber)
+                        </th>
+
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data.StaffId)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data.FirstName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data.LastName)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data.PhoneNumber)
+                            </td>
+
+
+                            <td>
+                                <a asp-action="Edit" asp-route-staffId="@item.Data.StaffId">Edit</a> |
+                                <a asp-action="Details" asp-route-staffId="@item.Data.StaffId">Details</a> |
+                                <a asp-action="DeletePreview" asp-route-staffId="@item.Data.StaffId">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+
+
+
+
+        </div>
+
+    </div>
+
+    <!-- search box  -->
+    <div class="search-container-side">
+
+        <!-- search box  -->
+        <div class="search-container">
+            <form asp-controller="SalesManager" asp-action="Details">
+                <input type="text" placeholder="Staff Id..." name="staffId">
+                <button type="submit">
+                    <i class="fa fa-search"></i> Search
+                </button>
+            </form>
+        </div>
+
+        <!-- search box  -->
+        <div class="search-container">
+            <form>
+                <input type="text" placeholder="Search1...">
+                <button type="submit">
+                    <i class="fa fa-search"></i> Search
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+
+</main>
+
+
+
 

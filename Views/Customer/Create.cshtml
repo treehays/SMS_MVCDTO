@@ -1,144 +1,111 @@
 ﻿@using SMS_MVCDTO.Enums;
 @model SMS_MVCDTO.Models.DTOs.CustomerDTOs.CreateCustomerRequestModel
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-
-@{
-
-}
 
 
 
 
-@{
-    <h1>Create</h1>
 
-    <h4>Customer</h4>
-    <hr />
-            //<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
+
+
+<main class="main">
+    <!-- <div class="dashboard"> -->
+    <div class="form-container">
+
+        <div id="Data-form">
+
+            <div class="row">
+
+                <h1>Add new customer</h1>
+
+                <hr />
+                <div class="col-md-4">
+                    <form asp-action="Create">
+                        <div class="form-group">
+                            <label asp-for="FirstName" class="control-label"></label>
+                            <input asp-for="FirstName" class="form-control" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="LastName" class="control-label"></label>
+                            <input asp-for="LastName" class="form-control" />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="PhoneNumber" class="control-label"></label>
+                            <input asp-for="PhoneNumber" class="form-control" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="DateOfBirth" class="control-label"></label>
+                            <input asp-for="DateOfBirth" class="form-control" />
+                            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Address" class="control-label"></label>
+                            <input asp-for="Address" class="form-control" />
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Gender" class="control-label" for="Gender"></label>
+                            <select asp-for="Gender" asp-items="Html.GetEnumSelectList<GenderType>()"></select>
+                            <span asp-validation-for="Gender" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label asp-for="MaritalStatus" class="control-label" for="MaritalStatus"></label>
+                            <select asp-for="MaritalStatus" asp-items="Html.GetEnumSelectList<MaritalStatusType>()"></select>
+                            <span asp-validation-for="Gender" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label asp-for="Password" class="control-label"></label>
+                            <input asp-for="Password" type="password" class="form-control" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="ConfirmPassword" class="control-label"></label>
+                            <input asp-for="ConfirmPassword" type="password" class="form-control" />
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+
+
+                        <input type="submit" value="Create" class="btn btn-success" />
+                        <span>
+                            <a asp-action="Index" class="btn btn-warning">Back to List</a>
+                        </span>
+                    </form>
+                </div>
+
+
             </div>
-            <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
+        </div>
 
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
+    </div>
 
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="DateOfBirth" class="control-label"></label>
-                <input asp-for="DateOfBirth" class="form-control" />
-                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Gender" class="control-label" for="Gender"></label>
-                <select asp-for="Gender" asp-items="Html.GetEnumSelectList<GenderType>()"></select>
-                <span asp-validation-for="Gender" class="text-danger"></span>
-            </div>
-
-
-            <div class="form-group">
-                <label asp-for="MaritalStatus" class="control-label" for="MaritalStatus"></label>
-                <select asp-for="MaritalStatus" asp-items="Html.GetEnumSelectList<MaritalStatusType>()"></select>
-                <span asp-validation-for="Gender" class="text-danger"></span>
-            </div>
-
-
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" type="password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="ConfirmPassword" class="control-label"></label>
-                <input asp-for="ConfirmPassword" type="password" class="form-control" />
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-            </div>
-
-
-            <input type="submit" value="Create" class="btn btn-success" />
+    <!-- search box  -->
+    <div class="search-container">
+        <form>
+            <input type="text" placeholder="Search...">
+            <button type="submit"><i class="fa fa-search"></i> Search </button>
         </form>
     </div>
 
-
-    <div>
-        <a asp-action="Index" class="btn btn-warning">Back to List</a>
-    </div>
-
-    <br />
-    <br />
-    <br />
-    <br />
-
-}
-
-
-
-
-@{
-
-    /*
-    <h1>CREATE ATTENDANT</h1>
-        <hr />
-
-        <div class="col-md-4">
-        @using (@Html.BeginForm("Create", "Customer"))
-                {
-                <div class="form-group">
-                @Html.LabelFor(x => x.Email, new {@class = "control-label"})
-                @Html.TextBoxFor(x => x.Email, new { @class = "form-control"})
-                </div>
-
-                <div class="form-group">
-                @Html.LabelFor(x => x.FirstName,  new {@class = "control-label"})
-                @Html.TextBoxFor(x => x.FirstName, new {@class = "form-control"})
-                </div>
-                <div class="form-group">
-                @Html.LabelFor(x => x.LastName, new {@class = "control-label"})
-                @Html.TextBoxFor(x => x.LastName, new { @class = "form-control"})
-                </div>
-
-                <div class="form-group">
-                @Html.LabelFor(x => x.Password,  new {@class = "control-label"})
-                @Html.PasswordFor(x => x.Password, new { @class = "form-control"} )
-                @Html.ValidationMessageFor(x => x.Password,"This from view" , new {@class = "text-danger"})
-            </div>
-            <div class="form-group">
-            </div>
-            <button type="submit" class="btn btn-primary">Create</button>
-
-            }
-
-    </div>
-    */
-}
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
     }
-	}
+</main>

@@ -32,6 +32,14 @@ namespace SMS_MVCDTO.Implementations.Repositories
             return products;
         }
 
+
+        public IEnumerable<Product> BelowReorderLevel(int quantity)
+        {
+            var product = _context.Products.Where(x => x.ReorderLevel <= x.Quantity && x.IsAvailable && !x.IsDeleted);
+            return product;
+        }
+
+
         public IEnumerable<Product> GetByCategory(string productCategory)
         {
             var products = _context.Products.Where(s => s.IsAvailable && !s.IsDeleted);

@@ -1,0 +1,119 @@
+﻿@model IEnumerable<SMS_MVCDTO.Models.DTOs.CustomerDTOs.CustomerResponseModel>
+@{
+    ViewData["Title"] = "Create";
+    if (TempData["success"] != null)
+    {
+        <h2>@TempData["success"]</h2>
+    }
+    if (TempData["failed"] != null)
+    {
+        <h2>@TempData["failed"]</h2>
+    }
+}
+
+
+<main class="main">
+    <!-- <div class="dashboard"> -->
+    <div class="form-container">
+
+        <!-- Signup Form -->
+        <h1>Customers..</h1>
+
+
+        <div id="">
+            <table class="table table-info">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Data.FirstName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Data.LastName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Data.Gender)
+                        </th>
+                        @*  <th>
+                        @Html.DisplayNameFor(model =>
+                        model.Data.GuarantorName)
+                        </th>*@
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int serialNumber = 1;
+                    }
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <td>
+                                @serialNumber
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data.FirstName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data.LastName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data.Gender)
+                            </td>
+
+                            @*  <td>
+                        @Html.DisplayFor(modelItem =>
+                        item.Data.GuarantorName)
+                        </td>*@
+                            <td>
+                                <a asp-action="Edit"
+                               asp-route-staffId="@item.Data.StaffId">Edit</a>
+                                |
+                                <a asp-action="Details"
+                               asp-route-staffId="@item.Data.StaffId">Details</a>
+                                |
+                                <a asp-action="DeletePreview"
+                               asp-route-staffId="@item.Data.StaffId">Delete</a>
+                            </td>
+                        </tr>
+                        serialNumber++;
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+    <!-- search box  -->
+    <div class="search-container-side">
+
+        <!-- search box  -->
+        <div class="search-container">
+            <form>
+                <input type="text" placeholder="Customer ID..." name="Details">
+                <button type="submit">
+                    <i class="fa fa-search"></i> Search
+                </button>
+            </form>
+        </div>
+
+        <!-- search box  -->
+        <div class="search-container">
+            <form>
+                <input type="text" placeholder="Search1...">
+                <button type="submit">
+                    <i class="fa fa-search"></i> Search
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+
+</main>
+
+
+

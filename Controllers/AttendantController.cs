@@ -41,7 +41,7 @@ namespace SMS_MVCDTO.Controllers
                 {
                     _attendant.Create(createAttendant);
                     TempData["success"] = "Registration Successful.    ";
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "SuperAdmin");
                 }
                 TempData["failed"] = "Email already Exist.";
                 return View();

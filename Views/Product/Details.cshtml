@@ -5,58 +5,140 @@
 @{
     ViewData["Title"] = "Details";
 }
+@*
 
 
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Data.Barcode)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Data.Barcode)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Data.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Data.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Data.Category)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Data.Category)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Data.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Data.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Data.Quantity)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Data.Quantity)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Data.SellingPrice)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Data.SellingPrice)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Data.ReorderLevel)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Data.ReorderLevel)
-        </dd>
-    </dl>
-</div>
+            @using (Html.BeginForm("Login", "Home"))
+            {
+                <div class="">
+                    @Html.LabelFor(x => x.StaffId, new {@class = "control-label"})
+                    @Html.TextBoxFor(x => x.StaffId, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(x => x.StaffId,"", new
+                {@class="text-danger"})
+                </div>
 
-<div>
-    <a asp-action="Edit" asp-route-Barcode="@Model.Data.Barcode" class="btn btn-success">Edit</a>
-    <a asp-action="Index" class="btn btn-warning">Back to List</a>
-</div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Password, new {@class = "control-label"})
+                    @Html.TextBoxFor(x => x.Password, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(x => x.Password,"", new
+                {@class="text-danger"})
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success"><i class="fa fa-user"></i> Login</button> ||
+                    <a asp-controller="Home" asp-action="resetPasswprd" class="btn
+                    btn-danger"> Forget Password</a>
+                </div>
+                <p>Don't have an account? <a asp-area="" asp-controller="Customer" asp-action="Create" onclick="showSignupForm()">Sign up</a></p>
+            }
+*@
+
+<main class="main">
+    <!-- <div class="dashboard"> -->
+    @*<div class="form-container">
+
+        <h4>Product</h4>
+        <hr />
+*@
+@*
+        @using (Html.BeginForm("Details", "Product"))
+        {
+
+            <div class="form-group">
+                @Html.HiddenFor(x => x.Data.Barcode, new {@class = "form-control"})
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Data.Barcode, new {@class = "control-label"})
+                @Html.TextBoxFor(x => x.Data.Barcode, new {@class = "form-control"})
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Data.Name, new {@class = "control-label"})
+                @Html.TextBoxFor(x => x.Data.Name, new {@class = "form-control"})
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Data.Quantity, new {@class = "control-label"})
+                @Html.TextBoxFor(x => x.Data.Quantity, new {@class = "form-control"})
+            </div>
+
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-success"><i class="fa fa-user"></i> Login</button> ||
+                <a asp-controller="Home" asp-action="resetPasswprd" class="btn
+                    btn-danger"> Forget Password</a>
+            </div>
+            <p>Don't have an account? <a asp-area="" asp-controller="Customer" asp-action="Create" onclick="showSignupForm()">Sign up</a></p>
+        }
+        *@
+
+        @*
+        <dl class="row">
+        <dt>
+        @Html.DisplayNameFor(model => model.Data.Barcode)
+        </dt>
+        <dd>
+        @Html.DisplayFor(model => model.Data.Barcode)
+        </dd>
+        <dt>
+        @Html.DisplayNameFor(model => model.Data.Name)
+        </dt>
+        <dd>
+        @Html.DisplayFor(model => model.Data.Name)
+        </dd>
+        <dt>
+        @Html.DisplayNameFor(model => model.Data.Category)
+        </dt>
+        <dd>
+        @Html.DisplayFor(model => model.Data.Category)
+        </dd>
+        <dt>
+        @Html.DisplayNameFor(model => model.Data.Description)
+        </dt>
+        <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Data.Description)
+        </dd>
+        <dt> class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Data.Quantity)
+        </dt>
+        <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Data.Quantity)
+        </dd>
+        <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Data.SellingPrice)
+        </dt>
+        <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Data.SellingPrice)
+        </dd>
+        <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Data.ReorderLevel)
+        </dt>
+        <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Data.ReorderLevel)
+        </dd>*@
+        </dl>
+    </div>
+@*
+    <div>
+        <a asp-action="Edit" asp-route-Barcode="@Model.Data.Barcode" class="btn btn-success">Edit</a>
+        <a asp-action="Index" class="btn btn-warning">Back to List</a>
+    </div>
+
+    </div>
+
+    <!-- search box  -->
+    <div class="search-container">
+        <form>
+            <input type="text" placeholder="Search...">
+            <button type="submit"><i class="fa fa-search"></i> Search </button>
+        </form>
+    </div>
+*@
+</main>
+@* ends here *@
+
+
+
+
+

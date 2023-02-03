@@ -46,51 +46,49 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public IEnumerable<ProductResponseModel> GetAll()
         {
-            var produc = _product.GetAll();
-            var products = new List<ProductResponseModel>();
-            foreach (var product in produc)
+            var product = _product.GetAll();
+            if (product == null)
             {
-                var productResponseModel = new ProductResponseModel
-                {
-                    Message = "product retrieved successfully.",
-                    Status = true,
-                    Data = new ProductDTOs
-                    {
-                        Barcode = product.Barcode,
-                        Name = product.Name,
-                        Description = product.Description,
-                        SellingPrice = product.SellingPrice,
-                        Quantity = product.Quantity,
-                        ReorderLevel = product.ReorderLevel,
-                    }
-                };
-                products.Add(productResponseModel);
+                return null;
             }
+            var products = product.Select(item => new ProductResponseModel
+            {
+                Message = "product retrieved successfully.",
+                Status = true,
+                Data = new ProductDTOs
+                {
+                    Barcode = item.Barcode,
+                    Name = item.Name,
+                    Description = item.Description,
+                    SellingPrice = item.SellingPrice,
+                    Quantity = item.Quantity,
+                    ReorderLevel = item.ReorderLevel,
+                }
+            }).ToList();
             return products;
         }
 
         public IEnumerable<ProductResponseModel> GetByCategory(string productCategory)
         {
-            var produc = _product.GetByCategory(productCategory);
-            var products = new List<ProductResponseModel>();
-            foreach (var product in produc)
+            var product = _product.GetByCategory(productCategory);
+            if (product == null)
             {
-                var productResponseModel = new ProductResponseModel
-                {
-                    Message = "product retrieved successfully.",
-                    Status = true,
-                    Data = new ProductDTOs
-                    {
-                        Barcode = product.Barcode,
-                        Name = product.Name,
-                        Description = product.Description,
-                        SellingPrice = product.SellingPrice,
-                        Quantity = product.Quantity,
-                        ReorderLevel = product.ReorderLevel,
-                    }
-                };
-                products.Add(productResponseModel);
+                return null;
             }
+            var products = product.Select(item => new ProductResponseModel
+            {
+                Message = "product retrieved successfully.",
+                Status = true,
+                Data = new ProductDTOs
+                {
+                    Barcode = item.Barcode,
+                    Name = item.Name,
+                    Description = item.Description,
+                    SellingPrice = item.SellingPrice,
+                    Quantity = item.Quantity,
+                    ReorderLevel = item.ReorderLevel,
+                }
+            }).ToList();
             return products;
 
         }
@@ -121,26 +119,25 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public IEnumerable<ProductResponseModel> GetByName(string name)
         {
-            var produc = _product.GetByName(name);
-            var products = new List<ProductResponseModel>();
-            foreach (var product in produc)
+            var product = _product.GetByName(name);
+            if (product == null)
             {
-                var productResponseModel = new ProductResponseModel
-                {
-                    Message = "product retrieved successfully.",
-                    Status = true,
-                    Data = new ProductDTOs
-                    {
-                        Barcode = product.Barcode,
-                        Name = product.Name,
-                        Description = product.Description,
-                        SellingPrice = product.SellingPrice,
-                        Quantity = product.Quantity,
-                        ReorderLevel = product.ReorderLevel,
-                    }
-                };
-                products.Add(productResponseModel);
+                return null;
             }
+            var products = product.Select(item => new ProductResponseModel
+            {
+                Message = "product retrieved successfully.",
+                Status = true,
+                Data = new ProductDTOs
+                {
+                    Barcode = item.Barcode,
+                    Name = item.Name,
+                    Description = item.Description,
+                    SellingPrice = item.SellingPrice,
+                    Quantity = item.Quantity,
+                    ReorderLevel = item.ReorderLevel,
+                }
+            }).ToList();
             return products;
 
         }
@@ -171,7 +168,7 @@ namespace SMS_MVCDTO.Implementations.Services
             _product.Update(produc);
             return product;
         }
-        
+
         //public ProductResponseModel Update(ProductResponseModel product)
         //{
         //    var produc = _product.GetById(product.Data.Barcode);
@@ -185,26 +182,49 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public IEnumerable<ProductResponseModel> GetByQuantityRemaining(int quantity)
         {
-            var produc = _product.GetByQuantityRemaining(quantity);
-            var products = new List<ProductResponseModel>();
-            foreach (var product in produc)
+            var product = _product.GetByQuantityRemaining(quantity);
+            if (product == null)
             {
-                var productResponse = new ProductResponseModel
-                {
-                    Message = "product retrieved successfully.",
-                    Status = true,
-                    Data = new ProductDTOs
-                    {
-                        Barcode = product.Barcode,
-                        Name = product.Name,
-                        Description = product.Description,
-                        SellingPrice = product.SellingPrice,
-                        Quantity = product.Quantity,
-                        ReorderLevel = product.ReorderLevel,
-                    }
-                };
-                products.Add(productResponse);
+                return null;
             }
+            var products = product.Select(item => new ProductResponseModel
+            {
+                Message = "product retrieved successfully.",
+                Status = true,
+                Data = new ProductDTOs
+                {
+                    Barcode = item.Barcode,
+                    Name = item.Name,
+                    Description = item.Description,
+                    SellingPrice = item.SellingPrice,
+                    Quantity = item.Quantity,
+                    ReorderLevel = item.ReorderLevel,
+                }
+            }).ToList();
+            return products;
+        }
+
+        public IEnumerable<ProductResponseModel> BelowReorderLevel(int quantity)
+        {
+            var product = _product.GetAll();
+            if (product == null)
+            {
+                return null;
+            }
+            var products = product.Select(item => new ProductResponseModel
+            {
+                Message = "product retrieved successfully.",
+                Status = true,
+                Data = new ProductDTOs
+                {
+                    Barcode = item.Barcode,
+                    Name = item.Name,
+                    Description = item.Description,
+                    SellingPrice = item.SellingPrice,
+                    Quantity = item.Quantity,
+                    ReorderLevel = item.ReorderLevel,
+                }
+            }).ToList();
             return products;
         }
     }

@@ -1,29 +1,41 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SMS_MVCDTO.Interfaces.Services;
-using SMS_MVCDTO.Models.DTOs.SalesManagerDTOs;
 using SMS_MVCDTO.Models.DTOs.SuperAdminDTOs;
-using SMS_MVCDTO.Models.Entities;
+using SMS_MVCDTO.Models.ViewModels;
 
 namespace SMS_MVCDTO.Controllers
 {
     public class SuperAdminController : Controller
     {
         private readonly ISuperAdminService _superAdmin;
-        public SuperAdminController(ISuperAdminService superAdmin)
+        private readonly ITransactionService _transaction;
+        private readonly IProductService _product;
+        public SuperAdminController(ISuperAdminService superAdmin, ITransactionService transaction, IProductService product)
         {
             _superAdmin = superAdmin;
+            _transaction = transaction;
+            _product = product;
         }
 
         public IActionResult Index()
         {
-            var superAdmin = _superAdmin.GetSuperAdmins();
-            return View(superAdmin);
+            //var superAdmin = _superAdmin.GetSuperAdmins();
+            var transactions = _transaction.GetAll();
+            var products = _product.GetAll();
+            var productTransaction = new TransactionProductListsViewModel
+            {
+                Transaction = transactions,
+                Product = products,
+            };
+            return View(productTransaction);
         }
 
-        public IActionResult Dashboard ()
+        public IActionResult Dashboard()
         {
+            //var superAdmin = _superAdmin.GetSuperAdmins();
             var superAdmin = _superAdmin.GetSuperAdmins();
             return View(superAdmin);
+
         }
         //[Route("Example")]
         public IActionResult Create()

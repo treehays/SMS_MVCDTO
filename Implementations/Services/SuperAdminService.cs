@@ -138,38 +138,33 @@ namespace SMS_MVCDTO.Implementations.Service
                 return null;
             }
 
-            var superAdminResponseModels = new List<SuperAdminResponseModel>();
-            foreach (var superAdmin in superAdmins)
+            var superAdminResponseModels = superAdmins.Select(item => new SuperAdminResponseModel
             {
-                var superAdmi = new SuperAdminResponseModel
+                Status = true,
+                Message = "Super admin retrieved sucessfully.",
+                Data = new SuperAdminDTOs
                 {
-                    Status = true,
-                    Message = "Super admin retrieved sucessfully.",
-                    Data = new SuperAdminDTOs
-                    {
-                        FirstName = superAdmin.FirstName,
-                        LastName = superAdmin.LastName,
-                        Email = superAdmin.Email,
-                        PhoneNumber = superAdmin.PhoneNumber,
-                        HomeAddress = superAdmin.HomeAddress,
-                        ResidentialAddress = superAdmin.ResidentialAddress,
-                        DateOfBirth = superAdmin.DateOfBirth,
-                        Gender = superAdmin.Gender,
-                        MaritalStatus = superAdmin.MaritalStatus,
-                        BankAccountNumber = superAdmin.BankAccountNumber,
-                        BankName = superAdmin.BankName,
-                        GuarantorName = superAdmin.GuarantorName,
-                        GuarantorPhoneNumber = superAdmin.GuarantorPhoneNumber,
-                        userRole = superAdmin.userRole,
-                        StaffId = superAdmin.StaffId,
-                        
-                    }
-                };
+                    FirstName = item.FirstName,
+                    LastName = item.LastName,
+                    Email = item.Email,
+                    PhoneNumber = item.PhoneNumber,
+                    HomeAddress = item.HomeAddress,
+                    ResidentialAddress = item.ResidentialAddress,
+                    DateOfBirth = item.DateOfBirth,
+                    Gender = item.Gender,
+                    MaritalStatus = item.MaritalStatus,
+                    BankAccountNumber = item.BankAccountNumber,
+                    BankName = item.BankName,
+                    GuarantorName = item.GuarantorName,
+                    GuarantorPhoneNumber = item.GuarantorPhoneNumber,
+                    userRole = item.userRole,
+                    StaffId = item.StaffId,
 
-                superAdminResponseModels.Add(superAdmi);
-            }
+                }
+            }).ToList();
 
             return superAdminResponseModels;
+
         }
 
         public SuperAdminResponseModel GetByPhoneNumber(string phoneNumber)

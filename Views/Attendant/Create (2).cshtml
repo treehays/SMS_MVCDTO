@@ -1,0 +1,360 @@
+﻿@using SMS_MVCDTO.Enums
+@model SMS_MVCDTO.Models.DTOs.AttendantDTOs.CreateAttendantRequestModel
+
+@{
+	ViewData["Title"] = "Create";
+	if (TempData["Success"] != null)
+	{
+		<h2>@TempData["success"]</h2>
+	}
+	if (TempData["failed"] != null)
+	{
+		<h2>@TempData["failed"]</h2>
+	}
+}
+@{
+	<h1>Create</h1>
+
+	<h4>Attendant</h4>
+	<hr />
+	<div class="row">
+		<div class="col-md-4">
+			<form asp-action="Create">
+
+				<div class="form-group">
+					<label asp-for="FirstName" class="control-label"></label>
+					<input asp-for="FirstName" class="form-control" />
+					<span asp-validation-for="FirstName" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="LastName" class="control-label"></label>
+					<input asp-for="LastName" class="form-control" />
+					<span asp-validation-for="LastName" class="text-danger"></span>
+				</div>
+
+
+				<div class="form-group">
+					<label asp-for="Email" class="control-label"></label>
+					<input asp-for="Email" class="form-control" />
+					<span asp-validation-for="Email" class="text-danger"></span>
+				</div>
+
+				<div class="form-group">
+					<label asp-for="PhoneNumber" class="control-label"></label>
+					<input asp-for="PhoneNumber" class="form-control" />
+					<span asp-validation-for="PhoneNumber" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="HomeAddress" class="control-label"></label>
+					<input asp-for="HomeAddress" class="form-control" />
+					<span asp-validation-for="HomeAddress" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="ResidentialAddress" class="control-label"></label>
+					<input asp-for="ResidentialAddress" class="form-control" />
+					<span asp-validation-for="ResidentialAddress" class="text-danger"></span>
+				</div>
+
+
+				<div class="form-group">
+					<label asp-for="DateOfBirth" class="control-label"></label>
+					<input asp-for="DateOfBirth" class="form-control" />
+					<span asp-validation-for="DateOfBirth" class="text-danger"></span>
+				</div>
+
+
+				<div class="form-group">
+					<label asp-for="Gender" class="control-label" for="Gender"></label>
+					<select asp-for="Gender" asp-items="Html.GetEnumSelectList<GenderType>()"></select>
+					<span asp-validation-for="Gender" class="text-danger"></span>
+				</div>
+
+
+				<p></p>
+
+
+
+				<div class="form-group">
+					<label asp-for="MaritalStatus" class="control-label" for="MaritalStatus"></label>
+					<select asp-for="MaritalStatus" asp-items="Html.GetEnumSelectList<MaritalStatusType>()"></select>
+					<span asp-validation-for="Gender" class="text-danger"></span>
+				</div>
+
+
+				<div class="form-group">
+					<label asp-for="BankAccountNumber" class="control-label"></label>
+					<input asp-for="BankAccountNumber" class="form-control" />
+					<span asp-validation-for="BankAccountNumber" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="BankName" class="control-label"></label>
+					<input asp-for="BankName" class="form-control" />
+					<span asp-validation-for="BankName" class="text-danger"></span>
+				</div>
+
+				<div class="form-group">
+					<label asp-for="GuarantorName" class="control-label"></label>
+					<input asp-for="GuarantorName" class="form-control" />
+					<span asp-validation-for="GuarantorName" class="text-danger"></span>
+				</div>
+
+				<div class="form-group">
+					<label asp-for="GuarantorPhoneNumber" class="control-label"></label>
+					<input asp-for="GuarantorPhoneNumber" class="form-control" />
+					<span asp-validation-for="GuarantorPhoneNumber" class="text-danger"></span>
+				</div>
+
+
+
+				<div class="form-group">
+					<label asp-for="Password" class="control-label"></label>
+					<input asp-for="Password" type="password" class="form-control" />
+					<span asp-validation-for="Password"  class="text-danger"></span>
+				</div>
+				@Html.AntiForgeryToken()
+				<div class="form-group">
+					<input type="submit" value="Create" class="btn btn-success" />
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div>
+		<a asp-action="Index" class="btn btn-warning">Back to List</a>
+	</div>
+
+	<br />
+	<br />
+	<br />
+	<br />
+}
+@section Scripts {
+@{
+await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}
+
+
+
+
+
+
+
+
+@{
+			/*
+			* @using SMS_MVCDTO.Enums
+			@model SMS_MVCDTO.Models.DTOs.AttendantDTOs.CreateAttendantRequestModel
+
+			@{
+			ViewData["Title"] = "Create";
+			if (TempData["Success"] != null)
+			{
+			<h2>@TempData["success"]</h2>
+			}
+			if (TempData["failed"] != null)
+			{
+			<h2>@TempData["failed"]</h2>
+			}
+			}
+			@{
+			<h1>Create</h1>
+
+			<h4>Attendant</h4>
+			<hr />
+			<div class="row">
+			<div class="col-md-4">
+			<form asp-action="Create">
+			<!-- <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+			<label asp-for="UserId" class="control-label"></label>
+			<select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+			</div>
+			-->
+			<div class="form-group">
+			<label asp-for="FirstName" class="control-label"></label>
+			<input asp-for="FirstName" class="form-control" />
+			<span asp-validation-for="FirstName" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+			<label asp-for="LastName" class="control-label"></label>
+			<input asp-for="LastName" class="form-control" />
+			<span asp-validation-for="LastName" class="text-danger"></span>
+			</div>
+
+			<!-- <div class="form-group">
+			<label asp-for="StaffId" class="control-label"></label>
+			<input asp-for="StaffId" class="form-control" />
+			<span asp-validation-for="StaffId" class="text-danger"></span>
+			</div>
+			-->
+
+			<div class="form-group">
+			<label asp-for="Email" class="control-label"></label>
+			<input asp-for="Email" class="form-control" />
+			<span asp-validation-for="Email" class="text-danger"></span>
+			</div>
+
+			<div class="form-group">
+			<label asp-for="PhoneNumber" class="control-label"></label>
+			<input asp-for="PhoneNumber" class="form-control" />
+			<span asp-validation-for="PhoneNumber" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+			<label asp-for="HomeAddress" class="control-label"></label>
+			<input asp-for="HomeAddress" class="form-control" />
+			<span asp-validation-for="HomeAddress" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+			<label asp-for="ResidentialAddress" class="control-label"></label>
+			<input asp-for="ResidentialAddress" class="form-control" />
+			<span asp-validation-for="ResidentialAddress" class="text-danger"></span>
+			</div>
+
+			<!--<div class="form-group form-check">
+			<label class="form-check-label">
+			<input class="form-check-input" asp-for="IsActive" /> Html.DisplayNameFor(model => model.IsActive)
+			</label>
+			</div>
+			-->
+			<div class="form-group">
+			<label asp-for="DateOfBirth" class="control-label"></label>
+			<input asp-for="DateOfBirth" class="form-control" />
+			<span asp-validation-for="DateOfBirth" class="text-danger"></span>
+			</div>
+
+
+
+
+
+			<div class="form-group">
+			<label asp-for="Gender" class="control-label" for="Gender"></label>
+			<select asp-for="Gender" asp-items="Html.GetEnumSelectList<GenderType>()"></select>
+			<span asp-validation-for="Gender" class="text-danger"></span>
+			</div>
+
+			<!-- <div class="form-group">
+			<label asp-for="Gender" class="control-label" for="Gender"></label>
+			<select name="Gender" id="Gender"> -->
+			<!-- <optgroup label="Swedish Cars"> -->
+			<!-- <option value="1">Male</option>
+			<option value="2">Female</option> -->
+			<!-- </optgroup> -->
+			<!-- </select>
+			<span asp-validation-for="Gender" class="text-danger"></span>
+			</div>
+
+			-->
+
+			<p></p>
+			<!-- <div class="form-group">
+			<label asp-for="Gender" class="control-label"></label>
+			<select asp-for="Gender" class="form-control"></select>
+			<span asp-validation-for="Gender" class="text-danger"></span>
+			</div>
+			-->
+			<!--<div class="form-group">
+			<label asp-for="MaritalStatus" class="control-label" for="MaritalStatus"></label>
+			<select name="MaritalStatus" id="MaritalStatus">
+			//<optgroup label="Swedish Cars">
+			<option value="1">Single</option>
+			<option value="2">Married</option>
+			<option value="3">Divorced</option>
+			<option value="4">Widowed</option>
+			//</optgroup>
+			</select>
+			<span asp-validation-for="MaritalStatus" class="text-danger"></span>
+			</div>
+			-->
+
+
+
+
+			<div class="form-group">
+			<label asp-for="MaritalStatus" class="control-label" for="MaritalStatus"></label>
+			<select asp-for="MaritalStatus" asp-items="Html.GetEnumSelectList<MaritalStatusType>()"></select>
+			<span asp-validation-for="Gender" class="text-danger"></span>
+			</div>
+
+
+			<!-- <div class="form-group">
+			<label asp-for="MaritalStatus" class="control-label"></label>
+			<select asp-for="MaritalStatus" class="form-control"></select>
+			<span asp-validation-for="MaritalStatus" class="text-danger"></span>
+			</div>
+			-->
+			<!-- <div class="form-group">
+			<label asp-for="userRole" class="control-label"></label>
+			<select asp-for="userRole" class="form-control"></select>
+			<span asp-validation-for="userRole" class="text-danger"></span>
+			</div>
+			-->
+			<div class="form-group">
+			<label asp-for="BankAccountNumber" class="control-label"></label>
+			<input asp-for="BankAccountNumber" class="form-control" />
+			<span asp-validation-for="BankAccountNumber" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+			<label asp-for="BankName" class="control-label"></label>
+			<input asp-for="BankName" class="form-control" />
+			<span asp-validation-for="BankName" class="text-danger"></span>
+			</div>
+
+			<div class="form-group">
+			<label asp-for="GuarantorName" class="control-label"></label>
+			<input asp-for="GuarantorName" class="form-control" />
+			<span asp-validation-for="GuarantorName" class="text-danger"></span>
+			</div>
+
+			<div class="form-group">
+			<label asp-for="GuarantorPhoneNumber" class="control-label"></label>
+			<input asp-for="GuarantorPhoneNumber" class="form-control" />
+			<span asp-validation-for="GuarantorPhoneNumber" class="text-danger"></span>
+			</div>
+
+
+
+			<div class="form-group">
+			<label asp-for="Password" class="control-label"></label>
+			<input asp-for="Password" class="form-control" />
+			<span asp-validation-for="Password" class="text-danger"></span>
+			</div>
+
+			<!--<div class="form-group form-check">
+			<label class="form-check-label">
+			<input class="form-check-input" asp-for="IsDeleted" /> #Html.DisplayNameFor(model => model.IsDeleted)
+			</label>
+			</div>
+			-->
+			<!-- <div class="form-group">
+			<label asp-for="Created" class="control-label"></label>
+			<input asp-for="Created" class="form-control" />
+			<span asp-validation-for="Created" class="text-danger"></span>
+			</div>
+			-->
+			<!-- <div class="form-group">
+			<label asp-for="Modified" class="control-label"></label>
+			<input asp-for="Modified" class="form-control" />
+			<span asp-validation-for="Modified" class="text-danger"></span>
+			</div>
+			-->
+			<div class="form-group">
+			<input type="submit" value="CreateAttendant" class="btn btn-success" />
+			</div>
+			</form>
+			</div>
+			</div>
+
+			<div>
+			<a asp-action="Index" class="btn btn-warning">Back to List</a>
+			</div>
+			}
+			@section Scripts {
+			@{
+			await Html.RenderPartialAsync("_ValidationScriptsPartial");
+			}
+			}
+
+			*
+			*/
+}

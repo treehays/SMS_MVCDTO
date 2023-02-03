@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.DTOs.TransactionDTOs;
-using SMS_MVCDTO.ViewModels;
+using SMS_MVCDTO.Models.ViewModels;
 
 namespace SMS_MVCDTO.Controllers
 {
@@ -47,9 +47,10 @@ namespace SMS_MVCDTO.Controllers
                 return NotFound();
             }
 
-            var productTransact = new ProductTransactionViewModel
+            var productTransact = new CreateProductTransactionViewModel
             {
                 Product = product,
+
             };
 
             return View(productTransact);
@@ -57,14 +58,14 @@ namespace SMS_MVCDTO.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(ProductTransactionViewModel productTransaction)
+        public IActionResult Create(CreateProductTransactionViewModel productTransaction)
         {
 
             var transaction = productTransaction.Transaction;
 
-            transaction.BarCode = productTransaction.Product.Data.Barcode;
             if (transaction != null)
             {
+                transaction.BarCode = productTransaction.Product.Data.Barcode;
                 _transaction.Create(transaction);
                 TempData["success"] = "Created Successfully.";
                 return RedirectToAction("Index");

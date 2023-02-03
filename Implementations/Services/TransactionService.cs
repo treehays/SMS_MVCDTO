@@ -48,83 +48,71 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public IEnumerable<TransactionResponseModel> GetAll()
         {
-            var transactions = _transaction.GetAll();
-            var transactionResponse = new List<TransactionResponseModel>();
-            foreach (var transaction in transactions)
+            var transaction = _transaction.GetAll();
+            var transactions = transaction.Select(item => new TransactionResponseModel
             {
-                var transactio = new TransactionResponseModel
+                Message = "Transaction retrieved successfully",
+                Status = true,
+                Data = new TransactionDTOs
                 {
-                    Message = "Transaction retrieved successfully",
-                    Status = true,
-                    Data = new TransactionDTOs
-                    {
-                        ReferenceNo = transaction.ReferenceNo,
-                        CustomerId = transaction.CustomerId,
-                        AttendantId = transaction.AttendantId,
-                        BarCode = transaction.ProductId,
-                        Quantity = transaction.Quantity,
-                        TotalAmount = transaction.TotalAmount,
-                        Created = transaction.Created,
-                        CustomerName = transaction.CustomerName,
-                    }
-                };
-                transactionResponse.Add(transactio);
-            }
-            return transactionResponse;
+                    ReferenceNo = item.ReferenceNo,
+                    CustomerId = item.CustomerId,
+                    AttendantId = item.AttendantId,
+                    BarCode = item.ProductId,
+                    Quantity = item.Quantity,
+                    TotalAmount = item.TotalAmount,
+                    Created = item.Created,
+                    CustomerName = item.CustomerName,
+                }
+
+            }).ToList();
+            return transactions;
         }
 
         public IEnumerable<TransactionResponseModel> GetAllOrderByDate()
         {
-            var transactions = _transaction.GetAllOrderByDate();
-            var transactionResponse = new List<TransactionResponseModel>();
-            foreach (var transaction in transactions)
+            var transaction = _transaction.GetAllOrderByDate();
+            var transactions = transaction.Select(item => new TransactionResponseModel
             {
-                var transactio = new TransactionResponseModel
+                Message = "Transaction retrieved successfully",
+                Status = true,
+                Data = new TransactionDTOs
                 {
-                    Message = "Transaction retrieved successfully",
-                    Status = true,
-                    Data = new TransactionDTOs
-                    {
-                        ReferenceNo = transaction.ReferenceNo,
-                        CustomerId = transaction.CustomerId,
-                        AttendantId = transaction.AttendantId,
-                        BarCode = transaction.ProductId,
-                        Quantity = transaction.Quantity,
-                        TotalAmount = transaction.TotalAmount,
-                        Created = transaction.Created,
-                        CustomerName = transaction.CustomerName,
-                    }
-                };
-                transactionResponse.Add(transactio);
-            }
-            return transactionResponse;
+                    ReferenceNo = item.ReferenceNo,
+                    CustomerId = item.CustomerId,
+                    AttendantId = item.AttendantId,
+                    BarCode = item.ProductId,
+                    Quantity = item.Quantity,
+                    TotalAmount = item.TotalAmount,
+                    Created = item.Created,
+                    CustomerName = item.CustomerName,
+                }
+
+            }).ToList();
+            return transactions;
         }
 
         public IEnumerable<TransactionResponseModel> GetByDate(DateTime dateTime)
         {
-            var transactions = _transaction.GetByDate(dateTime);
-            var transactionResponse = new List<TransactionResponseModel>();
-            foreach (var transaction in transactions)
+            var transaction = _transaction.GetByDate(dateTime);
+            var transactions = transaction.Select(item => new TransactionResponseModel
             {
-                var transactio = new TransactionResponseModel
+                Message = "Transaction retrieved successfully",
+                Status = true,
+                Data = new TransactionDTOs
                 {
-                    Message = "Transaction retrieved successfully",
-                    Status = true,
-                    Data = new TransactionDTOs
-                    {
-                        ReferenceNo = transaction.ReferenceNo,
-                        CustomerId = transaction.CustomerId,
-                        AttendantId = transaction.AttendantId,
-                        BarCode = transaction.ProductId,
-                        Quantity = transaction.Quantity,
-                        TotalAmount = transaction.TotalAmount,
-                        Created = transaction.Created,
-                        CustomerName = transaction.CustomerName,
-                    }
-                };
-                transactionResponse.Add(transactio);
-            }
-            return transactionResponse;
+                    ReferenceNo = item.ReferenceNo,
+                    CustomerId = item.CustomerId,
+                    AttendantId = item.AttendantId,
+                    BarCode = item.ProductId,
+                    Quantity = item.Quantity,
+                    TotalAmount = item.TotalAmount,
+                    Created = item.Created,
+                    CustomerName = item.CustomerName,
+                }
+
+            }).ToList();
+            return transactions;
         }
 
         public TransactionResponseModel GetById(string refNumber)
@@ -151,56 +139,48 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public IEnumerable<TransactionResponseModel> GetByStaffId(string staffId)
         {
-            var transactions = _transaction.GetByStaffId(staffId);
-            var transactionResponse = new List<TransactionResponseModel>();
-            foreach (var transaction in transactions)
+            var transaction = _transaction.GetByStaffId(staffId);
+            var transactions = transaction.Select(item => new TransactionResponseModel
             {
-                var transactio = new TransactionResponseModel
+                Message = "Transaction retrieved successfully",
+                Status = true,
+                Data = new TransactionDTOs
                 {
-                    Message = "Transaction retrieved successfully",
-                    Status = true,
-                    Data = new TransactionDTOs
-                    {
-                        ReferenceNo = transaction.ReferenceNo,
-                        CustomerId = transaction.CustomerId,
-                        AttendantId = transaction.AttendantId,
-                        BarCode = transaction.ProductId,
-                        Quantity = transaction.Quantity,
-                        TotalAmount = transaction.TotalAmount,
-                        Created = transaction.Created,
-                        CustomerName = transaction.CustomerName,
-                    }
-                };
-                transactionResponse.Add(transactio);
-            }
-            return transactionResponse;
+                    ReferenceNo = item.ReferenceNo,
+                    CustomerId = item.CustomerId,
+                    AttendantId = item.AttendantId,
+                    BarCode = item.ProductId,
+                    Quantity = item.Quantity,
+                    TotalAmount = item.TotalAmount,
+                    Created = item.Created,
+                    CustomerName = item.CustomerName,
+                }
+
+            }).ToList();
+            return transactions;
         }
 
         public IEnumerable<TransactionResponseModel> GetTransactionByCustomerName(string customerName)
         {
-            var transactions = _transaction.GetTransactionByCustomerName(customerName);
-            var transactionResponse = new List<TransactionResponseModel>();
-            foreach (var transaction in transactions)
+            var transaction = _transaction.GetTransactionByCustomerName(customerName);
+            var transactions = transaction.Select(item => new TransactionResponseModel
             {
-                var transactio = new TransactionResponseModel
+                Message = "Transaction retrieved successfully",
+                Status = true,
+                Data = new TransactionDTOs
                 {
-                    Message = "Transaction retrieved successfully",
-                    Status = true,
-                    Data = new TransactionDTOs
-                    {
-                        ReferenceNo = transaction.ReferenceNo,
-                        CustomerId = transaction.CustomerId,
-                        AttendantId = transaction.AttendantId,
-                        BarCode = transaction.ProductId,
-                        Quantity = transaction.Quantity,
-                        TotalAmount = transaction.TotalAmount,
-                        Created = transaction.Created,
-                        CustomerName = transaction.CustomerName,
-                    }
-                };
-                transactionResponse.Add(transactio);
-            }
-            return transactionResponse;
+                    ReferenceNo = item.ReferenceNo,
+                    CustomerId = item.CustomerId,
+                    AttendantId = item.AttendantId,
+                    BarCode = item.ProductId,
+                    Quantity = item.Quantity,
+                    TotalAmount = item.TotalAmount,
+                    Created = item.Created,
+                    CustomerName = item.CustomerName,
+                }
+
+            }).ToList();
+            return transactions;
         }
 
         //public IEnumerable<TransactionResponseModel> DownloadExcel()

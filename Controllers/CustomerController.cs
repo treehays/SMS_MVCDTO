@@ -18,6 +18,12 @@ namespace SMS_MVCDTO.Controllers
             return View(customers);
         }
 
+        public IActionResult Dashboard()
+        {
+            var customers = _customer.GetCustomers();
+            return View(customers);
+        }
+
         public IActionResult Create()
         {
             return View();
