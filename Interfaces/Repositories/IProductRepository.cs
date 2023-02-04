@@ -14,7 +14,7 @@ namespace SMS_MVCDTO.Interfaces.Repositories
         IEnumerable<Product> GetByQuantityRemaining(int quantity);
         Product RestockProduct(Product product);
 
-        IEnumerable<Product> BelowReorderLevel(int quantity);
+        IEnumerable<Product> BelowReorderLevel();
         //Product UpdateProductQuantity(Product product);
         //int InventoryQuantityAlert();
         //bool IsAvailable(Product product);

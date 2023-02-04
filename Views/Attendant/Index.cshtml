@@ -1,8 +1,9 @@
-﻿@model IEnumerable<SMS_MVCDTO.Models.DTOs.AttendantDTOs.AttendantResponseModel>
+﻿@model SMS_MVCDTO.Models.ViewModels.TransactionProductListsViewModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Sales Manager Dashboard";
 }
+
 @{
     if (TempData["Success"] != null)
     {
@@ -14,173 +15,234 @@
     }
 }
 
-<h1>Attendant Dashboard</h1>
 
-<div class="container1">
-    <div class="box box2">
-        <form asp-controller="Product" asp-action="GetById">
-            <input type="search" placeholder="Product barCode.." aria-label="Search" name="barCode">
-            <button type="submit">Search</button>
-        </form>
+<main class="main">
+
+    <div class="search-container-top">
+
+        <!-- search box  -->
+        <div class="search-container">
+            <form asp-controller="Product" asp-action="GetById">
+                <input type="text" placeholder="Barcode..." name="barCode">
+                <button type="submit">
+                    <i class="fa fa-search"></i> Search
+                </button>
+            </form>
+        </div>
+
+        <!-- search box  -->
+        <div class="search-container">
+            <form asp-controller="Product" asp-action="GetByName">
+                <input type="text" placeholder="Product name..." name="name">
+                <button type="submit">
+                    <i class="fa fa-search"></i> Search
+                </button>
+            </form>
+        </div>
+
+        <!-- search box  -->
+        <div class="search-container">
+            <form asp-controller="Transaction" asp-action="Details">
+                <input type="text" placeholder="Transactionm Id..." name="ReferenceNo">
+                <button type="submit">
+                    <i class="fa fa-search"></i> Search
+                </button>
+            </form>
+        </div>
+
     </div>
 
-    <div class="box box2">
-        <form asp-controller="Product" asp-action="GetByName">
-            <input type="text" placeholder="Product Name.." name="name">
-            <button type="submit">Search</button>
-        </form>
-    </div>
+    <!-- <div class="dashboard"> -->
+    <div class="form-container">
 
-    <div class="box box2">
-        <form asp-controller="" asp-action="GetByAttendant">
-            <input type="text" placeholder="nothin yet.." name="staffId">
-            <button type="submit">Search</button>
-        </form>
-    </div>
-
-</div>
-
-<div class="container">
-
-    <div class="box box1"> side bar </div>
-</div>
+        <!-- Signup Form -->
 
 
-<div class="container">
+        <div id="">
+        <h1>Recent Transactions...</h1>
 
-    <div class="box box1">
-        <h2>Recent transactions..</h2>
-
-        <table class="table table-info">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Data.StaffId)
-                    </th>
-
-                    <th>
-                        @Html.DisplayNameFor(model => model.Data.FirstName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Data.LastName)
-                    </th>
-
-                    <th>
-                        @Html.DisplayNameFor(model => model.Data.Gender)
-                    </th>
-
-                    <th>
-                        @Html.DisplayNameFor(model => model.Data.UserRole)
-                    </th>
-
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-
-                @foreach (var item in Model)
-                {
+            <table class="table table-info">
+                <thead>
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Data.StaffId)
-                        </td>
+                        <th>S/N</th>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Data.FirstName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Data.LastName)
-                        </td>
+                        <th>
+                            <label> Ref. No</label>
+                        </th>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Data.Gender)
-                        </td>
+                       @* 
+                           <th>
+                            <label> Date</label>
+                        </th>
+                        *@
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Data.UserRole)
-                        </td>
+                        <th>
+                            <label> Customer</label>
+                        </th>
 
+                        <th>
+                            <label> Amount </label>
+                        </th>
 
-                        <td>
+                        <th></th>
 
-                            <a asp-action="Details" asp-route-staffId="@item.Data.StaffId">Details</a>
-                        </td>
                     </tr>
 
-                }
-            </tbody>
-        </table>
-        <br />
+                </thead>
+
+                <tbody>
+                    @{
+                        int serialNumber = 1;
+                    }
+                    @foreach (var item in Model.Transaction)
+                    {
+                        <tr>
+                            <td>
+                                @* Numbering *@
+                                @serialNumber
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data.ReferenceNo)
+                            </td>
+@*
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data.Created)
+                            </td>*@
+
+                            <td>
+                                @Html.DisplayFor(modelItem =>
+                            item.Data.CustomerName)
+                            </td>
+
+
+                            <td>
+                                &#x20A6;@Html.DisplayFor(modelItem =>
+                            item.Data.TotalAmount)
+                            </td>
+
+                            <td>
+                                <a asp-controller="Transaction" asp-action="Details"
+                               asp-route-ReferenceNo="@item.Data.ReferenceNo">Details</a>
+                            </td>
+                        </tr>
+                        serialNumber++;
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+        <!-- Signup Form -->
+
+
+        <div id="">
+        <h1>Products below reorder of stock..</h1>
+
+            <table class="table table-info">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+
+                        <th>
+                            <label> Barcode</label>
+                        </th>
+
+                        <th>
+                            <label> Product Name</label>
+                        </th>
+
+                        <th>
+                            <label> Quantity</label>
+                        </th>
+
+                        @* <th>
+                        <label> Amount </label>
+                        </th>
+
+                        <th>
+                        <label> </label>
+                        </th>
+
+                        @*<th></th>*@
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+                    @{
+                        int serialNumber1 = 1;
+                    }
+                    @foreach (var item in Model.Product)
+                    {
+                        <tr>
+                            <td>
+                                @* Numbering *@
+                                @serialNumber1
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data.Barcode)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data.Name)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data.Quantity)
+                            </td>
+                            @*
+                        <td>
+                        @Html.DisplayFor(modelItem => item.Data.Category)
+                        </td>
+
+                        <td>
+                        &#x20A6;@Html.DisplayFor(modelItem =>
+                        item.Data.SellingPrice)
+                        </td>
+
+                        *@
+                            <td>
+
+                                <a asp-controller="Product" asp-action="Details"
+                               asp-route-Barcode="@item.Data.Barcode">More</a>
+
+                            </td>
+                        </tr>
+                        serialNumber1++;
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
     </div>
 
-    <div class="box box1">
-        <h2>New product..</h2>
-        
-<table class="table table-info">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.StaffId)
-            </th>
+    <!-- search box  -->
+    <div class="search-container-side">
 
-            <th>
-                @Html.DisplayNameFor(model => model.Data.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.LastName)
-            </th>
+        <!-- search box  -->
+        <div class="search-container">
+            <form asp-controller="Product" asp-action="Details">
+                <input type="text" placeholder="Barcode..." name="barCode">
+                <button type="submit">
+                    <i class="fa fa-search"></i> Search
+                </button>
+            </form>
+        </div>
 
-            <th>
-                @Html.DisplayNameFor(model => model.Data.Gender)
-            </th>
+        <!-- search box  -->
+        <div class="search-container">
+            <form asp-controller="Transaction" asp-action="Details">
+                <input type="text" placeholder="Transaction ref..." name="referenceNo">
+                <button type="submit">
+                    <i class="fa fa-search"></i> Search
+                </button>
+            </form>
+        </div>
 
-            <th>
-                @Html.DisplayNameFor(model => model.Data.UserRole)
-            </th>
-
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.StaffId)
-                </td>
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.LastName)
-                </td>
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.Gender)
-                </td>
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.UserRole)
-                </td>
-
-
-                <td>
-
-                    <a asp-action="Details" asp-route-staffId="@item.Data.StaffId">Details</a>
-                </td>
-            </tr>
-
-        }
-    </tbody>
-</table>
-            <br />
     </div>
 
-</div>
 
+</main>
 
-<br />
-<br />
-<br />

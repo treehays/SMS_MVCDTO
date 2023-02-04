@@ -1,21 +1,41 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.DTOs.AttendantDTOs;
+using SMS_MVCDTO.Models.ViewModels;
+
 namespace SMS_MVCDTO.Controllers
 {
     public class AttendantController : Controller
     {
         private readonly IAttendantService _attendant;
-        public AttendantController(IAttendantService attendant)
+        private readonly ITransactionService _transaction;
+        private readonly IProductService _product;
+        /// <summary>
+        /// Change to siingle attendant
+        /// </summary>
+        /// <param name="attendant"></param>
+        /// <param name="transaction"></param>
+        /// <param name="product"></param>
+        public AttendantController(IAttendantService attendant, ITransactionService transaction, IProductService product)
         {
+
             _attendant = attendant;
+            _transaction = transaction;
+            _product = product;
         }
 
         public IActionResult Index()
         {
-            var attendants = _attendant.GetAttendants();
+            //var attendants = _attendant.GetAttendants();
             //ViewBag.ShowElement1 = true;
-            return View(attendants);
+            var transactions = _transaction.GetAll();
+            var products = _product.BelowReorderLevel();
+            var productTransaction = new TransactionProductListsViewModel
+            {
+                Transaction = transactions,
+                Product = products,
+            };
+            return View(productTransaction);
         }
 
         public IActionResult Dashboard()

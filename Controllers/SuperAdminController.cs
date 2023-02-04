@@ -21,7 +21,7 @@ namespace SMS_MVCDTO.Controllers
         {
             //var superAdmin = _superAdmin.GetSuperAdmins();
             var transactions = _transaction.GetAll();
-            var products = _product.GetAll();
+            var products = _product.BelowReorderLevel();
             var productTransaction = new TransactionProductListsViewModel
             {
                 Transaction = transactions,

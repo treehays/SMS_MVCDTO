@@ -1,129 +1,91 @@
 ﻿@model SMS_MVCDTO.Models.DTOs.ProductDTOs.ProductResponseModel
-@{
-}
+
 
 @{
     ViewData["Title"] = "Details";
 }
-@*
+
+@{
+    if (TempData["Success"] != null)
+    {
+        <h2>@TempData["success"]</h2>
+    }
+    if (TempData["failed"] != null)
+    {
+        <h2>@TempData["failed"]</h2>
+    }
+}
 
 
-            @using (Html.BeginForm("Login", "Home"))
-            {
-                <div class="">
-                    @Html.LabelFor(x => x.StaffId, new {@class = "control-label"})
-                    @Html.TextBoxFor(x => x.StaffId, new {@class = "form-control"})
-                    @Html.ValidationMessageFor(x => x.StaffId,"", new
-                {@class="text-danger"})
-                </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(x => x.Password, new {@class = "control-label"})
-                    @Html.TextBoxFor(x => x.Password, new {@class = "form-control"})
-                    @Html.ValidationMessageFor(x => x.Password,"", new
-                {@class="text-danger"})
-                </div>
 
-                <div class="form-group">
-                    <button type="submit" class="btn btn-success"><i class="fa fa-user"></i> Login</button> ||
-                    <a asp-controller="Home" asp-action="resetPasswprd" class="btn
-                    btn-danger"> Forget Password</a>
-                </div>
-                <p>Don't have an account? <a asp-area="" asp-controller="Customer" asp-action="Create" onclick="showSignupForm()">Sign up</a></p>
-            }
-*@
+
+
+
 
 <main class="main">
     <!-- <div class="dashboard"> -->
-    @*<div class="form-container">
+    <div class="form-container">
 
-        <h4>Product</h4>
-        <hr />
-*@
-@*
-        @using (Html.BeginForm("Details", "Product"))
-        {
+        <div id="Data-form">
 
-            <div class="form-group">
-                @Html.HiddenFor(x => x.Data.Barcode, new {@class = "form-control"})
+
+
+
+
+            <div class="container1">
+                <div>
+                    <form asp-action="Edit">
+                        <h1>Modify @Model.Data.Name </h1>
+
+                        <div class="form-group">
+                            <label asp-for="Data.Barcode" class="control-label"></label>
+                            <input asp-for="Data.Barcode" readonly class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Data.Name" class="control-label"></label>
+                            <input asp-for="Data.Name" readonly class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Data.Category" class="control-label"></label>
+                            <input asp-for="Data.Category" readonly class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Data.Quantity" class="control-label"></label>
+                            <input asp-for="Data.Quantity" readonly class="form-control" />
+                        </div>
+
+
+                        <div class="form-group">
+                            <label asp-for="Data.SellingPrice" class="control-label"></label>
+                            <input asp-for="Data.SellingPrice" readonly class="form-control" />
+
+                        </div>
+                        @*
+                        <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-success" />
+                        </div>*@
+
+                        <div>
+                            <a asp-action="Edit" asp-route-barcode="@Model.Data.Barcode" class="btn btn-success">Edit</a> |
+                            <a asp-action="Index" class="btn btn-warning">Back to List</a>
+                            <input type="submit" value="Save" class="btn btn-success" />
+                        </div>
+                    </form>
+                </div>
+
             </div>
 
-            <div class="form-group">
-                @Html.LabelFor(x => x.Data.Barcode, new {@class = "control-label"})
-                @Html.TextBoxFor(x => x.Data.Barcode, new {@class = "form-control"})
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(x => x.Data.Name, new {@class = "control-label"})
-                @Html.TextBoxFor(x => x.Data.Name, new {@class = "form-control"})
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(x => x.Data.Quantity, new {@class = "control-label"})
-                @Html.TextBoxFor(x => x.Data.Quantity, new {@class = "form-control"})
-            </div>
 
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-success"><i class="fa fa-user"></i> Login</button> ||
-                <a asp-controller="Home" asp-action="resetPasswprd" class="btn
-                    btn-danger"> Forget Password</a>
-            </div>
-            <p>Don't have an account? <a asp-area="" asp-controller="Customer" asp-action="Create" onclick="showSignupForm()">Sign up</a></p>
-        }
-        *@
 
-        @*
-        <dl class="row">
-        <dt>
-        @Html.DisplayNameFor(model => model.Data.Barcode)
-        </dt>
-        <dd>
-        @Html.DisplayFor(model => model.Data.Barcode)
-        </dd>
-        <dt>
-        @Html.DisplayNameFor(model => model.Data.Name)
-        </dt>
-        <dd>
-        @Html.DisplayFor(model => model.Data.Name)
-        </dd>
-        <dt>
-        @Html.DisplayNameFor(model => model.Data.Category)
-        </dt>
-        <dd>
-        @Html.DisplayFor(model => model.Data.Category)
-        </dd>
-        <dt>
-        @Html.DisplayNameFor(model => model.Data.Description)
-        </dt>
-        <dd class="col-sm-10">
-        @Html.DisplayFor(model => model.Data.Description)
-        </dd>
-        <dt> class="col-sm-2">
-        @Html.DisplayNameFor(model => model.Data.Quantity)
-        </dt>
-        <dd class="col-sm-10">
-        @Html.DisplayFor(model => model.Data.Quantity)
-        </dd>
-        <dt class="col-sm-2">
-        @Html.DisplayNameFor(model => model.Data.SellingPrice)
-        </dt>
-        <dd class="col-sm-10">
-        @Html.DisplayFor(model => model.Data.SellingPrice)
-        </dd>
-        <dt class="col-sm-2">
-        @Html.DisplayNameFor(model => model.Data.ReorderLevel)
-        </dt>
-        <dd class="col-sm-10">
-        @Html.DisplayFor(model => model.Data.ReorderLevel)
-        </dd>*@
-        </dl>
-    </div>
-@*
-    <div>
-        <a asp-action="Edit" asp-route-Barcode="@Model.Data.Barcode" class="btn btn-success">Edit</a>
-        <a asp-action="Index" class="btn btn-warning">Back to List</a>
-    </div>
+
+
+
+        </div>
 
     </div>
 
@@ -134,9 +96,17 @@
             <button type="submit"><i class="fa fa-search"></i> Search </button>
         </form>
     </div>
-*@
+
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
 </main>
 @* ends here *@
+
+
 
 
 

@@ -835,12 +835,12 @@ C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\staticwebassets
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\staticwebassets.pack.json
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\scopedcss\bundle\SMS_MVCDTO.styles.css
+C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\scopedcss\projectbundle\SMS_MVCDTO.bundle.scp.css
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.csproj.CopyComplete
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\refint\SMS_MVCDTO.dll
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.pdb
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\SMS_MVCDTO.genruntimeconfig.cache
 C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\ref\SMS_MVCDTO.dll
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
-C:\Users\Abdul\source\repos\treehays\SMS_MVCDTO\obj\Debug\net6.0\scopedcss\projectbundle\SMS_MVCDTO.bundle.scp.css

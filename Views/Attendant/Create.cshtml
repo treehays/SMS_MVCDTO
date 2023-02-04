@@ -61,7 +61,14 @@
                 {@class="text-danger"})
                 </div>
 
-
+                
+                <div class="">
+                    @Html.LabelFor(x => x.DateOfBirth, new {@class = "control-label"})
+                    @Html.EditorFor(x => x.DateOfBirth, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(x => x.DateOfBirth,"", new
+                {@class="text-danger"})
+                </div>
+         
                 <div class="">
                     @Html.LabelFor(x => x.HomeAddress, new {@class = "control-label"})
                     @Html.TextBoxFor(x => x.HomeAddress, new {@class = "form-control"})

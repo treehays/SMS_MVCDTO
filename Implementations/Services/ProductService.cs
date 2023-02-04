@@ -8,9 +8,12 @@ namespace SMS_MVCDTO.Implementations.Services
     public class ProductService : IProductService
     {
         private readonly IProductRepository _product;
-        public ProductService(IProductRepository product)
+        private readonly IProductCategoryRepository _productCategory;
+
+        public ProductService(IProductRepository product, IProductCategoryRepository productCategory)
         {
             _product = product;
+            _productCategory = productCategory;
         }
 
         public CreateProductRequestModel Create(CreateProductRequestModel product)
@@ -100,6 +103,9 @@ namespace SMS_MVCDTO.Implementations.Services
             {
                 return null;
             }
+            string categoryName = null;
+            var category = _productCategory.GetById(product.Category);
+            //if (category == null) { categoryName = category.Name; }
             var produc = new ProductResponseModel
             {
                 Message = "product retrieved successfully.",
@@ -112,6 +118,7 @@ namespace SMS_MVCDTO.Implementations.Services
                     SellingPrice = product.SellingPrice,
                     Quantity = product.Quantity,
                     ReorderLevel = product.ReorderLevel,
+                    Category = category.Name,
                 }
             };
             return produc;
@@ -204,9 +211,9 @@ namespace SMS_MVCDTO.Implementations.Services
             return products;
         }
 
-        public IEnumerable<ProductResponseModel> BelowReorderLevel(int quantity)
+        public IEnumerable<ProductResponseModel> BelowReorderLevel()
         {
-            var product = _product.GetAll();
+            var product = _product.BelowReorderLevel();
             if (product == null)
             {
                 return null;

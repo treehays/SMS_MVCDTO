@@ -33,9 +33,9 @@ namespace SMS_MVCDTO.Implementations.Repositories
         }
 
 
-        public IEnumerable<Product> BelowReorderLevel(int quantity)
+        public IEnumerable<Product> BelowReorderLevel()
         {
-            var product = _context.Products.Where(x => x.ReorderLevel <= x.Quantity && x.IsAvailable && !x.IsDeleted);
+            var product = _context.Products.Where(x => x.ReorderLevel >= x.Quantity && x.IsAvailable && !x.IsDeleted);
             return product;
         }
 

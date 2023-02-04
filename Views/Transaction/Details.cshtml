@@ -7,55 +7,95 @@
 }
 
 
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Data.Created)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Data.Created)
-        </dd>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Data.ReferenceNo)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Data.ReferenceNo)
-        </dd>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Data.CustomerName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Data.CustomerName)
-        </dd>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Data.BarCode)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Data.BarCode)
-        </dd>
+<main class="main">
+    <!-- <div class="dashboard"> -->
+    <div class="form-container">
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Data.Quantity)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Data.Quantity)
-        </dd>
-   
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Data.TotalAmount)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Data.TotalAmount)
-        </dd>
-    </dl>
-</div>
+        <div id="Data-form">
 
-<div>
-    <a asp-action="Edit" asp-route-referenceNo="@Model.Data.ReferenceNo" class="btn btn-success">Edit</a>
-    <a asp-action="Index" class="btn btn-warning">Back to List</a>
-</div>
+
+
+
+
+            <div class="container1">
+                <div>
+                    <form asp-action="Edit">
+                        <h1>View @Model.Data.ReferenceNo Reciept</h1>
+
+                        <div class="form-group">
+                            <label asp-for="Data.Created" class="control-label"></label>
+                            <input asp-for="Data.Created" readonly class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Data.ReferenceNo" class="control-label"></label>
+                            <input asp-for="Data.ReferenceNo" readonly class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Data.CustomerName" class="control-label"></label>
+                            <input asp-for="Data.CustomerName" readonly class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Data.BarCode" class="control-label"></label>
+                            <input asp-for="Data.BarCode" readonly class="form-control" />
+                        </div>
+
+
+                        <div class="form-group">
+                            <label asp-for="Data.Quantity" class="control-label"></label>
+                            <input asp-for="Data.Quantity" readonly class="form-control" />
+
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Data.TotalAmount" class="control-label"></label>
+                            <input asp-for="Data.TotalAmount" readonly class="form-control" />
+
+                        </div>
+                        @*
+                        <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-success" />
+                        </div>*@
+
+                        <div>
+                            <a asp-action="Edit" asp-route-referenceNo="@Model.Data.ReferenceNo" class="btn btn-success">Edit</a>
+                            <a asp-action="Delete" asp-route-referenceNo="@Model.Data.ReferenceNo" class="btn btn-Warning">Edit</a>
+                            <a asp-action="Index" class="btn btn-warning">Back to List</a>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+    <!-- search box  -->
+    <div class="search-container">
+        <form>
+            <input type="text" placeholder="Search...">
+            <button type="submit"><i class="fa fa-search"></i> Search </button>
+        </form>
+    </div>
+
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+</main>
+@* ends here *@
+

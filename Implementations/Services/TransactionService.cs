@@ -107,7 +107,7 @@ namespace SMS_MVCDTO.Implementations.Services
                     BarCode = item.ProductId,
                     Quantity = item.Quantity,
                     TotalAmount = item.TotalAmount,
-                    Created = item.Created,
+                    Created = item.Created.Date,
                     CustomerName = item.CustomerName,
                 }
 
@@ -130,7 +130,7 @@ namespace SMS_MVCDTO.Implementations.Services
                     BarCode = transaction.ProductId,
                     Quantity = transaction.Quantity,
                     TotalAmount = transaction.TotalAmount,
-                    Created = transaction.Created,
+                    Created = transaction.Created.Date,
                     CustomerName = transaction.CustomerName,
                 }
             };

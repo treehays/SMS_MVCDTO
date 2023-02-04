@@ -454,8 +454,8 @@ h3 {
 /* Add styles for the forms */
 .form-container {
     width: 76%;
-    /*display: flex;*/
-    justify-content: center;
+    display: flex;
+    justify-content: space-between;
     height: auto;
     border: 2px solid rgb(255, 11, 129);
 }
@@ -500,6 +500,9 @@ form {
 
 input[type="text"],
 input[type="email"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="number"],
 input[type="password"],
 #Gender,
 #MaritalStatus {
@@ -571,6 +574,15 @@ button[type="reset"]+button[type="submit"] {
 #signup-form {
     display: none;
 }
+
+.search-container-top {
+    border: 3px solid #0077ff;
+    display: flex;
+    margin-left: 200px;
+    /*justify-content: center;*/
+    /*align-items: center;*/
+}
+
 
 .search-container-side {
     /* display: flex; */

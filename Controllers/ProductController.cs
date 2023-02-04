@@ -20,6 +20,12 @@ namespace SMS_MVCDTO.Controllers
             return View(product);
         }
 
+        public IActionResult BelowReorderLevel()
+        {
+            var product = _product.BelowReorderLevel();
+            return View(product);
+        }
+
         public IActionResult Dashboard()
         {
             var product = _product.GetAll();

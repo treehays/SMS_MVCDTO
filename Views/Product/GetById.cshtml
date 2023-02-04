@@ -18,147 +18,161 @@
 
 
 
-<h1>Manage Product</h1>
 
-<div class="container1">
-    <div class="box box0">
+
+
+
+
+<main class="main">
+    <!-- <div class="dashboard"> -->
+    <div class="form-container">
+
+@*        <div id="Data-form">
+
+
+*@
+
+
+
+
+            <table class="table table-info col-md-4">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Data.Barcode)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Data.Name)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Data.Quantity)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Data.SellingPrice)
+                        </th>
+
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                            <td>
+                            @Html.DisplayFor(modelItem => modelItem.Data.Barcode)
+                            </td>
+                            <td>
+                            @Html.DisplayFor(modelItem => modelItem.Data.Name)
+                            </td>
+                            <td>
+                            @Html.DisplayFor(modelItem => modelItem.Data.Quantity)
+                            </td>
+
+                            <td>
+                            @Html.DisplayFor(modelItem => modelItem.Data.SellingPrice)
+                            </td>
+
+                            <td>
+                                @*<a asp-action="Edit" asp-route-Barcode="@item.Data.Barcode">Edit</a> |*@
+                            <a asp-action="Details" asp-route-Barcode="@Model.Data.Barcode">Details</a> |
+                                @*<a asp-action="DeletePreview" asp-route-Barcode="@item.Data.Barcode">Delete</a> |*@
+                            <a asp-controller="Transaction" asp-action="Create" asp-route-Barcode="@Model.Data.Barcode">Buy</a>
+                            </td>
+                        </tr>
+                    
+                </tbody>
+            </table>
+
+
+
+
+
+
+            
+            @{
+                /*
+
+            <div class="container1">
+                <div>
+                    <form asp-action="Edit">
+                        <h1>Modify @Model.Data.Name </h1>
+
+                        <div class="form-group">
+                            <label asp-for="Data.Barcode" class="control-label"></label>
+                            <input asp-for="Data.Barcode" readonly class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Data.Name" class="control-label"></label>
+                            <input asp-for="Data.Name" readonly class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Data.Category" class="control-label"></label>
+                            <input asp-for="Data.Category" readonly class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Data.Quantity" class="control-label"></label>
+                            <input asp-for="Data.Quantity" readonly class="form-control" />
+                        </div>
+
+
+                        <div class="form-group">
+                            <label asp-for="Data.SellingPrice" class="control-label"></label>
+                            <input asp-for="Data.SellingPrice" readonly class="form-control" />
+
+                        </div>
+                        @*
+                        <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-success" />
+                        </div>*@
+
+                        <div>
+                            <a asp-action="Edit" asp-route-barcode="@Model.Data.Barcode" class="btn btn-success">Edit</a> |
+                            <a asp-action="Index" class="btn btn-warning">Back to List</a>
+                            <input type="submit" value="Save" class="btn btn-success" />
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+                 * 
+                 */
+            }
+
+
+
+
+@*
+
+        </div>
+*@
+    </div>
+
+    <!-- search box  -->
+    <div class="search-container">
         <form>
-        </form>
-    </div>
-    <div class="box box2">
-        <form asp-controller="Product" asp-action="GetByName">
-            <input type="text" placeholder="Search by Name.." name="name">
-            <button type="submit">Search</button>
-        </form>
-    </div>
-
-    <div class="box box3">
-        <form asp-action="GetById">
-            <input type="search" placeholder="Search by barcode.." aria-label="Search" name="barCode">
-            <button type="submit">Search</button>
+            <input type="text" placeholder="Search...">
+            <button type="submit"><i class="fa fa-search"></i> Search </button>
         </form>
     </div>
 
 
-</div>
-
-
-
-<div class="container">
-
-    <div class="box box1"> side bar </div>
-</div>
-
-
-<table class="table table-info col-md-4">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.Barcode)
-            </th>
-
-            <th>
-                @Html.DisplayNameFor(model => model.Data.Name)
-            </th>
-
-            <th>
-                @Html.DisplayNameFor(model => model.Data.Quantity)
-            </th>
-
-            <th>
-                @Html.DisplayNameFor(model => model.Data.SellingPrice)
-            </th>
-
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => Model.Data.Barcode)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => Model.Data.Name)
-                </td>
-                <td>
-                @Html.DisplayFor(modelItem => Model.Data.Quantity)
-                </td>
-
-                <td>
-                @Html.DisplayFor(modelItem => Model.Data.SellingPrice)
-                </td>
-
-                <td>
-
-                <a asp-action="Details" asp-route-Barcode="@Model.Data.Barcode">Details</a> |
-                <a asp-controller="Transaction" asp-action="Create" asp-route-Barcode="@Model.Data.Barcode">Buy</a>
-                </td>
-            </tr>
-        
-    </tbody>
-</table>
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+</main>
+@* ends here *@
 
 
 
 
 
-@{
-            /*
-    <div>
-        <h4>Product</h4>
-    <hr />
-    *
-    <dl class="row">
-    <dt class="col-sm-2">
-    @Html.DisplayNameFor(model => model.Data.Barcode)
-    </dt>
-    <dd class="col-sm-10">
-    @Html.DisplayFor(model => model.Data.Barcode)
-    </dd>
-    <dt class="col-sm-2">
-    @Html.DisplayNameFor(model => model.Data.Name)
-    </dt>
-    <dd class="col-sm-10">
-    @Html.DisplayFor(model => model.Data.Name)
-    </dd>
-    <dt class="col-sm-2">
-    @Html.DisplayNameFor(model => model.Data.Category)
-    </dt>
-    <dd class="col-sm-10">
-    @Html.DisplayFor(model => model.Data.Category)
-    </dd>
-    <dt class="col-sm-2">
-    @Html.DisplayNameFor(model => model.Data.Description)
-    </dt>
-    <dd class="col-sm-10">
-    @Html.DisplayFor(model => model.Data.Description)
-    </dd>
-    <dt class="col-sm-2">
-    @Html.DisplayNameFor(model => model.Data.Quantity)
-    </dt>
-    <dd class="col-sm-10">
-    @Html.DisplayFor(model => model.Data.Quantity)
-    </dd>
-    <dt class="col-sm-2">
-    @Html.DisplayNameFor(model => model.Data.SellingPrice)
-    </dt>
-    <dd class="col-sm-10">
-    @Html.DisplayFor(model => model.Data.SellingPrice)
-    </dd>
-    <dt class="col-sm-2">
-    @Html.DisplayNameFor(model => model.Data.ReorderLevel)
-    </dt>
-    <dd class="col-sm-10">
-    @Html.DisplayFor(model => model.Data.ReorderLevel)
-    </dd>
-    </dl>
 
-    </div>
 
-<div>
-    <a asp-action="Edit" asp-route-Barcode="@Model.Data.Barcode" class="btn btn-success">Edit</a>
-    <a asp-action="Index" class="btn btn-warning">Back to List</a>
-    </div>
-    */
-}
