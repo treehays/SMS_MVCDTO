@@ -54,7 +54,8 @@ namespace SMS_MVCDTO.Controllers
                 {
                     _product.Create(product.CreateProduct);
                     TempData["success"] = "Created Successfully.";
-                    return RedirectToAction("Index");
+                    //return RedirectToAction("Index");
+                    return RedirectToAction("Dashboard", "Attendant");
                 }
                 TempData["failed"] = "already exist.";
                 return View();

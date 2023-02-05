@@ -61,13 +61,14 @@ namespace SMS_MVCDTO.Implementations.Services
                     BarCode = item.ProductId,
                     Quantity = item.Quantity,
                     TotalAmount = item.TotalAmount,
-                    Created = item.Created,
+                    Created = item.Created.Date,
                     CustomerName = item.CustomerName,
                 }
 
             }).ToList();
             return transactions;
         }
+
 
         public IEnumerable<TransactionResponseModel> GetAllOrderByDate()
         {
@@ -84,7 +85,7 @@ namespace SMS_MVCDTO.Implementations.Services
                     BarCode = item.ProductId,
                     Quantity = item.Quantity,
                     TotalAmount = item.TotalAmount,
-                    Created = item.Created,
+                    Created = item.Created.Date,
                     CustomerName = item.CustomerName,
                 }
 
@@ -152,7 +153,7 @@ namespace SMS_MVCDTO.Implementations.Services
                     BarCode = item.ProductId,
                     Quantity = item.Quantity,
                     TotalAmount = item.TotalAmount,
-                    Created = item.Created,
+                    Created = item.Created.Date,
                     CustomerName = item.CustomerName,
                 }
 
@@ -175,7 +176,7 @@ namespace SMS_MVCDTO.Implementations.Services
                     BarCode = item.ProductId,
                     Quantity = item.Quantity,
                     TotalAmount = item.TotalAmount,
-                    Created = item.Created,
+                    Created = item.Created.Date,
                     CustomerName = item.CustomerName,
                 }
 
