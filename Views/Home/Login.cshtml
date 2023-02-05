@@ -1,4 +1,5 @@
-﻿@model SMS_MVCDTO.Models.DTOs.UserDTOs.LoginRequestModel
+﻿@using System.Security.Claims;
+@model SMS_MVCDTO.Models.DTOs.UserDTOs.LoginRequestModel
 <!-- Design by foolishdeveloper.com -->
 @{
     ViewData["Title"] = "Colon:: Staff Login Page";
@@ -6,82 +7,89 @@
 
 
 <main class="main">
-    <!-- <div class="dashboard"> -->
-    <div class="form-container">
+    @if (User?.FindFirst(ClaimTypes.NameIdentifier) == null)
+    {
 
-        <!-- Signup Form -->
+        <!-- <div class="dashboard"> -->
+        <div class="form-container">
 
-        <div id="signup-form">
+            <!-- Signup Form -->
 
-            @using (Html.BeginForm("Login", "Home"))
-            {
-                <div class="">
-                    @Html.LabelFor(x => x.StaffId)
-                    @Html.TextBoxFor(x => x.StaffId)
-                    @Html.ValidationMessageFor(x => x.StaffId)
-                </div>
+            <div id="signup-form">
 
-                <div class="">
-                    @Html.LabelFor(x => x.Password)
-                    @Html.TextBoxFor(x => x.Password)
-                    @Html.ValidationMessageFor(x => x.Password)
-                </div>
+                @using (Html.BeginForm("Login", "Home"))
+                {
+                    <div class="">
+                        @Html.LabelFor(x => x.StaffId)
+                        @Html.TextBoxFor(x => x.StaffId)
+                        @Html.ValidationMessageFor(x => x.StaffId)
+                    </div>
 
-                <div class="">
-                    <button type="submit" class=""> Sign up </button> 
-                    <button type="reset" class="">Clear</button>
-                    @* </div> *@
-                </div>
-                <p>Already have an account? <a href="#" onclick="showLoginForm()">Login
-                    </a></p>
+                    <div class="">
+                        @Html.LabelFor(x => x.Password)
+                        @Html.TextBoxFor(x => x.Password)
+                        @Html.ValidationMessageFor(x => x.Password)
+                    </div>
 
-            }
+                    <div class="">
+                        <button type="submit" class=""> Sign up </button>
+                        <button type="reset" class="">Clear</button>
+                        @* </div> *@
+                    </div>
+                    <p>
+                        Already have an account? <a href="#" onclick="showLoginForm()">
+                            Login
+                        </a>
+                    </p>
 
-        </div>
+                }
 
-        <!-- Login Form -->
-        <div id="login-form">
+            </div>
 
-            @using (Html.BeginForm("Login", "Home"))
-            {
-                <div class="">
-                    @Html.LabelFor(x => x.StaffId, new {@class = "control-label"})
-                    @Html.TextBoxFor(x => x.StaffId, new {@class = "form-control"})
-                    @Html.ValidationMessageFor(x => x.StaffId,"", new
+            <!-- Login Form -->
+            <div id="login-form">
+
+                @using (Html.BeginForm("Login", "Home"))
+                {
+                    <div class="">
+                        @Html.LabelFor(x => x.StaffId, new {@class = "control-label"})
+                        @Html.TextBoxFor(x => x.StaffId, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(x => x.StaffId,"", new
                 {@class="text-danger"})
-                </div>
+                    </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(x => x.Password, new {@class = "control-label"})
-                    @Html.TextBoxFor(x => x.Password, new {@class = "form-control"})
-                    @Html.ValidationMessageFor(x => x.Password,"", new
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Password, new {@class = "control-label"})
+                        @Html.TextBoxFor(x => x.Password, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(x => x.Password,"", new
                 {@class="text-danger"})
-                </div>
+                    </div>
 
-                <div class="form-group">
-                    <button type="submit" class="btn btn-success"><i class="fa fa-user"></i> Login</button> ||
-                    <a asp-controller="Home" asp-action="resetPasswprd" class="btn
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success"><i class="fa fa-user"></i> Login</button> ||
+                        <a asp-controller="Home" asp-action="resetPasswprd" class="btn
                     btn-danger"> Forget Password</a>
-                </div>
-                <p>Don't have an account? <a asp-area="" asp-controller="Customer" asp-action="Create" onclick="showSignupForm()">Sign up</a></p>
-            }
+                    </div>
+                    <p>Don't have an account? <a asp-area="" asp-controller="Customer" asp-action="Create" onclick="showSignupForm()">Sign up</a></p>
+                }
+            </div>
+
         </div>
 
-    </div>
+        <!-- search box
+        <div class="search-container">
+            <form>
+                <input type="text" placeholder="Search...">
+                <button type="submit"><i class="fa fa-search"></i> Search </button>
+            </form>
+        </div>
+         -->
+        @* ends here *@
 
-    <!-- search box  -->
-    <div class="search-container">
-        <form>
-            <input type="text" placeholder="Search...">
-            <button type="submit"><i class="fa fa-search"></i> Search </button>
-        </form>
-    </div>
+        @* </div> *@
 
+    }
 </main>
-@* ends here *@
-
-@* </div> *@
-
 
 
 
@@ -131,7 +139,7 @@
     <div class="fb"><i class='fas fa-user-circle'></i> Register</div>
     <!-- <div class="fb"><i class="fab fa-facebook"></i> Facebook</div>-->
     </div>
-    </form>
-            </html>
+            </form>
+                    </html>
     */
 }

@@ -464,7 +464,8 @@ h3 {
 #login-form {
     display: flex;
     /*border: 35px solid purple;*/
-    justify-content: flex-start;
+    justify-content: center;
+    margin-top: 100px;
 }
 
 #Data-form {

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using SMS_MVCDTO.Context;
 using SMS_MVCDTO.Implementations.Repositories;
@@ -13,6 +14,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 var configuration = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationContext>(options => options.UseMySql(configuration, ServerVersion.AutoDetect(configuration)));
+
+
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IAttendantRepository, AttendantRepository>();
@@ -32,6 +35,17 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IWalletRepository, WalletRepository>();
 builder.Services.AddScoped<IWalletService, WalletService>();
 
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(config =>
+    {
+        config.LoginPath = "/Home/Login";
+        config.LogoutPath = "/Home/Login";
+        config.Cookie.Name = "SMSREX";
+    });
+builder.Services.AddAuthorization();
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -46,7 +60,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

@@ -1,4 +1,5 @@
-﻿@model SMS_MVCDTO.Models.ViewModels.TransactionProductListsViewModel
+﻿@using System.Security.Claims;
+@model SMS_MVCDTO.Models.ViewModels.TransactionProductListsViewModel
 
 @{
     ViewData["Title"] = "Sales Manager Dashboard";
@@ -24,7 +25,23 @@
 
 
         <div id="">
-        <h1>Recent Transactions...</h1>
+            <h1>Recent Transactions...</h1>
+
+
+           @* <p>
+                @if (User?.FindFirst(ClaimTypes.NameIdentifier).Value != null)
+                {
+                    <h1>Welcome @User.FindFirst(ClaimTypes.NameIdentifier).Value; </h1>
+                }
+                else
+                {
+                    <h1> Welcome Guest </h1>
+                }
+            </p>*@
+            <h1>
+                Welcome @User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            </h1>
+          
 
             <table class="table table-info">
                 <thead>
@@ -34,7 +51,7 @@
                         <th>
                             <label> Ref. No</label>
                         </th>
-                        
+
                         <th>
                             <label> Date</label>
                         </th>
@@ -68,7 +85,7 @@
                                 @Html.DisplayFor(modelItem => item.Data.ReferenceNo)
                             </td>
 
-                              <td>
+                            <td>
                                 @Html.DisplayFor(modelItem => item.Data.Created)
                             </td>
 
@@ -99,7 +116,7 @@
 
 
         <div id="">
-        <h1>Products below reorder of stock..</h1>
+            <h1>Products below reorder of stock..</h1>
 
             <table class="table table-info">
                 <thead>
@@ -113,17 +130,17 @@
                         <th>
                             <label> Product Name</label>
                         </th>
-                        
+
                         <th>
                             <label> Quantity</label>
                         </th>
-                        
+
                         <th>
                             <label> Amount </label>
                         </th>
 
-                       @* <th>
-                            <label> </label>
+                        @* <th>
+                        <label> </label>
                         </th>*@
 
                         @*<th></th>*@
@@ -150,15 +167,15 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Data.Name)
                             </td>
-                            
+
                             <td>
                                 @Html.DisplayFor(modelItem => item.Data.Quantity)
                             </td>
-                           @* 
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Data.Category)
-                            </td>
-*@
+                            @*
+                        <td>
+                        @Html.DisplayFor(modelItem => item.Data.Category)
+                        </td>
+                        *@
 
                             <td>
                                 &#x20A6;@Html.DisplayFor(modelItem =>
@@ -166,7 +183,7 @@
                             </td>
 
                             <td>
-                               
+
                                 <a asp-controller="Product" asp-action="Details"
                                asp-route-Barcode="@item.Data.Barcode">More</a>
 
@@ -188,7 +205,8 @@
         <div class="search-container">
             <form asp-controller="Product" asp-action="Details">
                 <input type="text" placeholder="Barcode..." name="barCode">
-                <button type="submit"><i class="fa fa-search"></i> Search
+                <button type="submit">
+                    <i class="fa fa-search"></i> Search
                 </button>
             </form>
         </div>
@@ -197,7 +215,8 @@
         <div class="search-container">
             <form asp-controller="Transaction" asp-action="Details">
                 <input type="text" placeholder="Transaction ref..." name="referenceNo">
-                <button type="submit"><i class="fa fa-search"></i> Search
+                <button type="submit">
+                    <i class="fa fa-search"></i> Search
                 </button>
             </form>
         </div>

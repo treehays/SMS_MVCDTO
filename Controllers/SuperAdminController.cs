@@ -2,6 +2,7 @@
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.DTOs.SuperAdminDTOs;
 using SMS_MVCDTO.Models.ViewModels;
+using System.Security.Claims;
 
 namespace SMS_MVCDTO.Controllers
 {
@@ -27,12 +28,12 @@ namespace SMS_MVCDTO.Controllers
                 Transaction = transactions,
                 Product = products,
             };
+
             return View(productTransaction);
         }
 
         public IActionResult Dashboard()
         {
-            //var superAdmin = _superAdmin.GetSuperAdmins();
             var superAdmin = _superAdmin.GetSuperAdmins();
             return View(superAdmin);
 
