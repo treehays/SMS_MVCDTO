@@ -11,5 +11,6 @@ namespace SMS_MVCDTO.Interfaces.Services
         UserResponseModel GetById(string staffId);
         UpdateUserPasswordRequestModel UpdatePassword(UpdateUserPasswordRequestModel user);
         UpdateUserRoleRequestModel UpdateRole(UpdateUserRoleRequestModel user);
+        UpdateUserPasswordRequestModel UpdateProfilePicture(UpdateUserPasswordRequestModel user);
     }
 }

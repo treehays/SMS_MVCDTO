@@ -2,6 +2,7 @@
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.DTOs.AttendantDTOs;
 using SMS_MVCDTO.Models.ViewModels;
+using System.Security.Claims;
 
 namespace SMS_MVCDTO.Controllers
 {
@@ -26,6 +27,7 @@ namespace SMS_MVCDTO.Controllers
 
         public IActionResult Index()
         {
+            TempData["userId"] = User.FindFirst(ClaimTypes.Name).Value;
             //var attendants = _attendant.GetAttendants();
             //ViewBag.ShowElement1 = true;
             var transactions = _transaction.GetAll();
@@ -63,6 +65,7 @@ namespace SMS_MVCDTO.Controllers
                     TempData["success"] = "Registration Successful.    ";
                     return RedirectToAction("Index", "SuperAdmin");
                 }
+
                 TempData["failed"] = "Email already Exist.";
                 return View();
             }

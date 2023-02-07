@@ -30,5 +30,6 @@ namespace SMS_MVCDTO.Models.Entities
         public MaritalStatusType MaritalStatus { get; set; }
         public UserRoleType userRole { get; set; }
         //public IList<Transaction> Transactions { get; set; }
+
     }
 }

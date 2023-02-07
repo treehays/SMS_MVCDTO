@@ -19,7 +19,7 @@
     <hr />
     <div class="row">
         <div class="col-md-4">
-            <form asp-action="Create">
+            <form asp-action="Create" method="post" enctype="multipart/form-data">
 
                 <div class="form-group">
                     <label asp-for="FirstName" class="control-label"></label>
@@ -54,6 +54,17 @@
                     <input asp-for="ResidentialAddress" class="form-control" />
                     <span asp-validation-for="ResidentialAddress" class="text-danger"></span>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
                 @*
             testing date formation
             <div class="form-group">
@@ -120,11 +131,37 @@
 
 
 
+                <div class="col-md-6">
+                    @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+                    <div class="form-group">
+                        <label asp-for="ProfilePicture" style="width: 100%;"></label>
+
+                        <input asp-for="ProfilePicture" type="file" accept=".png,.jpg,.jpeg,.gif,.tif" class="form-control" style="border:0px!important;padding: 0px;padding-top: 10px;padding-bottom: 30px;" onchange="document.getElementById('profilePicture').src = window.URL.createObjectURL(this.files[0])" />
+                        <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+
                 <div class="form-group">
                     <label asp-for="Password" class="control-label"></label>
                     <input asp-for="Password" type="password" class="form-control" />
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
+
+
+
+
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword" class="control-label"></label>
+                    <input asp-for="ConfirmPassword" type="password" class="form-control" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+
+
+
+
+
 
 
                 <div class="form-group">
@@ -147,4 +184,6 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-	}
+    <partial name="_ValidationScriptsPartial" />
+}
+

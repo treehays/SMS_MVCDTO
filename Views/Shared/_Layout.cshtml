@@ -1,5 +1,6 @@
 ﻿@using System.Security.Claims;
 @using SMS_MVCDTO.Enums;
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,16 +13,28 @@
 
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="~/css/styles.css">
-    <link rel="stylesheet" href="~/SMS_MVCDTO.styles.css"
-          asp-append-version="true" />
+    <link rel="stylesheet" href="~/SMS_MVCDTO.styles.css" asp-append-version="true" />
 
 </head>
 
 <body>
 
+    @{
+        var loginUser = User?.FindFirst(ClaimTypes.Role);
+    }
+
+    @* @if (loginUser != null)
+
+    //{
+    //    @if (loginUser.Value == UserRoleType.SuperAdmin.ToString())
+    //    {
+
+    //    }
+
+    //}
+    *@
 
 
-   
 
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm
@@ -85,7 +98,7 @@
                     <ul class="navbar-nav">
 
 
-                        @if (User?.FindFirst(ClaimTypes.NameIdentifier) == null)
+                        @if (loginUser == null)
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area=""
@@ -94,20 +107,45 @@
                             </li>
                         }
 
-                        @if (User?.FindFirst(ClaimTypes.NameIdentifier) != null)
+
+                        @*byte[] = @(Convert.FromBase64String(User.FindFirstValue(ClaimTypes.UserData)))*@
+
+                        @if (loginUser != null)
                         {
+                            @*byte[] pict = Convert.ToBase64String(User?.FindFirst(ClaimTypes.GivenName).Value)*@
+                            @*
+                        if (TempData["ProfilePicture"] != null)
+                        {
+                        byte[] picture =  @TempData["ProfilePicture"]
+                        }
+
+                        <img style="width:40px;height:40px; object-fit:cover; border-radius:30px" src="data:image/*;base64,@(Convert.ToBase64String(UserManager.GetUserAsync(User).Result.ProfilePicture))">
+
+                        <a asp-area="" asp-asp-controller="Home" asp-action="Index">
+                        <img style="width:40px;height:40px; object-fit:cover; border-radius:30px" src="data:image/*;base64,@(Convert.FromBase64String(User.FindFirstValue(ClaimTypes.UserData)))">
+                        </a>
+
+                        *@
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area=""
+                               asp-controller="Home"
+                               asp-action=""> @User?.FindFirst(ClaimTypes.NameIdentifier).Value</a>
+                            </li>
+
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area=""
                                asp-controller="Home"
                                asp-action="Logout">Logout</a>
                             </li>
+
                         }
 
-                        @if (User?.FindFirst(ClaimTypes.NameIdentifier) == null)
+                        @if (loginUser== null)
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area=""
-                               asp-controller="Customer"
+                               asp-controller="SuperAdmin"
                                asp-action="Create">Sign-Up</a>
                             </li>
                         }
@@ -124,7 +162,7 @@
 
     <div class="bodycontain bd-oline">
 
-        @if (User?.FindFirst(ClaimTypes.NameIdentifier) != null)
+        @if (loginUser!= null)
         {
 
             <div class="sidebar ">
@@ -152,9 +190,9 @@
                         </ul>
                     </li>
 
-                    @if (User?.FindFirst(ClaimTypes.Role) != null)
+                    @if (loginUser != null)
                     {
-                        @if (User.FindFirst(ClaimTypes.Role).Value == UserRoleType.SuperAdmin.ToString())
+                        @if (loginUser.Value == UserRoleType.SuperAdmin.ToString())
                         {
                             <li class="dropdown">
                                 <a href="#">Customers</a>
@@ -177,7 +215,7 @@
                     }
 
 
-                  
+
 
                     <li class="dropdown">
                         <a href="#">Products</a>

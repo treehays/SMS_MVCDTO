@@ -1,8 +1,11 @@
 ﻿using System.Reflection.Metadata;
+using Microsoft.AspNetCore.Identity;
 using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.DTOs.UserDTOs;
 using SMS_MVCDTO.Models.Entities;
+using Microsoft.AspNetCore.Http;
+
 
 namespace SMS_MVCDTO.Implementations.Services
 {
@@ -22,6 +25,7 @@ namespace SMS_MVCDTO.Implementations.Services
                 StaffId = user.StaffId,
                 Role = user.Role,
                 Created = DateTime.Now,
+                ProfilePicture = user.ProfilePicture,
             };
             _user.Create(userr);
             return user;
@@ -59,7 +63,7 @@ namespace SMS_MVCDTO.Implementations.Services
                 StaffId = login.StaffId,
                 Password = login.Password,
             };
-           
+
             var user = _user.Login(userr);
             if (user != null)
             {
@@ -80,6 +84,13 @@ namespace SMS_MVCDTO.Implementations.Services
         }
 
         public UpdateUserPasswordRequestModel UpdatePassword(UpdateUserPasswordRequestModel user)
+        {
+            var userr = _user.GetById(user.StaffId);
+            userr.Password = user.Password ?? userr.Password;
+            return user;
+        }
+
+        public UpdateUserPasswordRequestModel UpdateProfilePicture(UpdateUserPasswordRequestModel user)
         {
             var userr = _user.GetById(user.StaffId);
             userr.Password = user.Password ?? userr.Password;

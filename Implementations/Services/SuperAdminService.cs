@@ -25,7 +25,9 @@ namespace SMS_MVCDTO.Implementations.Service
                 Password = superAdmin.Password,
                 Created = DateTime.Now,
                 Role = UserRoleType.SuperAdmin,
+                ProfilePicture = superAdmin.ProfilePicture,
             };
+
             _user.Create(user);
             var superAdmi = new SuperAdmin
             {
@@ -47,6 +49,7 @@ namespace SMS_MVCDTO.Implementations.Service
                 userRole = UserRoleType.SuperAdmin,
                 Created = DateTime.Now,
                 IsActive = true,
+                //ProfilePicture = superAdmin.ProfilePicture,
             };
             _superAdmin.Create(superAdmi);
             return superAdmin;

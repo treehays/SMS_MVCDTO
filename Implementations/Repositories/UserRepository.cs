@@ -44,6 +44,13 @@ namespace SMS_MVCDTO.Implementations.Repositories
             return user;
         }
 
+        public User UpdateProfilePicture(User user)
+        {
+            _context.Users.Update(user);
+            _context.SaveChanges();
+            return user;
+        }
+
         public User UpdateRole(User user)
         {
             _context.Users.Update(user);

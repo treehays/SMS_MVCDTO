@@ -85,3 +85,27 @@ create list of barcodes
 #Update password
 #Check Wallet Balance
    
+
+
+
+///
+#fomm OnPostAsync method in the Register.cs class.
+  if (ModelState.IsValid)
+            {
+            }
+
+#checking for valid email
+public bool IsValidEmail(string emailaddress)
+{
+    try
+    {
+        MailAddress m = new MailAddress(emailaddress);
+        return true;
+    }
+    catch (FormatException)
+    {
+        return false;
+    }
+}
+
+

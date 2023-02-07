@@ -32,6 +32,8 @@ namespace SMS_MVCDTO.Models.Entities
         public string BankName { get; set; }
         public string GuarantorName { get; set; }
         public string GuarantorPhoneNumber { get; set; }
+        //public byte[]? ProfilePicture { get; set; }
+
         //public Wallet Wallets { get; set; }
         //public IList<Transaction> Transactions { get; set; }
         /*
