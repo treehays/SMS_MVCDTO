@@ -7,7 +7,7 @@ using SMS_MVCDTO.Implementations.Service;
 using SMS_MVCDTO.Implementations.Services;
 using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Interfaces.Services;
-
+using SMS_MVCDTO.Models.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -50,31 +50,25 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
-
-/*
-
-
+//
 using (var scope = app.Services.CreateScope())
 {
-var services = scope.ServiceProvider;
-var loggerFactory = services.GetRequiredService<ILoggerFactory>();
-try
-{
-var context = services.GetRequiredService<ApplicationContext>();
-var userManager = services.GetRequiredService<UserManager<User>>();
-var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
- * await ContextSeed.SeedRolesAsync(userManager, roleManager);
-await ContextSeed.SeedSuperAdminAsync(userManager, roleManager);
+    var services = scope.ServiceProvider;
+    var loggerFactory = services.GetRequiredService<ILoggerFactory>();
+    try
+    {
+        var context = services.GetRequiredService<ApplicationContext>();
+        var userManager = services.GetRequiredService<UserManager<User>>();
+        var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+        await ContextSeed.SeedRolesAsync(userManager, roleManager);
+        //await ContextSeed.SeedSuperAdminAsync(userManager, roleManager);
+    }
+    catch (Exception ex)
+    {
+        var logger = loggerFactory.CreateLogger<Program>();
+        logger.LogError(ex, "An error occurred seeding the DB.");
+    }
 }
-catch (Exception ex)
-{
-var logger = loggerFactory.CreateLogger<Program>();
-logger.LogError(ex, "An error occurred seeding the DB.");
-}
-}
-*/
-
-
 
 
 // Configure the HTTP request pipeline.

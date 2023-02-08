@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using SMS_MVCDTO.Models.Entities;
 
 namespace SMS_MVCDTO.Context
@@ -18,5 +19,6 @@ namespace SMS_MVCDTO.Context
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Wallet> Wallets { get; set; }
+        public DbSet<IdentityRole> Roles { get; set; }
     }
 }

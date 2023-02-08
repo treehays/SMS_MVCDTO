@@ -19,6 +19,25 @@ namespace SMSMVCDTO.Migrations
                 .HasAnnotation("ProductVersion", "7.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("NormalizedName")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Roles");
+                });
+
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Attendant", b =>
                 {
                     b.Property<string>("StaffId")
@@ -365,9 +384,6 @@ namespace SMSMVCDTO.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
-                    b.Property<byte[]>("ProfilePicture")
-                        .HasColumnType("longblob");
-
                     b.Property<string>("ResidentialAddress")
                         .HasColumnType("longtext");
 
@@ -416,9 +432,6 @@ namespace SMSMVCDTO.Migrations
 
                     b.Property<string>("ProductId")
                         .HasColumnType("longtext");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
 
                     b.Property<double>("TotalAmount")
                         .HasColumnType("double");
