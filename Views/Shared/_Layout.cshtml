@@ -141,7 +141,7 @@
 
                         }
 
-                        @if (loginUser== null)
+                        @if (loginUser == null)
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area=""
@@ -159,10 +159,10 @@
 
     @* <div class="wrapper"> *@
 
-
+        @*SIDE BAR*@
     <div class="bodycontain bd-oline">
 
-        @if (loginUser!= null)
+        @if (loginUser != null)
         {
 
             <div class="sidebar ">
@@ -172,26 +172,33 @@
                     <li><a asp-area="" asp-controller="" asp-action="">Home</a></li>
                     @* <li><a href="#"></a></li> *@
 
-                    <li class="dropdown">
-                        <a href="#">Attendants</a>
-                        <ul class="dropdown-content">
-                            <li>
-                                <a asp-area="" asp-controller="Attendant"
-                               asp-action="Create">Create Attendants</a>
-                            </li>
-                            <li>
-                                <a asp-area="" asp-controller="Attendant"
-                               asp-action="Dashboard">Manage Attendants</a>
-                            </li>
-                            <li>
-                                <a asp-area="" asp-controller="Attendant"
-                               asp-action="">View all attendants</a>
-                            </li>
-                        </ul>
-                    </li>
 
-                    @if (loginUser != null)
-                    {
+                    @*@if (loginUser != null)
+                    {*@
+                        @if (loginUser.Value == UserRoleType.SuperAdmin.ToString())
+                        {
+                            <li class="dropdown">
+                                <a href="#">Attendants</a>
+                                <ul class="dropdown-content">
+                                    <li>
+                                        <a asp-area="" asp-controller="Attendant"
+                               asp-action="Create">Create Attendants</a>
+                                    </li>
+                                    <li>
+                                        <a asp-area="" asp-controller="Attendant"
+                               asp-action="Dashboard">Manage Attendants</a>
+                                    </li>
+                                    <li>
+                                        <a asp-area="" asp-controller="Attendant"
+                               asp-action="">View all attendants</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                    @*}*@
+
+                   @* @if (loginUser != null)
+                    {*@
                         @if (loginUser.Value == UserRoleType.SuperAdmin.ToString())
                         {
                             <li class="dropdown">
@@ -212,7 +219,7 @@
                                 </ul>
                             </li>
                         }
-                    }
+                    @*}*@
 
 
 
