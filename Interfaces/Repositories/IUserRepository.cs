@@ -16,7 +16,6 @@ namespace SMS_MVCDTO.Interfaces.Repositories
         User UpdatePassword(User user);
         User UpdateRole(User user);
         //bool IsActive(User user);
-        User UpdateProfilePicture(User user);
 
     }
 }

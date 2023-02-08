@@ -1,13 +1,14 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.DTOs.SuperAdminDTOs;
-using SMS_MVCDTO.Models.Entities;
 using SMS_MVCDTO.Models.ViewModels;
+using System.Data;
 using System.Security.Claims;
 
 namespace SMS_MVCDTO.Controllers
 {
+    [Authorize(Roles = "SuperAdmin")]
     public class SuperAdminController : Controller
     {
         private readonly ISuperAdminService _superAdmin;
@@ -48,29 +49,16 @@ namespace SMS_MVCDTO.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(CreateSuperAdminRequestModel createSuperAdmin)
+        public IActionResult Create(CreateSuperAdminRequestModel createSuperAdmin)
         {
             if (createSuperAdmin != null)
             {
                 var existByEmail = _superAdmin.GetByEmail(createSuperAdmin.Email);
-
                 if (existByEmail == null)
                 {
-                    //adding profile picture
-                    if (Request.Form.Files.Count > 0)
-                    {
-                        IFormFile file = Request.Form.Files.FirstOrDefault();
-                        using (var dataStream = new MemoryStream())
-                        {
-                            await file.CopyToAsync(dataStream);
-                            createSuperAdmin.ProfilePicture = dataStream.ToArray();
-                        }
-                        _superAdmin.Create(createSuperAdmin);
-                        TempData["success"] = "Account created succesfully.";
-                        return RedirectToAction(nameof(Index), "Home");
-                    }
-                    TempData["failed"] = "Kindly upload a picture.";
-                    return View();
+                    _superAdmin.Create(createSuperAdmin);
+                    TempData["success"] = "Registration Successful.    ";
+                    return RedirectToAction("Index");
                 }
                 TempData["failed"] = "Email already Exist.";
                 return View();

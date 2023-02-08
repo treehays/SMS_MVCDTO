@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.DTOs.CustomerDTOs;
 
@@ -17,6 +18,8 @@ namespace SMS_MVCDTO.Controllers
             var customers = _customer.GetCustomers();
             return View(customers);
         }
+
+        [Authorize(Roles = "Attendant")]
 
         public IActionResult Dashboard()
         {

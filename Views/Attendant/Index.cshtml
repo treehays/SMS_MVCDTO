@@ -18,40 +18,41 @@
 
 <main class="main">
 
+    @*
     <div class="search-container-top">
 
-        <!-- search box  -->
-        <div class="search-container">
-            <form asp-controller="Product" asp-action="GetById">
-                <input type="text" placeholder="Barcode..." name="barCode">
-                <button type="submit">
-                    <i class="fa fa-search"></i> Search
-                </button>
-            </form>
-        </div>
-
-        <!-- search box  -->
-        <div class="search-container">
-            <form asp-controller="Product" asp-action="GetByName">
-                <input type="text" placeholder="Product name..." name="name">
-                <button type="submit">
-                    <i class="fa fa-search"></i> Search
-                </button>
-            </form>
-        </div>
-
-        <!-- search box  -->
-        <div class="search-container">
-            <form asp-controller="Transaction" asp-action="Details">
-                <input type="text" placeholder="Transactionm Id..." name="ReferenceNo">
-                <button type="submit">
-                    <i class="fa fa-search"></i> Search
-                </button>
-            </form>
-        </div>
-
+    <!-- search box  -->
+    <div class="search-container">
+    <form asp-controller="Product" asp-action="GetById">
+    <input type="text" placeholder="Barcode..." name="barCode">
+    <button type="submit">
+    <i class="fa fa-search"></i> Search
+    </button>
+    </form>
     </div>
 
+    <!-- search box  -->
+    <div class="search-container">
+    <form asp-controller="Product" asp-action="GetByName">
+    <input type="text" placeholder="Product name..." name="name">
+    <button type="submit">
+    <i class="fa fa-search"></i> Search
+    </button>
+    </form>
+    </div>
+
+    <!-- search box  -->
+    <div class="search-container">
+    <form asp-controller="Transaction" asp-action="Details">
+    <input type="text" placeholder="Transactionm Id..." name="ReferenceNo">
+    <button type="submit">
+    <i class="fa fa-search"></i> Search
+    </button>
+    </form>
+    </div>
+
+    </div>
+    *@
     <!-- <div class="dashboard"> -->
     <div class="form-container">
 
@@ -59,7 +60,7 @@
 
 
         <div id="">
-        <h1>Recent Transactions...</h1>
+            <h1>Recent Transactions...</h1>
 
             <table class="table table-info">
                 <thead>
@@ -70,9 +71,9 @@
                             <label> Ref. No</label>
                         </th>
 
-                       @* 
-                           <th>
-                            <label> Date</label>
+                        @*
+                        <th>
+                        <label> Date</label>
                         </th>
                         *@
 
@@ -104,10 +105,10 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Data.ReferenceNo)
                             </td>
-@*
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Data.Created)
-                            </td>*@
+                            @*
+                        <td>
+                        @Html.DisplayFor(modelItem => item.Data.Created)
+                        </td>*@
 
                             <td>
                                 @Html.DisplayFor(modelItem =>
@@ -136,7 +137,7 @@
 
 
         <div id="">
-        <h1>Products below reorder of stock..</h1>
+            <h1>Products below reorder of stock..</h1>
 
             <table class="table table-info">
                 <thead>
@@ -240,6 +241,39 @@
                 </button>
             </form>
         </div>
+
+
+
+        <!-- search box  -->
+        <div class="search-container">
+            <form asp-controller="Product" asp-action="GetById">
+                <input type="text" placeholder="Barcode..." name="barCode">
+                <button type="submit">
+                    <i class="fa fa-search"></i> Search
+                </button>
+            </form>
+        </div>
+
+        <!-- search box  -->
+        <div class="search-container">
+            <form asp-controller="Product" asp-action="GetByName">
+                <input type="text" placeholder="Product name..." name="name">
+                <button type="submit">
+                    <i class="fa fa-search"></i> Search
+                </button>
+            </form>
+        </div>
+
+        <!-- search box  -->
+        <div class="search-container">
+            <form asp-controller="Transaction" asp-action="Details">
+                <input type="text" placeholder="Transactionm Id..." name="ReferenceNo">
+                <button type="submit">
+                    <i class="fa fa-search"></i> Search
+                </button>
+            </form>
+        </div>
+
 
     </div>
 

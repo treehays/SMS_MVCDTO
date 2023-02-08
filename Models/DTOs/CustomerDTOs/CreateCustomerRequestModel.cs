@@ -9,7 +9,7 @@ namespace SMS_MVCDTO.Models.DTOs.CustomerDTOs
         [Required(ErrorMessage = "Name sholu valid")]
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        [Required(ErrorMessage = "Enter Valid Email")]
+        [Required(ErrorMessage = "Enter Valid password")]
         public string Email { get; set; }
         [Required(ErrorMessage = "Enter Valid password")]
         [DisplayName("Password")]

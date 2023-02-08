@@ -17,14 +17,8 @@ namespace SMS_MVCDTO.Models.Entities
         [Required]
         public string Password { get; set; }
         public UserRoleType Role { get; set; }
-
-        /// <summary>
-        /// upsa
-        /// </summary>
-
-        public int UsernameChangeLimit { get; set; } = 10;
-        public byte[]? ProfilePicture { get; set; }
-
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
 
         public static string GenerateRandomId(string secondLetter)

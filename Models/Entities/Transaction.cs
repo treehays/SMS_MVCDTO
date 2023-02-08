@@ -8,9 +8,9 @@ namespace SMS_MVCDTO.Models.Entities
         public string CustomerId { get; set; }
         public string CustomerName { get; set; }
         //public IList<Product> Products { get; set; }
-        public Attendant Attendant { get; set; }
         public string AttendantId { get; set; }
         public string ProductId { get; set; }
+        public Attendant Attendant { get; set; }
         [Key]
         public string ReferenceNo { get; set; }
         //public int Quantity { get; set; }

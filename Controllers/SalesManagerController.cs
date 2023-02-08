@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.DTOs.SalesManagerDTOs;
 
 namespace SMS_MVCDTO.Controllers
 {
+    [Authorize(Roles = "SuperAdmin, SalesManager")]
     public class SalesManagerController : Controller
     {
         private readonly ISalesManagerService _saleManager;

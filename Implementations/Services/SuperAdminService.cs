@@ -25,9 +25,9 @@ namespace SMS_MVCDTO.Implementations.Service
                 Password = superAdmin.Password,
                 Created = DateTime.Now,
                 Role = UserRoleType.SuperAdmin,
-                ProfilePicture = superAdmin.ProfilePicture,
+                FirstName = superAdmin.FirstName,
+                LastName = superAdmin.LastName,
             };
-
             _user.Create(user);
             var superAdmi = new SuperAdmin
             {
@@ -49,7 +49,6 @@ namespace SMS_MVCDTO.Implementations.Service
                 userRole = UserRoleType.SuperAdmin,
                 Created = DateTime.Now,
                 IsActive = true,
-                //ProfilePicture = superAdmin.ProfilePicture,
             };
             _superAdmin.Create(superAdmi);
             return superAdmin;
@@ -247,6 +246,22 @@ namespace SMS_MVCDTO.Implementations.Service
 
         public SuperAdminResponseModel Update(SuperAdminResponseModel superAdmin)
         {
+
+
+
+            var user = _user.GetById(superAdmin.Data.StaffId);
+            if (user == null)
+            {
+                return null;
+            }
+
+            user.StaffId = superAdmin.Data.StaffId ?? user.StaffId;
+            user.FirstName = superAdmin.Data.FirstName ?? user.FirstName;
+            user.LastName = superAdmin.Data.LastName ?? user.LastName;
+
+
+
+
             var superAdmi = _superAdmin.GetById(superAdmin.Data.StaffId);
             superAdmi.FirstName = superAdmin.Data.FirstName ?? superAdmi.FirstName;
             superAdmi.LastName = superAdmin.Data.LastName ?? superAdmi.LastName;

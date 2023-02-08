@@ -21,9 +21,21 @@
 
     @{
         var loginUser = User?.FindFirst(ClaimTypes.Role);
-    }
 
-    @* @if (loginUser != null)
+        string StaffId;
+        if (loginUser != null)
+        {
+            StaffId = User?.FindFirst(ClaimTypes.NameIdentifier).Value;
+        }
+        else
+        {
+            StaffId = null;
+        }
+
+            //}
+
+
+        @* @if (loginUser != null)
 
     //{
     //    @if (loginUser.Value == UserRoleType.SuperAdmin.ToString())
@@ -36,84 +48,84 @@
 
 
 
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm
-                navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area=""
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm
+                    navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container-fluid">
+                    <a class="navbar-brand" asp-area=""
                    asp-controller="Home"
                    asp-action="Index">Colon Sales Record</a>
-                @* MDelete *@
-                <button class="navbar-toggler" type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target=".navbar-collapse"
-                        aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle
-                        navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                @* MDelete *@
+                    @* MDelete *@
+                    <button class="navbar-toggler" type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target=".navbar-collapse"
+                            aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle
+                            navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    @* MDelete *@
 
-                <div class="navbar-collapse collapse d-sm-inline-flex
-                        justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area=""
-                               asp-controller="Home"
-                               asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area=""
-                               asp-controller="Home"
-                               asp-action="Privacy">
-                                About
-                                us
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area=""
-                               asp-controller="Home"
-                               asp-action="Privacy">
-                                Contact
-                                us
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area=""
-                               asp-controller="Home"
-                               asp-action="Privacy">Privacy</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area=""
-                               asp-controller="Home"
-                               asp-action="Privacy">News</a>
-                        </li>
-
-                    </ul>
-
-
-                    <ul class="navbar-nav">
-
-
-                        @if (loginUser == null)
-                        {
+                    <div class="navbar-collapse collapse d-sm-inline-flex
+                            justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area=""
                                asp-controller="Home"
-                               asp-action="Login">Login</a>
+                               asp-action="Index">Home</a>
                             </li>
-                        }
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area=""
+                               asp-controller="Home"
+                               asp-action="Privacy">
+                                    About
+                                    us
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area=""
+                               asp-controller="Home"
+                               asp-action="Privacy">
+                                    Contact
+                                    us
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area=""
+                               asp-controller="Home"
+                               asp-action="Privacy">Privacy</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area=""
+                               asp-controller="Home"
+                               asp-action="Privacy">News</a>
+                            </li>
+
+                        </ul>
 
 
-                        @*byte[] = @(Convert.FromBase64String(User.FindFirstValue(ClaimTypes.UserData)))*@
+                        <ul class="navbar-nav">
 
-                        @if (loginUser != null)
-                        {
-                            @*byte[] pict = Convert.ToBase64String(User?.FindFirst(ClaimTypes.GivenName).Value)*@
-                            @*
+
+                            @if (loginUser == null)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area=""
+                               asp-controller="Home"
+                               asp-action="Login">Login</a>
+                                </li>
+                            }
+
+
+                            @*byte[] = @(Convert.FromBase64String(User.FindFirstValue(ClaimTypes.UserData)))*@
+
+                            @if (loginUser != null)
+                            {
+                                @*byte[] pict = Convert.ToBase64String(User?.FindFirst(ClaimTypes.GivenName).Value)*@
+                                @*
                         if (TempData["ProfilePicture"] != null)
                         {
                         byte[] picture =  @TempData["ProfilePicture"]
@@ -127,54 +139,89 @@
 
                         *@
 
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area=""
-                               asp-controller="Home"
-                               asp-action=""> @User?.FindFirst(ClaimTypes.NameIdentifier).Value</a>
-                            </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area=""
+
+                                @if (loginUser.Value == UserRoleType.SuperAdmin.ToString())
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area=""
+                               asp-controller="SuperAdmin"
+                               asp-action="Details" asp-route-staffId="@StaffId"> @User?.FindFirst(ClaimTypes.Name).Value</a>
+                                    </li>
+
+                                }
+                                else if (loginUser.Value == UserRoleType.SalesManager.ToString())
+                                {
+
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area=""
+                               asp-controller="SalesManager"
+                               asp-action="Details" asp-route-staffId="@StaffId"> @User?.FindFirst(ClaimTypes.Name).Value</a>
+                                    </li>
+                                }
+                                else if (loginUser.Value == UserRoleType.Attendant.ToString())
+                                {
+
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area=""
+                               asp-controller="Attendant"
+                               asp-action="Details" asp-route-staffId="@StaffId"> @User?.FindFirst(ClaimTypes.Name).Value</a>
+                                    </li>
+                                }
+                                else
+                                {
+
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area=""
+                               asp-controller="customer"
+                               asp-action="Details" asp-route-staffId="@StaffId"> @User?.FindFirst(ClaimTypes.Name).Value</a>
+                                    </li>
+                                }
+
+
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area=""
                                asp-controller="Home"
                                asp-action="Logout">Logout</a>
-                            </li>
+                                </li>
 
-                        }
+                            }
 
-                        @if (loginUser == null)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area=""
+                            @if (loginUser == null)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area=""
                                asp-controller="SuperAdmin"
                                asp-action="Create">Sign-Up</a>
-                            </li>
-                        }
+                                </li>
+                            }
 
-                    </ul>
+                        </ul>
 
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </header>
+            </nav>
+        </header>
 
-    @* <div class="wrapper"> *@
+        @* <div class="wrapper"> *@
 
         @*SIDE BAR*@
-    <div class="bodycontain bd-oline">
+        <div class="bodycontain bd-oline">
 
-        @if (loginUser != null)
-        {
+            @if (loginUser != null)
+            {
 
-            <div class="sidebar ">
-                <h3>Navigation</h3>
-                <ul>
+                <div class="sidebar ">
+                    <h3>Navigation</h3>
+                    <ul>
 
-                    <li><a asp-area="" asp-controller="" asp-action="">Home</a></li>
-                    @* <li><a href="#"></a></li> *@
+                        <li><a asp-area="" asp-controller="" asp-action="">Home</a></li>
+                        @* <li><a href="#"></a></li> *@
 
 
-                    @*@if (loginUser != null)
-                    {*@
+                        @*@if (loginUser != null)
+                {*@
                         @if (loginUser.Value == UserRoleType.SuperAdmin.ToString())
                         {
                             <li class="dropdown">
@@ -195,10 +242,10 @@
                                 </ul>
                             </li>
                         }
-                    @*}*@
+                        @*}*@
 
-                   @* @if (loginUser != null)
-                    {*@
+                        @* @if (loginUser != null)
+                {*@
                         @if (loginUser.Value == UserRoleType.SuperAdmin.ToString())
                         {
                             <li class="dropdown">
@@ -219,52 +266,52 @@
                                 </ul>
                             </li>
                         }
-                    @*}*@
+                        @*}*@
 
 
 
 
-                    <li class="dropdown">
-                        <a href="#">Products</a>
-                        <ul class="dropdown-content">
-                            <li>
-                                <a asp-area="" asp-controller="Product"
+                        <li class="dropdown">
+                            <a href="#">Products</a>
+                            <ul class="dropdown-content">
+                                <li>
+                                    <a asp-area="" asp-controller="Product"
                                asp-action="Create">Add new products</a>
-                            </li>
-                            <li>
-                                <a asp-area="" asp-controller="Product"
+                                </li>
+                                <li>
+                                    <a asp-area="" asp-controller="Product"
                                asp-action="Dashboard">Manage Product</a>
-                            </li>
-                            <li>
-                                <a asp-area="" asp-controller="Product"
+                                </li>
+                                <li>
+                                    <a asp-area="" asp-controller="Product"
                                asp-action="">View all Products</a>
-                            </li>
-                        </ul>
-                    </li>
+                                </li>
+                            </ul>
+                        </li>
 
-                    @* <li><a href="#">Products</a></li> *@
-                    <li>
-                        <a asp-area="" asp-controller="Transaction"
+                        @* <li><a href="#">Products</a></li> *@
+                        <li>
+                            <a asp-area="" asp-controller="Transaction"
                        asp-action="">Transactions</a>
-                    </li>
-                </ul>
-            </div>
+                        </li>
+                    </ul>
+                </div>
 
 
-        }
+            }
 
 
 
 
-        <div class="bodycontains">
+            <div class="bodycontains">
 
-            <main role="main" class="pb-3">
-                @* <div class="bd-line"> *@
+                <main role="main" class="pb-3">
+                    @* <div class="bd-line"> *@
 
-                @RenderBody()
-                @* </div> *@
-            </main>
-            @*
+                    @RenderBody()
+                    @* </div> *@
+                </main>
+                @*
             <footer class="border-top footer text-muted">
             <div class="container">
             &copy; 2022 - SMS_MVCDTO - <a asp-area=""
@@ -272,27 +319,28 @@
             asp-action="Privacy">Privacy</a>
             </div>
             </footer>*@
+            </div>
+
+
+
         </div>
 
 
 
-    </div>
+        @* <div> *@
+
+        @* <div class="footercontain bd-gline"> *@
 
 
 
-    @* <div> *@
-
-    @* <div class="footercontain bd-gline"> *@
+        @* </div> *@
 
 
-
-    @* </div> *@
-
-
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+    }
 </body>
 
 </html>

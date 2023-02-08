@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.DTOs.ProductCategoriesDTOs;
 
 namespace SMS_MVCDTO.Controllers
 {
+    [Authorize(Roles = "SuperAdmin")]
     public class ProductCategoryController : Controller
     {
         private readonly IProductCategoryService _productCategory;
@@ -25,7 +27,7 @@ namespace SMS_MVCDTO.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create (CreateProductCategoryRequestModel createProductCategory)
+        public IActionResult Create(CreateProductCategoryRequestModel createProductCategory)
         {
             if (createProductCategory != null)
             {
@@ -39,14 +41,14 @@ namespace SMS_MVCDTO.Controllers
                 TempData["failed"] = "Category already exist.";
                 return View();
             }
-          
-                TempData["failed"] = "Failed. ";
-                return View();
-           
+
+            TempData["failed"] = "Failed. ";
+            return View();
+
         }
 
 
-        public IActionResult Edit (string categoryCode)
+        public IActionResult Edit(string categoryCode)
         {
             var productCategory = _productCategory.GetById(categoryCode);
             if (productCategory == null)
@@ -68,7 +70,7 @@ namespace SMS_MVCDTO.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Delete (string categoryCode)
+        public IActionResult Delete(string categoryCode)
         {
             if (categoryCode != null)
             {
@@ -78,7 +80,7 @@ namespace SMS_MVCDTO.Controllers
             return NotFound();
         }
 
-        public IActionResult DeletePreview (string categoryCode)
+        public IActionResult DeletePreview(string categoryCode)
         {
             if (categoryCode != null)
             {

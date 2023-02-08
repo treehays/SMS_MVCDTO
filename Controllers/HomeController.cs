@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using MySqlX.XDevAPI;
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models;
 using SMS_MVCDTO.Models.DTOs.UserDTOs;
@@ -64,27 +62,19 @@ namespace SMS_MVCDTO.Controllers
 
 
             var user = _user.Login(loginDetails);
-            var temmm = user.Data.StaffId;
 
             if (user == null)
             {
                 return BadRequest();
             }
-            //var user = await _userManager.GetUserAsync(User);
-
-            /*            Session["profile"] = user.Data.ProfilePicture;
-
-                        var pic = Session["piv"];*/
 
             var roles = new List<string>();
             var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Role, user.Data.Role.ToString()),
                     new Claim(ClaimTypes.NameIdentifier, user.Data.StaffId),
-                    //new Claim(ClaimTypes.Name, user.Data.StaffId),
-                    //new Claim(ClaimTypes.UserData, user.Data.StaffId),
-                    //new Claim(ClaimTypes.UserData, Convert.ToBase64String(user.Data.ProfilePicture)),
-                    //new Claim(ClaimTypes.GivenName, user.Data.ProfilePicture.ToString()),
+                    new Claim(ClaimTypes.Name, user.Data.FirstName),
+                    new Claim(ClaimTypes.Email, user.Data.LastName),
                 };
 
             var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

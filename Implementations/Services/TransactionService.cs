@@ -31,8 +31,8 @@ namespace SMS_MVCDTO.Implementations.Services
                 CustomerId = transaction.CustomerId,
                 AttendantId = transaction.AttendantId,
                 ProductId = transaction.BarCode,
-                /*Quantity = transaction.Quantity,*/
-                /*TotalAmount = product.SellingPrice * transaction.Quantity,*/
+                //Quantity = transaction.Quantity,
+                //TotalAmount = product.SellingPrice * transaction.Quantity,
                 Created = DateTime.Now,
                 CustomerName = $"{customers.FirstName} {customers.LastName}"
             };
@@ -59,7 +59,7 @@ namespace SMS_MVCDTO.Implementations.Services
                     CustomerId = item.CustomerId,
                     AttendantId = item.AttendantId,
                     BarCode = item.ProductId,
-                    /*Quantity = item.Quantity,*/
+                    //Quantity = item.Quantity,
                     TotalAmount = item.TotalAmount,
                     Created = item.Created.Date,
                     CustomerName = item.CustomerName,
@@ -129,7 +129,7 @@ namespace SMS_MVCDTO.Implementations.Services
                     CustomerId = transaction.CustomerId,
                     AttendantId = transaction.AttendantId,
                     BarCode = transaction.ProductId,
-                    // Quantity = transaction.Quantity,
+                    //Quantity = transaction.Quantity,
                     TotalAmount = transaction.TotalAmount,
                     Created = transaction.Created.Date,
                     CustomerName = transaction.CustomerName,

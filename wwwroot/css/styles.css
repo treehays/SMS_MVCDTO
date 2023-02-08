@@ -23,7 +23,21 @@ body {
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     /*  */
-    background-image: linear-gradient(260deg, #f3f0f0b0 10%, #dbece1 75%, #ecfcf2 5%);
+    /*background-image: linear-gradient(260deg, #f3f0f0b0 10%, #dbece1 75%, #ecfcf2 5%);*/
+    background-image: url('bg06.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(135, 165, 147, 0.7); /* bluish color with 70% opacity */
 }
 
 .bd-line {
@@ -246,7 +260,7 @@ dd {
     padding: 1rem;
     /* margin-left: 220px; */
     margin-bottom: 250px;
-    border: 5px solid rgb(20, 209, 10);
+    /*border: 5px solid rgb(20, 209, 10);*/
     /* width: auto; */
     height: max-content;
     flex-wrap: wrap;
@@ -295,7 +309,7 @@ nav {
         display: flex;
         margin: 0;
         padding: 0;
-        border: 2px solid rgb(255, 11, 129);
+        /*border: 2px solid rgb(255, 11, 129);*/
     }
 
     nav li {
@@ -458,7 +472,7 @@ h3 {
     flex-direction: column;
     justify-content: space-between;
     height: auto;
-    border: 2px solid rgb(255, 11, 129);
+    /*border: 2px solid rgb(255, 11, 129);*/
 }
 
 #login-form {
@@ -578,7 +592,7 @@ button[type="reset"]+button[type="submit"] {
 }
 
 .search-container-top {
-    border: 3px solid #0077ff;
+    /*border: 3px solid #0077ff;*/
     display: flex;
     margin-left: 200px;
     /*justify-content: center;*/
@@ -591,7 +605,8 @@ button[type="reset"]+button[type="submit"] {
     align-items: center;
     justify-content: center;
     padding: 10px;
-    border: 3px solid #0077ff;
+    /*border: 3px solid #0077FF;*/
+    background-color: #9EA6B0;
     margin-bottom: 0px;
     /* width: 250px; */
     /* margin: 0px; */
@@ -602,7 +617,7 @@ button[type="reset"]+button[type="submit"] {
     align-items: center;
     justify-content: center;
     padding: 10px;
-    border: 3px solid #0077ff;
+    /*border: 3px solid #0077ff;*/
     margin-bottom: 0px;
     /* width: 250px; */
     /* margin: 0px; */

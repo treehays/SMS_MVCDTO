@@ -10,6 +10,8 @@ namespace SMS_MVCDTO.Models.DTOs.UserDTOs
         [Required]
         public string Password { get; set; }
         public UserRoleType Role { get; set; }
-        public byte[]? ProfilePicture { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+
     }
 }

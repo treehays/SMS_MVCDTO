@@ -8,17 +8,8 @@ namespace SMS_MVCDTO.Models.DTOs.SuperAdminDTOs
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
-        [Required(ErrorMessage = "Enter Valid password")]
-        [DisplayName("Password")]
-        [DataType(DataType.Password)]
         public string Password { get; set; }
-        [Required]
-        [DisplayName("Confirm Password")]
-        [Compare("Password", ErrorMessage = "pass not match")]
-        public string ConfirmPassword { get; set; }
-        [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
         public string HomeAddress { get; set; }
         public string ResidentialAddress { get; set; }
@@ -33,8 +24,6 @@ namespace SMS_MVCDTO.Models.DTOs.SuperAdminDTOs
         public string GuarantorName { get; set; }
         public string GuarantorPhoneNumber { get; set; }
         public UserRoleType userRole { get; set; }
-        public byte[]? ProfilePicture { get; set; }
-
     }
 
 }

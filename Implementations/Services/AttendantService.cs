@@ -26,10 +26,12 @@ namespace SMS_MVCDTO.Implementations.Service
                 StaffId = sid,
                 Password = attendant.Password,
                 Role = UserRoleType.Attendant,
-                Created = DateTime.Now
+                Created = DateTime.Now,
+                FirstName = attendant.FirstName,
+                LastName = attendant.LastName,
 
             };
-            var isdd = _userRepository.Create(user);
+            _userRepository.Create(user);
 
             var attend = new Attendant
             {
@@ -237,6 +239,18 @@ namespace SMS_MVCDTO.Implementations.Service
 
         public AttendantResponseModel Update(AttendantResponseModel attendant)
         {
+
+            var user = _userRepository.GetById(attendant.Data.StaffId);
+            if (user == null)
+            {
+                return null;
+            }
+
+            user.StaffId = attendant.Data.StaffId ?? user.StaffId;
+            user.FirstName = attendant.Data.FirstName ?? user.FirstName;
+            user.LastName = attendant.Data.LastName ?? user.LastName;
+
+
             var attendan = _attendant.GetById(attendant.Data.StaffId);
             if (attendan == null)
             {

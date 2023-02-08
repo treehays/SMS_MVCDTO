@@ -3,8 +3,6 @@
     public class UpdateSuperAdminPasswordRequestModel
     {
         public string Pin { get; set; }
-        //public byte[]? ProfilePicture { get; set; }
-
     }
 
 }

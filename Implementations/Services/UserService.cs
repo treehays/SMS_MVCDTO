@@ -1,11 +1,7 @@
-﻿using System.Reflection.Metadata;
-using Microsoft.AspNetCore.Identity;
-using SMS_MVCDTO.Interfaces.Repositories;
+﻿using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.DTOs.UserDTOs;
 using SMS_MVCDTO.Models.Entities;
-using Microsoft.AspNetCore.Http;
-
 
 namespace SMS_MVCDTO.Implementations.Services
 {
@@ -25,7 +21,8 @@ namespace SMS_MVCDTO.Implementations.Services
                 StaffId = user.StaffId,
                 Role = user.Role,
                 Created = DateTime.Now,
-                ProfilePicture = user.ProfilePicture,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
             };
             _user.Create(userr);
             return user;
@@ -49,6 +46,8 @@ namespace SMS_MVCDTO.Implementations.Services
                     Password = user.Password,
                     StaffId = user.StaffId,
                     Role = user.Role,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
                 }
             };
             return userr;
@@ -75,7 +74,9 @@ namespace SMS_MVCDTO.Implementations.Services
                     {
                         StaffId = user.StaffId,
                         Password = user.Password,
-                        Role = user.Role
+                        Role = user.Role,
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
                     }
                 };
                 return userResponse;
@@ -90,17 +91,12 @@ namespace SMS_MVCDTO.Implementations.Services
             return user;
         }
 
-        public UpdateUserPasswordRequestModel UpdateProfilePicture(UpdateUserPasswordRequestModel user)
-        {
-            var userr = _user.GetById(user.StaffId);
-            userr.Password = user.Password ?? userr.Password;
-            return user;
-        }
-
         public UpdateUserRoleRequestModel UpdateRole(UpdateUserRoleRequestModel user)
         {
             var userr = _user.GetById(user.StaffId);
             userr.Role = user.Role;
+            userr.FirstName = user.FirstName;
+            userr.LastName = user.LastName;
             return user;
         }
     }
