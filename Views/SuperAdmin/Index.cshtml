@@ -38,7 +38,11 @@
             }
             </p>*@
             <h1>
-                Welcome @User.FindFirst(ClaimTypes.NameIdentifier).Value ||
+                Welcome 
+                @if (@User.FindFirst(ClaimTypes.NameIdentifier) != null)
+                {
+                @(User.FindFirst(ClaimTypes.NameIdentifier).Value)
+                }
                 <span>Recent Transactions...</span>
             </h1>
 

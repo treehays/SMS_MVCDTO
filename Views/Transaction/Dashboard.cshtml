@@ -1,5 +1,4 @@
-﻿
-@model IEnumerable<SMS_MVCDTO.Models.DTOs.TransactionDTOs.TransactionResponseModel>
+﻿@model IEnumerable<SMS_MVCDTO.Models.DTOs.TransactionDTOs.TransactionResponseModel>
 
 @{
 
@@ -54,6 +53,7 @@
 <table class="table table-info col-md-4">
     <thead>
         <tr>
+            <th>S/N</th>
 
             <th>
                 @Html.DisplayNameFor(model => model.Data.ReferenceNo)
@@ -74,11 +74,11 @@
             <th>
                 @Html.DisplayNameFor(model => model.Data.BarCode)
             </th>
-@*
+            @*
             <th>
-                @Html.DisplayNameFor(model => model.Data.Quantity)
+            @Html.DisplayNameFor(model => model.Data.Quantity)
             </th>
-*@
+            *@
             <th>
                 @Html.DisplayNameFor(model => model.Data.TotalAmount)
             </th>
@@ -87,10 +87,16 @@
         </tr>
     </thead>
     <tbody>
-
+        @{
+            int serialNumber = 1;
+        }
         @foreach (var item in Model)
         {
             <tr>
+                <td>
+                    @serialNumber
+                    serialNumber++;
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Data.ReferenceNo)
                 </td>
@@ -106,11 +112,11 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Data.BarCode)
                 </td>
-@*
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.Quantity)
-                </td>
-*@
+                @*
+            <td>
+            @Html.DisplayFor(modelItem => item.Data.Quantity)
+            </td>
+            *@
                 <td>
                     @Html.DisplayFor(modelItem => item.Data.TotalAmount)
                 </td>

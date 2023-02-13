@@ -34,6 +34,11 @@
             <table class="table table-info">
                 <thead>
                     <tr>
+
+                        <th>
+                            S/N
+                        </th>
+
                         <th>
                             @Html.DisplayNameFor(model => model.Data.StaffId)
                         </th>
@@ -57,10 +62,16 @@
                     </tr>
                 </thead>
                 <tbody>
-
+                    @{
+                        int serialNumber = 1;
+                    }
                     @foreach (var item in Model)
                     {
                         <tr>
+                            <td>
+                                @serialNumber
+                            </td>
+
                             <td>
                                 @Html.DisplayFor(modelItem => item.Data.StaffId)
                             </td>
@@ -86,7 +97,7 @@
                                 <a asp-action="Details" asp-route-staffId="@item.Data.StaffId">Details</a>
                             </td>
                         </tr>
-
+                        serialNumber++;
                     }
                 </tbody>
             </table>

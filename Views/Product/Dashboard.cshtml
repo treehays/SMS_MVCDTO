@@ -29,6 +29,9 @@
         <table class="table table-info col-md-4">
             <thead>
                 <tr>
+                    <th>S/N</th>
+
+
                     <th>
                         @Html.DisplayNameFor(model => model.Data.Barcode)
                     </th>
@@ -49,10 +52,16 @@
                 </tr>
             </thead>
             <tbody>
-
+                @{
+                    int serialNumber = 1;
+                }
                 @foreach (var item in Model)
                 {
                     <tr>
+                        <td>
+                            @serialNumber
+                        </td>
+
                         <td>
                             @Html.DisplayFor(modelItem => item.Data.Barcode)
                         </td>
@@ -71,9 +80,10 @@
                             @*<a asp-action="Edit" asp-route-Barcode="@item.Data.Barcode">Edit</a> |*@
                             <a asp-action="Details" asp-route-Barcode="@item.Data.Barcode">Details</a> |
                             @*<a asp-action="DeletePreview" asp-route-Barcode="@item.Data.Barcode">Delete</a> |*@
-                            <a asp-controller="Transaction" asp-action="Create" asp-route-Barcode="@item.Data.Barcode">Buy</a>
+                            <a asp-controller="Cart" asp-action="Create" asp-route-Barcode="@item.Data.Barcode">Buy</a>
                         </td>
                     </tr>
+                    serialNumber++;
                 }
             </tbody>
         </table>

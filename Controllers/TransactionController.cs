@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.DTOs.TransactionDTOs;
-using SMS_MVCDTO.Models.ViewModels;
+using System.Security.Claims;
 
 namespace SMS_MVCDTO.Controllers
 {
@@ -9,10 +9,12 @@ namespace SMS_MVCDTO.Controllers
     {
         private readonly ITransactionService _transaction;
         private readonly IProductService _product;
-        public TransactionController(ITransactionService transaction, IProductService product)
+        private readonly ICartServices _cartService;
+        public TransactionController(ITransactionService transaction, IProductService product, ICartServices cartServices)
         {
             _transaction = transaction;
             _product = product;
+            _cartService = cartServices;
         }
 
         public IActionResult Index(int id)
@@ -38,40 +40,66 @@ namespace SMS_MVCDTO.Controllers
         }
 
 
-        public IActionResult Create(string barCode)
-        {
-            var product = _product.GetById(barCode);
+        //public IActionResult Create(string customerId)
+        //{
+        //    var cartProducts = _cartService.NotPaidByCustomerId(customerId);
 
-            if (product == null)
-            {
-                return NotFound();
-            }
+        //if (cartProducts == null)
+        //{
+        //    //return View("Error");
+        //    return NotFound();
+        //}
 
-            var productTransact = new CreateProductTransactionViewModel
-            {
-                Product = product,
+        //var loggedinUser = User?.FindFirst(ClaimTypes.NameIdentifier);
+        //string attendant;
+        //if (loggedinUser == null)
+        //{
+        //    attendant = "ATT001";
+        //}
+        //else
+        //{
+        //    attendant = User?.FindFirst(ClaimTypes.NameIdentifier).Value;
+        //}
 
-            };
+        //var transaction = new CreateTransactionRequestModel
+        //{
+        //    AttendantId = attendant,
+        //};
 
-            return View(productTransact);
-        }
+        //if (product == null)
+        //{
+        //    return NotFound();
+        //}
 
+        //var productTransact = new CreateProductTransactionViewModel
+        //{
+        //    Product = product,
+        //    Transaction = transaction,
+        //};
+
+        //    return View(cartProducts);
+        //}
+
+
+        /// <summary>
+        /// "createTransaction" contains only customerId and cashtender
+        /// </summary>
+        /// <param name="createTransaction"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(CreateProductTransactionViewModel productTransaction)
+        public IActionResult Create(CreateTransactionRequestModel createTransaction)
         {
-
-            var transaction = productTransaction.Transaction;
-
-            if (transaction != null)
+            if (createTransaction == null)
             {
-                transaction.BarCode = productTransaction.Product.Data.Barcode;
-                _transaction.Create(transaction);
-                TempData["success"] = "Created Successfully.";
-                return RedirectToAction("Index");
+                TempData["failed"] = "failed.";
+                return View();
             }
-            TempData["failed"] = "failed.";
-            return View();
+            createTransaction.AttendantId = User.FindFirstValue("NameIdentifier");
+            _transaction.Create(createTransaction);
+            _cartService.Update(createTransaction.CartId);
+            TempData["success"] = "Created Successfully.";
+            return RedirectToAction("Index");
         }
 
         public IActionResult DeletePreview(string referenceNo)

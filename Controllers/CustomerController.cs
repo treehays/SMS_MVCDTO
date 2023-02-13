@@ -19,7 +19,7 @@ namespace SMS_MVCDTO.Controllers
             return View(customers);
         }
 
-        [Authorize(Roles = "Attendant")]
+        //[Authorize(Roles = "Attendant")]
 
         public IActionResult Dashboard()
         {

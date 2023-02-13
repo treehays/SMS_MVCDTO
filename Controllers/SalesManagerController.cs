@@ -5,7 +5,7 @@ using SMS_MVCDTO.Models.DTOs.SalesManagerDTOs;
 
 namespace SMS_MVCDTO.Controllers
 {
-    [Authorize(Roles = "SuperAdmin, SalesManager")]
+    //[Authorize(Roles = "SuperAdmin, SalesManager")]
     public class SalesManagerController : Controller
     {
         private readonly ISalesManagerService _saleManager;

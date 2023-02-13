@@ -9,6 +9,7 @@ namespace SMS_MVCDTO.Interfaces.Repositories
         void Delete(SuperAdmin superAdmin);
         SuperAdmin GetById(string staffId);
         SuperAdmin GetByEmail(string email);
+        bool EmailExist(string email);
         SuperAdmin GetByPhoneNumber(string phoneNumber);
         IEnumerable<SuperAdmin> GetByName(string name);
         IEnumerable<SuperAdmin> GetSuperAdmins();

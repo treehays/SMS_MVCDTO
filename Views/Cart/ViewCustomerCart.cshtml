@@ -1,0 +1,124 @@
+﻿@model SMS_MVCDTO.Models.ViewModels.CartTotalViewModel
+
+
+@{
+    ViewData["Title"] = "Create";
+    if (TempData["success"] != null)
+    {
+        <h2>@TempData["success"]</h2>
+    }
+    if (TempData["failed"] != null)
+    {
+        <h2>@TempData["failed"]</h2>
+    }
+}
+
+
+
+<main class="main">
+    <!-- <div class="dashboard"> -->
+    <div class="form-container">
+
+        <!-- Signup Form -->
+        <h1> Transaction  @Html.DisplayNameFor(model => model.CartId) ..</h1>
+
+        @*<a asp-controller="Book" asp-action="uploadBook">Create Book</a>*@
+        <div id="">
+            <table class="table table-info">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+
+                        <th>Bar Code</th>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Amount(&#x20A6;)</th>
+                        <th>Total(&#x20A6;)</th>
+                        
+                        @*<th>(&#x20A6;)</th>*@
+                        
+                         <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int serialNumber = 1;
+                        serialNumber++;
+                    }
+                    @foreach (var item in Model.ListOfCartProduccts)
+                    {
+
+                        <tr>
+                            <td>
+                                @serialNumber
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data.ProductId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data.ProductName)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data.Quantity)
+                            </td>
+
+                            <td>
+                                (&#x20A6;)@Html.DisplayFor(modelItem => item.Data.ProductPrice)
+                            </td>
+
+                            <td>
+                                (&#x20A6;)@Html.DisplayFor(modelItem => item.Data.Total)
+                            </td>
+
+                            <td>
+                                <a asp-action="Delete" asp-route-staffId="@item.Data.Id"> Remove </a> || <a asp-action="Delete"
+                               asp-route-staffId="@item.Data.Id"> More </a>
+                            </td>
+                        </tr>
+                    }
+                    
+                </tbody>
+            </table>
+            <p>
+                <button>
+                    <a asp-action="Create"
+                       asp-route-TransactionId=""> <i class="fa fa-">Pay now</i>  </a>
+                </button>
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- search box  -->
+    <div class="search-container-side">
+
+        <!-- search box  -->
+        <div class="search-container">
+            <form>
+                <input type="text" placeholder="Customer ID..." name="Details">
+                <button type="submit">
+                    <i class="fa fa-search"></i> Search
+                </button>
+            </form>
+        </div>
+
+        <!-- search box  -->
+        <div class="search-container">
+            <form>
+                <input type="text" placeholder="Search1...">
+                <button type="submit">
+                    <i class="fa fa-search"></i> Search
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+
+</main>
+
+
+

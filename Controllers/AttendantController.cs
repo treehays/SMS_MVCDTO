@@ -39,7 +39,7 @@ namespace SMS_MVCDTO.Controllers
             return View(productTransaction);
         }
 
-        [Authorize(Roles = "SuperAdmin")]
+        //[Authorize(Roles = "SuperAdmin")]
         public IActionResult Dashboard()
         {
             var attendants = _attendant.GetAttendants();

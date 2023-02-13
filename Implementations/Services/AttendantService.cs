@@ -64,6 +64,7 @@ namespace SMS_MVCDTO.Implementations.Service
             var attendant = _attendant.GetById(staffId);
             if (attendant != null)
             {
+                attendant.IsDeleted = true;
                 _attendant.Delete(attendant);
             }
 

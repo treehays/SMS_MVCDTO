@@ -19,6 +19,7 @@ namespace SMS_MVCDTO.Models.Entities
         public UserRoleType Role { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public byte[]? ProfilePicture { get; set; }
 
 
         public static string GenerateRandomId(string secondLetter)

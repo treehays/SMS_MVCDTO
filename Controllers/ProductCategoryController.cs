@@ -5,7 +5,7 @@ using SMS_MVCDTO.Models.DTOs.ProductCategoriesDTOs;
 
 namespace SMS_MVCDTO.Controllers
 {
-    [Authorize(Roles = "SuperAdmin")]
+    //[Authorize(Roles = "SuperAdmin")]
     public class ProductCategoryController : Controller
     {
         private readonly IProductCategoryService _productCategory;

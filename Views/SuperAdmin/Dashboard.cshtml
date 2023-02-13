@@ -60,6 +60,7 @@ IEnumerable<SMS_MVCDTO.Models.DTOs.SuperAdminDTOs.SuperAdminResponseModel> *@
                         <tr>
                             <td>
                                 @serialNumber
+                                serialNumber++;
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Data.FirstName)
@@ -86,7 +87,6 @@ IEnumerable<SMS_MVCDTO.Models.DTOs.SuperAdminDTOs.SuperAdminResponseModel> *@
                                 asp-route-staffId="@item.Data.StaffId">Delete</a>
                             </td>
                         </tr>
-                        serialNumber++;
                     }
                 </tbody>
             </table>

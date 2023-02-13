@@ -23,7 +23,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public void Delete(Attendant attendant)
         {
-            _context.Attendants.Remove(attendant);
+            _context.Attendants.Update(attendant);
             _context.SaveChanges();
         }
 

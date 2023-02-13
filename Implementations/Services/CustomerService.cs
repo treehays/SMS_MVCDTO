@@ -48,6 +48,13 @@ namespace SMS_MVCDTO.Implementations.Services
 
             return customer;
         }
+
+        public bool CustomerExist(string staffId)
+        {
+            var customer = _customer.CustomerExist(staffId);
+            return customer;
+        }
+
         public void Delete(string staffId)
         {
             var customer = _customer.GetById(staffId);
@@ -82,7 +89,7 @@ namespace SMS_MVCDTO.Implementations.Services
                     IsActive = customer.IsActive,
                     IsDelete = customer.IsDeleted,
                     UserRole = customer.userRole,
-                    
+
                 }
             };
             return customerResponseModel;

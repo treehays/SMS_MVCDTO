@@ -24,6 +24,8 @@ namespace SMS_MVCDTO.Models.DTOs.SuperAdminDTOs
         public string GuarantorName { get; set; }
         public string GuarantorPhoneNumber { get; set; }
         public UserRoleType userRole { get; set; }
+        public byte[]? ProfilePicture { get; set; }
+
     }
 
 }

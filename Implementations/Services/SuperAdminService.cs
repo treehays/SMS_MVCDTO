@@ -27,6 +27,7 @@ namespace SMS_MVCDTO.Implementations.Service
                 Role = UserRoleType.SuperAdmin,
                 FirstName = superAdmin.FirstName,
                 LastName = superAdmin.LastName,
+                ProfilePicture = superAdmin.ProfilePicture,
             };
             _user.Create(user);
             var superAdmi = new SuperAdmin
@@ -99,6 +100,11 @@ namespace SMS_MVCDTO.Implementations.Service
 
         }
 
+        public bool EmailExist(string email)
+        {
+            var emailExist = _superAdmin.EmailExist(email);
+            return emailExist;
+        }
         public SuperAdminResponseModel GetById(string staffId)
         {
             var superAdmin = _superAdmin.GetById(staffId);

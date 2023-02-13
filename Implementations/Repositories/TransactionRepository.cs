@@ -60,10 +60,16 @@ namespace SMS_MVCDTO.Implementations.Repositories
             var transactions = _context.Transactions.Where(a => a.AttendantId == staffId);
             return transactions;
         }
-
+        /// <summary>
+        /// This is not working
+        /// </summary>
+        /// <param name="customerName"></param>
+        /// <returns></returns>
         public IEnumerable<Transaction> GetTransactionByCustomerName(string customerName)
         {
-            var transactions = _context.Transactions.AsEnumerable().Where(a => !a.IsDeleted && customerName.All(b => a.CustomerName.Contains(b)));
+            //var transactions = _context.Transactions.AsEnumerable().Where(a => !a.IsDeleted && customerName.All(b => a.CustomerName.Contains(b)));
+
+            var transactions = _context.Transactions.AsEnumerable().Where(a => !a.IsDeleted && customerName.All(b => a.CustomerId.Contains(b)));
             return transactions;
         }
 

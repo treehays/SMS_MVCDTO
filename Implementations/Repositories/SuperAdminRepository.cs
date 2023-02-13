@@ -31,6 +31,12 @@ namespace SMS_MVCDTO.Implementations.Repositories
             return superAdmin;
         }
 
+        public bool EmailExist(string email)
+        {
+            var emailExist = _context.SuperAdmins.Any(s => s.Email == email);
+            return emailExist;
+        }
+
         public SuperAdmin GetById(string staffId)
         {
             var superAdmin = _context.SuperAdmins.SingleOrDefault(s => s.StaffId == staffId);

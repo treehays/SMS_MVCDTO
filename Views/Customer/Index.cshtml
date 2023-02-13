@@ -17,12 +17,14 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-@{
-    //int i = 0;
-}
+
 <table class="table table-info col-md-4">
     <thead>
         <tr>
+
+            <th>S/N</th>
+
+
             <th>
                 @Html.DisplayNameFor(model => model.Data.FirstName)
             </th>
@@ -51,10 +53,16 @@
         </tr>
     </thead>
     <tbody>
-
+        @{
+            int serialNumber = 1;
+        }
         @foreach (var item in Model)
         {
             <tr>
+                <td>
+                    @serialNumber
+                </td>
+
                 <td>
                     @Html.DisplayFor(modelItem => item.Data.FirstName)
                 </td>
@@ -89,6 +97,7 @@
                     <a asp-action="DeletePreview" asp-route-staffId="@item.Data.StaffId">Delete</a>
                 </td>
             </tr>
+            serialNumber++;
         }
     </tbody>
 </table>

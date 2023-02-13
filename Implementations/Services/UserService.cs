@@ -95,8 +95,6 @@ namespace SMS_MVCDTO.Implementations.Services
         {
             var userr = _user.GetById(user.StaffId);
             userr.Role = user.Role;
-            userr.FirstName = user.FirstName;
-            userr.LastName = user.LastName;
             return user;
         }
     }

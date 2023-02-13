@@ -13,6 +13,7 @@ namespace SMS_MVCDTO.Interfaces.Services
         TransactionResponseModel GetById(string refrenceNo);
         IEnumerable<TransactionResponseModel> GetByStaffId(string staffId);
         IEnumerable<TransactionResponseModel> GetTransactionByCustomerName(string customerName);
+        //IEnumerable<TransactionResponseModel> UnPaidTransactionDetails(string customerId);
         //IEnumerable<TransactionResponseModel> DownloadExcel();
 
     }

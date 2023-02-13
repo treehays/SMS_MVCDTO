@@ -10,33 +10,46 @@ namespace SMS_MVCDTO.Implementations.Services
         private readonly ITransactionRepository _transaction;
         private readonly IProductRepository _product;
         private readonly ICustomerRepository _customer;
-        public TransactionService(ITransactionRepository transaction, IProductRepository product, ICustomerRepository customer)
+        private readonly ICartRepository _cart;
+        private readonly IAttendantRepository _attendant;
+
+        public TransactionService(ITransactionRepository transaction, IProductRepository product, ICustomerRepository customer, ICartRepository cart)
         {
             _transaction = transaction;
             _product = product;
             _customer = customer;
+            _cart = cart;
         }
 
         public CreateTransactionRequestModel Create(CreateTransactionRequestModel transaction)
         {
-            var customers = _customer.GetById(transaction.CustomerId);
-            var product = _product.GetById(transaction.BarCode);
-            if (product == null)
+
+
+            var cart = _cart.NotPaidByCustomerId(transaction.CustomerId);
+            if (cart == null)
             {
                 return null;
             }
+            var cartTotal = cart.Sum(x => (x.Quantity * x.Price));
+
+
+            var customers = _customer.GetById(transaction.CustomerId);
+            var attendant = _attendant.GetById(transaction.CustomerId);
+
             var transactio = new Transaction
             {
-                ReferenceNo = Guid.NewGuid().ToString().Remove(10).Replace("-", ""),
+                ReferenceNo = Guid.NewGuid().ToString().Remove(10).Replace("-", "").ToUpper(),
                 CustomerId = transaction.CustomerId,
                 AttendantId = transaction.AttendantId,
-                ProductId = transaction.BarCode,
+                CartId = transaction.CartId,
+                //AttendantName = attendant.FirstName,
                 //Quantity = transaction.Quantity,
-                //TotalAmount = product.SellingPrice * transaction.Quantity,
+                TotalAmount = cartTotal,
                 Created = DateTime.Now,
-                CustomerName = $"{customers.FirstName} {customers.LastName}"
+                //CustomerName = $"{customers.FirstName.ToUpper()}  {customers.LastName}"
             };
             _transaction.Create(transactio);
+
             return transaction;
         }
 
@@ -58,11 +71,11 @@ namespace SMS_MVCDTO.Implementations.Services
                     ReferenceNo = item.ReferenceNo,
                     CustomerId = item.CustomerId,
                     AttendantId = item.AttendantId,
-                    BarCode = item.ProductId,
+                    //BarCode = item.ProductId,
                     //Quantity = item.Quantity,
                     TotalAmount = item.TotalAmount,
                     Created = item.Created.Date,
-                    CustomerName = item.CustomerName,
+                    //CustomerName = item.CustomerName,
                 }
 
             }).ToList();
@@ -82,11 +95,11 @@ namespace SMS_MVCDTO.Implementations.Services
                     ReferenceNo = item.ReferenceNo,
                     CustomerId = item.CustomerId,
                     AttendantId = item.AttendantId,
-                    BarCode = item.ProductId,
+                    //BarCode = item.ProductId,
                     //Quantity = item.Quantity,
                     TotalAmount = item.TotalAmount,
                     Created = item.Created.Date,
-                    CustomerName = item.CustomerName,
+                    //CustomerName = item.CustomerName,
                 }
 
             }).ToList();
@@ -105,11 +118,11 @@ namespace SMS_MVCDTO.Implementations.Services
                     ReferenceNo = item.ReferenceNo,
                     CustomerId = item.CustomerId,
                     AttendantId = item.AttendantId,
-                    BarCode = item.ProductId,
+                    //BarCode = item.ProductId,
                     //Quantity = item.Quantity,
                     TotalAmount = item.TotalAmount,
                     Created = item.Created.Date,
-                    CustomerName = item.CustomerName,
+                    //CustomerName = item.CustomerName,
                 }
 
             }).ToList();
@@ -128,11 +141,11 @@ namespace SMS_MVCDTO.Implementations.Services
                     ReferenceNo = transaction.ReferenceNo,
                     CustomerId = transaction.CustomerId,
                     AttendantId = transaction.AttendantId,
-                    BarCode = transaction.ProductId,
+                    //BarCode = transaction.ProductId,
                     //Quantity = transaction.Quantity,
                     TotalAmount = transaction.TotalAmount,
                     Created = transaction.Created.Date,
-                    CustomerName = transaction.CustomerName,
+                    //CustomerName = transaction.CustomerName,
                 }
             };
             return transactio;
@@ -150,11 +163,11 @@ namespace SMS_MVCDTO.Implementations.Services
                     ReferenceNo = item.ReferenceNo,
                     CustomerId = item.CustomerId,
                     AttendantId = item.AttendantId,
-                    BarCode = item.ProductId,
+                    //BarCode = item.ProductId,
                     //Quantity = item.Quantity,
                     TotalAmount = item.TotalAmount,
                     Created = item.Created.Date,
-                    CustomerName = item.CustomerName,
+                    //CustomerName = item.CustomerName,
                 }
 
             }).ToList();
@@ -173,11 +186,11 @@ namespace SMS_MVCDTO.Implementations.Services
                     ReferenceNo = item.ReferenceNo,
                     CustomerId = item.CustomerId,
                     AttendantId = item.AttendantId,
-                    BarCode = item.ProductId,
+                    //BarCode = item.ProductId,
                     //Quantity = item.Quantity,
                     TotalAmount = item.TotalAmount,
                     Created = item.Created.Date,
-                    CustomerName = item.CustomerName,
+                    //CustomerName = item.CustomerName,
                 }
 
             }).ToList();

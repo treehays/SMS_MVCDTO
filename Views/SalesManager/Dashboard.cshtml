@@ -38,6 +38,8 @@
             <table class="table table-info">
                 <thead>
                     <tr>
+                        <th>S/N</th>
+
                         <th>
                             @Html.DisplayNameFor(model => model.Data.StaffId)
                         </th>
@@ -60,10 +62,15 @@
                     </tr>
                 </thead>
                 <tbody>
-
+                      @{
+                        int serialNumber = 1;
+                    }
                     @foreach (var item in Model)
                     {
                         <tr>
+                            <td>
+                                @serialNumber
+                            </td>
 
                             <td>
                                 @Html.DisplayFor(modelItem => item.Data.StaffId)
@@ -90,6 +97,7 @@
                                 <a asp-action="DeletePreview" asp-route-staffId="@item.Data.StaffId">Delete</a>
                             </td>
                         </tr>
+                        serialNumber++;
                     }
                 </tbody>
             </table>

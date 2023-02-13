@@ -12,7 +12,9 @@ namespace SMS_MVCDTO.Interfaces.Repositories
         Customer GetByPhoneNumber(string phoneNumber);
         IEnumerable<Customer> GetByName(string name);
         IEnumerable<Customer> GetCustomers();
+        bool CustomerExist(string staffId);
         Customer Update(Customer customer);
         Customer UpdatePassword(Customer customer);
+
     }
 }

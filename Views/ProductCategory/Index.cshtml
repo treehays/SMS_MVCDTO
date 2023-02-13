@@ -11,6 +11,8 @@
     <table class="table table-info">
         <thead>
             <tr>
+                <th>S/N</th>
+
                 <th>
                     @Html.DisplayNameFor(model => model.Data.CategoryCode)
                 </th>
@@ -24,21 +26,32 @@
             </tr>
         </thead>
         <tbody>
+            @{
+                int serialNumber = 1;
+            }
             @foreach (var item in Model)
             {
                 <tr>
                     <td>
-        <li>@Html.DisplayFor(modelItem => item.Data.CategoryCode)</li></td>
-        <td>@Html.DisplayFor(modelItem => item.Data.Name)</td>
-        <td>@Html.DisplayFor(modelItem => item.Data.Description)</td>
-        <td>
-            <a asp-action="Edit" asp-route-CategoryCode="@item.Data.CategoryCode">Edit</a> ||
-            <a asp-action="DeletePreview" asp-route-CategoryCode="@item.Data.CategoryCode">Delete</a>
-        </td>
-        </tr>
+                        @serialNumber
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data.CategoryCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data.Description)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-CategoryCode="@item.Data.CategoryCode">Edit</a> ||
+                        <a asp-action="DeletePreview" asp-route-CategoryCode="@item.Data.CategoryCode">Delete</a>
+                    </td>
+                </tr>
             }
-    </tbody>
+        </tbody>
     </table>
-    
+
 
 </ol>

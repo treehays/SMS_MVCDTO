@@ -3,6 +3,9 @@ using SMS_MVCDTO.Models.DTOs.TransactionDTOs;
 
 namespace SMS_MVCDTO.Models.ViewModels
 {
+    /// <summary>
+    /// May be deleted later
+    /// </summary>
     public class CreateProductTransactionViewModel
     {
         public double TempTotal { get; set; }

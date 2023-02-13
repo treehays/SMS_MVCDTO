@@ -19,6 +19,12 @@ namespace SMS_MVCDTO.Implementations.Repositories
             return customer;
         }
 
+        public bool CustomerExist(string staffId)
+        {
+            var customer = _context.Customers.Any(x => x.IsActive && !x.IsDeleted && x.StaffId == staffId);
+            return customer;
+        }
+
         public void Delete(Customer customer)
         {
             _context.Customers.Update(customer);
@@ -39,7 +45,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public IEnumerable<Customer> GetByName(string name)
         {
-            var customers = _context.Customers.Where(w => w.IsActive == true && w.IsDeleted == false && name.All(x => (w.LastName + w.FirstName).Contains(x)));
+            var customers = _context.Customers.Where(w => w.IsActive && !w.IsDeleted && name.All(x => (w.LastName + w.FirstName).Contains(x)));
             return customers;
         }
 

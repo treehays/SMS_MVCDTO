@@ -15,5 +15,7 @@ namespace SMS_MVCDTO.Interfaces.Services
         IEnumerable<CustomerResponseModel> GetCustomers();
         CustomerResponseModel Update(CustomerResponseModel customer);
         UpdateCustomerPasswordRequestModel UpdatePassword(UpdateCustomerPasswordRequestModel customer);
+        bool CustomerExist(string staffId);
+
     }
 }

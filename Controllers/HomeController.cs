@@ -67,6 +67,10 @@ namespace SMS_MVCDTO.Controllers
             {
                 return BadRequest();
             }
+            byte[] imageData = user.Data.ProfilePicture;
+            ViewData["ImageData"] = imageData;
+
+
 
             var roles = new List<string>();
             var claims = new List<Claim>
