@@ -12,92 +12,99 @@
 }
 
 
-<h1>Customer Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-
-<table class="table table-info col-md-4">
-    <thead>
-        <tr>
-
-            <th>S/N</th>
+<main class="main">
+    <!-- <div class="dashboard"> -->
+    <div class="form-container">
 
 
-            <th>
-                @Html.DisplayNameFor(model => model.Data.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.StaffId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.PhoneNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.DateOfBirth)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.Gender)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data.MaritalStatus)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @{
-            int serialNumber = 1;
-        }
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @serialNumber
-                </td>
+        <h1>Customer Index</h1>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.LastName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.StaffId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.PhoneNumber)
-                </td>
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.DateOfBirth)
-                </td>
+        <table class="table table-info col-md-4">
+            <thead>
+                <tr>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.Gender)
-                </td>
+                    <th>S/N</th>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data.MaritalStatus)
-                </td>
 
-                <td>
-                    <a asp-action="Edit" asp-route-staffId="@item.Data.StaffId">Edit</a> |
-                    <a asp-action="Details" asp-route-staffId="@item.Data.StaffId">Details</a> |
-                    <a asp-action="DeletePreview" asp-route-staffId="@item.Data.StaffId">Delete</a>
-                </td>
-            </tr>
-            serialNumber++;
-        }
-    </tbody>
-</table>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Data.FirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Data.LastName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Data.StaffId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Data.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Data.PhoneNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Data.DateOfBirth)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Data.Gender)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Data.MaritalStatus)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int serialNumber = 1;
+                }
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @serialNumber
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Data.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Data.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Data.StaffId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Data.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Data.PhoneNumber)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Data.DateOfBirth)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Data.Gender)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Data.MaritalStatus)
+                        </td>
+
+                        <td>
+                            <a asp-action="Edit" asp-route-staffId="@item.Data.StaffId">Edit</a> |
+                            <a asp-action="Details" asp-route-staffId="@item.Data.StaffId">Details</a> |
+                            <a asp-action="DeletePreview" asp-route-staffId="@item.Data.StaffId">Delete</a>
+                        </td>
+                    </tr>
+                    serialNumber++;
+                }
+            </tbody>
+        </table>
+    </div>
+</main>

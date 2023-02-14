@@ -9,9 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SMS_MVCDTO</title>
     <link rel="stylesheet" href="~/css/FontAwesome6.2/css/all.css">
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">*@
     <script src="~/js/site.js"></script>
 
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous"> -->
+    <!--    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="~/css/styles.css">
     <link rel="stylesheet" href="~/SMS_MVCDTO.styles.css" asp-append-version="true" />
 
@@ -161,10 +162,10 @@
                                 }
                                 else if (loginUser.Value == UserRoleType.Attendant.ToString())
                                 {
-                                    <li>
-                                        <img src="data:image/jpeg;base64,@Convert.ToBase64String((byte[])ViewData["ImageData"])" />
+                                    //<li>
+                                    //    <img src="data:image/jpeg;base64,@Convert.ToBase64String((byte[])ViewData["ImageData"])" />
 
-                                    </li>
+                                    //</li>
 
                                     <li class="nav-item">
                                         <a class="nav-link text-dark" asp-area=""
@@ -294,10 +295,29 @@
                         </li>
 
                         @* <li><a href="#">Products</a></li> *@
-                        <li>
+                        
+                        <li class="dropdown">
+                            <a href="#">Transactions</a>
+                            <ul class="dropdown-content">
+                                <li>
+                                    <a asp-area="" asp-controller="Transaction"
+                               asp-action="">Transaction</a>
+                                </li>
+                                <li>
+                                    <a asp-area="" asp-controller="Cart"
+                               asp-action="GetAllPendingTransaction">Pending Trans..</a>
+                                </li>
+                                <li>
+                                    <a asp-area="" asp-controller=""
+                               asp-action="">Recent</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                       @* <li>
                             <a asp-area="" asp-controller="Transaction"
                        asp-action="">Transactions</a>
-                        </li>
+                        </li>*@
                     </ul>
                 </div>
 

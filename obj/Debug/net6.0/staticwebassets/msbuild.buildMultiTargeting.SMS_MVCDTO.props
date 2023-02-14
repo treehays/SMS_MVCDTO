@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\SMS_MVCDTO.props" />
-</Project>

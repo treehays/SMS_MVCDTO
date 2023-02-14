@@ -16,6 +16,7 @@ namespace SMS_MVCDTO.Models.Entities
         public string ReferenceNo { get; set; }
         //public int Quantity { get; set; }
         public string CartId { get; set; }
+        public double AmountPaid { get; set; }
         public double TotalAmount { get; set; }
         //public string ProductId { get; set; }
         //public string AttendantId { get; set; }

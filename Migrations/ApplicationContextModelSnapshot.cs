@@ -434,6 +434,9 @@ namespace SMSMVCDTO.Migrations
                     b.Property<string>("ReferenceNo")
                         .HasColumnType("varchar(255)");
 
+                    b.Property<double>("AmountPaid")
+                        .HasColumnType("double");
+
                     b.Property<string>("AttendantId")
                         .HasColumnType("varchar(255)");
 

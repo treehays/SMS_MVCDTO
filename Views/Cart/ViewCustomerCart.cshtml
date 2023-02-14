@@ -34,10 +34,10 @@
                         <th>Quantity</th>
                         <th>Amount(&#x20A6;)</th>
                         <th>Total(&#x20A6;)</th>
-                        
+
                         @*<th>(&#x20A6;)</th>*@
-                        
-                         <th></th>
+
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -64,30 +64,45 @@
                             </td>
 
                             <td>
-                                (&#x20A6;)@Html.DisplayFor(modelItem => item.Data.ProductPrice)
+                                &#x20A6;@Html.DisplayFor(modelItem => item.Data.ProductPrice)
                             </td>
 
                             <td>
-                                (&#x20A6;)@Html.DisplayFor(modelItem => item.Data.Total)
+                                &#x20A6;@Html.DisplayFor(modelItem => item.Data.Total)
                             </td>
 
                             <td>
-                                <a asp-action="Delete" asp-route-staffId="@item.Data.Id"> Remove </a> || <a asp-action="Delete"
-                               asp-route-staffId="@item.Data.Id"> More </a>
+                                <a asp-action="Delete" asp-route-staffId="@item.Data.Id"> Remove </a>
+                                @*|| <a asp-action="Delete"
+                            asp-route-staffId="@item.Data.Id"> More </a>*@
                             </td>
                         </tr>
                     }
-                    
+
                 </tbody>
             </table>
+           @* <input type="text" />
+
+            @using (Html.BeginForm("Create", "Transaction"))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Product.Data.Name, new {@class = "control-label"})
+                    @Html.TextBoxFor(x => x.Product.Data.Name, new {@class = "form-control", @readonly="readonly"})
+                    @Html.ValidationMessageFor(x => x.Product.Data.Name,"", new {@class="text-danger"})
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Add</button>
+                </div>
+            }
+*@
             <p>
+                <input class="col-12" placeholder="TOTAL: &#x20A6;@Model.CartTotal" />
                 <button>
-                    <a asp-action="Create"
-                       asp-route-TransactionId=""> <i class="fa fa-">Pay now</i>  </a>
+                    <a asp-controller="Transaction" asp-action="Create"
+                       asp-route-CustomerId="@Model.CustomerId"> <i class="fa fa-hand-receiving"> Pay now</i>  </a>
                 </button>
-
             </p>
-
         </div>
 
     </div>

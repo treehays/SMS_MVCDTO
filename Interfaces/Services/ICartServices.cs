@@ -6,7 +6,7 @@ namespace SMS_MVCDTO.Interfaces.Services
     public interface ICartServices
     {
         CreateCartRequestModel Create(CreateCartRequestModel cart);
-        IEnumerable<UpdateCartRequestModel> Update(string customerId);
+        string Update(string customerId);
         void Delete(int id);
         IEnumerable<CartResponseModel> GetAll();
         IEnumerable<CartResponseModel> GetAllPendingTransaction();

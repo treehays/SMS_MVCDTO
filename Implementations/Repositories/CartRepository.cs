@@ -35,7 +35,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
         public IEnumerable<Cart> GetAllPendingTransaction()
         {
             //var carts = _context.Carts.Where(x => !x.IsPaid && !x.IsDeleted).GroupBy(y => y).Select(z => z.Key).AsEnumerable();
-            var carts = _context.Carts.GroupBy(x => x.CustomermId).Select(g => g.First()).AsEnumerable();
+            var carts = _context.Carts.Where(w => !w.IsPaid && !w.IsDeleted).GroupBy(x => x.CustomermId).Select(g => g.First()).AsEnumerable();
             return carts;
         }
 
@@ -74,11 +74,17 @@ namespace SMS_MVCDTO.Implementations.Repositories
          }
         */
 
-        public Cart Update(Cart cart)
+        public string Update(string customerId)
         {
-            _context.Carts.Update(cart);
+
+            var carts = _context.Carts.Where(x => x.CustomermId == customerId);
+            foreach (var cart in carts)
+            {
+                cart.IsPaid = true;
+            }
+            _context.Carts.UpdateRange(carts);
             _context.SaveChanges();
-            return cart;
+            return customerId;
         }
 
         public IEnumerable<Cart> GetByTransactionId(string transactionId)

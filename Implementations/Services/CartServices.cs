@@ -212,32 +212,37 @@ namespace SMS_MVCDTO.Implementations.Services
             return cartResponseModel;
         }
 
-        public IEnumerable<UpdateCartRequestModel> Update(string customerId)
+        public string Update(string customerId)
         {
-            var carts = _cartRepository.NotPaidByCustomerId(customerId);
-            if (carts == null)
-            {
-                return null;
-            }
-
-            foreach (var item in carts)
-
-            {
-                item.IsPaid = true;
-                _cartRepository.Update(item);
-            }
-
-
-            var listCartsResponseModel = carts.Select(item => new UpdateCartRequestModel
-            {
-                TransactionId = item.TransactionId,
-                Quantity = item.Quantity,
-                IsPaid = item.IsPaid,
-
-            });
-            return listCartsResponseModel;
-
+            throw new NotImplementedException();
         }
+
+        //public IEnumerable<UpdateCartRequestModel> Update(string customerId)
+        //{
+        //    var carts = _cartRepository.NotPaidByCustomerId(customerId);
+        //    if (carts == null)
+        //    {
+        //        return null;
+        //    }
+
+        //    foreach (var item in carts)
+
+        //    {
+        //        item.IsPaid = true;
+        //        _cartRepository.Update(item);
+        //    }
+
+
+        //    var listCartsResponseModel = carts.Select(item => new UpdateCartRequestModel
+        //    {
+        //        TransactionId = item.TransactionId,
+        //        Quantity = item.Quantity,
+        //        IsPaid = item.IsPaid,
+
+        //    });
+        //    return listCartsResponseModel;
+
+        //}
 
     }
 }

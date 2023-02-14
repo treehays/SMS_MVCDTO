@@ -1,11 +1,8 @@
-﻿@*@model SMS_MVCDTO.Models.DTOs.ProductDTOs.ProductResponseModel*@
-@*@model ProductTransactionViewModel*@
-@model IEnumerable<SMS_MVCDTO.Models.DTOs.CartDTOs.CartResponseModel>
+﻿@model SMS_MVCDTO.Models.DTOs.TransactionDTOs.CreateTransactionRequestModel
 
 
-@{/*
-    ViewData["Title"] = "Edit";
 @{
+    ViewData["Title"] = "Edit";
     if (TempData["success"] != null)
     {
         <h2>@TempData["success"]</h2>
@@ -15,10 +12,6 @@
         <h2>@TempData["failed"]</h2>
     }
 }
-
-*/}
-
-    
 
 
 
@@ -26,110 +19,87 @@
     <!-- <div class="dashboard"> -->
     <div class="form-container">
 
-        <!-- Signup Form -->
-        <h1>Check Out..</h1>
-        <hr />
+        <div id="Data-form">
+            @using (Html.BeginForm("Create", "Transaction"))
+            {
 
-        <div id="">
-            <table class="table table-info">
-                <thead>
-                    <tr>
-                        <th>S/N</th>
+                <h1>Complete Transaction</h1>
 
-                        <th>
-                            @Html.DisplayNameFor(model => model.Data.ProductId)
-                        </th>
+                <hr />
 
-                        @*<th>
-                            @Html.DisplayNameFor(model => model.Data.ProductName)
-                        </th>*@
+                <div class="form-group">
+                    @Html.LabelFor(x => x.CustomerId, new {@class = "control-label" })
+                    @Html.TextBoxFor(x => x.CustomerId, new {@readonly="readonly",@class = "form-control"})
+                </div>
 
-                        <th>
-                            @Html.DisplayNameFor(model => model.Data.Quantity)
-                        </th>
 
-                        <th>
-                            @*@Html.DisplayNameFor(model => model.Data.Amount)*@
-                        </th>
-                        @*  <th>
-                        @Html.DisplayNameFor(model =>
-                        model.Data.GuarantorName)
-                        </th>*@
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @{
-                        int serialNumber = 1;
-                    }
-                    @foreach (var item in Model)
-                    {
+                <div class="form-group">
+                    @Html.LabelFor(x => x.CustomeName, new {@class = "control-label"})
+                    @Html.TextBoxFor(x => x.CustomeName, new {@readonly="readonly",@class = "form-control"})
+                </div>
 
-                        <tr>
-                            <td>
-                                @serialNumber
-                            </td>
-                            @*<td>
-                                @Html.DisplayFor(modelItem => item.Data.FirstName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Data.LastName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Data.Gender)
-                            </td>*@
 
-                            @*  <td>
-                        @Html.DisplayFor(modelItem =>
-                        item.Data.GuarantorName)
-                        </td>*@
-                          @*  <td>
-                                <a asp-action="Edit"
-                               asp-route-staffId="@item.Data.StaffId">Edit</a>
-                                |
-                                <a asp-action="Details"
-                               asp-route-staffId="@item.Data.StaffId">Details</a>
-                                |
-                                <a asp-action="DeletePreview"
-                               asp-route-staffId="@item.Data.StaffId">Delete</a>
-                            </td>*@
-                        </tr>
-                        serialNumber++;
-                    }
-                </tbody>
-            </table>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.TotalAmount, new {@class = "control-label"})
+                    @Html.TextBoxFor(x => x.TotalAmount,  new {@readonly="readonly",@class = "form-control"})
+                    @*@Html.ValidationMessageFor(x => x.TotalAmount,"", new {@class="text-danger"})*@
+
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(x => x.CashTender, new {@class = "control-label"})
+                    @Html.TextBoxFor(x => x.CashTender, new {@class = "form-control"})
+                    @*@Html.ValidationMessageFor(x => x.CashTender,"", new {@class="text-danger"})*@
+                </div>
+
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Pay Now</button>
+                </div>
+            }
+
 
         </div>
 
     </div>
 
     <!-- search box  -->
-    <div class="search-container-side">
-
-        <!-- search box  -->
-        <div class="search-container">
-            <form>
-                <input type="text" placeholder="Customer ID..." name="Details">
-                <button type="submit">
-                    <i class="fa fa-search"></i> Search
-                </button>
-            </form>
-        </div>
-
-        <!-- search box  -->
-        <div class="search-container">
-            <form>
-                <input type="text" placeholder="Search1...">
-                <button type="submit">
-                    <i class="fa fa-search"></i> Search
-                </button>
-            </form>
-        </div>
-
+    <div class="search-container">
+        <form>
+            <input type="text" placeholder="Search...">
+            <button type="submit"><i class="fa fa-search"></i> Search </button>
+        </form>
     </div>
 
+    @*
 
+    @section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
+    *@
 </main>
+@* ends here *@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -137,54 +107,172 @@
 
 
 @{
-
-/*
- * 
+    /*
 
 
-<div class="col-md-4">
+    <main class="main">
+    <!-- <div class="dashboard"> -->
+    <div class="form-container">
+
+        <!-- Signup Form -->
+    <h1>Check Out..</h1>
+    <hr />
+
+    <div id="">
+    <table class="table table-info">
+    <thead>
+    <tr>
+    <th>S/N</th>
+
+    <th>
+    @Html.DisplayNameFor(model => model.Data.ProductId)
+    </th>
+
+    @*<th>
+    @Html.DisplayNameFor(model => model.Data.ProductName)
+    </th>*@
+
+    <th>
+    @Html.DisplayNameFor(model => model.Data.Quantity)
+    </th>
+
+    <th>
+    @*@Html.DisplayNameFor(model => model.Data.Amount)*@
+        </th>
+        @*  <th>
+        @Html.DisplayNameFor(model =>
+    model.Data.GuarantorName)
+    </th>*@
+    <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @{
+    int serialNumber = 1;
+    }
+    @foreach (var item in Model)
+    {
+
+    <tr>
+    <td>
+    @serialNumber
+    </td>
+    @*<td>
+    @Html.DisplayFor(modelItem => item.Data.FirstName)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.Data.LastName)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.Data.Gender)
+        </td>*@
+
+        @*  <td>
+        @Html.DisplayFor(modelItem =>
+       item.Data.GuarantorName)
+       </td>*@
+       @*  <td>
+       <a asp-action="Edit"
+       asp-route-staffId="@item.Data.StaffId">Edit</a>
+    |
+       <a asp-action="Details"
+       asp-route-staffId="@item.Data.StaffId">Details</a>
+        |
+        <a asp-action="DeletePreview"
+            asp-route-staffId="@item.Data.StaffId">Delete</a>
+            </td>*@
+        </tr>
+    serialNumber++;
+            }
+            </tbody>
+    </table>
+
+    </div>
+
+    </div>
+
+    <!-- search box  -->
+    <div class="search-container-side">
+
+    <!-- search box  -->
+    <div class="search-container">
+        <form>
+        <input type="text" placeholder="Customer ID..." name="Details">
+    <button type="submit">
+    <i class="fa fa-search"></i> Search
+    </button>
+    </form>
+    </div>
+
+        <!-- search box  -->
+        <div class="search-container">
+        <form>
+        <input type="text" placeholder="Search1...">
+    <button type="submit">
+    <i class="fa fa-search"></i> Search
+    </button>
+    </form>
+            </div>
+
+        </div>
+
+
+    </main>
+
+
+
+
+
+
+            @{
+
+                    /*
+        *
+
+
+    <div class="col-md-4">
     @using (Html.BeginForm("Create", "Transaction"))
     {
 
-        <div class="form-group">
-            @Html.HiddenFor(x => x.Product.Data.Barcode, new {@class = "form-control"})
-        </div>
+    <div class="form-group">
+    @Html.HiddenFor(x => x.Product.Data.Barcode, new {@class = "form-control"})
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(x => x.Product.Data.Name, new {@class = "control-label"})
-            @Html.TextBoxFor(x => x.Product.Data.Name, new {@class = "form-control", @readonly="readonly"})
-            @Html.ValidationMessageFor(x => x.Product.Data.Name,"", new {@class="text-danger"})
-        </div>
+    <div class="form-group">
+    @Html.LabelFor(x => x.Product.Data.Name, new {@class = "control-label"})
+    @Html.TextBoxFor(x => x.Product.Data.Name, new {@class = "form-control", @readonly="readonly"})
+    @Html.ValidationMessageFor(x => x.Product.Data.Name,"", new {@class="text-danger"})
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(x => x.Product.Data.SellingPrice, new {@class = "control-label"})
-            @Html.TextBoxFor(x => x.Product.Data.SellingPrice, new {@class = "form-control", @readonly = "readonly"} )
-            @Html.ValidationMessageFor(x => x.Product.Data.SellingPrice,"", new {@class="text-danger"})
+    <div class="form-group">
+    @Html.LabelFor(x => x.Product.Data.SellingPrice, new {@class = "control-label"})
+    @Html.TextBoxFor(x => x.Product.Data.SellingPrice, new {@class = "form-control", @readonly = "readonly"} )
+    @Html.ValidationMessageFor(x => x.Product.Data.SellingPrice,"", new {@class="text-danger"})
         </div>
+    @*
+    <div class="form-group">
+    @Html.LabelFor(x => x.Transaction.Quantity, new {@class = "control-label"})
+    @Html.TextBoxFor(x => x.Transaction.Quantity, new {@class = "form-control"})
+    @Html.ValidationMessageFor(x => x.Transaction.Quantity,"", new {@class="text-danger"})
+    </div>*@
+
+    <div class="form-group">
+    @Html.LabelFor(x => x.Transaction.CustomerId, new {@class = "control-label"})
+    @Html.TextBoxFor(x => x.Transaction.CustomerId, new {@class = "form-control"})
+        @Html.ValidationMessageFor(x => x.Transaction.CustomerId,"", new {@class="text-danger"})
+            </div>
+
+    */
+}
+
 @*
-        <div class="form-group">
-            @Html.LabelFor(x => x.Transaction.Quantity, new {@class = "control-label"})
-            @Html.TextBoxFor(x => x.Transaction.Quantity, new {@class = "form-control"})
-            @Html.ValidationMessageFor(x => x.Transaction.Quantity,"", new {@class="text-danger"})
-        </div>*@
-        
-        <div class="form-group">
-            @Html.LabelFor(x => x.Transaction.CustomerId, new {@class = "control-label"})
-            @Html.TextBoxFor(x => x.Transaction.CustomerId, new {@class = "form-control"})
-            @Html.ValidationMessageFor(x => x.Transaction.CustomerId,"", new {@class="text-danger"})
-        </div>
 
-        */
-    }
-
-      @*  
-        
         <div class="form-group">
             @Html.LabelFor(x => x.Transaction.AttendantId, new {@class = "control-label"})
             @Html.TextBoxFor(x => x.Transaction.AttendantId, new {@class = "form-control"})
             @Html.ValidationMessageFor(x => x.Transaction.AttendantId,"", new {@class="text-danger"})
         </div>
-        
+
           <div class="form-group">
             @Html.LabelFor(x => x.TempTotal, new {@class = "control-label"})
             @Html.TextBoxFor(x => x.TempTotal, new {@class = "form-control"})
@@ -192,38 +280,39 @@
         </div>*@
 
 
-        <div class="form-group">
-            <button type="submit" class="btn btn-success">Add</button>
-        </div>
-    }
+<div class="form-group">
+    <button type="submit" class="btn btn-success">Add</button>
+</div>
+            }
 </div>
 @section scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-}
+        }
 
-@{ /*
 @{
+    /*
+    @{
     ViewData["Title"] = "Create";
-}
-@{
+    }
+    @{
     if (TempData["success"] != null)
-    {
+        {
         <h2>@TempData["success"]</h2>
     }
     if (TempData["failed"] != null)
-    {
+        {
         <h2>@TempData["failed"]</h2>
     }
-}
+    }
 
-<h1> ADD CATEGORY</h1>
-<hr />
-<div class="col-md-4">
+    <h1> ADD CATEGORY</h1>
+    <hr />
+    <div class="col-md-4">
     @using (Html.BeginForm("Create", "Transaction"))
-    {
-        <div class="form-group">
+            {
+            <div class="form-group">
             @Html.LabelFor(x => x.BarCode, new {@class = "control-label"})
             @Html.TextBoxFor(x => x.BarCode, new {@class = "form-control"})
             @Html.ValidationMessageFor(x => x.BarCode,"", new {@class="text-danger"})
@@ -233,72 +322,73 @@
     @Html.LabelFor(x => x.ReferenceNo, new {@class = "control-label"})
     @Html.TextBoxFor(x => x.ReferenceNo, new {@class = "form-control"})
     @Html.ValidationMessageFor(x => x.ReferenceNo,"", new {@class="text-danger"})
-    </div>
-    *@
-        <div class="form-group">
+            </div>
+            *@
+            <div class="form-group">
             @Html.LabelFor(x => x.Quantity, new {@class = "control-label"})
             @Html.TextBoxFor(x => x.Quantity, new {@class = "form-control"})
             @Html.ValidationMessageFor(x => x.Quantity,"", new {@class="text-danger"})
-        </div>
-        <div class="form-group">
+            </div>
+            <div class="form-group">
             <button type="submit" class="btn btn-success">Add</button>
         </div>
-    }
-</div>
-@section scripts {
-    @{
+        }
+        </div>
+        @section scripts {
+        @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}
+     }
+     }
 
 
-               
+
      * @model SMS_MVCDTO.Models.DTOs.TransactionDTOs.CreateTransactionRequestModel
 
 
-@{
-ViewData["Title"] = "Create";
-}
-@{
-if (TempData["success"] != null)
-{
+        @{
+        ViewData["Title"] = "Create";
+        }
+        @{
+        if (TempData["success"] != null)
+    {
     <h2>@TempData["success"]</h2>
-}
-if (TempData["failed"] != null)
-{
+        }
+        if (TempData["failed"] != null)
+    {
     <h2>@TempData["failed"]</h2>
-}
-}
+        }
+        }
 
-<h1> ADD CATEGORY</h1>
-<hr />
-<div class="col-md-4">
-@using (Html.BeginForm("Create", "Transaction"))
-{
+        <h1> ADD CATEGORY</h1>
+        <hr />
+        <div class="col-md-4">
+        @using (Html.BeginForm("Create", "Transaction"))
+        {
 
-    <div class="form-group">
+        <div class="form-group">
         @Html.LabelFor(x => x.BarCode, new {@class = "control-label"})
         @Html.TextBoxFor(x => x.BarCode, new {@class = "form-control"})
         @Html.ValidationMessageFor(x => x.BarCode,"", new {@class="text-danger"})
-    </div>
+        </div>
 
 
-    <div class="form-group">
+        <div class="form-group">
         @Html.LabelFor(x => x.Quantity, new {@class = "control-label"})
         @Html.TextBoxFor(x => x.Quantity, new {@class = "form-control"})
         @Html.ValidationMessageFor(x => x.Quantity,"", new {@class="text-danger"})
-    </div>
+        </div>
 
 
-    <div class="form-group">
+        <div class="form-group">
         <button type="submit" class="btn btn-success">Add</button>
     </div>
-}
-</div>
-@section scripts {
-@{
+    }
+    </div>
+    @section scripts {
+    @{
     await Html.RenderPartialAsync("_ValidationScriptsPartial");
-     }
-         }
+    }
+    }
     */
-            }
+}
+*/}

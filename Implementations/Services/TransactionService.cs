@@ -1,4 +1,5 @@
-﻿using SMS_MVCDTO.Interfaces.Repositories;
+﻿using SMS_MVCDTO.Implementations.Repositories;
+using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.DTOs.TransactionDTOs;
 using SMS_MVCDTO.Models.Entities;
@@ -34,13 +35,14 @@ namespace SMS_MVCDTO.Implementations.Services
 
 
             var customers = _customer.GetById(transaction.CustomerId);
-            var attendant = _attendant.GetById(transaction.CustomerId);
+            //var attendant = _attendant.GetById(transaction.AttendanId);
 
             var transactio = new Transaction
             {
-                ReferenceNo = Guid.NewGuid().ToString().Remove(10).Replace("-", "").ToUpper(),
                 CustomerId = transaction.CustomerId,
-                AttendantId = transaction.AttendantId,
+                AttendantId = transaction.AttendanId,
+                AmountPaid = transaction.CashTender,
+                ReferenceNo = Guid.NewGuid().ToString().Remove(10).Replace("-", "").ToUpper(),
                 CartId = transaction.CartId,
                 //AttendantName = attendant.FirstName,
                 //Quantity = transaction.Quantity,
@@ -49,6 +51,21 @@ namespace SMS_MVCDTO.Implementations.Services
                 //CustomerName = $"{customers.FirstName.ToUpper()}  {customers.LastName}"
             };
             _transaction.Create(transactio);
+            _cart.Update(transaction.CustomerId);
+
+            //updating cart to ispaid false
+            //var carts = _cart.NotPaidByCustomerId(transaction.CustomerId);
+            //if (carts == null)
+            //{
+            //    return null;
+            //}
+
+            //foreach (var item in carts)
+
+            //{
+            //    item.IsPaid = true;
+            //    _cart.Update(item);
+            //}
 
             return transaction;
         }

@@ -21,11 +21,14 @@
     <div class="form-container">
 
         <!-- Signup Form -->
+        @*<div id="Data-form">*@
 
-        <h1>Attendants...</h1>
 
+        <div id="Data-form">
 
-        <div id="">
+            <div>
+
+            <h1>Attendants..</h1>
 
             <p>
                 <a asp-action="Create">Create New Attendant</a>
@@ -101,7 +104,7 @@
                     }
                 </tbody>
             </table>
-
+            </div>
         </div>
 
     </div>
@@ -112,7 +115,7 @@
         <!-- search box  -->
         <div class="search-container">
             <form asp-controller="Attendant" asp-action="GetByStaffId">
-                <input type="text" placeholder="Attendant Id.." name="barCode">
+                <input type="text" placeholder="Attendant Id.." name="staffId">
                 <button type="submit">
                     <i class="fa fa-search"></i> Search
                 </button>

@@ -77,6 +77,7 @@ namespace SMS_MVCDTO.Implementations.Services
                         Role = user.Role,
                         FirstName = user.FirstName,
                         LastName = user.LastName,
+                        ProfilePicture = user.ProfilePicture,
                     }
                 };
                 return userResponse;

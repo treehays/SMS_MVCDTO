@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.DTOs.TransactionDTOs;
+using SMS_MVCDTO.Models.Entities;
 using System.Security.Claims;
 
 namespace SMS_MVCDTO.Controllers
@@ -10,11 +12,14 @@ namespace SMS_MVCDTO.Controllers
         private readonly ITransactionService _transaction;
         private readonly IProductService _product;
         private readonly ICartServices _cartService;
-        public TransactionController(ITransactionService transaction, IProductService product, ICartServices cartServices)
+        private readonly ICustomerRepository _customer;
+
+        public TransactionController(ITransactionService transaction, IProductService product, ICartServices cartServices, ICustomerRepository customer)
         {
             _transaction = transaction;
             _product = product;
             _cartService = cartServices;
+            _customer = customer;
         }
 
         public IActionResult Index(int id)
@@ -40,45 +45,25 @@ namespace SMS_MVCDTO.Controllers
         }
 
 
-        //public IActionResult Create(string customerId)
-        //{
-        //    var cartProducts = _cartService.NotPaidByCustomerId(customerId);
 
-        //if (cartProducts == null)
-        //{
-        //    //return View("Error");
-        //    return NotFound();
-        //}
 
-        //var loggedinUser = User?.FindFirst(ClaimTypes.NameIdentifier);
-        //string attendant;
-        //if (loggedinUser == null)
-        //{
-        //    attendant = "ATT001";
-        //}
-        //else
-        //{
-        //    attendant = User?.FindFirst(ClaimTypes.NameIdentifier).Value;
-        //}
 
-        //var transaction = new CreateTransactionRequestModel
-        //{
-        //    AttendantId = attendant,
-        //};
+        public IActionResult Create(string customerId)
+        {
+            var cart = _cartService.NotPaidByCustomerId(customerId);
+            //var cart = _cartService.GetByTransactionId(transactionId);
 
-        //if (product == null)
-        //{
-        //    return NotFound();
-        //}
-
-        //var productTransact = new CreateProductTransactionViewModel
-        //{
-        //    Product = product,
-        //    Transaction = transaction,
-        //};
-
-        //    return View(cartProducts);
-        //}
+            var cartTotal = cart.Sum(x => (x.Data.Total));
+            var customer = _customer.GetById(customerId);
+            var craeteTransact = new CreateTransactionRequestModel
+            {
+                TotalAmount = cartTotal,
+                CustomeName = $"{customer.FirstName} {customer.LastName}",
+                AttendanId = User?.FindFirst(ClaimTypes.NameIdentifier).Value,
+                CustomerId = customerId,
+            };
+            return View(craeteTransact);
+        }
 
 
         /// <summary>
@@ -86,6 +71,7 @@ namespace SMS_MVCDTO.Controllers
         /// </summary>
         /// <param name="createTransaction"></param>
         /// <returns></returns>
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(CreateTransactionRequestModel createTransaction)
@@ -95,9 +81,8 @@ namespace SMS_MVCDTO.Controllers
                 TempData["failed"] = "failed.";
                 return View();
             }
-            createTransaction.AttendantId = User.FindFirstValue("NameIdentifier");
+            createTransaction.AttendanId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             _transaction.Create(createTransaction);
-            _cartService.Update(createTransaction.CartId);
             TempData["success"] = "Created Successfully.";
             return RedirectToAction("Index");
         }

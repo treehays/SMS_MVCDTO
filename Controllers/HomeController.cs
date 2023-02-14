@@ -68,7 +68,11 @@ namespace SMS_MVCDTO.Controllers
                 return BadRequest();
             }
             byte[] imageData = user.Data.ProfilePicture;
-            ViewData["ImageData"] = imageData;
+
+            /*
+                        ViewBag.Image = "data:image/jpeg;base64," + Convert.ToBase64String(imageData);
+                        ViewData["ImageData"] = imageData;
+            */
 
 
 

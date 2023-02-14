@@ -39,7 +39,7 @@ namespace SMS_MVCDTO.Controllers
             else
             {
                 attendant = User?.FindFirst(ClaimTypes.NameIdentifier).Value;
-                var b = User.FindFirstValue("NameIdentifier");
+                //var b = User.FindFirstValue("NameIdentifier");
             }
             /*
                         var activeAttendantId = new CreateCartRequestModel
@@ -109,9 +109,10 @@ namespace SMS_MVCDTO.Controllers
             var cartTotal = cart.Sum(x => x.Data.Total);
             var cartCartTotal = new CartTotalViewModel
             {
-                CartTotal = cartTotal,
                 ListOfCartProduccts = cart,
+                CartTotal = cartTotal,
                 CartId = cartId.Data.TransactionId,
+                CustomerId = customerId,
             };
             //there should be a form under this page tha accept cash tender and customer id from route(transaction ) this will create transaction
 

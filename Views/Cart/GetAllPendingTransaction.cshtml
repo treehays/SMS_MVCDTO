@@ -42,13 +42,13 @@
 
 
                         </th>
-                            <th>
-                            @Html.DisplayNameFor(model => model.Data.ProductPrice) (&#x20A6;)
+                        <th>
+                        @Html.DisplayNameFor(model => model.Data.ProductPrice) (&#x20A6;)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Data.Total) (&#x20A6;)
+                        @Html.DisplayNameFor(model => model.Data.Total) (&#x20A6;)
                         </th>
-                          <th>
+                        <th>
                         @Html.DisplayNameFor(model =>
                         model.Data.GuarantorName)
                         </th>*@
@@ -73,17 +73,17 @@
                                 @Html.DisplayFor(modelItem => item.Data.TransactionId)
                             </td>
 
-                           @* <td>
-                                @Html.DisplayFor(modelItem => item.Data.ProductName)
-                            </td>
+                            @* <td>
+                        @Html.DisplayFor(modelItem => item.Data.ProductName)
+                        </td>
 
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Data.ProductPrice)
-                            </td>
+                        <td>
+                        @Html.DisplayFor(modelItem => item.Data.ProductPrice)
+                        </td>
 
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Data.Total)
-                            </td>*@
+                        <td>
+                        @Html.DisplayFor(modelItem => item.Data.Total)
+                        </td>*@
 
                             <td>
                                 <a asp-action="ViewCustomerCart"
@@ -94,13 +94,13 @@
                     }
                 </tbody>
             </table>
-            <p>
-                <button>
-                    <a asp-action="Create"
-                       asp-route-TransactionId="">  </a>
-                </button>
+            @*  <p>
+            <button>
+            <a asp-action="Create"
+            asp-route-TransactionId="">  </a>
+            </button>
 
-            </p>
+            </p>*@
 
         </div>
 

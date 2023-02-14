@@ -5,7 +5,7 @@ namespace SMS_MVCDTO.Interfaces.Repositories
     public interface ICartRepository
     {
         Cart Create(Cart cart);
-        Cart Update(Cart cart);
+        string Update(string customerId);
         void Delete(Cart cart);
         IEnumerable<Cart> GetAll();
         IEnumerable<Cart> GetAllPendingTransaction();

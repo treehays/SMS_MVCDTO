@@ -45,8 +45,13 @@
                 }
                 <span>Recent Transactions...</span>
             </h1>
+@*
+            <img src="data:image/jpeg;base64,@Convert.ToBase64String((byte[])ViewData["ImageData"])" />
 
-
+            <img src="@ViewBag.Image" />
+            <img src="@ViewBag.Image" alt="Girl in a jacket" width="500" height="600">
+            <img src="data:image/jpeg;base64,@Convert.ToBase64String((byte[])ViewData["ImageData"])" alt="Girl in a jacket" width="500" height="600">
+*@
             <table class="table table-info">
                 <thead>
                     <tr>
