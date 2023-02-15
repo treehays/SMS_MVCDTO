@@ -27,7 +27,7 @@
 
                     <div class="">
                         @Html.LabelFor(x => x.Password)
-                        @Html.TextBoxFor(x => x.Password)
+                        @Html.PasswordFor(x => x.Password)
                         @Html.ValidationMessageFor(x => x.Password)
                     </div>
 
@@ -60,7 +60,7 @@
 
                     <div class="form-group">
                         @Html.LabelFor(x => x.Password, new {@class = "control-label"})
-                        @Html.TextBoxFor(x => x.Password, new {@class = "form-control"})
+                        @Html.PasswordFor(x => x.Password, new {@class = "form-control"})
                         @Html.ValidationMessageFor(x => x.Password,"", new
                 {@class="text-danger"})
                     </div>

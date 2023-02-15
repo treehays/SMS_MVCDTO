@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SMS_MVCDTO</title>
     <link rel="stylesheet" href="~/css/FontAwesome6.2/css/all.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">*@
     <script src="~/js/site.js"></script>
 
@@ -51,7 +52,7 @@
 
         <header>
             <nav class="navbar navbar-expand-sm navbar-toggleable-sm
-                    navbar-light bg-white border-bottom box-shadow mb-3">
+                                                            navbar-light bg-white border-bottom box-shadow mb-3">
                 <div class="container-fluid">
                     <a class="navbar-brand" asp-area=""
                    asp-controller="Home"
@@ -62,13 +63,13 @@
                             data-bs-target=".navbar-collapse"
                             aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle
-                            navigation">
+                                                                    navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     @* MDelete *@
 
                     <div class="navbar-collapse collapse d-sm-inline-flex
-                            justify-content-between">
+                                                                    justify-content-between">
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area=""
@@ -119,6 +120,7 @@
                                asp-action="Login">Login</a>
                                 </li>
                             }
+                            else { }
 
 
                             @*byte[] = @(Convert.FromBase64String(User.FindFirstValue(ClaimTypes.UserData)))*@
@@ -162,7 +164,7 @@
                                 }
                                 else if (loginUser.Value == UserRoleType.Attendant.ToString())
                                 {
-                                    //<li>
+                                //<li>
                                     //    <img src="data:image/jpeg;base64,@Convert.ToBase64String((byte[])ViewData["ImageData"])" />
 
                                     //</li>
@@ -193,6 +195,7 @@
 
                             }
 
+
                             @if (loginUser == null)
                             {
                                 <li class="nav-item">
@@ -201,6 +204,7 @@
                                asp-action="Create">Sign-Up</a>
                                 </li>
                             }
+                            else { }
 
                         </ul>
 
@@ -211,116 +215,140 @@
 
         @* <div class="wrapper"> *@
 
+
+
+
+
+
+
+
+
+
+
+
+
+
         @*SIDE BAR*@
         <div class="bodycontain bd-oline">
 
             @if (loginUser != null)
             {
+                @if (loginUser.Value == UserRoleType.SuperAdmin.ToString() || loginUser.Value == UserRoleType.Attendant.ToString() || loginUser.Value == UserRoleType.SalesManager.ToString())
+                {
 
-                <div class="sidebar ">
-                    <h3>Navigation</h3>
-                    <ul>
+                    <div class="sidebar ">
+                        <h3>Navigation</h3>
+                        <ul>
 
-                        <li><a asp-area="" asp-controller="" asp-action="">Home</a></li>
-                        @* <li><a href="#"></a></li> *@
-
-
-                        @*@if (loginUser != null)
-                {*@
-                        @if (loginUser.Value == UserRoleType.SuperAdmin.ToString())
-                        {
+                            <li><a asp-area="" asp-controller="" asp-action="">Home</a></li>
+                
                             <li class="dropdown">
                                 <a href="#">Attendants</a>
                                 <ul class="dropdown-content">
-                                    <li>
-                                        <a asp-area="" asp-controller="Attendant"
+                                    @if (loginUser.Value == UserRoleType.SuperAdmin.ToString())
+                                    {
+                                        <li>
+                                            <a asp-area="" asp-controller="Attendant"
                                asp-action="Create">Create Attendants</a>
-                                    </li>
-                                    <li>
-                                        <a asp-area="" asp-controller="Attendant"
+                                        </li>
+
+                                        <li>
+                                            <a asp-area="" asp-controller="Attendant"
                                asp-action="Dashboard">Manage Attendants</a>
-                                    </li>
-                                    <li>
-                                        <a asp-area="" asp-controller="Attendant"
+                                        </li>
+
+
+
+                                        <li>
+                                            <a asp-area="" asp-controller="Attendant"
                                asp-action="">View all attendants</a>
-                                    </li>
+                                        </li>
+                                    }
+                                    else { }
+
                                 </ul>
                             </li>
-                        }
-                        @*}*@
+                
+                            @if (loginUser.Value == UserRoleType.SuperAdmin.ToString() || loginUser.Value == UserRoleType.Attendant.ToString() || loginUser.Value == UserRoleType.SalesManager.ToString())
+                            {
+                                <li class="dropdown">
+                                    <a href="#">Customers</a>
+                                    <ul class="dropdown-content">
+                                        <li>
+                                            <a asp-area="" asp-controller="Customer"
+                               asp-action="Create">Create Customer</a>
+                                        </li>
+                                        <li>
+                                            <a asp-area="" asp-controller="Customer"
+                               asp-action="Dashboard">Manage Customer</a>
+                                        </li>
+                                        <li>
+                                            <a asp-area="" asp-controller="Customer"
+                               asp-action="">View all Customers</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                            else { }
+                            @*}*@
 
-                        @* @if (loginUser != null)
-                {*@
-                        @if (loginUser.Value == UserRoleType.SuperAdmin.ToString())
-                        {
+
+
+
                             <li class="dropdown">
-                                <a href="#">Customers</a>
+                                <a href="#">Products</a>
+                                <ul class="dropdown-content">
+
+                                    @if (loginUser.Value == UserRoleType.SuperAdmin.ToString() || loginUser.Value == UserRoleType.SalesManager.ToString())
+                                    {
+                                        <li>
+                                            <a asp-area="" asp-controller="Product"
+                               asp-action="Create">Add new products</a>
+                                        </li>
+
+                                        <li>
+                                            <a asp-area="" asp-controller="Product"
+                               asp-action="Dashboard">Manage Product</a>
+                                        </li>
+                                    }
+                                    else { }
+
+                                    <li>
+                                        <a asp-area="" asp-controller="Product"
+                               asp-action="">View all Products</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                            @* <li><a href="#">Products</a></li> *@
+
+                            <li class="dropdown">
+                                <a href="#">Transactions</a>
                                 <ul class="dropdown-content">
                                     <li>
-                                        <a asp-area="" asp-controller="Customer"
-                               asp-action="Create">Create Customer</a>
+                                        <a asp-area="" asp-controller="Transaction"
+                               asp-action="">Transaction</a>
                                     </li>
                                     <li>
-                                        <a asp-area="" asp-controller="Customer"
-                               asp-action="Dashboard">Manage Customer</a>
+                                        <a asp-area="" asp-controller="Cart"
+                               asp-action="GetAllPendingTransaction">Pending Trans..</a>
                                     </li>
                                     <li>
-                                        <a asp-area="" asp-controller="Customer"
-                               asp-action="">View all Customers</a>
+                                        <a asp-area="" asp-controller=""
+                               asp-action="">Recent</a>
                                     </li>
                                 </ul>
                             </li>
-                        }
-                        @*}*@
 
-
-
-
-                        <li class="dropdown">
-                            <a href="#">Products</a>
-                            <ul class="dropdown-content">
-                                <li>
-                                    <a asp-area="" asp-controller="Product"
-                               asp-action="Create">Add new products</a>
-                                </li>
-                                <li>
-                                    <a asp-area="" asp-controller="Product"
-                               asp-action="Dashboard">Manage Product</a>
-                                </li>
-                                <li>
-                                    <a asp-area="" asp-controller="Product"
-                               asp-action="">View all Products</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        @* <li><a href="#">Products</a></li> *@
-                        
-                        <li class="dropdown">
-                            <a href="#">Transactions</a>
-                            <ul class="dropdown-content">
-                                <li>
-                                    <a asp-area="" asp-controller="Transaction"
-                               asp-action="">Transaction</a>
-                                </li>
-                                <li>
-                                    <a asp-area="" asp-controller="Cart"
-                               asp-action="GetAllPendingTransaction">Pending Trans..</a>
-                                </li>
-                                <li>
-                                    <a asp-area="" asp-controller=""
-                               asp-action="">Recent</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                       @* <li>
-                            <a asp-area="" asp-controller="Transaction"
-                       asp-action="">Transactions</a>
-                        </li>*@
-                    </ul>
-                </div>
-
+                            @* <li>
+                <a asp-area="" asp-controller="Transaction"
+                asp-action="">Transactions</a>
+                </li>*@
+                        </ul>
+                    </div>
+                }
+                else { }
 
             }
 

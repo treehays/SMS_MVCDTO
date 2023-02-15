@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SMS_MVCDTO.Enums;
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.DTOs.AttendantDTOs;
 using SMS_MVCDTO.Models.ViewModels;
@@ -24,11 +25,12 @@ namespace SMS_MVCDTO.Controllers
             _transaction = transaction;
             _product = product;
         }
-
+        [Authorize(Roles = "Attendant")]
         public IActionResult Index()
         {
             //var attendants = _attendant.GetAttendants();
             //ViewBag.ShowElement1 = true;
+            //var test = $"{UserRoleType.SalesManager.ToString()}";
             var transactions = _transaction.GetAll();
             var products = _product.BelowReorderLevel();
             var productTransaction = new TransactionProductListsViewModel
@@ -38,7 +40,6 @@ namespace SMS_MVCDTO.Controllers
             };
             return View(productTransaction);
         }
-
         //[Authorize(Roles = "SuperAdmin")]
         public IActionResult Dashboard()
         {

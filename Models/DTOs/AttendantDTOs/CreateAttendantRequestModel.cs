@@ -32,15 +32,15 @@ namespace SMS_MVCDTO.Models.DTOs.AttendantDTOs
         [DisplayName("Date of Birth")]
         public DateTime DateOfBirth { get; set; }
         public GenderType Gender { get; set; }
-        [DisplayName("Home Address")]
-        public MaritalStatusType MaritalStatus { get; set; }
         [DisplayName("Marital Status")]
+        public MaritalStatusType MaritalStatus { get; set; }
+        [DisplayName("Bank Account  number")]
         public string BankAccountNumber { get; set; }
-        [DisplayName("Bank Account Number")]
-        public string BankName { get; set; }
         [DisplayName("Bank Name")]
+        public string BankName { get; set; }
+        [DisplayName("Burantor Name")]
         public string GuarantorName { get; set; }
-        [DisplayName("Guarantor Name")]
+        [DisplayName("Guarantor pohonenumber ")]
         public string GuarantorPhoneNumber { get; set; }
         //public UserRoleType userRole { get; set; }
     }

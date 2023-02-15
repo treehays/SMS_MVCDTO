@@ -1,20 +1,7 @@
 ﻿@using SMS_MVCDTO.Enums
 @model SMS_MVCDTO.Models.DTOs.AttendantDTOs.CreateAttendantRequestModel
 
-@{
-
-    ViewData["Title"] = "Create";
-    if (TempData["Success"] != null)
-    {
-        <h2>@TempData["success"]</h2>
-    }
-    if (TempData["failed"] != null)
-    {
-        <h2>@TempData["failed"]</h2>
-    }
-}
-
-
+@*<partial name="_Notification" />*@
 
 
 <main class="main">
@@ -43,7 +30,7 @@
                 {@class="text-danger"})
                 </div>
 
-                
+
 
 
                 <div class="">
@@ -61,14 +48,14 @@
                 {@class="text-danger"})
                 </div>
 
-                
+
                 <div class="">
                     @Html.LabelFor(x => x.DateOfBirth, new {@class = "control-label"})
                     @Html.EditorFor(x => x.DateOfBirth, new {@class = "form-control"})
                     @Html.ValidationMessageFor(x => x.DateOfBirth,"", new
                 {@class="text-danger"})
                 </div>
-         
+
                 <div class="">
                     @Html.LabelFor(x => x.HomeAddress, new {@class = "control-label"})
                     @Html.TextBoxFor(x => x.HomeAddress, new {@class = "form-control"})
@@ -124,37 +111,38 @@
                     @Html.ValidationMessageFor(x => x.GuarantorName,"", new
                 {@class="text-danger"})
                 </div>
-                
+
                 <div class="">
                     @Html.LabelFor(x => x.GuarantorPhoneNumber, new {@class = "control-label"})
                     @Html.TextBoxFor(x => x.GuarantorPhoneNumber, new {@class = "form-control"})
                     @Html.ValidationMessageFor(x => x.GuarantorPhoneNumber,"", new
                 {@class="text-danger"})
                 </div>
-                
+
                 <div class="">
                     @Html.LabelFor(x => x.Password, new {@class = "control-label"})
                     @Html.PasswordFor(x => x.Password, new {@class = "form-control"})
                     @Html.ValidationMessageFor(x => x.Password,"", new
                 {@class="text-danger"})
                 </div>
-                
+
                 <div class="">
                     @Html.LabelFor(x => x.ConfirmPassword, new {@class = "control-label"})
                     @Html.PasswordFor(x => x.ConfirmPassword, new {@class = "form-control"})
                     @Html.ValidationMessageFor(x => x.ConfirmPassword,"", new
                 {@class="text-danger"})
                 </div>
-                
+
 
                 <div class="form-group">
                     @Html.AntiForgeryToken()
-                    <button type="submit" class="btn btn-success"><i class="fa fa-user"></i> ADD</button> 
+                    <button type="submit" class="btn btn-success"><i class="fa fa-user"></i> ADD</button>
                 </div>
             }
         </div>
 
     </div>
+
 
     <!-- search box  -->
     <div class="search-container">

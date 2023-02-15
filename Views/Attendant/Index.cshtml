@@ -4,55 +4,11 @@
     ViewData["Title"] = "Sales Manager Dashboard";
 }
 
-@{
-    if (TempData["Success"] != null)
-    {
-        <h2>@TempData["success"]</h2>
-    }
-    if (TempData["failed"] != null)
-    {
-        <h2>@TempData["failed"]</h2>
-    }
-}
+<partial name="_Notification" />
 
 
 <main class="main">
 
-    @*
-    <div class="search-container-top">
-
-    <!-- search box  -->
-    <div class="search-container">
-    <form asp-controller="Product" asp-action="GetById">
-    <input type="text" placeholder="Barcode..." name="barCode">
-    <button type="submit">
-    <i class="fa fa-search"></i> Search
-    </button>
-    </form>
-    </div>
-
-    <!-- search box  -->
-    <div class="search-container">
-    <form asp-controller="Product" asp-action="GetByName">
-    <input type="text" placeholder="Product name..." name="name">
-    <button type="submit">
-    <i class="fa fa-search"></i> Search
-    </button>
-    </form>
-    </div>
-
-    <!-- search box  -->
-    <div class="search-container">
-    <form asp-controller="Transaction" asp-action="Details">
-    <input type="text" placeholder="Transactionm Id..." name="ReferenceNo">
-    <button type="submit">
-    <i class="fa fa-search"></i> Search
-    </button>
-    </form>
-    </div>
-
-    </div>
-    *@
     <!-- <div class="dashboard"> -->
     <div class="form-container">
 
@@ -233,7 +189,7 @@
         </div>
 
         <!-- search box  -->
-        <div class="search-container">
+    @*    <div class="search-container">
             <form asp-controller="Transaction" asp-action="Details">
                 <input type="text" placeholder="Transaction ref..." name="referenceNo">
                 <button type="submit">
@@ -241,9 +197,9 @@
                 </button>
             </form>
         </div>
+*@
 
-
-
+@*
         <!-- search box  -->
         <div class="search-container">
             <form asp-controller="Product" asp-action="GetById">
@@ -252,7 +208,7 @@
                     <i class="fa fa-search"></i> Search
                 </button>
             </form>
-        </div>
+        </div>*@
 
         <!-- search box  -->
         <div class="search-container">

@@ -34,13 +34,13 @@ namespace SMS_MVCDTO.Models.DTOs.SuperAdminDTOs
         [DisplayName("Marital Status")]
 
         public MaritalStatusType MaritalStatus { get; set; }
-        [DisplayName("Marital Status")]
-        public string BankAccountNumber { get; set; }
         [DisplayName("Bank Account Number")]
-        public string BankName { get; set; }
+        public string BankAccountNumber { get; set; }
         [DisplayName("Bank Name")]
-        public string GuarantorName { get; set; }
+        public string BankName { get; set; }
         [DisplayName("Guarantor Name")]
+        public string GuarantorName { get; set; }
+        [DisplayName("Guarantor PhoneNumber")]
         public string GuarantorPhoneNumber { get; set; }
         /*
          public UserRoleType userRole { get; set; }*/
