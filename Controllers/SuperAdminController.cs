@@ -1,10 +1,7 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.DTOs.SuperAdminDTOs;
 using SMS_MVCDTO.Models.ViewModels;
-using System.Data;
-
 
 namespace SMS_MVCDTO.Controllers
 {
@@ -21,8 +18,7 @@ namespace SMS_MVCDTO.Controllers
             _product = product;
         }
 
-        [Authorize(Roles = "SuperAdmin")]
-
+        // [Authorize(Roles = "SuperAdmin")]
         public IActionResult Index()
         {
             //var superAdmin = _superAdmin.GetSuperAdmins();
@@ -37,7 +33,7 @@ namespace SMS_MVCDTO.Controllers
             return View(productTransaction);
         }
 
-        [Authorize(Roles = "SuperAdmin")]
+        // [Authorize(Roles = "SuperAdmin")]
         public IActionResult Dashboard()
         {
             var superAdmin = _superAdmin.GetSuperAdmins();
@@ -45,14 +41,14 @@ namespace SMS_MVCDTO.Controllers
 
         }
 
-        [Authorize(Roles = "null")]
+        // [Authorize(Roles = "null")]
         public IActionResult Create()
         {
             return View();
         }
 
 
-        [Authorize(Roles = "null")]
+        // [Authorize(Roles = "null")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CreateSuperAdminRequestModel createSuperAdmin)
@@ -89,7 +85,7 @@ namespace SMS_MVCDTO.Controllers
             }
         }
 
-        [Authorize(Roles = "SuperAdmin")]
+        // [Authorize(Roles = "SuperAdmin")]
         public IActionResult Edit(string staffId)
         {
             var superAdmin = _superAdmin.GetById(staffId);
@@ -101,7 +97,7 @@ namespace SMS_MVCDTO.Controllers
         }
 
 
-        [Authorize(Roles = "SuperAdmin")]
+        // [Authorize(Roles = "SuperAdmin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(SuperAdminResponseModel updateSuperAdmin)
@@ -112,7 +108,7 @@ namespace SMS_MVCDTO.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [Authorize(Roles = "null")]
+        // [Authorize(Roles = "null")]
         public IActionResult DeletePreview(string staffId)
         {
             if (staffId != null)
@@ -132,7 +128,7 @@ namespace SMS_MVCDTO.Controllers
         //[ValidateAntiForgeryToken]
         //[HttpPost, ActionName("Delete")]
 
-        [Authorize(Roles = "SuperAdmin")]
+        // [Authorize(Roles = "SuperAdmin")]
         public IActionResult Delete(string staffId)
         {
             if (staffId != null)
@@ -144,7 +140,7 @@ namespace SMS_MVCDTO.Controllers
         }
 
 
-        [Authorize(Roles = "SuperAdmin")]
+        // [Authorize(Roles = "SuperAdmin")]
         public IActionResult Details(string staffId)
         {
             if (staffId != null)

@@ -112,6 +112,7 @@ namespace SMS_MVCDTO.Implementations.Service
             {
                 return null;
             }
+            var user = _user.GetById(staffId);
             var superAdmi = new SuperAdminResponseModel
             {
                 Status = true,
@@ -133,6 +134,7 @@ namespace SMS_MVCDTO.Implementations.Service
                     GuarantorPhoneNumber = superAdmin.GuarantorPhoneNumber,
                     userRole = superAdmin.userRole,
                     StaffId = superAdmin.StaffId,
+                    ProfilePicture = user.ProfilePicture,
                 }
             };
             return superAdmi;
