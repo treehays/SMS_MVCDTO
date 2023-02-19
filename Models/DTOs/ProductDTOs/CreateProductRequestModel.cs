@@ -24,6 +24,8 @@ namespace SMS_MVCDTO.Models.DTOs.ProductDTOs
         [RegularExpression(@"^([1-9][0-9]{0,5}|1000000)$", ErrorMessage = "Reorder level should should contain only numbers.")]
         [DisplayName("Reorder Point")]
         public double ReorderLevel { get; set; }
+        public byte[]? Pictur { get; set; }
+
     }
 
 }

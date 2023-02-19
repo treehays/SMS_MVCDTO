@@ -226,6 +226,9 @@ namespace SMSMVCDTO.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
+                    b.Property<byte[]>("Pictur")
+                        .HasColumnType("longblob");
+
                     b.Property<string>("ProductCategoryId")
                         .HasColumnType("varchar(255)");
 

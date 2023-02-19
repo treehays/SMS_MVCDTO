@@ -24,6 +24,7 @@ namespace SMS_MVCDTO.Models.Entities
         public double Quantity { get; set; }
         public double ReorderLevel { get; set; }
         public bool IsAvailable { get; set; }
+        public byte[]? Pictur { get; set; }
 
     }
 }

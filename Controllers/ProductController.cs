@@ -44,26 +44,45 @@ namespace SMS_MVCDTO.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(NewProductViewModel product)
+        public async Task<IActionResult> Create(NewProductViewModel product)
         {
 
-            if (product != null)
+            // if (product != null)
+            // {
+            var existByName = _product.GetById(product.CreateProduct.Barcode);
+            if (existByName == null)
             {
-                var existByName = _product.GetById(product.CreateProduct.Barcode);
-                if (existByName == null)
+                if (Request.Form.Files.Count > 0)
                 {
-                    _product.Create(product.CreateProduct);
-                    TempData["success"] = "Created Successfully.";
-                    //return RedirectToAction("Index");
-                    return RedirectToAction("Dashboard", "Attendant");
+                    IFormFile file = Request.Form.Files.FirstOrDefault();
+                    using (var dataStream = new MemoryStream())
+                    {
+                        await file.CopyToAsync(dataStream);
+                        product.CreateProduct.Pictur = dataStream.ToArray();
+                    }
+                    //_product.Create(product.CreateProduct);
+                    //TempData["success"] = "Created Successfully.";
+                    ////return RedirectToAction("Index");
+                    //return RedirectToAction("Dashboard", "Attendant");
                 }
-                TempData["failed"] = "already exist.";
-                return View();
-            }
 
+                _product.Create(product.CreateProduct);
+                TempData["success"] = "Created Successfully.";
+                //return RedirectToAction("Index");
+                return RedirectToAction("Dashboard", "Attendant");
+                //TempData["failed"] = "already exist.";
+                //return View();
+                //_product.Create(product.CreateProduct);
+                //TempData["success"] = "Created Successfully.";
+                //return RedirectToAction("Index");
+                //return RedirectToAction("Dashboard", "Attendant");
+            }
             TempData["failed"] = "failed.";
             return View(product);
 
+            //     TempData["failed"] = "failed.";
+            //     return View(product);
+            // }
         }
 
         public IActionResult Edit(string barCode)

@@ -30,6 +30,8 @@ namespace SMS_MVCDTO.Implementations.Services
                 Quantity = product.Quantity,
                 ReorderLevel = product.ReorderLevel,
                 Created = DateTime.Now,
+                Pictur = product.Pictur,
+
             };
             _product.Create(produc);
             return product;

@@ -13,7 +13,8 @@
     <div class="form-container">
 
         <div id="Data-form">
-            @using (Html.BeginForm("Create", "Product"))
+            @*@using (Html.BeginForm("Create", "Product"))*@
+            @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
 
                 <h1>Add new Product</h1>
@@ -55,11 +56,41 @@
                     @Html.ValidationMessageFor(x => x.CreateProduct.ReorderLevel,"", new {@class="text-danger"})
                 </div>
 
+
+
+                <div class="col-md-6">
+                    @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+                    <div class="form-group">
+                        <label asp-for="@Model.CreateProduct.Pictur" style="width: 100%;"></label>
+
+                        <input asp-for="@Model.CreateProduct.Pictur" type="file" accept=".png,.jpg,.jpeg,.gif,.tif" class="form-control" style="border:0px!important;padding: 0px;padding-top: 10px;padding-bottom: 30px;" onchange="document.getElementById('Pictur').src = window.URL.createObjectURL(this.files[0])" />
+                        <span asp-validation-for="@Model.CreateProduct.Pictur" class="text-danger"></span>
+                    </div>
+                </div>
+
+              @*
+            
+                <div class="form-group">
+                    @Html.LabelFor(x => x.CreateProduct.Pictur, new {@class = "control-label"})
+                    @Html.TextBoxFor(x => x.CreateProduct.Pictur, new {type="file", accept=".png,.jpg,.jpeg,.gif,.tif", onchange="document.getElementById('Pictur').src = window.URL.createObjectURL(this.files[0])"})
+                    @Html.ValidationMessageFor(x => x.CreateProduct.Pictur,"", new {@class="text-danger"})
+                </div>
+*@
+
                 <div class="form-group">
                     @Html.LabelFor(x => x.PCategory, new {@class = "control-label"})
+                    <br />
                     @Html.DropDownListFor(x => x.CreateProduct.Category, new SelectList(Model.PCategory,"Data.CategoryCode","Data.Name"),"Select Category" ,new {@class = "form-control"})
                     @Html.ValidationMessageFor(x => x.CreateProduct.Category,"", new {@class="text-danger"})
                 </div>
+                
+
+                @* <div class="form-group">
+                        <label asp-for="Pictur" style="width: 100%;"></label>
+
+                        <input asp-for="ProfilePicture" type="file" accept=".png,.jpg,.jpeg,.gif,.tif" class="form-control" style="border:0px!important;padding: 0px;padding-top: 10px;padding-bottom: 30px;" onchange="document.getElementById('profilePicture').src = window.URL.createObjectURL(this.files[0])" />
+                        <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+                    </div> *@
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-success">Add</button>
