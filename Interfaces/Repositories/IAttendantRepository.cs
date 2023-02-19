@@ -1,4 +1,5 @@
 ﻿using SMS_MVCDTO.Models.Entities;
+using System.Linq.Expressions;
 
 namespace SMS_MVCDTO.Interfaces.Repositories
 {
@@ -8,6 +9,7 @@ namespace SMS_MVCDTO.Interfaces.Repositories
         //User Login(User user);
         void Delete(Attendant attendant);
         Attendant GetById(string staffId);
+        Attendant Get(Expression<Func<Attendant, bool>> expression);
         Attendant GetByEmail(string email);
         Attendant GetByPhoneNumber(string phoneNumber);
         IEnumerable<Attendant> GetByName(string name);

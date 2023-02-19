@@ -104,6 +104,40 @@ namespace SMS_MVCDTO.Implementations.Service
 
         }
 
+        public AttendantResponseModel GetByTesting(string email)
+        {
+
+            var attendant = _attendant.Get(x => x.Email == email && !x.IsDeleted);
+            if (attendant != null)
+            {
+
+                var attendantResponseModel = new AttendantResponseModel
+                {
+                    Message = "Attendant retrieved Successfully",
+                    Status = true,
+                    Data = new AttendantDTOs
+                    {
+                        BankAccountNumber = attendant.BankAccountNumber,
+                        GuarantorName = attendant.GuarantorName,
+                        BankName = attendant.BankName,
+                        DateOfBirth = attendant.DateOfBirth,
+                        Email = attendant.Email,
+                        FirstName = attendant.FirstName,
+                        Gender = attendant.Gender,
+                        LastName = attendant.LastName,
+                        GuarantorPhoneNumber = attendant.GuarantorPhoneNumber,
+                        HomeAddress = attendant.HomeAddress,
+                        MaritalStatus = attendant.MaritalStatus,
+                        PhoneNumber = attendant.PhoneNumber,
+                        ResidentialAddress = attendant.ResidentialAddress,
+                        StaffId = attendant.StaffId,
+                        UserRole = attendant.userRole,
+                    }
+                };
+                return attendantResponseModel;
+            }
+            return null;
+        }
 
         public AttendantResponseModel GetByEmail(string email)
         {

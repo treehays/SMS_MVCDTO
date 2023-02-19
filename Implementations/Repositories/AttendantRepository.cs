@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SMS_MVCDTO.Context;
 using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Models.Entities;
+using System.Linq.Expressions;
 
 namespace SMS_MVCDTO.Implementations.Repositories
 {
@@ -32,6 +33,12 @@ namespace SMS_MVCDTO.Implementations.Repositories
             var attendants = _context.Attendants.Where(w => w.IsDeleted == false && w.IsActive == true).ToList();
             //var attendants = _context.Attendants.Include(w => )
             return attendants;
+        }
+
+        public Attendant Get(Expression<Func<Attendant, bool>> expression)
+        {
+            var attendant = _context.Attendants.SingleOrDefault(expression);
+            return attendant;
         }
 
         public Attendant GetByEmail(string email)
