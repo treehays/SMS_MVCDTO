@@ -101,13 +101,12 @@ namespace SMS_MVCDTO.Implementations.Service
                 }
             }).ToList();
             return attendantResponseModels;
-
         }
 
         public AttendantResponseModel GetByTesting(string email)
         {
 
-            var attendant = _attendant.Get(x => x.Email == email && !x.IsDeleted);
+            var attendant = _attendant.Get(x => x.Email == email && !x.IsDeleted && x.IsActive);
             if (attendant != null)
             {
 
