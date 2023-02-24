@@ -5,6 +5,7 @@
     ViewData["Title"] = "Colon:: Staff Login Page";
 }
 
+<partial name="_Notification" />
 
 <main class="main">
     @if (User?.FindFirst(ClaimTypes.NameIdentifier) == null)

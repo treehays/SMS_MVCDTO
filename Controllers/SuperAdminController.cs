@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.DTOs.SuperAdminDTOs;
 using SMS_MVCDTO.Models.ViewModels;
@@ -97,16 +98,41 @@ namespace SMS_MVCDTO.Controllers
         }
 
 
-        // [Authorize(Roles = "SuperAdmin")]
+        [Authorize(Roles = "SuperAdmin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(SuperAdminResponseModel updateSuperAdmin)
+        public async Task<IActionResult> Edit(SuperAdminResponseModel updateSuperAdmin)
         {
-
+            if (updateSuperAdmin == null)
+            {
+                TempData["failed"] = "Fill all required field.";
+                return View();
+            }
+            if (Request.Form.Files.Count > 0)
+            {
+                IFormFile file = Request.Form.Files.FirstOrDefault();
+                using (var dataStream = new MemoryStream())
+                {
+                    await file.CopyToAsync(dataStream);
+                    updateSuperAdmin.Data.ProfilePicture = dataStream.ToArray();
+                }
+                _superAdmin.Update(updateSuperAdmin);
+                TempData["success"] = "Profile Updated Successfully.";
+                return RedirectToAction(nameof(Index), "Home");
+            }
             _superAdmin.Update(updateSuperAdmin);
             TempData["success"] = "Profile Updated Successfully.";
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index), "Home");
         }
+
+        //if (updateSuperAdmin == null)
+        //{
+        //    TempData["failed"] = "Fill all required field.";
+        //    return View();
+        //}
+        //_superAdmin.Update(updateSuperAdmin);
+        //TempData["success"] = "Profile Updated Successfully.";
+        //return RedirectToAction(nameof(Index), "Home");
 
         // [Authorize(Roles = "null")]
         public IActionResult DeletePreview(string staffId)

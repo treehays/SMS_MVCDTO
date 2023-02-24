@@ -21,7 +21,7 @@ namespace SMS_MVCDTO.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.ShowElement1 = true;
+            //ViewBag.ShowElement1 = true;
             return View();
         }
 
@@ -65,7 +65,8 @@ namespace SMS_MVCDTO.Controllers
 
             if (user == null)
             {
-                return BadRequest();
+                TempData["failed"] = "Login Failed...";
+                return View();
             }
             byte[] imageData = user.Data.ProfilePicture;
 

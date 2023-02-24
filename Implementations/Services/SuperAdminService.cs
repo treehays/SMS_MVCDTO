@@ -1,4 +1,5 @@
-﻿using SMS_MVCDTO.Enums;
+﻿using Org.BouncyCastle.Asn1.Ocsp;
+using SMS_MVCDTO.Enums;
 using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.DTOs.SuperAdminDTOs;
@@ -8,12 +9,12 @@ namespace SMS_MVCDTO.Implementations.Service
 {
     public class SuperAdminService : ISuperAdminService
     {
-        private readonly ISuperAdminRepository _superAdmin;
-        private readonly IUserRepository _user;
+        private readonly ISuperAdminRepository _superAdminRepository;
+        private readonly IUserRepository _userRepository;
         public SuperAdminService(ISuperAdminRepository superAdmin, IUserRepository user)
         {
-            _superAdmin = superAdmin;
-            _user = user;
+            _superAdminRepository = superAdmin;
+            _userRepository = user;
         }
 
         public CreateSuperAdminRequestModel Create(CreateSuperAdminRequestModel superAdmin)
@@ -29,7 +30,7 @@ namespace SMS_MVCDTO.Implementations.Service
                 LastName = superAdmin.LastName,
                 ProfilePicture = superAdmin.ProfilePicture,
             };
-            _user.Create(user);
+            _userRepository.Create(user);
             var superAdmi = new SuperAdmin
             {
                 StaffId = sid,
@@ -51,24 +52,24 @@ namespace SMS_MVCDTO.Implementations.Service
                 Created = DateTime.Now,
                 IsActive = true,
             };
-            _superAdmin.Create(superAdmi);
+            _superAdminRepository.Create(superAdmi);
             return superAdmin;
         }
 
         public void Delete(string staffId)
         {
-            var superAdmin = _superAdmin.GetById(staffId);
+            var superAdmin = _superAdminRepository.GetById(staffId);
             if (superAdmin == null)
             {
                 superAdmin = null;
             }
             superAdmin.IsDeleted = true;
-            _superAdmin.Delete(superAdmin);
+            _superAdminRepository.Delete(superAdmin);
         }
 
         public SuperAdminResponseModel GetByEmail(string email)
         {
-            var superAdmin = _superAdmin.GetByEmail(email);
+            var superAdmin = _superAdminRepository.GetByEmail(email);
             if (superAdmin == null)
             {
                 return null;
@@ -102,17 +103,17 @@ namespace SMS_MVCDTO.Implementations.Service
 
         public bool EmailExist(string email)
         {
-            var emailExist = _superAdmin.EmailExist(email);
+            var emailExist = _superAdminRepository.EmailExist(email);
             return emailExist;
         }
         public SuperAdminResponseModel GetById(string staffId)
         {
-            var superAdmin = _superAdmin.GetById(staffId);
+            var superAdmin = _superAdminRepository.GetById(staffId);
             if (superAdmin == null)
             {
                 return null;
             }
-            var user = _user.GetById(staffId);
+            var user = _userRepository.GetById(staffId);
             var superAdmi = new SuperAdminResponseModel
             {
                 Status = true,
@@ -142,7 +143,7 @@ namespace SMS_MVCDTO.Implementations.Service
 
         public IEnumerable<SuperAdminResponseModel> GetByName(string name)
         {
-            var superAdmins = _superAdmin.GetByName(name);
+            var superAdmins = _superAdminRepository.GetByName(name);
             if (superAdmins == null)
             {
                 return null;
@@ -179,7 +180,7 @@ namespace SMS_MVCDTO.Implementations.Service
 
         public SuperAdminResponseModel GetByPhoneNumber(string phoneNumber)
         {
-            var superAdmin = _superAdmin.GetByPhoneNumber(phoneNumber);
+            var superAdmin = _superAdminRepository.GetByPhoneNumber(phoneNumber);
             if (superAdmin == null)
             {
                 return null;
@@ -213,7 +214,7 @@ namespace SMS_MVCDTO.Implementations.Service
 
         public IEnumerable<SuperAdminResponseModel> GetSuperAdmins()
         {
-            var superAdmins = _superAdmin.GetSuperAdmins();
+            var superAdmins = _superAdminRepository.GetSuperAdmins();
             if (superAdmins == null)
             {
                 return null;
@@ -254,23 +255,17 @@ namespace SMS_MVCDTO.Implementations.Service
 
         public SuperAdminResponseModel Update(SuperAdminResponseModel superAdmin)
         {
-
-
-
-            var user = _user.GetById(superAdmin.Data.StaffId);
+            var user = _userRepository.GetById(superAdmin.Data.StaffId);
             if (user == null)
             {
                 return null;
             }
-
             user.StaffId = superAdmin.Data.StaffId ?? user.StaffId;
             user.FirstName = superAdmin.Data.FirstName ?? user.FirstName;
             user.LastName = superAdmin.Data.LastName ?? user.LastName;
-
-
-
-
-            var superAdmi = _superAdmin.GetById(superAdmin.Data.StaffId);
+            user.ProfilePicture = superAdmin.Data.ProfilePicture ?? user.ProfilePicture;
+            //_userRepository.Update(superAdmi);
+            var superAdmi = _superAdminRepository.GetById(superAdmin.Data.StaffId);
             superAdmi.FirstName = superAdmin.Data.FirstName ?? superAdmi.FirstName;
             superAdmi.LastName = superAdmin.Data.LastName ?? superAdmi.LastName;
             superAdmi.ResidentialAddress = superAdmin.Data.ResidentialAddress ?? superAdmi.ResidentialAddress;
@@ -278,7 +273,7 @@ namespace SMS_MVCDTO.Implementations.Service
             superAdmi.BankName = superAdmin.Data.BankName;
             superAdmi.BankAccountNumber = superAdmin.Data.BankAccountNumber ?? superAdmi.BankAccountNumber;
             superAdmi.Modified = DateTime.Now;
-            _superAdmin.Update(superAdmi);
+            //_superAdminRepository.Update(superAdmi);
             return superAdmin;
         }
     }

@@ -25,7 +25,7 @@ namespace SMS_MVCDTO.Controllers
             _transaction = transaction;
             _product = product;
         }
-        [Authorize(Roles = "Attendant")]
+        //[Authorize(Roles = "Attendant")]
         public IActionResult Index()
         {
             //var attendants = _attendant.GetAttendants();
@@ -112,8 +112,8 @@ namespace SMS_MVCDTO.Controllers
                 }
                 return NotFound();
             }
-
-            return NotFound();
+            TempData["failed"] = "User not found.";
+            return View();
         }
 
         //[ValidateAntiForgeryToken]
@@ -125,7 +125,8 @@ namespace SMS_MVCDTO.Controllers
                 _attendant.Delete(staffId);
                 return RedirectToAction(nameof(Index));
             }
-            return NotFound();
+            TempData["failed"] = "User not found.";
+            return View();
         }
 
         public IActionResult Details(string staffId)
@@ -138,10 +139,11 @@ namespace SMS_MVCDTO.Controllers
                 {
                     return View(attendant);
                 }
-                return NotFound();
+                TempData["failed"] = "User not found.";
+                return View();
             }
-
-            return NotFound();
+            TempData["failed"] = "User not found.";
+            return View();
         }
 
         //get  single  by stff id
@@ -155,10 +157,12 @@ namespace SMS_MVCDTO.Controllers
                 {
                     return View(user);
                 }
-                return NotFound();
+                TempData["failed"] = "User not found.";
+                return View();
             }
 
-            return NotFound();
+            TempData["failed"] = "User not found.";
+            return View();
             //var user = _attendant.GetById(staffId);
             //return View(user);
         }
@@ -174,8 +178,10 @@ namespace SMS_MVCDTO.Controllers
                 {
                     return View(user);
                 }
-                return NotFound();
+                TempData["failed"] = "User not found.";
+                return View();
             }
+            //TempData["failed"] = "User not found.";
             return NotFound();
 
             //var user = _attendant.GetByEmail(email);
@@ -192,9 +198,11 @@ namespace SMS_MVCDTO.Controllers
                 {
                     return View(user);
                 }
-                return NotFound();
+                TempData["failed"] = "User not found.";
+                return View();
             }
-            return NotFound();
+            TempData["failed"] = "User not found.";
+            return View();
         }
 
     }
