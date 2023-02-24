@@ -7,10 +7,10 @@ namespace SMS_MVCDTO.Implementations.Services
 {
     public class UserService : IUserService
     {
-        private readonly IUserRepository _user;
-        public UserService(IUserRepository user)
+        private readonly IUserRepository _userRepository;
+        public UserService(IUserRepository userRepository)
         {
-            _user = user;
+            _userRepository = userRepository;
         }
 
         public CreateUserRequestModel Create(CreateUserRequestModel user)
@@ -24,19 +24,19 @@ namespace SMS_MVCDTO.Implementations.Services
                 FirstName = user.FirstName,
                 LastName = user.LastName,
             };
-            _user.Create(userr);
+            _userRepository.Create(userr);
             return user;
         }
 
         public void Delete(string staffId)
         {
-            var user = _user.GetById(staffId);
-            _user.Delete(user);
+            var user = _userRepository.GetById(staffId);
+            _userRepository.Update(user);
         }
 
         public UserResponseModel GetById(string staffId)
         {
-            var user = _user.GetById(staffId);
+            var user = _userRepository.GetById(staffId);
             var userr = new UserResponseModel
             {
                 Message = "User successfully retrieved.",
@@ -63,7 +63,7 @@ namespace SMS_MVCDTO.Implementations.Services
                 Password = login.Password,
             };
 
-            var user = _user.Login(userr);
+            var user = _userRepository.Login(userr);
             if (user != null)
             {
                 var userResponse = new UserResponseModel
@@ -87,15 +87,17 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public UpdateUserPasswordRequestModel UpdatePassword(UpdateUserPasswordRequestModel user)
         {
-            var userr = _user.GetById(user.StaffId);
+            var userr = _userRepository.GetById(user.StaffId);
             userr.Password = user.Password ?? userr.Password;
+            _userRepository.Update(userr);
             return user;
         }
 
         public UpdateUserRoleRequestModel UpdateRole(UpdateUserRoleRequestModel user)
         {
-            var userr = _user.GetById(user.StaffId);
+            var userr = _userRepository.GetById(user.StaffId);
             userr.Role = user.Role;
+            _userRepository.Update(userr);
             return user;
         }
     }

@@ -7,13 +7,13 @@ namespace SMS_MVCDTO.Implementations.Services
 {
     public class ProductService : IProductService
     {
-        private readonly IProductRepository _product;
-        private readonly IProductCategoryRepository _productCategory;
+        private readonly IProductRepository _productRepository;
+        private readonly IProductCategoryRepository _productCategoryRepository;
 
-        public ProductService(IProductRepository product, IProductCategoryRepository productCategory)
+        public ProductService(IProductRepository productRepository, IProductCategoryRepository productCategoryRepository)
         {
-            _product = product;
-            _productCategory = productCategory;
+            _productRepository = productRepository;
+            _productCategoryRepository = productCategoryRepository;
         }
 
         public CreateProductRequestModel Create(CreateProductRequestModel product)
@@ -33,25 +33,25 @@ namespace SMS_MVCDTO.Implementations.Services
                 Pictur = product.Pictur,
 
             };
-            _product.Create(produc);
+            _productRepository.Create(produc);
             return product;
         }
         public int ReorderLevel { get; set; }
 
         public void Delete(string barCode)
         {
-            var product = _product.GetById(barCode);
+            var product = _productRepository.GetById(barCode);
             if (product == null)
             {
                 return;
             }
             product.IsDeleted = true;
-            _product.Delete(product);
+            _productRepository.Delete(product);
         }
 
         public IEnumerable<ProductResponseModel> GetAll()
         {
-            var product = _product.GetAll();
+            var product = _productRepository.GetAll();
             if (product == null)
             {
                 return null;
@@ -75,7 +75,7 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public IEnumerable<ProductResponseModel> GetByCategory(string productCategory)
         {
-            var product = _product.GetByCategory(productCategory);
+            var product = _productRepository.GetByCategory(productCategory);
             if (product == null)
             {
                 return null;
@@ -100,13 +100,13 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public ProductResponseModel GetById(string barCode)
         {
-            var product = _product.GetById(barCode);
+            var product = _productRepository.GetById(barCode);
             if (product == null)
             {
                 return null;
             }
             string categoryName = null;
-            var category = _productCategory.GetById(product.Category);
+            var category = _productCategoryRepository.GetById(product.Category);
             //if (category == null) { categoryName = category.Name; }
             var produc = new ProductResponseModel
             {
@@ -128,7 +128,7 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public IEnumerable<ProductResponseModel> GetByName(string name)
         {
-            var product = _product.GetByName(name);
+            var product = _productRepository.GetByName(name);
             if (product == null)
             {
                 return null;
@@ -153,7 +153,7 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public RestockProductRequestModel RestockProduct(RestockProductRequestModel product)
         {
-            var produc = _product.GetById(product.Barcode);
+            var produc = _productRepository.GetById(product.Barcode);
             if (produc == null)
             {
                 return null;
@@ -163,18 +163,18 @@ namespace SMS_MVCDTO.Implementations.Services
                 return product;
             }
             produc.Quantity = product.Quantity + produc.Quantity;
-            _product.RestockProduct(produc);
+            _productRepository.RestockProduct(produc);
             return product;
         }
 
         public ProductResponseModel Update(ProductResponseModel product)
         {
-            var produc = _product.GetById(product.Data.Barcode);
+            var produc = _productRepository.GetById(product.Data.Barcode);
             produc.SellingPrice = product.Data.SellingPrice;
             produc.Name = product.Data.Name ?? produc.Name;
             produc.Description = product.Data.Description ?? produc.Description;
             produc.ReorderLevel = product.Data.ReorderLevel;
-            _product.Update(produc);
+            _productRepository.Update(produc);
             return product;
         }
 
@@ -191,7 +191,7 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public IEnumerable<ProductResponseModel> GetByQuantityRemaining(int quantity)
         {
-            var product = _product.GetByQuantityRemaining(quantity);
+            var product = _productRepository.GetByQuantityRemaining(quantity);
             if (product == null)
             {
                 return null;
@@ -215,7 +215,7 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public IEnumerable<ProductResponseModel> BelowReorderLevel()
         {
-            var product = _product.BelowReorderLevel();
+            var product = _productRepository.BelowReorderLevel();
             if (product == null)
             {
                 return null;

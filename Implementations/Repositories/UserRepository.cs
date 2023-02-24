@@ -15,15 +15,15 @@ namespace SMS_MVCDTO.Implementations.Repositories
         public User Create(User user)
         {
             _context.Users.Add(user);
-            _context.SaveChanges();
+            //_context.SaveChanges();
             return user;
         }
 
-        public void Delete(User user)
-        {
-            _context.Users.Update(user);
-            _context.SaveChanges();
-        }
+        //public void Delete(User user)
+        //{
+        //    _context.Users.Update(user);
+        //    _context.SaveChanges();
+        //}
 
         public User GetById(string staffId)
         {
@@ -37,18 +37,19 @@ namespace SMS_MVCDTO.Implementations.Repositories
             return userr;
         }
 
-        public User UpdatePassword(User user)
+        public User Update(User user)
         {
-            _context.Users.Update(user);
+            //_context.Users.Update(user);
             _context.SaveChanges();
             return user;
         }
 
-        public User UpdateRole(User user)
-        {
-            _context.Users.Update(user);
-            _context.SaveChanges();
-            return user;
-        }
+        //    public User UpdateRole(User user)
+        //    {
+        //        _context.Users.Update(user);
+        //        _context.SaveChanges();
+        //        return user;
+        //    }
+        //}
     }
 }

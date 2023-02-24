@@ -8,12 +8,12 @@ namespace SMS_MVCDTO.Implementations.Services
 {
     public class CustomerService : ICustomerService
     {
-        private readonly ICustomerRepository _customer;
-        private readonly IUserRepository _user;
-        public CustomerService(ICustomerRepository customer, IUserRepository user)
+        private readonly ICustomerRepository _customerRepository;
+        private readonly IUserRepository _userRepository;
+        public CustomerService(ICustomerRepository customerRepository, IUserRepository userRepository)
         {
-            _customer = customer;
-            _user = user;
+            _customerRepository = customerRepository;
+            _userRepository = userRepository;
         }
 
         public CreateCustomerRequestModel Create(CreateCustomerRequestModel customer)
@@ -26,7 +26,7 @@ namespace SMS_MVCDTO.Implementations.Services
                 Role = UserRoleType.Customer,
                 Created = DateTime.Now
             };
-            _user.Create(user);
+            _userRepository.Create(user);
 
             var custome = new Customer
             {
@@ -44,28 +44,28 @@ namespace SMS_MVCDTO.Implementations.Services
                 UserId = sid,
 
             };
-            _customer.Create(custome);
+            _customerRepository.Create(custome);
 
             return customer;
         }
 
         public bool CustomerExist(string staffId)
         {
-            var customer = _customer.CustomerExist(staffId);
+            var customer = _customerRepository.CustomerExist(staffId);
             return customer;
         }
 
         public void Delete(string staffId)
         {
-            var customer = _customer.GetById(staffId);
+            var customer = _customerRepository.GetById(staffId);
             customer.IsDeleted = true;
 
-            _customer.Delete(customer);
+            _customerRepository.Delete(customer);
         }
 
         public CustomerResponseModel GetByEmail(string email)
         {
-            var customer = _customer.GetByEmail(email);
+            var customer = _customerRepository.GetByEmail(email);
             if (customer == null)
             {
                 return null;
@@ -97,7 +97,7 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public CustomerResponseModel GetById(string staffId)
         {
-            var customer = _customer.GetById(staffId);
+            var customer = _customerRepository.GetById(staffId);
             if (customer == null)
             {
                 return null;
@@ -128,7 +128,7 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public IEnumerable<CustomerResponseModel> GetByName(string name)
         {
-            var customers = _customer.GetByName(name);
+            var customers = _customerRepository.GetByName(name);
             var customerResponseModels = new List<CustomerResponseModel>();
             foreach (var customer in customers)
             {
@@ -159,7 +159,7 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public CustomerResponseModel GetByPhoneNumber(string phoneNumber)
         {
-            var customer = _customer.GetByPhoneNumber(phoneNumber);
+            var customer = _customerRepository.GetByPhoneNumber(phoneNumber);
             if (customer == null)
             {
                 return null;
@@ -190,7 +190,7 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public IEnumerable<CustomerResponseModel> GetCustomers()
         {
-            var customers = _customer.GetCustomers();
+            var customers = _customerRepository.GetCustomers();
             var customerResponseModels = new List<CustomerResponseModel>();
             foreach (var customer in customers)
             {
@@ -222,7 +222,7 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public CustomerResponseModel Update(CustomerResponseModel customer)
         {
-            var custome = _customer.GetById(customer.Data.StaffId);
+            var custome = _customerRepository.GetById(customer.Data.StaffId);
             if (custome == null)
             {
                 return null;
@@ -232,7 +232,7 @@ namespace SMS_MVCDTO.Implementations.Services
             custome.Address = customer.Data.Address ?? custome.Address;
             custome.MaritalStatus = customer.Data.MaritalStatus;
             custome.Modified = DateTime.Now;
-            _customer.Update(custome);
+            _customerRepository.Update(custome);
             return customer;
 
         }
@@ -241,14 +241,14 @@ namespace SMS_MVCDTO.Implementations.Services
         {
             //var custome = _customer.GetById(customer.StaffId);
 
-            var user = _user.GetById(customer.StaffId);
+            var user = _userRepository.GetById(customer.StaffId);
             if (user == null)
             {
                 return null;
             }
             user.Password = customer.Password;
             user.Modified = DateTime.Now;
-            _user.UpdatePassword(user);
+            _userRepository.Update(user);
             return customer;
 
         }

@@ -1,4 +1,5 @@
 ﻿using SMS_MVCDTO.Enums;
+using SMS_MVCDTO.Implementations.Repositories;
 using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.DTOs.SalesManagerDTOs;
@@ -10,12 +11,12 @@ namespace SMS_MVCDTO.Implementations.Service
 {
     public class SalesManagerService : ISalesManagerService
     {
-        private readonly ISalesManagerRepository _salesManager;
-        private readonly IUserRepository _user;
-        public SalesManagerService(ISalesManagerRepository salesManager, IUserRepository user)
+        private readonly ISalesManagerRepository _salesManagerRepository;
+        private readonly IUserRepository _userRepository;
+        public SalesManagerService(ISalesManagerRepository salesManagerRepository, IUserRepository userRepository)
         {
-            _salesManager = salesManager;
-            _user = user;
+            _salesManagerRepository = salesManagerRepository;
+            _userRepository = userRepository;
         }
 
         public CreateSalesManagerRequestModel Create(CreateSalesManagerRequestModel salesManager)
@@ -28,7 +29,7 @@ namespace SMS_MVCDTO.Implementations.Service
                 Role = UserRoleType.SalesManager,
                 Created = DateTime.Now,
             };
-            _user.Create(user);
+            _userRepository.Create(user);
 
             var salesManage = new SalesManager
             {
@@ -52,24 +53,24 @@ namespace SMS_MVCDTO.Implementations.Service
                 Created = DateTime.Now,
 
             };
-            _salesManager.Create(salesManage);
+            _salesManagerRepository.Create(salesManage);
             return salesManager;
         }
 
         public void Delete(string staffId)
         {
-            var salesManager = _salesManager.GetById(staffId);
+            var salesManager = _salesManagerRepository.GetById(staffId);
             if (salesManager == null)
             {
                 salesManager = null;
             }
             salesManager.IsDeleted = true;
-            _salesManager.Delete(salesManager);
+            _salesManagerRepository.Delete(salesManager);
         }
 
         public SalesManagerResponseModel GetByEmail(string email)
         {
-            var salesManager = _salesManager.GetByEmail(email);
+            var salesManager = _salesManagerRepository.GetByEmail(email);
             if (salesManager == null)
             {
                 return null;
@@ -80,7 +81,7 @@ namespace SMS_MVCDTO.Implementations.Service
                 Message = "Sales Manager retrieved sucessfully.",
                 Data = new SalesManagerDTOs
                 {
-                    StaffId= salesManager.StaffId,
+                    StaffId = salesManager.StaffId,
                     userRole = salesManager.userRole,
                     FirstName = salesManager.FirstName,
                     LastName = salesManager.LastName,
@@ -103,7 +104,7 @@ namespace SMS_MVCDTO.Implementations.Service
 
         public SalesManagerResponseModel GetById(string staffId)
         {
-            var salesManager = _salesManager.GetById(staffId);
+            var salesManager = _salesManagerRepository.GetById(staffId);
             var salesManage = new SalesManagerResponseModel
             {
                 Status = true,
@@ -133,7 +134,7 @@ namespace SMS_MVCDTO.Implementations.Service
 
         public IEnumerable<SalesManagerResponseModel> GetByName(string name)
         {
-            var salesManagers = _salesManager.GetByName(name);
+            var salesManagers = _salesManagerRepository.GetByName(name);
             var salesManagerResponseModels = new List<SalesManagerResponseModel>();
             foreach (var salesManager in salesManagers)
             {
@@ -168,7 +169,7 @@ namespace SMS_MVCDTO.Implementations.Service
 
         public SalesManagerResponseModel GetByPhoneNumber(string phoneNumber)
         {
-            var salesManager = _salesManager.GetByPhoneNumber(phoneNumber);
+            var salesManager = _salesManagerRepository.GetByPhoneNumber(phoneNumber);
             var salesManage = new SalesManagerResponseModel
             {
                 Status = true,
@@ -198,7 +199,7 @@ namespace SMS_MVCDTO.Implementations.Service
 
         public IEnumerable<SalesManagerResponseModel> GetSalesManagers()
         {
-            var salesManagers = _salesManager.GetSalesManagers();
+            var salesManagers = _salesManagerRepository.GetSalesManagers();
             var salesManagerResponseModels = new List<SalesManagerResponseModel>();
             foreach (var salesManager in salesManagers)
             {
@@ -234,7 +235,7 @@ namespace SMS_MVCDTO.Implementations.Service
 
         public SalesManagerResponseModel Update(SalesManagerResponseModel salesManager)
         {
-            var salesManage = _salesManager.GetById(salesManager.Data.StaffId);
+            var salesManage = _salesManagerRepository.GetById(salesManager.Data.StaffId);
             salesManage.FirstName = salesManager.Data.FirstName ?? salesManage.FirstName;
             salesManage.LastName = salesManager.Data.LastName ?? salesManage.LastName;
             salesManage.ResidentialAddress = salesManager.Data.ResidentialAddress ?? salesManage.ResidentialAddress;
@@ -242,16 +243,16 @@ namespace SMS_MVCDTO.Implementations.Service
             salesManage.BankName = salesManager.Data.BankName;
             salesManage.BankAccountNumber = salesManager.Data.BankAccountNumber ?? salesManage.BankAccountNumber;
             salesManage.Modified = DateTime.Now;
-            _salesManager.Update(salesManage);
+            _salesManagerRepository.Update(salesManage);
             return salesManager;
         }
 
         public UpdateUserPasswordRequestModel UpdatePassword(UpdateUserPasswordRequestModel salesManager)
         {
-            var user = _user.GetById(salesManager.StaffId);
+            var user = _userRepository.GetById(salesManager.StaffId);
             user.Password = salesManager.Password ?? user.Password;
-            user.Modified= DateTime.Now;
-            _user.UpdatePassword(user);
+            user.Modified = DateTime.Now;
+            _userRepository.Update(user);
             return salesManager;
         }
     }

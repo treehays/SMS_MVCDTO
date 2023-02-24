@@ -7,21 +7,21 @@ namespace SMS_MVCDTO.Implementations.Services
 {
     public class WalletService : IWalletService
     {
-        private readonly IWalletRepository _wallet;
-        public WalletService(IWalletRepository wallet)
+        private readonly IWalletRepository _walletRepository;
+        public WalletService(IWalletRepository walletRepository)
         {
-            _wallet = wallet;
+            _walletRepository = walletRepository;
         }
 
         public CreateWalletRequestModel Create(CreateWalletRequestModel wallet)
         {
             var walle = new Wallet
             {
-                CustomerId= wallet.CustomerId,
+                CustomerId = wallet.CustomerId,
                 Debit = wallet.Debit,
                 Credit = wallet.Credit,
             };
-        _wallet.Create(walle);
+            _walletRepository.Create(walle);
             return wallet;
         }
 
@@ -29,10 +29,10 @@ namespace SMS_MVCDTO.Implementations.Services
         {
             var walle = new Wallet
             {
-                CustomerId= wallet.CustomerId,
+                CustomerId = wallet.CustomerId,
                 Credit = wallet.Credit,
             };
-            _wallet.Credit(walle);
+            _walletRepository.Credit(walle);
             return wallet;
 
         }
@@ -44,14 +44,14 @@ namespace SMS_MVCDTO.Implementations.Services
                 CustomerId = wallet.CustomerId,
                 Debit = wallet.Debit,
             };
-            _wallet.Credit(walle);
+            _walletRepository.Credit(walle);
             return wallet;
 
         }
 
         public double GetBalance()
         {
-            var balance = _wallet.GetBalance();
+            var balance = _walletRepository.GetBalance();
             return balance;
         }
     }

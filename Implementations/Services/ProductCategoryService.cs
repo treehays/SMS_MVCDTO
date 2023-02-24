@@ -8,10 +8,10 @@ namespace SMS_MVCDTO.Implementations.Services
 {
     public class ProductCategoryService : IProductCategoryService
     {
-        private readonly IProductCategoryRepository _productCategory;
-        public ProductCategoryService(IProductCategoryRepository productCategory)
+        private readonly IProductCategoryRepository _productCategoryRepository;
+        public ProductCategoryService(IProductCategoryRepository productCategoryRepository)
         {
-            _productCategory = productCategory;
+            _productCategoryRepository = productCategoryRepository;
         }
 
         public CreateProductCategoryRequestModel Create(CreateProductCategoryRequestModel productCategory)
@@ -24,23 +24,23 @@ namespace SMS_MVCDTO.Implementations.Services
                 Created = DateTime.Now,
                 IsActive = true,
             };
-            _productCategory.Create(productCategor);
+            _productCategoryRepository.Create(productCategor);
             return productCategory;
         }
 
         public void Delete(string categoryCode)
         {
-            var productCategory = _productCategory.GetById(categoryCode);
+            var productCategory = _productCategoryRepository.GetById(categoryCode);
             if (productCategory != null)
             {
                 productCategory.IsDeleted = true;
-                _productCategory.Delete(productCategory);
+                _productCategoryRepository.Delete(productCategory);
             }
         }
 
         public IEnumerable<ProductCategoryResponseModel> GetAll()
         {
-            var productCategories = _productCategory.GetAll();
+            var productCategories = _productCategoryRepository.GetAll();
             var productCategorie = new List<ProductCategoryResponseModel>();
             foreach (var productCategory in productCategories)
             {
@@ -64,7 +64,7 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public ProductCategoryResponseModel GetById(string CategoryName)
         {
-            var productCategory = _productCategory.GetById(CategoryName);
+            var productCategory = _productCategoryRepository.GetById(CategoryName);
             if (productCategory != null)
             {
                 var productCategor = new ProductCategoryResponseModel
@@ -87,11 +87,11 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public ProductCategoryResponseModel Update(ProductCategoryResponseModel productCategory)
         {
-            var productCategor = _productCategory.GetById(productCategory.Data.CategoryCode);
+            var productCategor = _productCategoryRepository.GetById(productCategory.Data.CategoryCode);
             productCategor.Name = productCategory.Data.Name;
             productCategor.Description = productCategory.Data.Description;
             productCategor.Modified = DateTime.Now;
-            _productCategory.Update(productCategor);
+            _productCategoryRepository.Update(productCategor);
             return productCategory;
 
         }

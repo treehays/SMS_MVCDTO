@@ -58,13 +58,14 @@ namespace SMS_MVCDTO.Implementations.Service
 
         public void Delete(string staffId)
         {
+            var user = _userRepository.GetById(staffId);
+            if (user == null)
+            { }
+
+            user.IsDeleted = true;
             var superAdmin = _superAdminRepository.GetById(staffId);
-            if (superAdmin == null)
-            {
-                superAdmin = null;
-            }
             superAdmin.IsDeleted = true;
-            _superAdminRepository.Delete(superAdmin);
+            _superAdminRepository.Update(superAdmin);
         }
 
         public SuperAdminResponseModel GetByEmail(string email)

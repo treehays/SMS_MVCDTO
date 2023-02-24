@@ -19,11 +19,11 @@ namespace SMS_MVCDTO.Implementations.Repositories
             return superAdmin;
         }
 
-        public void Delete(SuperAdmin superAdmin)
-        {
-            _context.SuperAdmins.Update(superAdmin);
-            _context.SaveChanges();
-        }
+        //public void Delete(SuperAdmin superAdmin)
+        //{
+        //    //_context.SuperAdmins.Update(superAdmin);
+        //    _context.SaveChanges();
+        //}
 
         public SuperAdmin GetByEmail(string email)
         {
@@ -68,7 +68,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public SuperAdmin Update(SuperAdmin superAdmin)
         {
-            _context.SuperAdmins.Update(superAdmin);
+            //_context.SuperAdmins.Update(superAdmin);
             _context.SaveChanges();
             return superAdmin;
         }

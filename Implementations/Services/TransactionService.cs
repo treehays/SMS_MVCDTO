@@ -8,25 +8,24 @@ namespace SMS_MVCDTO.Implementations.Services
 {
     public class TransactionService : ITransactionService
     {
-        private readonly ITransactionRepository _transaction;
-        private readonly IProductRepository _product;
-        private readonly ICustomerRepository _customer;
-        private readonly ICartRepository _cart;
-        private readonly IAttendantRepository _attendant;
+        private readonly ITransactionRepository _transactionRepository;
+        private readonly IProductRepository _productRepository;
+        private readonly ICustomerRepository _customerRepository;
+        private readonly ICartRepository _cartRepository;
 
-        public TransactionService(ITransactionRepository transaction, IProductRepository product, ICustomerRepository customer, ICartRepository cart)
+        public TransactionService(ITransactionRepository transactionRepository, IProductRepository productRepository, ICustomerRepository customerRepository, ICartRepository cartRepository)
         {
-            _transaction = transaction;
-            _product = product;
-            _customer = customer;
-            _cart = cart;
+            _transactionRepository = transactionRepository;
+            _productRepository = productRepository;
+            _customerRepository = customerRepository;
+            _cartRepository = cartRepository;
         }
 
         public CreateTransactionRequestModel Create(CreateTransactionRequestModel transaction)
         {
 
 
-            var cart = _cart.NotPaidByCustomerId(transaction.CustomerId);
+            var cart = _cartRepository.NotPaidByCustomerId(transaction.CustomerId);
             if (cart == null)
             {
                 return null;
@@ -34,7 +33,7 @@ namespace SMS_MVCDTO.Implementations.Services
             var cartTotal = cart.Sum(x => (x.Quantity * x.Price));
 
 
-            var customers = _customer.GetById(transaction.CustomerId);
+            var customers = _customerRepository.GetById(transaction.CustomerId);
             //var attendant = _attendant.GetById(transaction.AttendanId);
 
             var transactio = new Transaction
@@ -50,8 +49,8 @@ namespace SMS_MVCDTO.Implementations.Services
                 Created = DateTime.Now,
                 //CustomerName = $"{customers.FirstName.ToUpper()}  {customers.LastName}"
             };
-            _transaction.Create(transactio);
-            _cart.Update(transaction.CustomerId);
+            _transactionRepository.Create(transactio);
+            _cartRepository.Update(transaction.CustomerId);
 
             //updating cart to ispaid false
             //var carts = _cart.NotPaidByCustomerId(transaction.CustomerId);
@@ -72,13 +71,13 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public void Delete(string refNumber)
         {
-            var transaction = _transaction.GetById(refNumber);
-            _transaction.Delete(transaction);
+            var transaction = _transactionRepository.GetById(refNumber);
+            _transactionRepository.Delete(transaction);
         }
 
         public IEnumerable<TransactionResponseModel> GetAll()
         {
-            var transaction = _transaction.GetAll();
+            var transaction = _transactionRepository.GetAll();
             var transactions = transaction.Select(item => new TransactionResponseModel
             {
                 Message = "Transaction retrieved successfully",
@@ -102,7 +101,7 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public IEnumerable<TransactionResponseModel> GetAllOrderByDate()
         {
-            var transaction = _transaction.GetAllOrderByDate();
+            var transaction = _transactionRepository.GetAllOrderByDate();
             var transactions = transaction.Select(item => new TransactionResponseModel
             {
                 Message = "Transaction retrieved successfully",
@@ -125,7 +124,7 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public IEnumerable<TransactionResponseModel> GetByDate(DateTime dateTime)
         {
-            var transaction = _transaction.GetByDate(dateTime);
+            var transaction = _transactionRepository.GetByDate(dateTime);
             var transactions = transaction.Select(item => new TransactionResponseModel
             {
                 Message = "Transaction retrieved successfully",
@@ -148,7 +147,7 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public TransactionResponseModel GetById(string refNumber)
         {
-            var transaction = _transaction.GetById(refNumber);
+            var transaction = _transactionRepository.GetById(refNumber);
             var transactio = new TransactionResponseModel
             {
                 Message = "Transaction retrieved successfully",
@@ -170,7 +169,7 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public IEnumerable<TransactionResponseModel> GetByStaffId(string staffId)
         {
-            var transaction = _transaction.GetByStaffId(staffId);
+            var transaction = _transactionRepository.GetByStaffId(staffId);
             var transactions = transaction.Select(item => new TransactionResponseModel
             {
                 Message = "Transaction retrieved successfully",
@@ -193,7 +192,7 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public IEnumerable<TransactionResponseModel> GetTransactionByCustomerName(string customerName)
         {
-            var transaction = _transaction.GetTransactionByCustomerName(customerName);
+            var transaction = _transactionRepository.GetTransactionByCustomerName(customerName);
             var transactions = transaction.Select(item => new TransactionResponseModel
             {
                 Message = "Transaction retrieved successfully",

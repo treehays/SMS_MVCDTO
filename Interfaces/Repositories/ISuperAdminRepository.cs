@@ -6,7 +6,7 @@ namespace SMS_MVCDTO.Interfaces.Repositories
     {
         SuperAdmin Create(SuperAdmin superAdmin);
         //SuperAdmin Login(SuperAdmin superAdmin);
-        void Delete(SuperAdmin superAdmin);
+        //void Delete(SuperAdmin superAdmin);
         SuperAdmin GetById(string staffId);
         SuperAdmin GetByEmail(string email);
         bool EmailExist(string email);
