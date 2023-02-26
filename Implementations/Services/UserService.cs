@@ -19,10 +19,10 @@ namespace SMS_MVCDTO.Implementations.Services
             {
                 Password = user.Password,
                 StaffId = user.StaffId,
-                Role = user.Role,
+                RoleId = user.RoleId,
                 Created = DateTime.Now,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
             };
             _userRepository.Create(userr);
             return user;
@@ -45,9 +45,9 @@ namespace SMS_MVCDTO.Implementations.Services
                 {
                     Password = user.Password,
                     StaffId = user.StaffId,
-                    Role = user.Role,
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
+                    RoleId = user.RoleId,
+                    Email = user.Email,
+                    PhoneNumber = user.PhoneNumber,
                 }
             };
             return userr;
@@ -74,9 +74,9 @@ namespace SMS_MVCDTO.Implementations.Services
                     {
                         StaffId = user.StaffId,
                         Password = user.Password,
-                        Role = user.Role,
-                        FirstName = user.FirstName,
-                        LastName = user.LastName,
+                        RoleId = user.RoleId,
+                        Email = user.Email,
+                        PhoneNumber = user.PhoneNumber,
                         ProfilePicture = user.ProfilePicture,
                     }
                 };
@@ -96,7 +96,7 @@ namespace SMS_MVCDTO.Implementations.Services
         public UpdateUserRoleRequestModel UpdateRole(UpdateUserRoleRequestModel user)
         {
             var userr = _userRepository.GetById(user.StaffId);
-            userr.Role = user.Role;
+            userr.RoleId = user.RoleId;
             _userRepository.Update(userr);
             return user;
         }

@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using SMS_MVCDTO.Context;
+﻿using SMS_MVCDTO.Context;
 using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Models.Entities;
 using System.Linq.Expressions;
@@ -30,7 +28,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public IEnumerable<Attendant> GetAttendants()
         {
-            var attendants = _context.Attendants.Where(w => w.IsDeleted == false && w.IsActive == true).ToList();
+            var attendants = _context.Attendants.Where(w => !w.IsDeleted && w.User.IsActive).ToList();
             //var attendants = _context.Attendants.Include(w => )
             return attendants;
         }
@@ -43,15 +41,15 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public Attendant GetByEmail(string email)
         {
-            var attendant = _context.Attendants.SingleOrDefault(w => w.Email.ToLower() == email.ToLower());
+            var attendant = _context.Attendants.SingleOrDefault(w => w.User.Email.ToLower() == email.ToLower());
             return attendant;
         }
 
         //To be fixed later
-        public Attendant GetById(string staffId)
+        public Attendant GetById(int id)
         {
             //bool emailExists = _context.Attendants.Any(x => x.StaffId == staffId.ToLower());
-            var attendant = _context.Attendants.SingleOrDefault(x => x.StaffId.ToLower() == staffId.ToLower());
+            var attendant = _context.Attendants.SingleOrDefault(x => x.UserId == id);
             if (attendant == null)
             {
                 return null;
@@ -62,13 +60,13 @@ namespace SMS_MVCDTO.Implementations.Repositories
         public IEnumerable<Attendant> GetByName(string name)
         {
 
-            var attendants = _context.Attendants.AsEnumerable().Where(w => w.IsActive && !w.IsDeleted && name.Any(x => (w.FirstName + w.LastName).ToLower().Contains(x.ToString().ToLower())));
+            var attendants = _context.Attendants.AsEnumerable().Where(w => w.User.IsActive && !w.IsDeleted && name.Any(x => (w.FirstName + w.LastName).ToLower().Contains(x.ToString().ToLower())));
             return attendants;
         }
 
         public Attendant GetByPhoneNumber(string phoneNumber)
         {
-            var attendant = _context.Attendants.SingleOrDefault(w => w.PhoneNumber == phoneNumber);
+            var attendant = _context.Attendants.SingleOrDefault(w => w.User.PhoneNumber == phoneNumber);
             return attendant;
         }
 

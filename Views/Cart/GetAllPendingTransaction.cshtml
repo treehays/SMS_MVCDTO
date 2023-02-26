@@ -19,7 +19,7 @@
                         <th>S/N</th>
 
                         <th>
-                            @Html.DisplayNameFor(model => model.Data.CustomermId)
+                            @Html.DisplayNameFor(model => model.Data.Id) @*customerId*@
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Data.TransactionId)
@@ -55,7 +55,7 @@
                                 @serialNumber
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Data.CustomermId)
+                                @Html.DisplayFor(modelItem => item.Data.CustomerId)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Data.TransactionId)
@@ -75,7 +75,7 @@
 
                             <td>
                                 <a asp-action="ViewCustomerCart"
-                               asp-route-customerId="@item.Data.CustomermId"> More  </a>
+                               asp-route-customerId="@item.Data.Id"> More  </a> @*customerId*@
                             </td>
                         </tr>
                         serialNumber++;

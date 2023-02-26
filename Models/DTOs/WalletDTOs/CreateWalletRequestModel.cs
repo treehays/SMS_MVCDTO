@@ -3,7 +3,7 @@
     public class CreateWalletRequestModel
     {
         public double Debit { get; set; }
-        public string CustomerId { get; set; }
+        public int CustomerId { get; set; }
         public double Credit { get; set; }
     }
 

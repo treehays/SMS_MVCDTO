@@ -31,7 +31,7 @@ namespace SMS_MVCDTO.Controllers
         {
             if (createProductCategory != null)
             {
-                var isExit = _productCategory.GetById(createProductCategory.Name);
+                var isExit = _productCategory.GetById(createProductCategory.Id);
                 if (isExit == null)
                 {
                     _productCategory.Create(createProductCategory);
@@ -48,7 +48,7 @@ namespace SMS_MVCDTO.Controllers
         }
 
 
-        public IActionResult Edit(string categoryCode)
+        public IActionResult Edit(int categoryCode)
         {
             var productCategory = _productCategory.GetById(categoryCode);
             if (productCategory == null)
@@ -70,9 +70,9 @@ namespace SMS_MVCDTO.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Delete(string categoryCode)
+        public IActionResult Delete(int categoryCode)
         {
-            if (categoryCode != null)
+            if (categoryCode != 0)
             {
                 _productCategory.Delete(categoryCode);
                 return RedirectToAction(nameof(Index));
@@ -80,9 +80,9 @@ namespace SMS_MVCDTO.Controllers
             return NotFound();
         }
 
-        public IActionResult DeletePreview(string categoryCode)
+        public IActionResult DeletePreview(int categoryCode)
         {
-            if (categoryCode != null)
+            if (categoryCode != 0)
             {
                 var productCategory = _productCategory.GetById(categoryCode);
 

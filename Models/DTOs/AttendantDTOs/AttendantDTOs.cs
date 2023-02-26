@@ -6,6 +6,7 @@ namespace SMS_MVCDTO.Models.DTOs.AttendantDTOs
 {
     public class AttendantDTOs
     {
+        public int Id { get; set; }
         public string StaffId { get; set; }
         [DisplayName("First Name")]
         public string FirstName { get; set; }
@@ -30,6 +31,6 @@ namespace SMS_MVCDTO.Models.DTOs.AttendantDTOs
         public string GuarantorName { get; set; }
         [DisplayName("Ref. Name")]
         public string GuarantorPhoneNumber { get; set; }
-        public UserRoleType UserRole { get; set; }
+        public string RoleName { get; set; }
     }
 }

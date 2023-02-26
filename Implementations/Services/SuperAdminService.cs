@@ -25,32 +25,21 @@ namespace SMS_MVCDTO.Implementations.Service
                 StaffId = sid,
                 Password = superAdmin.Password,
                 Created = DateTime.Now,
-                Role = UserRoleType.SuperAdmin,
-                FirstName = superAdmin.FirstName,
-                LastName = superAdmin.LastName,
+                RoleId = 1,
+                Email = superAdmin.Email,
+                PhoneNumber = superAdmin.PhoneNumber,
                 ProfilePicture = superAdmin.ProfilePicture,
+                IsActive = true,
             };
             _userRepository.Create(user);
             var superAdmi = new SuperAdmin
             {
-                StaffId = sid,
-                UserId = sid,
                 FirstName = superAdmin.FirstName,
                 LastName = superAdmin.LastName,
-                Email = superAdmin.Email,
-                PhoneNumber = superAdmin.PhoneNumber,
-                HomeAddress = superAdmin.HomeAddress,
-                ResidentialAddress = superAdmin.ResidentialAddress,
                 DateOfBirth = superAdmin.DateOfBirth,
                 Gender = superAdmin.Gender,
                 MaritalStatus = superAdmin.MaritalStatus,
-                BankAccountNumber = superAdmin.BankAccountNumber,
-                BankName = superAdmin.BankName,
-                GuarantorName = superAdmin.GuarantorName,
-                GuarantorPhoneNumber = superAdmin.GuarantorPhoneNumber,
-                userRole = UserRoleType.SuperAdmin,
                 Created = DateTime.Now,
-                IsActive = true,
             };
             _superAdminRepository.Create(superAdmi);
             return superAdmin;
@@ -83,19 +72,16 @@ namespace SMS_MVCDTO.Implementations.Service
                 {
                     FirstName = superAdmin.FirstName,
                     LastName = superAdmin.LastName,
-                    Email = superAdmin.Email,
-                    PhoneNumber = superAdmin.PhoneNumber,
-                    HomeAddress = superAdmin.HomeAddress,
-                    ResidentialAddress = superAdmin.ResidentialAddress,
+                    Email = superAdmin.User.Email,
+                    PhoneNumber = superAdmin.User.PhoneNumber,
+                    HomeAddress = superAdmin.Address.StreetName,
                     DateOfBirth = superAdmin.DateOfBirth,
                     Gender = superAdmin.Gender,
                     MaritalStatus = superAdmin.MaritalStatus,
-                    BankAccountNumber = superAdmin.BankAccountNumber,
-                    BankName = superAdmin.BankName,
-                    GuarantorName = superAdmin.GuarantorName,
-                    GuarantorPhoneNumber = superAdmin.GuarantorPhoneNumber,
-                    userRole = superAdmin.userRole,
-                    StaffId = superAdmin.StaffId,
+                    BankAccountNumber = superAdmin.BankDetail.BankAccountNumber,
+                    BankName = superAdmin.BankDetail.BankName,
+                    RoleName = superAdmin.User.Role.RoleName,
+                    StaffId = superAdmin.User.StaffId,
                 }
             };
             return superAdmi;
@@ -123,19 +109,16 @@ namespace SMS_MVCDTO.Implementations.Service
                 {
                     FirstName = superAdmin.FirstName,
                     LastName = superAdmin.LastName,
-                    Email = superAdmin.Email,
-                    PhoneNumber = superAdmin.PhoneNumber,
-                    HomeAddress = superAdmin.HomeAddress,
-                    ResidentialAddress = superAdmin.ResidentialAddress,
+                    Email = superAdmin.User.Email,
+                    PhoneNumber = superAdmin.User.PhoneNumber,
+                    HomeAddress = superAdmin.Address.StreetName,
                     DateOfBirth = superAdmin.DateOfBirth,
                     Gender = superAdmin.Gender,
                     MaritalStatus = superAdmin.MaritalStatus,
-                    BankAccountNumber = superAdmin.BankAccountNumber,
-                    BankName = superAdmin.BankName,
-                    GuarantorName = superAdmin.GuarantorName,
-                    GuarantorPhoneNumber = superAdmin.GuarantorPhoneNumber,
-                    userRole = superAdmin.userRole,
-                    StaffId = superAdmin.StaffId,
+                    BankAccountNumber = superAdmin.BankDetail.BankAccountNumber,
+                    BankName = superAdmin.BankDetail.BankName,
+                    RoleName = superAdmin.User.Role.RoleName,
+                    StaffId = superAdmin.User.StaffId,
                     ProfilePicture = user.ProfilePicture,
                 }
             };
@@ -150,27 +133,25 @@ namespace SMS_MVCDTO.Implementations.Service
                 return null;
             }
 
-            var superAdminResponseModels = superAdmins.Select(item => new SuperAdminResponseModel
+            var superAdminResponseModels = superAdmins.Select(superAdmin => new SuperAdminResponseModel
             {
                 Status = true,
                 Message = "Super admin retrieved sucessfully.",
                 Data = new SuperAdminDTOs
                 {
-                    FirstName = item.FirstName,
-                    LastName = item.LastName,
-                    Email = item.Email,
-                    PhoneNumber = item.PhoneNumber,
-                    HomeAddress = item.HomeAddress,
-                    ResidentialAddress = item.ResidentialAddress,
-                    DateOfBirth = item.DateOfBirth,
-                    Gender = item.Gender,
-                    MaritalStatus = item.MaritalStatus,
-                    BankAccountNumber = item.BankAccountNumber,
-                    BankName = item.BankName,
-                    GuarantorName = item.GuarantorName,
-                    GuarantorPhoneNumber = item.GuarantorPhoneNumber,
-                    userRole = item.userRole,
-                    StaffId = item.StaffId,
+                    FirstName = superAdmin.FirstName,
+                    LastName = superAdmin.LastName,
+                    Email = superAdmin.User.Email,
+                    PhoneNumber = superAdmin.User.PhoneNumber,
+                    HomeAddress = superAdmin.Address.StreetName,
+                    DateOfBirth = superAdmin.DateOfBirth,
+                    Gender = superAdmin.Gender,
+                    MaritalStatus = superAdmin.MaritalStatus,
+                    BankAccountNumber = superAdmin.BankDetail.BankAccountNumber,
+                    BankName = superAdmin.BankDetail.BankName,
+                    RoleName = superAdmin.User.Role.RoleName,
+                    StaffId = superAdmin.User.StaffId,
+                    ProfilePicture = superAdmin.User.ProfilePicture,
 
                 }
             }).ToList();
@@ -195,19 +176,18 @@ namespace SMS_MVCDTO.Implementations.Service
                 {
                     FirstName = superAdmin.FirstName,
                     LastName = superAdmin.LastName,
-                    Email = superAdmin.Email,
-                    PhoneNumber = superAdmin.PhoneNumber,
-                    HomeAddress = superAdmin.HomeAddress,
-                    ResidentialAddress = superAdmin.ResidentialAddress,
+                    Email = superAdmin.User.Email,
+                    PhoneNumber = superAdmin.User.PhoneNumber,
+                    HomeAddress = superAdmin.Address.StreetName,
                     DateOfBirth = superAdmin.DateOfBirth,
                     Gender = superAdmin.Gender,
                     MaritalStatus = superAdmin.MaritalStatus,
-                    BankAccountNumber = superAdmin.BankAccountNumber,
-                    BankName = superAdmin.BankName,
-                    GuarantorName = superAdmin.GuarantorName,
-                    GuarantorPhoneNumber = superAdmin.GuarantorPhoneNumber,
-                    userRole = superAdmin.userRole,
-                    StaffId = superAdmin.StaffId,
+                    BankAccountNumber = superAdmin.BankDetail.BankAccountNumber,
+                    BankName = superAdmin.BankDetail.BankName,
+                    RoleName = superAdmin.User.Role.RoleName,
+                    StaffId = superAdmin.User.StaffId,
+                    ProfilePicture = superAdmin.User.ProfilePicture,
+
                 }
             };
             return superAdmi;
@@ -232,19 +212,18 @@ namespace SMS_MVCDTO.Implementations.Service
                     {
                         FirstName = superAdmin.FirstName,
                         LastName = superAdmin.LastName,
-                        Email = superAdmin.Email,
-                        PhoneNumber = superAdmin.PhoneNumber,
-                        HomeAddress = superAdmin.HomeAddress,
-                        ResidentialAddress = superAdmin.ResidentialAddress,
+                        Email = superAdmin.User.Email,
+                        PhoneNumber = superAdmin.User.PhoneNumber,
+                        HomeAddress = superAdmin.Address.StreetName,
                         DateOfBirth = superAdmin.DateOfBirth,
                         Gender = superAdmin.Gender,
                         MaritalStatus = superAdmin.MaritalStatus,
-                        BankAccountNumber = superAdmin.BankAccountNumber,
-                        BankName = superAdmin.BankName,
-                        GuarantorName = superAdmin.GuarantorName,
-                        GuarantorPhoneNumber = superAdmin.GuarantorPhoneNumber,
-                        userRole = superAdmin.userRole,
-                        StaffId = superAdmin.StaffId,
+                        BankAccountNumber = superAdmin.BankDetail.BankAccountNumber,
+                        BankName = superAdmin.BankDetail.BankName,
+                        RoleName = superAdmin.User.Role.RoleName,
+                        StaffId = superAdmin.User.StaffId,
+                        ProfilePicture = superAdmin.User.ProfilePicture,
+
                     }
                 };
 
@@ -262,17 +241,16 @@ namespace SMS_MVCDTO.Implementations.Service
                 return null;
             }
             user.StaffId = superAdmin.Data.StaffId ?? user.StaffId;
-            user.FirstName = superAdmin.Data.FirstName ?? user.FirstName;
-            user.LastName = superAdmin.Data.LastName ?? user.LastName;
+            //user.SuperAdmin.FirstName = superAdmin.Data.FirstName ?? user.SuperAdmin.FirstName;
+            //user.SuperAdmin.LastName = superAdmin.Data.LastName ?? user.SuperAdmin.LastName;
             user.ProfilePicture = superAdmin.Data.ProfilePicture ?? user.ProfilePicture;
-            //_userRepository.Update(superAdmi);
             var superAdmi = _superAdminRepository.GetById(superAdmin.Data.StaffId);
             superAdmi.FirstName = superAdmin.Data.FirstName ?? superAdmi.FirstName;
             superAdmi.LastName = superAdmin.Data.LastName ?? superAdmi.LastName;
-            superAdmi.ResidentialAddress = superAdmin.Data.ResidentialAddress ?? superAdmi.ResidentialAddress;
+            // superAdmi.ResidentialAddress = superAdmin.Data.ResidentialAddress ?? superAdmi.ResidentialAddress;
             superAdmi.MaritalStatus = superAdmin.Data.MaritalStatus;
-            superAdmi.BankName = superAdmin.Data.BankName;
-            superAdmi.BankAccountNumber = superAdmin.Data.BankAccountNumber ?? superAdmi.BankAccountNumber;
+            //superAdmi.BankName = superAdmin.Data.BankName;
+            //superAdmi.BankAccountNumber = superAdmin.Data.BankAccountNumber ?? superAdmi.BankAccountNumber;
             superAdmi.Modified = DateTime.Now;
             //_superAdminRepository.Update(superAdmi);
             return superAdmin;

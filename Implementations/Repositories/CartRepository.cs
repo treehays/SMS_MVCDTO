@@ -1,4 +1,5 @@
-﻿using SMS_MVCDTO.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using SMS_MVCDTO.Context;
 using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Models.Entities;
 
@@ -34,8 +35,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public IEnumerable<Cart> GetAllPendingTransaction()
         {
-            //var carts = _context.Carts.Where(x => !x.IsPaid && !x.IsDeleted).GroupBy(y => y).Select(z => z.Key).AsEnumerable();
-            var carts = _context.Carts.Where(w => !w.IsPaid && !w.IsDeleted).GroupBy(x => x.CustomermId).Select(g => g.First()).AsEnumerable();
+            var carts = _context.Carts.Where(w => !w.IsPaid && !w.IsDeleted).GroupBy(x => x.CustomerId).Select(g => g.First()).AsEnumerable();
             return carts;
         }
 
@@ -47,14 +47,14 @@ namespace SMS_MVCDTO.Implementations.Repositories
             return carts;
         }
 
-        public IEnumerable<Cart> NotPaidByCustomerId(string customerId)
+        public IEnumerable<Cart> NotPaidByCustomerId(int customerId)
         {
-            var carts = _context.Carts.Where(x => !x.IsPaid && !x.IsDeleted && x.CustomermId == customerId);
+            var carts = _context.Carts.Where(x => !x.IsPaid && !x.IsDeleted && x.CustomerId == customerId);
             return carts;
         }
-        public double GetCartTotal(string customerId)
+        public double GetCartTotal(int customerId)
         {
-            var cartTotal = _context.Carts.Where(x => !x.IsPaid && !x.IsDeleted && x.CustomermId == customerId).Sum(y => (y.Quantity * y.Price));
+            var cartTotal = _context.Carts.Include(a => a.Product).Where(x => !x.IsPaid && !x.IsDeleted && x.CustomerId == customerId).Sum(y => (y.Quantity * y.Product.SellingPrice));
             return cartTotal;
         }
 
@@ -74,10 +74,10 @@ namespace SMS_MVCDTO.Implementations.Repositories
          }
         */
 
-        public string Update(string customerId)
+        public int Update(int customerId)
         {
 
-            var carts = _context.Carts.Where(x => x.CustomermId == customerId);
+            var carts = _context.Carts.Where(x => x.CustomerId == customerId);
             foreach (var cart in carts)
             {
                 cart.IsPaid = true;
@@ -87,16 +87,16 @@ namespace SMS_MVCDTO.Implementations.Repositories
             return customerId;
         }
 
-        public IEnumerable<Cart> GetByTransactionId(string transactionId)
+        public IEnumerable<Cart> GetByTransactionId(int transactionId)
         {
-            var carts = _context.Carts.Where(x => !x.IsDeleted && x.TransactionId == transactionId);
+            var carts = _context.Carts.Include(a => a.Transaction).Where(x => !x.IsDeleted && x.Transaction.Id == transactionId);
             return carts;
 
         }
 
-        public Cart NotPaidExist(string customerId)
+        public Cart NotPaidExist(int customerId)
         {
-            var carts = _context.Carts.FirstOrDefault(x => !x.IsPaid && !x.IsDeleted && x.CustomermId == customerId);
+            var carts = _context.Carts.Include(a => a.Customer).FirstOrDefault(x => !x.IsPaid && !x.IsDeleted && x.Customer.Id == customerId);
             return carts;
 
         }

@@ -7,8 +7,8 @@ namespace SMS_MVCDTO.Interfaces.Services
     {
         CreateCustomerRequestModel Create(CreateCustomerRequestModel customer);
         //Customer Login(Customer customer);
-        void Delete(string staffId);
-        CustomerResponseModel GetById(string staffId);
+        void Delete(int id);
+        CustomerResponseModel GetById(int id);
         CustomerResponseModel GetByEmail(string email);
         CustomerResponseModel GetByPhoneNumber(string phoneNumber);
         IEnumerable<CustomerResponseModel> GetByName(string name);

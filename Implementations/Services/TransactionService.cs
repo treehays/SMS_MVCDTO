@@ -30,11 +30,10 @@ namespace SMS_MVCDTO.Implementations.Services
             {
                 return null;
             }
-            var cartTotal = cart.Sum(x => (x.Quantity * x.Price));
+            var cartTotal = cart.Sum(x => (x.Quantity * x.Product.SellingPrice));
 
 
             var customers = _customerRepository.GetById(transaction.CustomerId);
-            //var attendant = _attendant.GetById(transaction.AttendanId);
 
             var transactio = new Transaction
             {
@@ -42,30 +41,12 @@ namespace SMS_MVCDTO.Implementations.Services
                 AttendantId = transaction.AttendanId,
                 AmountPaid = transaction.CashTender,
                 ReferenceNo = Guid.NewGuid().ToString().Remove(10).Replace("-", "").ToUpper(),
-                CartId = transaction.CartId,
-                //AttendantName = attendant.FirstName,
-                //Quantity = transaction.Quantity,
+                //CartId = transaction.CartId,
                 TotalAmount = cartTotal,
                 Created = DateTime.Now,
-                //CustomerName = $"{customers.FirstName.ToUpper()}  {customers.LastName}"
             };
             _transactionRepository.Create(transactio);
             _cartRepository.Update(transaction.CustomerId);
-
-            //updating cart to ispaid false
-            //var carts = _cart.NotPaidByCustomerId(transaction.CustomerId);
-            //if (carts == null)
-            //{
-            //    return null;
-            //}
-
-            //foreach (var item in carts)
-
-            //{
-            //    item.IsPaid = true;
-            //    _cart.Update(item);
-            //}
-
             return transaction;
         }
 
@@ -87,11 +68,8 @@ namespace SMS_MVCDTO.Implementations.Services
                     ReferenceNo = item.ReferenceNo,
                     CustomerId = item.CustomerId,
                     AttendantId = item.AttendantId,
-                    //BarCode = item.ProductId,
-                    //Quantity = item.Quantity,
                     TotalAmount = item.TotalAmount,
                     Created = item.Created.Date,
-                    //CustomerName = item.CustomerName,
                 }
 
             }).ToList();
@@ -111,11 +89,8 @@ namespace SMS_MVCDTO.Implementations.Services
                     ReferenceNo = item.ReferenceNo,
                     CustomerId = item.CustomerId,
                     AttendantId = item.AttendantId,
-                    //BarCode = item.ProductId,
-                    //Quantity = item.Quantity,
                     TotalAmount = item.TotalAmount,
                     Created = item.Created.Date,
-                    //CustomerName = item.CustomerName,
                 }
 
             }).ToList();
@@ -134,11 +109,8 @@ namespace SMS_MVCDTO.Implementations.Services
                     ReferenceNo = item.ReferenceNo,
                     CustomerId = item.CustomerId,
                     AttendantId = item.AttendantId,
-                    //BarCode = item.ProductId,
-                    //Quantity = item.Quantity,
                     TotalAmount = item.TotalAmount,
                     Created = item.Created.Date,
-                    //CustomerName = item.CustomerName,
                 }
 
             }).ToList();
@@ -157,11 +129,8 @@ namespace SMS_MVCDTO.Implementations.Services
                     ReferenceNo = transaction.ReferenceNo,
                     CustomerId = transaction.CustomerId,
                     AttendantId = transaction.AttendantId,
-                    //BarCode = transaction.ProductId,
-                    //Quantity = transaction.Quantity,
                     TotalAmount = transaction.TotalAmount,
                     Created = transaction.Created.Date,
-                    //CustomerName = transaction.CustomerName,
                 }
             };
             return transactio;
@@ -179,11 +148,8 @@ namespace SMS_MVCDTO.Implementations.Services
                     ReferenceNo = item.ReferenceNo,
                     CustomerId = item.CustomerId,
                     AttendantId = item.AttendantId,
-                    //BarCode = item.ProductId,
-                    //Quantity = item.Quantity,
                     TotalAmount = item.TotalAmount,
                     Created = item.Created.Date,
-                    //CustomerName = item.CustomerName,
                 }
 
             }).ToList();
@@ -202,21 +168,12 @@ namespace SMS_MVCDTO.Implementations.Services
                     ReferenceNo = item.ReferenceNo,
                     CustomerId = item.CustomerId,
                     AttendantId = item.AttendantId,
-                    //BarCode = item.ProductId,
-                    //Quantity = item.Quantity,
                     TotalAmount = item.TotalAmount,
                     Created = item.Created.Date,
-                    //CustomerName = item.CustomerName,
                 }
-
             }).ToList();
             return transactions;
         }
-
-        //public IEnumerable<TransactionResponseModel> DownloadExcel()
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 
 }

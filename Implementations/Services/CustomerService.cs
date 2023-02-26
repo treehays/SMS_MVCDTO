@@ -23,25 +23,19 @@ namespace SMS_MVCDTO.Implementations.Services
             {
                 StaffId = sid,
                 Password = customer.Password,
-                Role = UserRoleType.Customer,
+                RoleId = 4,
+                Email = customer.Email,
+                PhoneNumber = customer.PhoneNumber,
                 Created = DateTime.Now
             };
             _userRepository.Create(user);
 
             var custome = new Customer
             {
-                StaffId = sid,
                 FirstName = customer.FirstName,
                 LastName = customer.LastName,
-                Email = customer.Email,
-                PhoneNumber = customer.PhoneNumber,
-                Address = customer.Address,
-                DateOfBirth = customer.DateOfBirth,
                 Gender = customer.Gender,
-                MaritalStatus = customer.MaritalStatus,
                 Created = DateTime.Now,
-                IsActive = true,
-                UserId = sid,
 
             };
             _customerRepository.Create(custome);
@@ -55,9 +49,9 @@ namespace SMS_MVCDTO.Implementations.Services
             return customer;
         }
 
-        public void Delete(string staffId)
+        public void Delete(int id)
         {
-            var customer = _customerRepository.GetById(staffId);
+            var customer = _customerRepository.GetById(id);
             customer.IsDeleted = true;
 
             _customerRepository.Delete(customer);
@@ -79,25 +73,23 @@ namespace SMS_MVCDTO.Implementations.Services
                 {
                     FirstName = customer.FirstName,
                     LastName = customer.LastName,
-                    PhoneNumber = customer.PhoneNumber,
-                    DateOfBirth = customer.DateOfBirth,
-                    Email = customer.Email,
+                    PhoneNumber = customer.User.PhoneNumber,
+                    Email = customer.User.Email,
                     Gender = customer.Gender,
-                    MaritalStatus = customer.MaritalStatus,
-                    StaffId = customer.StaffId,
-                    Address = customer.Address,
-                    IsActive = customer.IsActive,
+                    StaffId = customer.User.StaffId,
+                    Address = customer.Address.StreetName,
+                    IsActive = customer.User.IsActive,
                     IsDelete = customer.IsDeleted,
-                    UserRole = customer.userRole,
+                    RoleId = customer.User.RoleId,
 
                 }
             };
             return customerResponseModel;
         }
 
-        public CustomerResponseModel GetById(string staffId)
+        public CustomerResponseModel GetById(int id)
         {
-            var customer = _customerRepository.GetById(staffId);
+            var customer = _customerRepository.GetById(id);
             if (customer == null)
             {
                 return null;
@@ -111,16 +103,14 @@ namespace SMS_MVCDTO.Implementations.Services
                 {
                     FirstName = customer.FirstName,
                     LastName = customer.LastName,
-                    PhoneNumber = customer.PhoneNumber,
-                    DateOfBirth = customer.DateOfBirth,
-                    Email = customer.Email,
+                    PhoneNumber = customer.User.PhoneNumber,
+                    Email = customer.User.Email,
                     Gender = customer.Gender,
-                    MaritalStatus = customer.MaritalStatus,
-                    StaffId = customer.StaffId,
-                    Address = customer.Address,
-                    IsActive = customer.IsActive,
+                    StaffId = customer.User.StaffId,
+                    Address = customer.Address.StreetName,
+                    IsActive = customer.User.IsActive,
                     IsDelete = customer.IsDeleted,
-                    UserRole = customer.userRole,
+                    RoleId = customer.User.RoleId,
                 }
             };
             return customerResponseModel;
@@ -140,16 +130,14 @@ namespace SMS_MVCDTO.Implementations.Services
                     {
                         FirstName = customer.FirstName,
                         LastName = customer.LastName,
-                        PhoneNumber = customer.PhoneNumber,
-                        DateOfBirth = customer.DateOfBirth,
-                        Email = customer.Email,
+                        PhoneNumber = customer.User.PhoneNumber,
+                        Email = customer.User.Email,
                         Gender = customer.Gender,
-                        MaritalStatus = customer.MaritalStatus,
-                        StaffId = customer.StaffId,
-                        Address = customer.Address,
-                        IsActive = customer.IsActive,
+                        StaffId = customer.User.StaffId,
+                        Address = customer.Address.StreetName,
+                        IsActive = customer.User.IsActive,
                         IsDelete = customer.IsDeleted,
-                        UserRole = customer.userRole,
+                        RoleId = customer.User.RoleId,
                     }
                 };
                 customerResponseModels.Add(customerResponseModel);
@@ -173,16 +161,14 @@ namespace SMS_MVCDTO.Implementations.Services
                 {
                     FirstName = customer.FirstName,
                     LastName = customer.LastName,
-                    PhoneNumber = customer.PhoneNumber,
-                    DateOfBirth = customer.DateOfBirth,
-                    Email = customer.Email,
+                    PhoneNumber = customer.User.PhoneNumber,
+                    Email = customer.User.Email,
                     Gender = customer.Gender,
-                    MaritalStatus = customer.MaritalStatus,
-                    StaffId = customer.StaffId,
-                    Address = customer.Address,
-                    IsActive = customer.IsActive,
+                    StaffId = customer.User.StaffId,
+                    Address = customer.Address.StreetName,
+                    IsActive = customer.User.IsActive,
                     IsDelete = customer.IsDeleted,
-                    UserRole = customer.userRole,
+                    RoleId = customer.User.RoleId,
                 }
             };
             return customerResponseModel;
@@ -202,16 +188,14 @@ namespace SMS_MVCDTO.Implementations.Services
                     {
                         FirstName = customer.FirstName,
                         LastName = customer.LastName,
-                        PhoneNumber = customer.PhoneNumber,
-                        DateOfBirth = customer.DateOfBirth,
-                        Email = customer.Email,
+                        PhoneNumber = customer.User.PhoneNumber,
+                        Email = customer.User.Email,
                         Gender = customer.Gender,
-                        MaritalStatus = customer.MaritalStatus,
-                        StaffId = customer.StaffId,
-                        Address = customer.Address,
-                        IsActive = customer.IsActive,
+                        StaffId = customer.User.StaffId,
+                        Address = customer.Address.StreetName,
+                        IsActive = customer.User.IsActive,
                         IsDelete = customer.IsDeleted,
-                        UserRole = customer.userRole,
+                        RoleId = customer.User.RoleId,
                     }
                 };
                 customerResponseModels.Add(customerResponseModel);
@@ -222,15 +206,13 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public CustomerResponseModel Update(CustomerResponseModel customer)
         {
-            var custome = _customerRepository.GetById(customer.Data.StaffId);
+            var custome = _customerRepository.GetById(customer.Data.Id);
             if (custome == null)
             {
                 return null;
             }
             custome.FirstName = customer.Data.FirstName ?? custome.FirstName;
             custome.LastName = customer.Data.LastName ?? custome.LastName;
-            custome.Address = customer.Data.Address ?? custome.Address;
-            custome.MaritalStatus = customer.Data.MaritalStatus;
             custome.Modified = DateTime.Now;
             _customerRepository.Update(custome);
             return customer;

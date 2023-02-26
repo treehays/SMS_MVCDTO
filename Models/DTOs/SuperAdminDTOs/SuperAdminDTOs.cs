@@ -20,9 +20,9 @@ namespace SMS_MVCDTO.Models.DTOs.SuperAdminDTOs
         public string BankName { get; set; }
         public string GuarantorName { get; set; }
         public string GuarantorPhoneNumber { get; set; }
-        public UserRoleType userRole { get; set; }
+        public string RoleName { get; set; }
         public bool IsActive { get; set; }
-        public byte[]? ProfilePicture { get; set; }
+        public byte[] ProfilePicture { get; set; }
 
     }
 }

@@ -5,15 +5,15 @@ namespace SMS_MVCDTO.Interfaces.Repositories
     public interface ICartRepository
     {
         Cart Create(Cart cart);
-        string Update(string customerId);
+        int Update(int customerId);
         void Delete(Cart cart);
         IEnumerable<Cart> GetAll();
         IEnumerable<Cart> GetAllPendingTransaction();
-        IEnumerable<Cart> NotPaidByCustomerId(string customerId);
-        double GetCartTotal(string customerId);
-        IEnumerable<Cart> GetByTransactionId(string transactionId);
+        IEnumerable<Cart> NotPaidByCustomerId(int customerId);
+        double GetCartTotal(int customerId);
+        IEnumerable<Cart> GetByTransactionId(int transactionId);
         Cart GetById(int id);
-        Cart NotPaidExist(string customerId);
+        Cart NotPaidExist(int customerId);
         //IEnumerable<Cart> GetAllOrderByDate();
         /*        IEnumerable<Cart> GetByTransactionRef(int id);
                 IEnumerable<Cart> GetTransactionByCustomerName(string customerName);

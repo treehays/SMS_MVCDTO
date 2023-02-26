@@ -48,19 +48,19 @@ namespace SMS_MVCDTO.Controllers
 
 
 
-        public IActionResult Create(string customerId)
+        public IActionResult Create(int id)
         {
-            var cart = _cartService.NotPaidByCustomerId(customerId);
+            var cart = _cartService.NotPaidByCustomerId(id);
             //var cart = _cartService.GetByTransactionId(transactionId);
 
             var cartTotal = cart.Sum(x => (x.Data.Total));
-            var customer = _customer.GetById(customerId);
+            var customer = _customer.GetById(id);
             var craeteTransact = new CreateTransactionRequestModel
             {
                 TotalAmount = cartTotal,
                 CustomeName = $"{customer.FirstName} {customer.LastName}",
-                AttendanId = User?.FindFirst(ClaimTypes.NameIdentifier).Value,
-                CustomerId = customerId,
+                AttendanId = int.Parse(User?.FindFirst(ClaimTypes.NameIdentifier).Value),
+                CustomerId = id,
             };
             return View(craeteTransact);
         }
@@ -81,7 +81,7 @@ namespace SMS_MVCDTO.Controllers
                 TempData["failed"] = "failed.";
                 return View();
             }
-            createTransaction.AttendanId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            createTransaction.AttendanId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
             _transaction.Create(createTransaction);
             TempData["success"] = "Created Successfully.";
             return RedirectToAction("Index");

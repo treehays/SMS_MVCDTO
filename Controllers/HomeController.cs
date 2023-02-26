@@ -80,10 +80,10 @@ namespace SMS_MVCDTO.Controllers
             var roles = new List<string>();
             var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Role, user.Data.Role.ToString()),
+                    new Claim(ClaimTypes.Role, user.Data.RoleId.ToString()),
                     new Claim(ClaimTypes.NameIdentifier, user.Data.StaffId),
-                    new Claim(ClaimTypes.Name, user.Data.FirstName),
-                    new Claim(ClaimTypes.Email, user.Data.LastName),
+                    //new Claim(ClaimTypes.Name, user.Data.FirstName),
+                    //new Claim(ClaimTypes.Email, user.Data.LastName),
                 };
 
             var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -91,28 +91,28 @@ namespace SMS_MVCDTO.Controllers
             var principal = new ClaimsPrincipal(claimIdentity);
             HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, authenticationProperties);
 
-            if (user.Data.Role == Enums.UserRoleType.Attendant)
+            if (user.Data.RoleId == 3)
             {
                 // ViewBag.ShowElement1 = true;
                 TempData["success"] = "Login successful";
                 return RedirectToAction(nameof(Index), "Attendant");
 
             }
-            else if (user.Data.Role == Enums.UserRoleType.SuperAdmin)
+            else if (user.Data.RoleId == 1)
             {
                 // ViewBag.ShowElement1 = true;
                 TempData["success"] = "Login successful";
                 return RedirectToAction(nameof(Index), "SuperAdmin");
 
             }
-            else if (user.Data.Role == Enums.UserRoleType.Customer)
+            else if (user.Data.RoleId == 4)
             {
                 // ViewBag.ShowElement1 = true;
                 TempData["success"] = "Login successful";
                 return RedirectToAction(nameof(Index), "Customer");
 
             }
-            else if (user.Data.Role == Enums.UserRoleType.SalesManager)
+            else if (user.Data.RoleId == 2)
             {
                 // ViewBag.ShowElement1 = true;
                 TempData["success"] = "Login successful";

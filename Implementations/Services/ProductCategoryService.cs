@@ -18,7 +18,8 @@ namespace SMS_MVCDTO.Implementations.Services
         {
             var productCategor = new ProductCategory
             {
-                CategoryCode = Guid.NewGuid().ToString().ToUpper().Remove(6),
+                //CategoryCode = Guid.NewGuid().ToString().ToUpper().Remove(6),
+                CategoryCode = new Random().Next(),
                 Name = productCategory.Name,
                 Description = productCategory.Description,
                 Created = DateTime.Now,
@@ -28,7 +29,7 @@ namespace SMS_MVCDTO.Implementations.Services
             return productCategory;
         }
 
-        public void Delete(string categoryCode)
+        public void Delete(int categoryCode)
         {
             var productCategory = _productCategoryRepository.GetById(categoryCode);
             if (productCategory != null)
@@ -62,9 +63,9 @@ namespace SMS_MVCDTO.Implementations.Services
         }
 
 
-        public ProductCategoryResponseModel GetById(string CategoryName)
+        public ProductCategoryResponseModel GetById(int id)
         {
-            var productCategory = _productCategoryRepository.GetById(CategoryName);
+            var productCategory = _productCategoryRepository.GetById(id);
             if (productCategory != null)
             {
                 var productCategor = new ProductCategoryResponseModel

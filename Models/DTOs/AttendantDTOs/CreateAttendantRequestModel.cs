@@ -42,7 +42,9 @@ namespace SMS_MVCDTO.Models.DTOs.AttendantDTOs
         public string GuarantorName { get; set; }
         [DisplayName("Guarantor pohonenumber ")]
         public string GuarantorPhoneNumber { get; set; }
-        //public UserRoleType userRole { get; set; }
+        public byte[] ProfilePicture { get; set; }
+        public string CVPath { get; set; }
+
     }
 
 }

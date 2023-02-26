@@ -8,8 +8,8 @@ namespace SMS_MVCDTO.Interfaces.Services
         CreateAttendantRequestModel Create(CreateAttendantRequestModel attendant);
 
         //LoginRequestModel Login(LoginRequestModel user);
-        void Delete(string staffId);
-        AttendantResponseModel GetById(string staffId);
+        void Delete(int id);
+        AttendantResponseModel GetById(int id);
         AttendantResponseModel GetByEmail(string email);
         AttendantResponseModel GetByPhoneNumber(string phoneNumber);
         IEnumerable<AttendantResponseModel> GetByName(string name);

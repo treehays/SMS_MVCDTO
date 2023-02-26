@@ -12,7 +12,7 @@ namespace SMS_MVCDTO.Models.DTOs.SuperAdminDTOs
         public string BankAccountNumber { get; set; }
         public string BankName { get; set; }
         public string StaffId { get; set; }
-        public byte[]? ProfilePicture { get; set; }
+        public byte[] ProfilePicture { get; set; }
 
     }
 

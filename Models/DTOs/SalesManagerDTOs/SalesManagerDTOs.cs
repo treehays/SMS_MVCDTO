@@ -19,7 +19,7 @@ namespace SMS_MVCDTO.Models.DTOs.SalesManagerDTOs
         public string BankName { get; set; }
         public string GuarantorName { get; set; }
         public string GuarantorPhoneNumber { get; set; }
-        public UserRoleType userRole { get; set; }
+        public int RoleId { get; set; }
     }
 
     //public class LoginRequestModel

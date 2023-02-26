@@ -27,37 +27,37 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public SuperAdmin GetByEmail(string email)
         {
-            var superAdmin = _context.SuperAdmins.SingleOrDefault(s => s.Email == email);
+            var superAdmin = _context.SuperAdmins.SingleOrDefault(s => s.User.Email == email);
             return superAdmin;
         }
 
         public bool EmailExist(string email)
         {
-            var emailExist = _context.SuperAdmins.Any(s => s.Email == email);
+            var emailExist = _context.SuperAdmins.Any(s => s.User.Email == email);
             return emailExist;
         }
 
         public SuperAdmin GetById(string staffId)
         {
-            var superAdmin = _context.SuperAdmins.SingleOrDefault(s => s.StaffId == staffId);
+            var superAdmin = _context.SuperAdmins.SingleOrDefault(s => s.User.StaffId == staffId);
             return superAdmin;
         }
 
         public IEnumerable<SuperAdmin> GetByName(string name)
         {
-            var superAdmins = _context.SuperAdmins.Where(w => w.IsActive == true && w.IsDeleted == true && name.All(x => (w.FirstName + w.LastName).Contains(x)));
+            var superAdmins = _context.SuperAdmins.Where(w => w.User.IsActive && !w.IsDeleted && name.All(x => (w.FirstName + w.LastName).Contains(x)));
             return superAdmins;
         }
 
         public SuperAdmin GetByPhoneNumber(string phoneNumber)
         {
-            var superAdmin = _context.SuperAdmins.SingleOrDefault(w => w.PhoneNumber == phoneNumber);
+            var superAdmin = _context.SuperAdmins.SingleOrDefault(w => w.User.PhoneNumber == phoneNumber);
             return superAdmin;
         }
 
         public IEnumerable<SuperAdmin> GetSuperAdmins()
         {
-            var superAdmins = _context.SuperAdmins.Where(w => w.IsActive == true && w.IsDeleted == false);
+            var superAdmins = _context.SuperAdmins.Where(w => w.User.IsActive && !w.IsDeleted);
             return superAdmins;
         }
 

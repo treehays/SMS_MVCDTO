@@ -1,4 +1,5 @@
-﻿using SMS_MVCDTO.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using SMS_MVCDTO.Context;
 using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Models.Entities;
 using System.Xml.Linq;
@@ -57,7 +58,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public IEnumerable<Transaction> GetByStaffId(string staffId)
         {
-            var transactions = _context.Transactions.Where(a => a.AttendantId == staffId);
+            var transactions = _context.Transactions.Include(x => x.Attendant).ThenInclude(x => x.User).Where(a => a.Attendant.User.StaffId == staffId);
             return transactions;
         }
         /// <summary>
@@ -69,7 +70,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
         {
             //var transactions = _context.Transactions.AsEnumerable().Where(a => !a.IsDeleted && customerName.All(b => a.CustomerName.Contains(b)));
 
-            var transactions = _context.Transactions.AsEnumerable().Where(a => !a.IsDeleted && customerName.All(b => a.CustomerId.Contains(b)));
+            var transactions = _context.Transactions.Include(x => x.Customer).AsEnumerable().Where(a => !a.IsDeleted && customerName.All(b => a.Customer.LastName.Contains(b)));
             return transactions;
         }
 

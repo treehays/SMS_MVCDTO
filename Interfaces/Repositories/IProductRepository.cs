@@ -7,7 +7,7 @@ namespace SMS_MVCDTO.Interfaces.Repositories
         Product Create(Product product);
         Product Update(Product product);
         void Delete(Product product);
-        Product GetById(string barCode);
+        Product GetById(int productId);
         IEnumerable<Product> GetByName(string name);
         IEnumerable<Product> GetByCategory(string productCategory);
         IEnumerable<Product> GetAll();

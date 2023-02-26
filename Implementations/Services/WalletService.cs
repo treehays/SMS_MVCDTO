@@ -17,7 +17,7 @@ namespace SMS_MVCDTO.Implementations.Services
         {
             var walle = new Wallet
             {
-                CustomerId = wallet.CustomerId,
+                //CustomerId = wallet.CustomerId,
                 Debit = wallet.Debit,
                 Credit = wallet.Credit,
             };
@@ -29,7 +29,7 @@ namespace SMS_MVCDTO.Implementations.Services
         {
             var walle = new Wallet
             {
-                CustomerId = wallet.CustomerId,
+                //CustomerId = wallet.CustomerId,
                 Credit = wallet.Credit,
             };
             _walletRepository.Credit(walle);
@@ -41,7 +41,7 @@ namespace SMS_MVCDTO.Implementations.Services
         {
             var walle = new Wallet
             {
-                CustomerId = wallet.CustomerId,
+                //CustomerId = wallet.CustomerId,
                 Debit = wallet.Debit,
             };
             _walletRepository.Credit(walle);

@@ -22,15 +22,14 @@ namespace SMS_MVCDTO.Implementations.Services
             {
                 Barcode = product.Barcode,
                 Name = product.Name,
-                Category = product.Category,
-                ProductCategoryId = product.Category,
+                ProductCategoryId = product.CategoryId,
                 IsAvailable = true,
                 Description = product.Description,
                 SellingPrice = product.SellingPrice,
                 Quantity = product.Quantity,
                 ReorderLevel = product.ReorderLevel,
                 Created = DateTime.Now,
-                Pictur = product.Pictur,
+                PicturPath = product.PicturePath,
 
             };
             _productRepository.Create(produc);
@@ -38,9 +37,9 @@ namespace SMS_MVCDTO.Implementations.Services
         }
         public int ReorderLevel { get; set; }
 
-        public void Delete(string barCode)
+        public void Delete(int id)
         {
-            var product = _productRepository.GetById(barCode);
+            var product = _productRepository.GetById(id);
             if (product == null)
             {
                 return;
@@ -98,15 +97,15 @@ namespace SMS_MVCDTO.Implementations.Services
 
         }
 
-        public ProductResponseModel GetById(string barCode)
+        public ProductResponseModel GetById(int id)
         {
-            var product = _productRepository.GetById(barCode);
+            var product = _productRepository.GetById(id);
             if (product == null)
             {
                 return null;
             }
-            string categoryName = null;
-            var category = _productCategoryRepository.GetById(product.Category);
+            //string categoryName = null;
+            var category = _productCategoryRepository.GetById(product.ProductCategoryId);
             //if (category == null) { categoryName = category.Name; }
             var produc = new ProductResponseModel
             {
@@ -153,7 +152,7 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public RestockProductRequestModel RestockProduct(RestockProductRequestModel product)
         {
-            var produc = _productRepository.GetById(product.Barcode);
+            var produc = _productRepository.GetById(product.Id);
             if (produc == null)
             {
                 return null;
@@ -169,7 +168,7 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public ProductResponseModel Update(ProductResponseModel product)
         {
-            var produc = _productRepository.GetById(product.Data.Barcode);
+            var produc = _productRepository.GetById(product.Data.Id);
             produc.SellingPrice = product.Data.SellingPrice;
             produc.Name = product.Data.Name ?? produc.Name;
             produc.Description = product.Data.Description ?? produc.Description;

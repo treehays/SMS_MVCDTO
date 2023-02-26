@@ -6,16 +6,16 @@ namespace SMS_MVCDTO.Interfaces.Services
     public interface ICartServices
     {
         CreateCartRequestModel Create(CreateCartRequestModel cart);
-        string Update(string customerId);
+        //string Update(int customerId);
         void Delete(int id);
         IEnumerable<CartResponseModel> GetAll();
         IEnumerable<CartResponseModel> GetAllPendingTransaction();
 
-        IEnumerable<CartResponseModel> NotPaidByCustomerId(string customerId);
-        IEnumerable<CartResponseModel> GetByTransactionId(string transactionId);
+        IEnumerable<CartResponseModel> NotPaidByCustomerId(int customerId);
+        IEnumerable<CartResponseModel> GetByTransactionId(int transactionId);
         CartResponseModel GetById(int id);
-        CartResponseModel NotPaidExist(string customerId);
-        double GetCartTotal(string customerId);
+        CartResponseModel NotPaidExist(int customerId);
+        double GetCartTotal(int customerId);
 
         //IEnumerable<Cart> GetAllOrderByDate();
         /* CartResponseModel GetById(int id);

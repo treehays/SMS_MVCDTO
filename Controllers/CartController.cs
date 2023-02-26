@@ -20,9 +20,9 @@ namespace SMS_MVCDTO.Controllers
             return View();
         }
 
-        public IActionResult Create(string barCode)
+        public IActionResult Create(int id)
         {
-            var product = _product.GetById(barCode);
+            var product = _product.GetById(id);
             if (product == null)
             {
                 //return View("Error");
@@ -70,7 +70,7 @@ namespace SMS_MVCDTO.Controllers
                 TempData["failed"] = "failed.";
                 return View();
             }
-            cart.ProductId = cartProduct.Product.Data.Barcode;
+            cart.ProductId = cartProduct.Product.Data.Id;
             var cartsCreated = _cart.Create(cart);
             if (cartsCreated == null)
             {
@@ -98,7 +98,7 @@ namespace SMS_MVCDTO.Controllers
                 }
         */
 
-        public IActionResult ViewCustomerCart(string customerId)
+        public IActionResult ViewCustomerCart(int customerId)
         {
             var cartId = _cart.NotPaidExist(customerId);
             if (cartId == null)

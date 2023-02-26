@@ -5,6 +5,7 @@ namespace SMS_MVCDTO.Models.DTOs.CustomerDTOs
 {
     public class CustomerDTOs
     {
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         [Required]
@@ -20,7 +21,7 @@ namespace SMS_MVCDTO.Models.DTOs.CustomerDTOs
         public DateTime DateOfBirth { get; set; }
         public GenderType Gender { get; set; }
         public MaritalStatusType MaritalStatus { get; set; }
-        public UserRoleType UserRole { get; set; }
+        public int RoleId { get; set; }
     }
 
     //public class LoginRequestModel

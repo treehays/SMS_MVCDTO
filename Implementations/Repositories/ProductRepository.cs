@@ -44,9 +44,9 @@ namespace SMS_MVCDTO.Implementations.Repositories
             return products;
         }
 
-        public Product GetById(string barCode)
+        public Product GetById(int id)
         {
-            var product = _context.Products.SingleOrDefault(a => !a.IsDeleted && a.IsAvailable && a.Barcode.ToLower() == barCode.ToLower());
+            var product = _context.Products.SingleOrDefault(a => !a.IsDeleted && a.IsAvailable && a.Id == id);
             return product;
         }
 

@@ -6,10 +6,10 @@
     public class CreateTransactionRequestModel
     {
         //public string ReferenceNo { get; set; }
-        public string AttendanId { get; set; }
-        public string CustomerId { get; set; }
+        public int AttendanId { get; set; }
+        public int CustomerId { get; set; }
         public double CashTender { get; set; }
-        public string CartId { get; set; }
+        public int CartId { get; set; }
         //public string BarCode { get; set; }
         //public int Quantity { get; set; }
         public string CustomeName { get; set; }

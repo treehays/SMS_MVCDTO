@@ -44,27 +44,27 @@ namespace SMS_MVCDTO.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(NewProductViewModel product)
+        public IActionResult Create(NewProductViewModel product)
         {
 
             // if (product != null)
             // {
-            var existByName = _product.GetById(product.CreateProduct.Barcode);
+            var existByName = _product.GetById(product.CreateProduct.Id);
             if (existByName == null)
             {
-                if (Request.Form.Files.Count > 0)
-                {
-                    IFormFile file = Request.Form.Files.FirstOrDefault();
-                    using (var dataStream = new MemoryStream())
-                    {
-                        await file.CopyToAsync(dataStream);
-                        product.CreateProduct.Pictur = dataStream.ToArray();
-                    }
-                    //_product.Create(product.CreateProduct);
-                    //TempData["success"] = "Created Successfully.";
-                    ////return RedirectToAction("Index");
-                    //return RedirectToAction("Dashboard", "Attendant");
-                }
+                /*  if (Request.Form.Files.Count > 0)
+                  {
+                      IFormFile file = Request.Form.Files.FirstOrDefault();
+                      using (var dataStream = new MemoryStream())
+                      {
+                          await file.CopyToAsync(dataStream);
+                          product.CreateProduct.PicturePath = dataStream.ToArray();
+                      }
+                      //_product.Create(product.CreateProduct);
+                      //TempData["success"] = "Created Successfully.";
+                      ////return RedirectToAction("Index");
+                      //return RedirectToAction("Dashboard", "Attendant");
+                  }*/
 
                 _product.Create(product.CreateProduct);
                 TempData["success"] = "Created Successfully.";
@@ -85,10 +85,10 @@ namespace SMS_MVCDTO.Controllers
             // }
         }
 
-        public IActionResult Edit(string barCode)
+        public IActionResult Edit(int id)
         {
 
-            var product = _product.GetById(barCode);
+            var product = _product.GetById(id);
             if (product == null)
             {
                 return NotFound();
@@ -118,11 +118,11 @@ namespace SMS_MVCDTO.Controllers
         }
 
 
-        public IActionResult DeletePreview(string barCode)
+        public IActionResult DeletePreview(int id)
         {
-            if (barCode != null)
+            if (id != 0)
             {
-                var product = _product.GetById(barCode);
+                var product = _product.GetById(id);
                 if (product != null)
                 {
                     return View(product);
@@ -133,21 +133,21 @@ namespace SMS_MVCDTO.Controllers
             return NotFound();
         }
 
-        public IActionResult Delete(string barCode)
+        public IActionResult Delete(int id)
         {
-            if (barCode != null)
+            if (id != 0)
             {
-                _product.Delete(barCode);
+                _product.Delete(id);
                 return RedirectToAction(nameof(Index));
             }
             return NotFound();
         }
 
-        public IActionResult Details(string barCode)
+        public IActionResult Details(int id)
         {
-            if (barCode != null)
+            if (id != 0)
             {
-                var product = _product.GetById(barCode);
+                var product = _product.GetById(id);
                 if (product != null)
                 {
                     return View(product);
@@ -157,11 +157,11 @@ namespace SMS_MVCDTO.Controllers
             return NotFound();
         }
 
-        public IActionResult GetById(string barCode)
+        public IActionResult GetById(int id)
         {
-            if (barCode != null)
+            if (id != 0)
             {
-                var product = _product.GetById(barCode);
+                var product = _product.GetById(id);
                 if (product != null)
                 {
                     return View(product);

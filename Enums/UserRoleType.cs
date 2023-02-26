@@ -2,10 +2,10 @@
 {
     public enum UserRoleType
     {
-        SuperAdmin = 1,
-        SalesManager,
-        Attendant,
-        Customer,
-        StockKeeper
+        //SuperAdmin = 1,
+        //SalesManager,
+        //Attendant,
+        //Customer,
+        //StockKeeper
     }
 }

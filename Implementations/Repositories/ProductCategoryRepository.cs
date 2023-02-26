@@ -31,9 +31,9 @@ namespace SMS_MVCDTO.Implementations.Repositories
             return productCategory;
         }
 
-        public ProductCategory GetById(string categoryCode)
+        public ProductCategory GetById(int id)
         {
-            var productCategory = _context.ProductCategories.SingleOrDefault(x => x.CategoryCode == categoryCode);
+            var productCategory = _context.ProductCategories.SingleOrDefault(x => x.CategoryCode == id);
             return productCategory;
         }
 

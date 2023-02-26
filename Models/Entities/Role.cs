@@ -1,8 +1,10 @@
 ﻿namespace SMS_MVCDTO.Models.Entities
 {
-    //public class Role
-    //{
-    //    public int Id { get; set; }
-    //    public string Name { get; set; }
-    //}
+    public class Role : BaseEntity
+    {
+        public ICollection<User> Users { get; set; } = new HashSet<User>();
+        public string RoleName { get; set; }
+        public string RoleDescription { get; set; }
+
+    }
 }

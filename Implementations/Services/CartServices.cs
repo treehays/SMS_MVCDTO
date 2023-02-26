@@ -28,15 +28,15 @@ namespace SMS_MVCDTO.Implementations.Services
 
             var carts = new Cart
             {
-                ProductId = cart.ProductId,
-                CustomermId = cart.CustomerId,
-                TransactionId = (customer == null) ? Guid.NewGuid().ToString() : customer.TransactionId,
+                CustomerId = cart.CustomerId,
                 Quantity = cart.Quantity,
                 IsDeleted = false,
                 IsPaid = false,
                 Created = DateTime.Now,
-                Price = productQuantity.SellingPrice,
-                ProductName = productQuantity.Name,
+                ProductId = cart.ProductId
+                //TransactionId = (customer == null) ? Guid.NewGuid().ToString() : customer.TransactionId,
+                //Price = productQuantity.SellingPrice,
+                //ProductName = productQuantity.Name,
             };
             //will later allpw create to return bool if sucessful
             _cartRepository.Create(carts);
@@ -61,7 +61,7 @@ namespace SMS_MVCDTO.Implementations.Services
                 Data = new CartDTO
                 {
                     ProductId = item.ProductId,
-                    CustomermId = item.CustomermId,
+                    CustomerId = item.CustomerId,
                     TransactionId = item.TransactionId,
                     Quantity = item.Quantity,
                     IsPaid = item.IsPaid,
@@ -82,7 +82,7 @@ namespace SMS_MVCDTO.Implementations.Services
                 Data = new CartDTO
                 {
                     ProductId = item.ProductId,
-                    CustomermId = item.CustomermId,
+                    CustomerId = item.CustomerId,
                     TransactionId = item.TransactionId,
                     Quantity = item.Quantity,
                     IsPaid = item.IsPaid,
@@ -102,7 +102,7 @@ namespace SMS_MVCDTO.Implementations.Services
                 Data = new CartDTO
                 {
                     ProductId = cart.ProductId,
-                    CustomermId = cart.CustomermId,
+                    CustomerId = cart.CustomerId,
                     TransactionId = cart.TransactionId,
                     Quantity = cart.Quantity,
                     IsPaid = cart.IsPaid,
@@ -112,7 +112,7 @@ namespace SMS_MVCDTO.Implementations.Services
             return cartResponseModel;
         }
 
-        public IEnumerable<CartResponseModel> GetByTransactionId(string transactionId)
+        public IEnumerable<CartResponseModel> GetByTransactionId(int transactionId)
         {
             var carts = _cartRepository.GetByTransactionId(transactionId);
             var cartsResponseModel = carts.Select(item => new CartResponseModel
@@ -122,7 +122,7 @@ namespace SMS_MVCDTO.Implementations.Services
                 Data = new CartDTO
                 {
                     ProductId = item.ProductId,
-                    CustomermId = item.CustomermId,
+                    CustomerId = item.CustomerId,
                     TransactionId = item.TransactionId,
                     Quantity = item.Quantity,
                     IsPaid = item.IsPaid,
@@ -136,7 +136,7 @@ namespace SMS_MVCDTO.Implementations.Services
         /// </summary>
         /// <param name="customerId"></param>
         /// <returns>null if not fund and return list of carts</returns>
-        public IEnumerable<CartResponseModel> NotPaidByCustomerId(string customerId)
+        public IEnumerable<CartResponseModel> NotPaidByCustomerId(int customerId)
         {
             var carts = _cartRepository.NotPaidByCustomerId(customerId);
             if (carts == null)
@@ -171,20 +171,20 @@ namespace SMS_MVCDTO.Implementations.Services
                 Data = new CartDTO
                 {
                     ProductId = item.ProductId,
-                    ProductName = item.ProductName,
-                    CustomermId = item.CustomermId,
+                    //ProductName = item.ProductName,
+                    CustomerId = item.CustomerId,
                     TransactionId = item.TransactionId,
                     Quantity = item.Quantity,
                     IsPaid = item.IsPaid,
                     Id = item.Id,
-                    Total = item.Quantity * item.Price,
-                    ProductPrice = item.Price,
+                    Total = item.Quantity * item.Product.SellingPrice,
+                    ProductPrice = item.Product.SellingPrice,
                 }
             });
             return listCartsResponseModel;
         }
 
-        public double GetCartTotal(string customerId)
+        public double GetCartTotal(int customerId)
         {
             var cartTotal = _cartRepository.GetCartTotal(customerId);
             return cartTotal;
@@ -192,7 +192,7 @@ namespace SMS_MVCDTO.Implementations.Services
 
 
         //will be deleted later
-        public CartResponseModel NotPaidExist(string customerId)
+        public CartResponseModel NotPaidExist(int customerId)
         {
             var cart = _cartRepository.NotPaidExist(customerId);
             var cartResponseModel = new CartResponseModel
@@ -202,7 +202,7 @@ namespace SMS_MVCDTO.Implementations.Services
                 Data = new CartDTO
                 {
                     ProductId = cart.ProductId,
-                    CustomermId = cart.CustomermId,
+                    CustomerId = cart.CustomerId,
                     TransactionId = cart.TransactionId,
                     Quantity = cart.Quantity,
                     IsPaid = cart.IsPaid,
@@ -212,10 +212,10 @@ namespace SMS_MVCDTO.Implementations.Services
             return cartResponseModel;
         }
 
-        public string Update(string customerId)
-        {
-            throw new NotImplementedException();
-        }
+        //public string Update(int customerId)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         //public IEnumerable<UpdateCartRequestModel> Update(string customerId)
         //{

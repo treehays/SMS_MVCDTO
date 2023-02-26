@@ -8,7 +8,7 @@ namespace SMS_MVCDTO.Interfaces.Repositories
         Attendant Create(Attendant attendant);
         //User Login(User user);
         void Delete(Attendant attendant);
-        Attendant GetById(string staffId);
+        Attendant GetById(int id);
         Attendant Get(Expression<Func<Attendant, bool>> expression);
         Attendant GetByEmail(string email);
         Attendant GetByPhoneNumber(string phoneNumber);

@@ -5,13 +5,14 @@ namespace SMS_MVCDTO.Models.DTOs.ProductCategoriesDTOs
 {
     public class CreateProductCategoryRequestModel
     {
-        [Required(ErrorMessage ="Category must have a name")]
+        public int Id { get; set; }
+        [Required(ErrorMessage = "Category must have a name")]
         [DisplayName("Category Name")]
         public string Name { get; set; }
         [DisplayName("Category Name")]
-        [Compare("Name",ErrorMessage ="Confirm Category name")]
+        [Compare("Name", ErrorMessage = "Confirm Category name")]
         public string ConfirmName { get; set; }
-        [Required(ErrorMessage ="Can not be empty")]
+        [Required(ErrorMessage = "Can not be empty")]
         public string Description { get; set; }
 
     }

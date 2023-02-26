@@ -76,11 +76,11 @@ namespace SMS_MVCDTO.Controllers
             }
         }
 
-        public IActionResult Edit(string staffId)
+        public IActionResult Edit(int id)
         {
-            if (staffId != null)
+            if (id != 0)
             {
-                var attendant = _attendant.GetById(staffId);
+                var attendant = _attendant.GetById(id);
                 if (attendant != null)
                 {
                     return View(attendant);
@@ -100,11 +100,11 @@ namespace SMS_MVCDTO.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult DeletePreview(string staffId)
+        public IActionResult DeletePreview(int id)
         {
-            if (staffId != null)
+            if (id != 0)
             {
-                var attendant = _attendant.GetById(staffId);
+                var attendant = _attendant.GetById(id);
 
                 if (attendant != null)
                 {
@@ -118,22 +118,22 @@ namespace SMS_MVCDTO.Controllers
 
         //[ValidateAntiForgeryToken]
         //[HttpPost, ActionName("Delete")]
-        public IActionResult Delete(string staffId)
+        public IActionResult Delete(int id)
         {
-            if (staffId != null)
+            if (id != 0)
             {
-                _attendant.Delete(staffId);
+                _attendant.Delete(id);
                 return RedirectToAction(nameof(Index));
             }
             TempData["failed"] = "User not found.";
             return View();
         }
 
-        public IActionResult Details(string staffId)
+        public IActionResult Details(int id)
         {
-            if (staffId != null)
+            if (id != 0)
             {
-                var attendant = _attendant.GetById(staffId);
+                var attendant = _attendant.GetById(id);
 
                 if (attendant != null)
                 {
@@ -147,11 +147,11 @@ namespace SMS_MVCDTO.Controllers
         }
 
         //get  single  by stff id
-        public IActionResult GetByStaffId(string staffId)
+        public IActionResult GetByStaffId(int id)
         {
-            if (staffId != null)
+            if (id != 0)
             {
-                var user = _attendant.GetById(staffId);
+                var user = _attendant.GetById(id);
 
                 if (user != null)
                 {

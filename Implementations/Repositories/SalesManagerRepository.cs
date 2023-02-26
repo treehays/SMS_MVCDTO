@@ -27,31 +27,31 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public SalesManager GetByEmail(string email)
         {
-            var salesManager = _context.SalesManagers.FirstOrDefault(s => s.Email == email);
+            var salesManager = _context.SalesManagers.FirstOrDefault(s => s.User.Email == email);
             return salesManager;
         }
 
         public SalesManager GetById(string staffId)
         {
-            var salesManager = _context.SalesManagers.SingleOrDefault(s => s.StaffId == staffId);
+            var salesManager = _context.SalesManagers.SingleOrDefault(s => s.User.StaffId == staffId);
             return salesManager;
         }
 
         public IEnumerable<SalesManager> GetByName(string name)
         {
-            var salesManagers = _context.SalesManagers.Where(s => s.IsDeleted == false && s.IsActive == true && name.All(t => (s.LastName + s.FirstName).Contains(t)));
+            var salesManagers = _context.SalesManagers.Where(s => !s.IsDeleted && s.User.IsActive && name.All(t => (s.LastName + s.FirstName).Contains(t)));
             return salesManagers;
         }
 
         public SalesManager GetByPhoneNumber(string phoneNumber)
         {
-            var salesManager = _context.SalesManagers.SingleOrDefault(s => s.PhoneNumber == phoneNumber);
+            var salesManager = _context.SalesManagers.SingleOrDefault(s => s.User.PhoneNumber == phoneNumber);
             return salesManager;
         }
 
         public IEnumerable<SalesManager> GetSalesManagers()
         {
-            var salesManagers = _context.SalesManagers.Where(s => s.IsActive == true && s.IsDeleted == false);
+            var salesManagers = _context.SalesManagers.Where(s => s.User.IsActive && !s.IsDeleted);
             return salesManagers;
         }
 

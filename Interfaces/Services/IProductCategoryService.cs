@@ -7,8 +7,8 @@ namespace SMS_MVCDTO.Interfaces.Services
     {
         CreateProductCategoryRequestModel Create(CreateProductCategoryRequestModel productCategory);
         ProductCategoryResponseModel Update(ProductCategoryResponseModel productCategory);
-        void Delete(string categoryCode);
+        void Delete(int categoryCode);
         IEnumerable<ProductCategoryResponseModel> GetAll();
-        ProductCategoryResponseModel GetById(string categoryCode);
+        ProductCategoryResponseModel GetById(int categoryCode);
     }
 }

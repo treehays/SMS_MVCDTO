@@ -26,21 +26,20 @@ namespace SMS_MVCDTO.Implementations.Service
             {
                 StaffId = sid,
                 Password = salesManager.Password,
-                Role = UserRoleType.SalesManager,
+                RoleId = 2,
                 Created = DateTime.Now,
+                Email = salesManager.Email,
+                PhoneNumber = salesManager.PhoneNumber,
+                IsActive = true,
             };
             _userRepository.Create(user);
 
             var salesManage = new SalesManager
             {
-                StaffId = sid,
-                UserId = sid,
                 FirstName = salesManager.FirstName,
                 LastName = salesManager.LastName,
-                Email = salesManager.Email,
-                PhoneNumber = salesManager.PhoneNumber,
-                HomeAddress = salesManager.HomeAddress,
-                ResidentialAddress = salesManager.ResidentialAddress,
+                /*              HomeAddress = salesManager.HomeAddress,
+                              ResidentialAddress = salesManager.ResidentialAddress,*/
                 DateOfBirth = salesManager.DateOfBirth,
                 Gender = salesManager.Gender,
                 MaritalStatus = salesManager.MaritalStatus,
@@ -48,8 +47,6 @@ namespace SMS_MVCDTO.Implementations.Service
                 BankName = salesManager.BankName,
                 GuarantorName = salesManager.GuarantorName,
                 GuarantorPhoneNumber = salesManager.GuarantorPhoneNumber,
-                userRole = UserRoleType.SalesManager,
-                IsActive = true,
                 Created = DateTime.Now,
 
             };
@@ -81,14 +78,12 @@ namespace SMS_MVCDTO.Implementations.Service
                 Message = "Sales Manager retrieved sucessfully.",
                 Data = new SalesManagerDTOs
                 {
-                    StaffId = salesManager.StaffId,
-                    userRole = salesManager.userRole,
+                    StaffId = salesManager.User.StaffId,
+                    RoleId = salesManager.User.RoleId,
                     FirstName = salesManager.FirstName,
                     LastName = salesManager.LastName,
-                    Email = salesManager.Email,
-                    PhoneNumber = salesManager.PhoneNumber,
-                    HomeAddress = salesManager.HomeAddress,
-                    ResidentialAddress = salesManager.ResidentialAddress,
+                    Email = salesManager.User.Email,
+                    PhoneNumber = salesManager.User.PhoneNumber,
                     DateOfBirth = salesManager.DateOfBirth,
                     Gender = salesManager.Gender,
                     MaritalStatus = salesManager.MaritalStatus,
@@ -96,6 +91,8 @@ namespace SMS_MVCDTO.Implementations.Service
                     BankName = salesManager.BankName,
                     GuarantorName = salesManager.GuarantorName,
                     GuarantorPhoneNumber = salesManager.GuarantorPhoneNumber,
+                    //HomeAddress = salesManager.HomeAddress,
+                    //ResidentialAddress = salesManager.ResidentialAddress,
                 }
             };
             return salesManage;
@@ -111,12 +108,12 @@ namespace SMS_MVCDTO.Implementations.Service
                 Message = "Sales Manager retrieved sucessfully.",
                 Data = new SalesManagerDTOs
                 {
+                    StaffId = salesManager.User.StaffId,
+                    RoleId = salesManager.User.RoleId,
                     FirstName = salesManager.FirstName,
                     LastName = salesManager.LastName,
-                    Email = salesManager.Email,
-                    PhoneNumber = salesManager.PhoneNumber,
-                    HomeAddress = salesManager.HomeAddress,
-                    ResidentialAddress = salesManager.ResidentialAddress,
+                    Email = salesManager.User.Email,
+                    PhoneNumber = salesManager.User.PhoneNumber,
                     DateOfBirth = salesManager.DateOfBirth,
                     Gender = salesManager.Gender,
                     MaritalStatus = salesManager.MaritalStatus,
@@ -124,8 +121,6 @@ namespace SMS_MVCDTO.Implementations.Service
                     BankName = salesManager.BankName,
                     GuarantorName = salesManager.GuarantorName,
                     GuarantorPhoneNumber = salesManager.GuarantorPhoneNumber,
-                    StaffId = salesManager.StaffId,
-                    userRole = salesManager.userRole,
                 }
             };
             return salesManage;
@@ -144,12 +139,12 @@ namespace SMS_MVCDTO.Implementations.Service
                     Message = "Sales Manager retrieved sucessfully.",
                     Data = new SalesManagerDTOs
                     {
+                        StaffId = salesManager.User.StaffId,
+                        RoleId = salesManager.User.RoleId,
                         FirstName = salesManager.FirstName,
                         LastName = salesManager.LastName,
-                        Email = salesManager.Email,
-                        PhoneNumber = salesManager.PhoneNumber,
-                        HomeAddress = salesManager.HomeAddress,
-                        ResidentialAddress = salesManager.ResidentialAddress,
+                        Email = salesManager.User.Email,
+                        PhoneNumber = salesManager.User.PhoneNumber,
                         DateOfBirth = salesManager.DateOfBirth,
                         Gender = salesManager.Gender,
                         MaritalStatus = salesManager.MaritalStatus,
@@ -157,8 +152,6 @@ namespace SMS_MVCDTO.Implementations.Service
                         BankName = salesManager.BankName,
                         GuarantorName = salesManager.GuarantorName,
                         GuarantorPhoneNumber = salesManager.GuarantorPhoneNumber,
-                        StaffId = salesManager.StaffId,
-                        userRole = salesManager.userRole,
                     }
                 };
                 salesManagerResponseModels.Add(salesManage);
@@ -176,12 +169,12 @@ namespace SMS_MVCDTO.Implementations.Service
                 Message = "Sales Manager retrieved sucessfully.",
                 Data = new SalesManagerDTOs
                 {
+                    StaffId = salesManager.User.StaffId,
+                    RoleId = salesManager.User.RoleId,
                     FirstName = salesManager.FirstName,
                     LastName = salesManager.LastName,
-                    Email = salesManager.Email,
-                    PhoneNumber = salesManager.PhoneNumber,
-                    HomeAddress = salesManager.HomeAddress,
-                    ResidentialAddress = salesManager.ResidentialAddress,
+                    Email = salesManager.User.Email,
+                    PhoneNumber = salesManager.User.PhoneNumber,
                     DateOfBirth = salesManager.DateOfBirth,
                     Gender = salesManager.Gender,
                     MaritalStatus = salesManager.MaritalStatus,
@@ -189,8 +182,6 @@ namespace SMS_MVCDTO.Implementations.Service
                     BankName = salesManager.BankName,
                     GuarantorName = salesManager.GuarantorName,
                     GuarantorPhoneNumber = salesManager.GuarantorPhoneNumber,
-                    StaffId = salesManager.StaffId,
-                    userRole = salesManager.userRole,
                 }
             };
             return salesManage;
@@ -209,13 +200,12 @@ namespace SMS_MVCDTO.Implementations.Service
                     Message = "Sales Manager retrieved sucessfully.",
                     Data = new SalesManagerDTOs
                     {
-                        StaffId = salesManager.StaffId,
+                        StaffId = salesManager.User.StaffId,
+                        RoleId = salesManager.User.RoleId,
                         FirstName = salesManager.FirstName,
                         LastName = salesManager.LastName,
-                        Email = salesManager.Email,
-                        PhoneNumber = salesManager.PhoneNumber,
-                        HomeAddress = salesManager.HomeAddress,
-                        ResidentialAddress = salesManager.ResidentialAddress,
+                        Email = salesManager.User.Email,
+                        PhoneNumber = salesManager.User.PhoneNumber,
                         DateOfBirth = salesManager.DateOfBirth,
                         Gender = salesManager.Gender,
                         MaritalStatus = salesManager.MaritalStatus,
@@ -223,7 +213,6 @@ namespace SMS_MVCDTO.Implementations.Service
                         BankName = salesManager.BankName,
                         GuarantorName = salesManager.GuarantorName,
                         GuarantorPhoneNumber = salesManager.GuarantorPhoneNumber,
-                        userRole = salesManager.userRole,
                     }
                 };
                 salesManagerResponseModels.Add(salesManage);
@@ -238,7 +227,6 @@ namespace SMS_MVCDTO.Implementations.Service
             var salesManage = _salesManagerRepository.GetById(salesManager.Data.StaffId);
             salesManage.FirstName = salesManager.Data.FirstName ?? salesManage.FirstName;
             salesManage.LastName = salesManager.Data.LastName ?? salesManage.LastName;
-            salesManage.ResidentialAddress = salesManager.Data.ResidentialAddress ?? salesManage.ResidentialAddress;
             salesManage.MaritalStatus = salesManager.Data.MaritalStatus;
             salesManage.BankName = salesManager.Data.BankName;
             salesManage.BankAccountNumber = salesManager.Data.BankAccountNumber ?? salesManage.BankAccountNumber;

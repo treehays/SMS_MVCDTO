@@ -21,7 +21,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public bool CustomerExist(string staffId)
         {
-            var customer = _context.Customers.Any(x => x.IsActive && !x.IsDeleted && x.StaffId == staffId);
+            var customer = _context.Customers.Any(x => x.User.IsActive && !x.IsDeleted && x.User.StaffId == staffId);
             return customer;
         }
 
@@ -33,31 +33,31 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public Customer GetByEmail(string email)
         {
-            var customer = _context.Customers.FirstOrDefault(x => x.Email == email);
+            var customer = _context.Customers.FirstOrDefault(x => x.User.Email == email);
             return customer;
         }
 
-        public Customer GetById(string staffId)
+        public Customer GetById(int id)
         {
-            var customer = _context.Customers.SingleOrDefault(x => x.StaffId == staffId);
+            var customer = _context.Customers.SingleOrDefault(x => x.User.Id == id);
             return customer;
         }
 
         public IEnumerable<Customer> GetByName(string name)
         {
-            var customers = _context.Customers.Where(w => w.IsActive && !w.IsDeleted && name.All(x => (w.LastName + w.FirstName).Contains(x)));
+            var customers = _context.Customers.Where(w => w.User.IsActive && !w.IsDeleted && name.All(x => (w.LastName + w.FirstName).Contains(x)));
             return customers;
         }
 
         public Customer GetByPhoneNumber(string phoneNumber)
         {
-            var customer = _context.Customers.FirstOrDefault(x => x.PhoneNumber == phoneNumber);
+            var customer = _context.Customers.FirstOrDefault(x => x.User.PhoneNumber == phoneNumber);
             return customer;
         }
 
         public IEnumerable<Customer> GetCustomers()
         {
-            var customers = _context.Customers.Where(w => w.IsDeleted == false && w.IsActive == true);
+            var customers = _context.Customers.Where(w => w.IsDeleted == false && w.User.IsActive == true);
             return customers;
         }
 
