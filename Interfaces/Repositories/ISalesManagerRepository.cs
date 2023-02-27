@@ -7,6 +7,7 @@ namespace SMS_MVCDTO.Interfaces.Repositories
         SalesManager Create(SalesManager salesManager);
         //SalesManager Login(SalesManager salesManager);
         void Delete(SalesManager salesManager);
+        bool ExistByEmail(string email);
         SalesManager GetById(string staffId);
         SalesManager GetByEmail(string email);
         SalesManager GetByPhoneNumber(string phoneNumber);

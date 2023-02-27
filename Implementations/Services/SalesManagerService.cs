@@ -21,6 +21,7 @@ namespace SMS_MVCDTO.Implementations.Service
 
         public CreateSalesManagerRequestModel Create(CreateSalesManagerRequestModel salesManager)
         {
+
             var sid = User.GenerateRandomId("S");
             var user = new User
             {
@@ -31,6 +32,7 @@ namespace SMS_MVCDTO.Implementations.Service
                 Email = salesManager.Email,
                 PhoneNumber = salesManager.PhoneNumber,
                 IsActive = true,
+                //ProfilePicture = salesManager.
             };
             _userRepository.Create(user);
 
@@ -38,13 +40,9 @@ namespace SMS_MVCDTO.Implementations.Service
             {
                 FirstName = salesManager.FirstName,
                 LastName = salesManager.LastName,
-                /*              HomeAddress = salesManager.HomeAddress,
-                              ResidentialAddress = salesManager.ResidentialAddress,*/
                 DateOfBirth = salesManager.DateOfBirth,
                 Gender = salesManager.Gender,
                 MaritalStatus = salesManager.MaritalStatus,
-                BankAccountNumber = salesManager.BankAccountNumber,
-                BankName = salesManager.BankName,
                 GuarantorName = salesManager.GuarantorName,
                 GuarantorPhoneNumber = salesManager.GuarantorPhoneNumber,
                 Created = DateTime.Now,
@@ -79,7 +77,7 @@ namespace SMS_MVCDTO.Implementations.Service
                 Data = new SalesManagerDTOs
                 {
                     StaffId = salesManager.User.StaffId,
-                    RoleId = salesManager.User.RoleId,
+                    //RoleId = salesManager.User.RoleId,
                     FirstName = salesManager.FirstName,
                     LastName = salesManager.LastName,
                     Email = salesManager.User.Email,
@@ -87,16 +85,20 @@ namespace SMS_MVCDTO.Implementations.Service
                     DateOfBirth = salesManager.DateOfBirth,
                     Gender = salesManager.Gender,
                     MaritalStatus = salesManager.MaritalStatus,
-                    BankAccountNumber = salesManager.BankAccountNumber,
-                    BankName = salesManager.BankName,
+                    BankAccountNumber = salesManager.BankDetail.BankAccountNumber,
+                    BankName = salesManager.BankDetail.BankName,
                     GuarantorName = salesManager.GuarantorName,
                     GuarantorPhoneNumber = salesManager.GuarantorPhoneNumber,
-                    //HomeAddress = salesManager.HomeAddress,
-                    //ResidentialAddress = salesManager.ResidentialAddress,
                 }
             };
             return salesManage;
 
+        }
+
+        public bool ExistByEmail(string email)
+        {
+            var salesManager = _salesManagerRepository.ExistByEmail(email);
+            return salesManager;
         }
 
         public SalesManagerResponseModel GetById(string staffId)
@@ -109,7 +111,7 @@ namespace SMS_MVCDTO.Implementations.Service
                 Data = new SalesManagerDTOs
                 {
                     StaffId = salesManager.User.StaffId,
-                    RoleId = salesManager.User.RoleId,
+                    //RoleId = salesManager.User.RoleId,
                     FirstName = salesManager.FirstName,
                     LastName = salesManager.LastName,
                     Email = salesManager.User.Email,
@@ -117,10 +119,11 @@ namespace SMS_MVCDTO.Implementations.Service
                     DateOfBirth = salesManager.DateOfBirth,
                     Gender = salesManager.Gender,
                     MaritalStatus = salesManager.MaritalStatus,
-                    BankAccountNumber = salesManager.BankAccountNumber,
-                    BankName = salesManager.BankName,
+                    BankAccountNumber = salesManager.BankDetail.BankAccountNumber,
+                    BankName = salesManager.BankDetail.BankName,
                     GuarantorName = salesManager.GuarantorName,
                     GuarantorPhoneNumber = salesManager.GuarantorPhoneNumber,
+
                 }
             };
             return salesManage;
@@ -140,7 +143,7 @@ namespace SMS_MVCDTO.Implementations.Service
                     Data = new SalesManagerDTOs
                     {
                         StaffId = salesManager.User.StaffId,
-                        RoleId = salesManager.User.RoleId,
+                        //RoleId = salesManager.User.RoleId,
                         FirstName = salesManager.FirstName,
                         LastName = salesManager.LastName,
                         Email = salesManager.User.Email,
@@ -148,10 +151,11 @@ namespace SMS_MVCDTO.Implementations.Service
                         DateOfBirth = salesManager.DateOfBirth,
                         Gender = salesManager.Gender,
                         MaritalStatus = salesManager.MaritalStatus,
-                        BankAccountNumber = salesManager.BankAccountNumber,
-                        BankName = salesManager.BankName,
+                        BankAccountNumber = salesManager.BankDetail.BankAccountNumber,
+                        BankName = salesManager.BankDetail.BankName,
                         GuarantorName = salesManager.GuarantorName,
                         GuarantorPhoneNumber = salesManager.GuarantorPhoneNumber,
+
                     }
                 };
                 salesManagerResponseModels.Add(salesManage);
@@ -170,7 +174,7 @@ namespace SMS_MVCDTO.Implementations.Service
                 Data = new SalesManagerDTOs
                 {
                     StaffId = salesManager.User.StaffId,
-                    RoleId = salesManager.User.RoleId,
+                    //RoleId = salesManager.User.RoleId,
                     FirstName = salesManager.FirstName,
                     LastName = salesManager.LastName,
                     Email = salesManager.User.Email,
@@ -178,10 +182,11 @@ namespace SMS_MVCDTO.Implementations.Service
                     DateOfBirth = salesManager.DateOfBirth,
                     Gender = salesManager.Gender,
                     MaritalStatus = salesManager.MaritalStatus,
-                    BankAccountNumber = salesManager.BankAccountNumber,
-                    BankName = salesManager.BankName,
+                    BankAccountNumber = salesManager.BankDetail.BankAccountNumber,
+                    BankName = salesManager.BankDetail.BankName,
                     GuarantorName = salesManager.GuarantorName,
                     GuarantorPhoneNumber = salesManager.GuarantorPhoneNumber,
+
                 }
             };
             return salesManage;
@@ -201,7 +206,7 @@ namespace SMS_MVCDTO.Implementations.Service
                     Data = new SalesManagerDTOs
                     {
                         StaffId = salesManager.User.StaffId,
-                        RoleId = salesManager.User.RoleId,
+                        //RoleId = salesManager.User.RoleId,
                         FirstName = salesManager.FirstName,
                         LastName = salesManager.LastName,
                         Email = salesManager.User.Email,
@@ -209,10 +214,11 @@ namespace SMS_MVCDTO.Implementations.Service
                         DateOfBirth = salesManager.DateOfBirth,
                         Gender = salesManager.Gender,
                         MaritalStatus = salesManager.MaritalStatus,
-                        BankAccountNumber = salesManager.BankAccountNumber,
-                        BankName = salesManager.BankName,
+                        BankAccountNumber = salesManager.BankDetail.BankAccountNumber,
+                        BankName = salesManager.BankDetail.BankName,
                         GuarantorName = salesManager.GuarantorName,
                         GuarantorPhoneNumber = salesManager.GuarantorPhoneNumber,
+
                     }
                 };
                 salesManagerResponseModels.Add(salesManage);
@@ -228,8 +234,8 @@ namespace SMS_MVCDTO.Implementations.Service
             salesManage.FirstName = salesManager.Data.FirstName ?? salesManage.FirstName;
             salesManage.LastName = salesManager.Data.LastName ?? salesManage.LastName;
             salesManage.MaritalStatus = salesManager.Data.MaritalStatus;
-            salesManage.BankName = salesManager.Data.BankName;
-            salesManage.BankAccountNumber = salesManager.Data.BankAccountNumber ?? salesManage.BankAccountNumber;
+            salesManage.BankDetail.BankName = salesManager.Data.BankName;
+            salesManage.BankDetail.BankAccountNumber = salesManager.Data.BankAccountNumber ?? salesManage.BankDetail.BankAccountNumber;
             salesManage.Modified = DateTime.Now;
             _salesManagerRepository.Update(salesManage);
             return salesManager;

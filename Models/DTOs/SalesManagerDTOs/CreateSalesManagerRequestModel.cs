@@ -6,12 +6,14 @@ namespace SMS_MVCDTO.Models.DTOs.SalesManagerDTOs
 {
     public class CreateSalesManagerRequestModel
     {
-        [Required(ErrorMessage = "Name can't be empty")]
+        [Required(ErrorMessage = "First Name can't be empty")]
         [DisplayName("First Name")]
         public string FirstName { get; set; }
+
         [DisplayName("Last Name")]
-        [Required(ErrorMessage = "Name can't be empty")]
+        [Required(ErrorMessage = " Last Name can't be empty")]
         public string LastName { get; set; }
+
         [Required(ErrorMessage = "Enter Valid Email")]
         [EmailAddress]
         public string Email { get; set; }
@@ -27,10 +29,6 @@ namespace SMS_MVCDTO.Models.DTOs.SalesManagerDTOs
         public string ConfirmPassword { get; set; }
         [DisplayName("phone nymber")]
         public string PhoneNumber { get; set; }
-        [DisplayName("Home Address")]
-        public string HomeAddress { get; set; }
-        [DisplayName("Residential Address")]
-        public string ResidentialAddress { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
@@ -44,18 +42,18 @@ namespace SMS_MVCDTO.Models.DTOs.SalesManagerDTOs
         [DisplayName("Bank Name")]
         public string BankName { get; set; }
         [DisplayName("Guarantor Name")]
+        public string AccountType { get; set; }
         public string GuarantorName { get; set; }
         [DisplayName("Guarantor Phone Number")]
         public string GuarantorPhoneNumber { get; set; }
-        //[DisplayName("")]
-        //public UserRoleType userRole { get; set; }
+        public IFormFile Document { get; set; }
+        public string StreetName { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string PostalCode { get; set; }
+        public string Country { get; set; }
+
     }
 
-    //public class LoginRequestModel
-    //{
-    //    [Required]
-    //    public string StaffId { get; set; }
-    //    [Required]
-    //    public string Password { get; set; }
-    //}
+
 }

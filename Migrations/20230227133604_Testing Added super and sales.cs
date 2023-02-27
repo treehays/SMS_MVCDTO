@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SMSMVCDTO.Migrations
 {
     /// <inheritdoc />
-    public partial class firstmigration : Migration
+    public partial class TestingAddedsuperandsales : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -145,67 +145,6 @@ namespace SMSMVCDTO.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Address",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    AttendantId = table.Column<int>(type: "int", nullable: false),
-                    StreetName = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    City = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    State = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    PostalCode = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Country = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    Created = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    Modified = table.Column<DateTime>(type: "datetime(6)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Address", x => x.Id);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "Customers",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    AddressId = table.Column<int>(type: "int", nullable: true),
-                    FirstName = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    LastName = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Gender = table.Column<int>(type: "int", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    Created = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    Modified = table.Column<DateTime>(type: "datetime(6)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Customers", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Customers_Address_AddressId",
-                        column: x => x.AddressId,
-                        principalTable: "Address",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Customers_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "SalesManagers",
                 columns: table => new
                 {
@@ -216,19 +155,14 @@ namespace SMSMVCDTO.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     LastName = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CVPath = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    AddressId = table.Column<int>(type: "int", nullable: true),
                     DateOfBirth = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     Gender = table.Column<int>(type: "int", nullable: false),
                     MaritalStatus = table.Column<int>(type: "int", nullable: false),
-                    BankAccountNumber = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    BankName = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
                     GuarantorName = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     GuarantorPhoneNumber = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CVPath = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     Created = table.Column<DateTime>(type: "datetime(6)", nullable: false),
@@ -237,11 +171,6 @@ namespace SMSMVCDTO.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SalesManagers", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_SalesManagers_Address_AddressId",
-                        column: x => x.AddressId,
-                        principalTable: "Address",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_SalesManagers_Users_UserId",
                         column: x => x.UserId,
@@ -258,7 +187,6 @@ namespace SMSMVCDTO.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    AddressId = table.Column<int>(type: "int", nullable: true),
                     FirstName = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     LastName = table.Column<string>(type: "longtext", nullable: true)
@@ -273,11 +201,6 @@ namespace SMSMVCDTO.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SuperAdmins", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_SuperAdmins_Address_AddressId",
-                        column: x => x.AddressId,
-                        principalTable: "Address",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_SuperAdmins_Users_UserId",
                         column: x => x.UserId,
@@ -331,6 +254,130 @@ namespace SMSMVCDTO.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "Addresses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    AttendantId = table.Column<int>(type: "int", nullable: false),
+                    SuperAdminId = table.Column<int>(type: "int", nullable: false),
+                    SalesManagerId = table.Column<int>(type: "int", nullable: false),
+                    StreetName = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    City = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    State = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    PostalCode = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Country = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Created = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    Modified = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Addresses", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Addresses_Attendants_AttendantId",
+                        column: x => x.AttendantId,
+                        principalTable: "Attendants",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Addresses_SalesManagers_SalesManagerId",
+                        column: x => x.SalesManagerId,
+                        principalTable: "SalesManagers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Addresses_SuperAdmins_SuperAdminId",
+                        column: x => x.SuperAdminId,
+                        principalTable: "SuperAdmins",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "BankDetails",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    AttendantId = table.Column<int>(type: "int", nullable: false),
+                    SalesManagerId = table.Column<int>(type: "int", nullable: false),
+                    SuperAdminId = table.Column<int>(type: "int", nullable: false),
+                    BankAccountNumber = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    BankName = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    AccountType = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Created = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    Modified = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BankDetails", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_BankDetails_Attendants_AttendantId",
+                        column: x => x.AttendantId,
+                        principalTable: "Attendants",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_BankDetails_SalesManagers_SalesManagerId",
+                        column: x => x.SalesManagerId,
+                        principalTable: "SalesManagers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_BankDetails_SuperAdmins_SuperAdminId",
+                        column: x => x.SuperAdminId,
+                        principalTable: "SuperAdmins",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Customers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    AddressId = table.Column<int>(type: "int", nullable: true),
+                    FirstName = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    LastName = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Gender = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Created = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    Modified = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Customers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Customers_Addresses_AddressId",
+                        column: x => x.AddressId,
+                        principalTable: "Addresses",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Customers_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "AttendantCustomer",
                 columns: table => new
                 {
@@ -355,49 +402,6 @@ namespace SMSMVCDTO.Migrations
                         name: "FK_AttendantCustomer_Customers_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "Customers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "BankDetail",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    AttendantId = table.Column<int>(type: "int", nullable: false),
-                    SalesManagerId = table.Column<int>(type: "int", nullable: false),
-                    SuperAdminId = table.Column<int>(type: "int", nullable: false),
-                    BankAccountNumber = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    BankName = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    AccountType = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    Created = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    Modified = table.Column<DateTime>(type: "datetime(6)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BankDetail", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_BankDetail_Attendants_AttendantId",
-                        column: x => x.AttendantId,
-                        principalTable: "Attendants",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_BankDetail_SalesManagers_SalesManagerId",
-                        column: x => x.SalesManagerId,
-                        principalTable: "SalesManagers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_BankDetail_SuperAdmins_SuperAdminId",
-                        column: x => x.SuperAdminId,
-                        principalTable: "SuperAdmins",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -477,9 +481,21 @@ namespace SMSMVCDTO.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Address_AttendantId",
-                table: "Address",
+                name: "IX_Addresses_AttendantId",
+                table: "Addresses",
                 column: "AttendantId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Addresses_SalesManagerId",
+                table: "Addresses",
+                column: "SalesManagerId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Addresses_SuperAdminId",
+                table: "Addresses",
+                column: "SuperAdminId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -504,20 +520,20 @@ namespace SMSMVCDTO.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_BankDetail_AttendantId",
-                table: "BankDetail",
+                name: "IX_BankDetails_AttendantId",
+                table: "BankDetails",
                 column: "AttendantId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_BankDetail_SalesManagerId",
-                table: "BankDetail",
+                name: "IX_BankDetails_SalesManagerId",
+                table: "BankDetails",
                 column: "SalesManagerId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_BankDetail_SuperAdminId",
-                table: "BankDetail",
+                name: "IX_BankDetails_SuperAdminId",
+                table: "BankDetails",
                 column: "SuperAdminId",
                 unique: true);
 
@@ -554,20 +570,10 @@ namespace SMSMVCDTO.Migrations
                 column: "ProductCategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SalesManagers_AddressId",
-                table: "SalesManagers",
-                column: "AddressId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_SalesManagers_UserId",
                 table: "SalesManagers",
                 column: "UserId",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SuperAdmins_AddressId",
-                table: "SuperAdmins",
-                column: "AddressId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SuperAdmins_UserId",
@@ -589,37 +595,22 @@ namespace SMSMVCDTO.Migrations
                 name: "IX_Users_RoleId",
                 table: "Users",
                 column: "RoleId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Address_Attendants_AttendantId",
-                table: "Address",
-                column: "AttendantId",
-                principalTable: "Attendants",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Address_Attendants_AttendantId",
-                table: "Address");
-
             migrationBuilder.DropTable(
                 name: "AttendantCustomer");
 
             migrationBuilder.DropTable(
-                name: "BankDetail");
+                name: "BankDetails");
 
             migrationBuilder.DropTable(
                 name: "Carts");
 
             migrationBuilder.DropTable(
                 name: "Wallets");
-
-            migrationBuilder.DropTable(
-                name: "SuperAdmins");
 
             migrationBuilder.DropTable(
                 name: "Products");
@@ -634,13 +625,16 @@ namespace SMSMVCDTO.Migrations
                 name: "Customers");
 
             migrationBuilder.DropTable(
+                name: "Addresses");
+
+            migrationBuilder.DropTable(
                 name: "Attendants");
 
             migrationBuilder.DropTable(
-                name: "SalesManagers");
+                name: "SuperAdmins");
 
             migrationBuilder.DropTable(
-                name: "Address");
+                name: "SalesManagers");
 
             migrationBuilder.DropTable(
                 name: "Users");

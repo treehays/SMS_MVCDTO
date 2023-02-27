@@ -4,6 +4,10 @@
     {
         public int AttendantId { get; set; }
         public Attendant Attendant { get; set; }
+        public int SuperAdminId { get; set; }
+        public SuperAdmin SuperAdmin { get; set; }
+        public SalesManager SalesManager { get; set; }
+        public int SalesManagerId { get; set; }
         public string StreetName { get; set; }
         public string City { get; set; }
         public string State { get; set; }

@@ -2,7 +2,7 @@
 using SMS_MVCDTO.Models.DTOs.SalesManagerDTOs;
 using SMS_MVCDTO.Models.DTOs.UserDTOs;
 
-namespace SMS_MVCDTO.Interfaces.Services  
+namespace SMS_MVCDTO.Interfaces.Services
 {
     public interface ISalesManagerService
     {
@@ -11,10 +11,12 @@ namespace SMS_MVCDTO.Interfaces.Services
         void Delete(string staffId);
         SalesManagerResponseModel GetById(string staffId);
         SalesManagerResponseModel GetByEmail(string email);
+        bool ExistByEmail(string email);
+
         SalesManagerResponseModel GetByPhoneNumber(string phoneNumber);
         IEnumerable<SalesManagerResponseModel> GetByName(string name);
         IEnumerable<SalesManagerResponseModel> GetSalesManagers();
-        SalesManagerResponseModel Update (SalesManagerResponseModel salesManager);
+        SalesManagerResponseModel Update(SalesManagerResponseModel salesManager);
         UpdateUserPasswordRequestModel UpdatePassword(UpdateUserPasswordRequestModel salesManager);
         //SalesManager UpdateRole(SalesManager salesManager);
         //bool IsActive(SalesManager salesManager);

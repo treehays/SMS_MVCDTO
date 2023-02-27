@@ -31,6 +31,12 @@ namespace SMS_MVCDTO.Implementations.Repositories
             return salesManager;
         }
 
+        public bool ExistByEmail(string email)
+        {
+            var salesManager = _context.SalesManagers.Any(s => s.User.Email == email);
+            return salesManager;
+        }
+
         public SalesManager GetById(string staffId)
         {
             var salesManager = _context.SalesManagers.SingleOrDefault(s => s.User.StaffId == staffId);

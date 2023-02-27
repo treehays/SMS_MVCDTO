@@ -11,8 +11,8 @@ using SMS_MVCDTO.Context;
 namespace SMSMVCDTO.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20230226020658_firstmigration")]
-    partial class firstmigration
+    [Migration("20230227133604_Testing Added super and sales")]
+    partial class TestingAddedsuperandsales
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,18 +49,30 @@ namespace SMSMVCDTO.Migrations
                     b.Property<string>("PostalCode")
                         .HasColumnType("longtext");
 
+                    b.Property<int>("SalesManagerId")
+                        .HasColumnType("int");
+
                     b.Property<string>("State")
                         .HasColumnType("longtext");
 
                     b.Property<string>("StreetName")
                         .HasColumnType("longtext");
 
+                    b.Property<int>("SuperAdminId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AttendantId")
                         .IsUnique();
 
-                    b.ToTable("Address");
+                    b.HasIndex("SalesManagerId")
+                        .IsUnique();
+
+                    b.HasIndex("SuperAdminId")
+                        .IsUnique();
+
+                    b.ToTable("Addresses");
                 });
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Attendant", b =>
@@ -192,7 +204,7 @@ namespace SMSMVCDTO.Migrations
                     b.HasIndex("SuperAdminId")
                         .IsUnique();
 
-                    b.ToTable("BankDetail");
+                    b.ToTable("BankDetails");
                 });
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Cart", b =>
@@ -390,15 +402,6 @@ namespace SMSMVCDTO.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("AddressId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("BankAccountNumber")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("BankName")
-                        .HasColumnType("longtext");
-
                     b.Property<string>("CVPath")
                         .HasColumnType("longtext");
 
@@ -437,8 +440,6 @@ namespace SMSMVCDTO.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AddressId");
-
                     b.HasIndex("UserId")
                         .IsUnique();
 
@@ -449,9 +450,6 @@ namespace SMSMVCDTO.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int?>("AddressId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Created")
@@ -482,8 +480,6 @@ namespace SMSMVCDTO.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AddressId");
 
                     b.HasIndex("UserId")
                         .IsUnique();
@@ -610,7 +606,23 @@ namespace SMSMVCDTO.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("SMS_MVCDTO.Models.Entities.SalesManager", "SalesManager")
+                        .WithOne("Address")
+                        .HasForeignKey("SMS_MVCDTO.Models.Entities.Address", "SalesManagerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SMS_MVCDTO.Models.Entities.SuperAdmin", "SuperAdmin")
+                        .WithOne("Address")
+                        .HasForeignKey("SMS_MVCDTO.Models.Entities.Address", "SuperAdminId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Attendant");
+
+                    b.Navigation("SalesManager");
+
+                    b.Navigation("SuperAdmin");
                 });
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Attendant", b =>
@@ -735,34 +747,22 @@ namespace SMSMVCDTO.Migrations
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.SalesManager", b =>
                 {
-                    b.HasOne("SMS_MVCDTO.Models.Entities.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId");
-
                     b.HasOne("SMS_MVCDTO.Models.Entities.User", "User")
                         .WithOne("SalesManager")
                         .HasForeignKey("SMS_MVCDTO.Models.Entities.SalesManager", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Address");
-
                     b.Navigation("User");
                 });
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.SuperAdmin", b =>
                 {
-                    b.HasOne("SMS_MVCDTO.Models.Entities.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId");
-
                     b.HasOne("SMS_MVCDTO.Models.Entities.User", "User")
                         .WithOne("SuperAdmin")
                         .HasForeignKey("SMS_MVCDTO.Models.Entities.SuperAdmin", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Address");
 
                     b.Navigation("User");
                 });
@@ -834,6 +834,8 @@ namespace SMSMVCDTO.Migrations
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.SalesManager", b =>
                 {
+                    b.Navigation("Address");
+
                     b.Navigation("Attendants");
 
                     b.Navigation("BankDetail");
@@ -841,6 +843,8 @@ namespace SMSMVCDTO.Migrations
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.SuperAdmin", b =>
                 {
+                    b.Navigation("Address");
+
                     b.Navigation("BankDetail");
                 });
 

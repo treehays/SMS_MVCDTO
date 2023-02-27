@@ -28,6 +28,10 @@ namespace SMS_MVCDTO.Controllers
             return View(saleManager);
         }
 
+        /// <summary>
+        /// Created sales manager from new relationship
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Create()
         {
             return View();
@@ -37,23 +41,25 @@ namespace SMS_MVCDTO.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(CreateSalesManagerRequestModel createSaleManager)
         {
-            if (createSaleManager != null)
+            if (createSaleManager == null)
             {
-                var existByEmail = _saleManager.GetByEmail(createSaleManager.Email);
-                if (existByEmail == null)
-                {
-                    _saleManager.Create(createSaleManager);
-                    TempData["success"] = "Registration Successful.    ";
-                    return RedirectToAction("Index");
-                }
+
+                TempData["failed"] = "Incomplete details, Registration Failed";
+                return View();
+
+            }
+
+            var existByEmail = _saleManager.ExistByEmail(createSaleManager.Email);
+            if (existByEmail)
+            {
                 TempData["failed"] = "Email already Exist.";
                 return View();
             }
-            else
-            {
-                TempData["failed"] = "Incomplete details, Registration Failed";
-                return View();
-            }
+            _saleManager.Create(createSaleManager);
+            TempData["success"] = "Registration Successful.    ";
+            return RedirectToAction("Index");
+
+
         }
 
         public IActionResult Edit(string staffId)

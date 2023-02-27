@@ -11,29 +11,37 @@ namespace SMS_MVCDTO.Implementations.Service
     {
         private readonly ISuperAdminRepository _superAdminRepository;
         private readonly IUserRepository _userRepository;
-        public SuperAdminService(ISuperAdminRepository superAdmin, IUserRepository user)
+        //private readonly IAddressRepository _addressRepository;
+        //private readonly IBankDetailRepository _bankDetailRepository;
+
+        public SuperAdminService(ISuperAdminRepository superAdmin, IUserRepository user/*, IBankDetailRepository bankDetailRepository, IAddressRepository addressRepository*/)
         {
             _superAdminRepository = superAdmin;
             _userRepository = user;
+            //_addressRepository = addressRepository;
+            //_bankDetailRepository = bankDetailRepository;
         }
 
         public CreateSuperAdminRequestModel Create(CreateSuperAdminRequestModel superAdmin)
         {
+
             var sid = User.GenerateRandomId("S");
             var user = new User
             {
                 StaffId = sid,
                 Password = superAdmin.Password,
-                Created = DateTime.Now,
                 RoleId = 1,
                 Email = superAdmin.Email,
                 PhoneNumber = superAdmin.PhoneNumber,
                 ProfilePicture = superAdmin.ProfilePicture,
                 IsActive = true,
+                Created = DateTime.Now,
             };
             _userRepository.Create(user);
+
             var superAdmi = new SuperAdmin
             {
+                UserId = user.Id,
                 FirstName = superAdmin.FirstName,
                 LastName = superAdmin.LastName,
                 DateOfBirth = superAdmin.DateOfBirth,
@@ -42,6 +50,25 @@ namespace SMS_MVCDTO.Implementations.Service
                 Created = DateTime.Now,
             };
             _superAdminRepository.Create(superAdmi);
+
+            var address = new Address
+            {
+                SuperAdminId = user.Id,
+                StreetName = superAdmin.StreetName,
+                City = superAdmin.City,
+                PostalCode = superAdmin.PostalCode,
+                State = superAdmin.State,
+                Country = superAdmin.Country,
+            };
+
+            var bankDetails = new BankDetail
+            {
+                SuperAdminId = user.Id,
+                BankAccountNumber = superAdmin.BankAccountNumber,
+                BankName = superAdmin.BankName,
+                //AccountType = superAdmin.
+            };
+
             return superAdmin;
         }
 

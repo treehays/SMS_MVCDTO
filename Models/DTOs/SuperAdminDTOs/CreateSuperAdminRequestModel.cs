@@ -45,6 +45,11 @@ namespace SMS_MVCDTO.Models.DTOs.SuperAdminDTOs
         /*
          public UserRoleType userRole { get; set; }*/
         public byte[] ProfilePicture { get; set; }
+        public string StreetName { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string PostalCode { get; set; }
+        public string Country { get; set; }
 
     }
 
