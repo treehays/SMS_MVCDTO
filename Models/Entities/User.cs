@@ -11,6 +11,8 @@ namespace SMS_MVCDTO.Models.Entities
         public SalesManager SalesManager { get; set; }
         public Attendant Attendant { get; set; }
         public Customer Customer { get; set; }
+public Address Address { get; set; }
+
 
         public string Password { get; set; }
         public byte[] ProfilePicture { get; set; }
