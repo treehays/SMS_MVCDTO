@@ -11,7 +11,7 @@ namespace SMS_MVCDTO.Models.Entities
         public ICollection<Cart> Carts { get; set; } = new HashSet<Cart>();
         public User User { get; set; }
         public int UserId { get; set; }
-        public Address Address { get; set; }
+        //public Address Address { get; set; }
 
 
         public string FirstName { get; set; }
