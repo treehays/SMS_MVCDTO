@@ -38,6 +38,11 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IWalletRepository, WalletRepository>();
 builder.Services.AddScoped<IWalletService, WalletService>();
+builder.Services.AddScoped<IBankDetailRepository, BankDetailRepository>();
+//builder.Services.AddScoped<IBankDetailService, BankDetailService>();
+builder.Services.AddScoped<IAddressRepository, AddressRepository>();
+//builder.Services.AddScoped<IAddressService, AddressService>();  
+
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(config =>

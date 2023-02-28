@@ -18,8 +18,8 @@ namespace SMS_MVCDTO.Context
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Cart> Carts { get; set; }
+        public DbSet<Wallet> Wallets { get; set; }
         public DbSet<BankDetail> BankDetails { get; set; }
         public DbSet<Address> Addresses { get; set; }
-        public DbSet<Wallet> Wallets { get; set; }
     }
 }
