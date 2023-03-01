@@ -15,9 +15,9 @@ namespace SMS_MVCDTO.Models.DTOs.CustomerDTOs
         public string Password { get; set; }
         [Required]
         public string PhoneNumber { get; set; }
-        public string Address { get; set; }
-        public bool IsActive { get; set; }
-        public bool IsDelete { get; set; }
+        //public string Address { get; set; }
+        //public bool IsActive { get; set; }
+        //public bool IsDelete { get; set; }
         public DateTime DateOfBirth { get; set; }
         public GenderType Gender { get; set; }
         public MaritalStatusType MaritalStatus { get; set; }

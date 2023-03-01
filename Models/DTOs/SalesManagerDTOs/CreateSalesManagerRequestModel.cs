@@ -53,6 +53,8 @@ namespace SMS_MVCDTO.Models.DTOs.SalesManagerDTOs
 		public string PostalCode { get; set; }
 		public string Country { get; set; }
 		public byte[]? ProfilePicture { get; set; }
+		public string CVPath { get; set; }
+
 	}
 
 

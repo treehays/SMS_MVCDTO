@@ -11,8 +11,8 @@ namespace SMS_MVCDTO.Models.DTOs.SuperAdminDTOs
         public string Email { get; set; }
         public string Password { get; set; }
         public string PhoneNumber { get; set; }
-        public string HomeAddress { get; set; }
-        public string ResidentialAddress { get; set; }
+        //public string HomeAddress { get; set; }
+        //public string ResidentialAddress { get; set; }
         public DateTime DateOfBirth { get; set; }
         public GenderType Gender { get; set; }
         public MaritalStatusType MaritalStatus { get; set; }

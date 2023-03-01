@@ -19,9 +19,9 @@ namespace SMS_MVCDTO.Models.DTOs.AttendantDTOs
         public string Email { get; set; }
         public string Password { get; set; }
         public string PhoneNumber { get; set; }
-        public string HomeAddress { get; set; }
-        [DisplayName("Address")]
-        public string ResidentialAddress { get; set; }
+        //public string HomeAddress { get; set; }
+        //[DisplayName("Address")]
+        //public string ResidentialAddress { get; set; }
         public DateTime DateOfBirth { get; set; }
         [DisplayName("Status")]
         public MaritalStatusType MaritalStatus { get; set; }
