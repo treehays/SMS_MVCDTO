@@ -12,8 +12,8 @@
 	<div class="row">
 		<div class="col-md-4">
 			<form asp-action="Create">
-				
-				<div class="form-group">
+
+				<div class="form-group" method="post" enctype="multipart/form-data"	>
 					<label asp-for="FirstName" class="control-label"></label>
 					<input asp-for="FirstName" class="form-control" />
 					<span asp-validation-for="FirstName" class="text-danger"></span>
@@ -110,6 +110,7 @@
 
 				<div class="form-group">
 					<label asp-for="ProfilePicture" style="width: 100%;"></label>
+
 
 					<input asp-for="ProfilePicture" type="file" accept=".png,.jpg,.jpeg,.gif,.tif" class="form-control" style="border:0px!important;padding: 0px;padding-top: 10px;padding-bottom: 30px;" onchange="document.getElementById('profilePicture').src = window.URL.createObjectURL(this.files[0])" />
 					<span asp-validation-for="ProfilePicture" class="text-danger"></span>

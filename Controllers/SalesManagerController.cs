@@ -39,7 +39,7 @@ namespace SMS_MVCDTO.Controllers
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public IActionResult Create(CreateSalesManagerRequestModel createSaleManager)
+		public async Task<IActionResult>(CreateSalesManagerRequestModel createSaleManager)
 		{
 			if (createSaleManager == null)
 			{
@@ -55,21 +55,31 @@ namespace SMS_MVCDTO.Controllers
 				TempData["failed"] = "Email already Exist.";
 				return View();
 			}
-
+			//adding profile picture
 			if (Request.Form.Files.Count > 0)
 			{
-				var file = Request.Form.Files.FirstOrDefault();
+				IFormFile file = Request.Form.Files.FirstOrDefault();
 				using (var dataStream = new MemoryStream())
 				{
-					file.CopyTo(dataStream);
+					await file.CopyToAsync(dataStream);
 					createSaleManager.ProfilePicture = dataStream.ToArray();
-
 				}
 			}
 			else
 			{
 
 			}
+			//}
+
+			//	if (Request.Form.Files.Count > 0)
+			//{
+			//	var file = Request.Form.Files.FirstOrDefault();
+			//	using (var dataStream = new MemoryStream())
+			//	{
+			//		file.CopyTo(dataStream);
+			//		createSaleManager.ProfilePicture = dataStream.ToArray();
+
+			//	}
 			_saleManager.Create(createSaleManager);
 			TempData["success"] = "Registration Successful.    ";
 			return RedirectToAction("Index");
