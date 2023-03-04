@@ -29,6 +29,8 @@ namespace SMS_MVCDTO.Implementations.Service
             var user = new User
             {
                 StaffId = sid,
+                FirstName = attendant.FirstName,
+                LastName = attendant.LastName,
                 Password = attendant.Password,
                 RoleId = 3,
                 Created = DateTime.Now,
@@ -45,8 +47,6 @@ namespace SMS_MVCDTO.Implementations.Service
 
             var attend = new Attendant
             {
-                FirstName = attendant.FirstName,
-                LastName = attendant.LastName,
                 DateOfBirth = attendant.DateOfBirth,
                 Gender = attendant.Gender,
                 GuarantorName = attendant.GuarantorName,
@@ -109,9 +109,9 @@ namespace SMS_MVCDTO.Implementations.Service
                     GuarantorName = attendant.GuarantorName,
                     DateOfBirth = attendant.DateOfBirth,
                     Email = attendant.User.Email,
-                    FirstName = attendant.FirstName,
+                    FirstName = attendant.User.FirstName,
                     Gender = attendant.Gender,
-                    LastName = attendant.LastName,
+                    LastName = attendant.User.LastName,
                     GuarantorPhoneNumber = attendant.GuarantorPhoneNumber,
                     MaritalStatus = attendant.MaritalStatus,
                     PhoneNumber = attendant.User.PhoneNumber,
@@ -141,9 +141,9 @@ namespace SMS_MVCDTO.Implementations.Service
                         GuarantorName = attendant.GuarantorName,
                         DateOfBirth = attendant.DateOfBirth,
                         Email = attendant.User.Email,
-                        FirstName = attendant.FirstName,
+                        FirstName = attendant.User.FirstName,
                         Gender = attendant.Gender,
-                        LastName = attendant.LastName,
+                        LastName = attendant.User.LastName,
                         GuarantorPhoneNumber = attendant.GuarantorPhoneNumber,
                         MaritalStatus = attendant.MaritalStatus,
                         PhoneNumber = attendant.User.PhoneNumber,
@@ -175,9 +175,9 @@ namespace SMS_MVCDTO.Implementations.Service
                         GuarantorName = attendant.GuarantorName,
                         DateOfBirth = attendant.DateOfBirth,
                         Email = attendant.User.Email,
-                        FirstName = attendant.FirstName,
+                        FirstName = attendant.User.FirstName,
                         Gender = attendant.Gender,
-                        LastName = attendant.LastName,
+                        LastName = attendant.User.LastName,
                         GuarantorPhoneNumber = attendant.GuarantorPhoneNumber,
                         MaritalStatus = attendant.MaritalStatus,
                         PhoneNumber = attendant.User.PhoneNumber,
@@ -208,9 +208,9 @@ namespace SMS_MVCDTO.Implementations.Service
                         GuarantorName = attendant.GuarantorName,
                         DateOfBirth = attendant.DateOfBirth,
                         Email = attendant.User.Email,
-                        FirstName = attendant.FirstName,
+                        FirstName = attendant.User.FirstName,
                         Gender = attendant.Gender,
-                        LastName = attendant.LastName,
+                        LastName = attendant.User.LastName,
                         GuarantorPhoneNumber = attendant.GuarantorPhoneNumber,
                         MaritalStatus = attendant.MaritalStatus,
                         PhoneNumber = attendant.User.PhoneNumber,
@@ -243,9 +243,9 @@ namespace SMS_MVCDTO.Implementations.Service
                     GuarantorName = attendant.GuarantorName,
                     DateOfBirth = attendant.DateOfBirth,
                     Email = attendant.User.Email,
-                    FirstName = attendant.FirstName,
+                    FirstName = attendant.User.FirstName,
                     Gender = attendant.Gender,
-                    LastName = attendant.LastName,
+                    LastName = attendant.User.LastName,
                     GuarantorPhoneNumber = attendant.GuarantorPhoneNumber,
                     MaritalStatus = attendant.MaritalStatus,
                     PhoneNumber = attendant.User.PhoneNumber,
@@ -272,9 +272,9 @@ namespace SMS_MVCDTO.Implementations.Service
                     GuarantorName = attendant.GuarantorName,
                     DateOfBirth = attendant.DateOfBirth,
                     Email = attendant.User.Email,
-                    FirstName = attendant.FirstName,
+                    FirstName = attendant.User.FirstName,
                     Gender = attendant.Gender,
-                    LastName = attendant.LastName,
+                    LastName = attendant.User.LastName,
                     GuarantorPhoneNumber = attendant.GuarantorPhoneNumber,
                     MaritalStatus = attendant.MaritalStatus,
                     PhoneNumber = attendant.User.PhoneNumber,
@@ -300,8 +300,8 @@ namespace SMS_MVCDTO.Implementations.Service
             }
 
             user.StaffId = attendant.Data.StaffId ?? user.StaffId;
-            user.Attendant.FirstName = attendant.Data.FirstName ?? user.Attendant.FirstName;
-            user.Attendant.LastName = attendant.Data.LastName ?? user.Attendant.LastName;
+            user.Attendant.User.FirstName = attendant.Data.FirstName ?? user.Attendant.User.FirstName;
+            user.Attendant.User.LastName = attendant.Data.LastName ?? user.Attendant.User.LastName;
 
 
             var attendan = _attendantRepository.GetById(attendant.Data.Id);
@@ -310,8 +310,8 @@ namespace SMS_MVCDTO.Implementations.Service
                 return null;
             }
 
-            attendan.FirstName = attendant.Data.FirstName ?? attendan.FirstName;
-            attendan.LastName = attendant.Data.LastName ?? attendan.LastName;
+            attendan.User.FirstName = attendant.Data.FirstName ?? attendan.User.FirstName;
+            attendan.User.LastName = attendant.Data.LastName ?? attendan.User.LastName;
             //attendan.User.Address.StreetName = attendant.Data.ResidentialAddress ?? attendan.User.Address.StreetName;
             attendan.MaritalStatus = attendant.Data.MaritalStatus;
             attendan.User.BankDetail.BankName = attendant.Data.BankName ?? attendan.User.BankDetail.BankName;

@@ -72,8 +72,9 @@ namespace SMS_MVCDTO.Controllers
                         TempData["success"] = "Account created succesfully.";
                         return RedirectToAction(nameof(Index), "Home");
                     }
-                    TempData["failed"] = "Kindly upload a picture.";
-                    return View();
+                    _superAdmin.Create(createSuperAdmin);
+                    TempData["success"] = "Account created succesfully.";
+                    return RedirectToAction(nameof(Index), "Home");
 
                 }
                 TempData["failed"] = "Email already Exist.";
@@ -92,13 +93,13 @@ namespace SMS_MVCDTO.Controllers
             var superAdmin = _superAdmin.GetById(staffId);
             if (superAdmin == null)
             {
-                return NotFound();
+                return View();
             }
             return View(superAdmin);
         }
 
 
-        [Authorize(Roles = "SuperAdmin")]
+        //[Authorize(Roles = "SuperAdmin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(SuperAdminResponseModel updateSuperAdmin)
@@ -145,10 +146,10 @@ namespace SMS_MVCDTO.Controllers
                 {
                     return View(superAdmin);
                 }
-                return NotFound();
+                return View();
             }
 
-            return NotFound();
+            return View();
         }
 
         //[ValidateAntiForgeryToken]
@@ -160,6 +161,7 @@ namespace SMS_MVCDTO.Controllers
             if (staffId != null)
             {
                 _superAdmin.Delete(staffId);
+                TempData["failed"] = "Deleted Successfully";
                 return RedirectToAction(nameof(Index));
             }
             return NotFound();
@@ -177,10 +179,10 @@ namespace SMS_MVCDTO.Controllers
                 {
                     return View(superAdmin);
                 }
-                return NotFound();
+                return View();
             }
 
-            return NotFound();
+            return View();
         }
     }
 }

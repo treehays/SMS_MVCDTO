@@ -6,21 +6,24 @@ namespace SMS_MVCDTO.Models.Entities
     {
 
         public Role Role { get; set; }
-        public int RoleId { get; set; }
         public SuperAdmin SuperAdmin { get; set; }
         public SalesManager SalesManager { get; set; }
         public Attendant Attendant { get; set; }
         public Customer Customer { get; set; }
         public Address Address { get; set; }
         public BankDetail BankDetail { get; set; }
+        public int RoleId { get; set; }
 
 
         public string Password { get; set; }
         public string StaffId { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public bool IsActive { get; set; }
         public byte[] ProfilePicture { get; set; }
+
 
 
         public static string GenerateRandomId(string secondLetter)

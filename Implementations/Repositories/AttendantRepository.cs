@@ -60,7 +60,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
         public IEnumerable<Attendant> GetByName(string name)
         {
 
-            var attendants = _context.Attendants.AsEnumerable().Where(w => w.User.IsActive && !w.IsDeleted && name.Any(x => (w.FirstName + w.LastName).ToLower().Contains(x.ToString().ToLower())));
+            var attendants = _context.Attendants.AsEnumerable().Where(w => w.User.IsActive && !w.IsDeleted && name.Any(x => (w.User.FirstName + w.User.LastName).ToLower().Contains(x.ToString().ToLower())));
             return attendants;
         }
 

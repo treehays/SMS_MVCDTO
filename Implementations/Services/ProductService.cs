@@ -37,6 +37,8 @@ namespace SMS_MVCDTO.Implementations.Services
         }
         public int ReorderLevel { get; set; }
 
+
+
         public void Delete(int id)
         {
             var product = _productRepository.GetById(id);
@@ -124,7 +126,36 @@ namespace SMS_MVCDTO.Implementations.Services
             };
             return produc;
         }
+        
 
+        public ProductResponseModel GetByBarCode(string barCode)
+        {
+            var product = _productRepository.GetByBarCode(barCode);
+            if (product == null)
+            {
+                return null;
+            }
+            //string categoryName = null;
+            //if (category == null) { categoryName = category.Name; }
+            //var category = _productCategoryRepository.GetById(product.ProductCategoryId);
+            var produc = new ProductResponseModel
+            {
+                Message = "product retrieved successfully.",
+                Status = true,
+                Data = new ProductDTOs
+                {
+                    Barcode = product.Barcode,
+                    Name = product.Name,
+                    Description = product.Description,
+                    SellingPrice = product.SellingPrice,
+                    Quantity = product.Quantity,
+                    ReorderLevel = product.ReorderLevel,
+                    Category = product.ProductCategory.Name,
+                }
+            };
+            return produc;
+        }
+        
         public IEnumerable<ProductResponseModel> GetByName(string name)
         {
             var product = _productRepository.GetByName(name);

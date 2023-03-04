@@ -78,6 +78,7 @@ namespace SMS_MVCDTO.Implementations.Services
                         Email = user.Email,
                         PhoneNumber = user.PhoneNumber,
                         ProfilePicture = user.ProfilePicture,
+                        Name = user.SuperAdmin.User.FirstName,
                     }
                 };
                 return userResponse;

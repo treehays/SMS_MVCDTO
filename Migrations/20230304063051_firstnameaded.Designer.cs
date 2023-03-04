@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SMS_MVCDTO.Context;
 
@@ -10,9 +11,11 @@ using SMS_MVCDTO.Context;
 namespace SMSMVCDTO.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20230304063051_firstnameaded")]
+    partial class firstnameaded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -350,44 +353,6 @@ namespace SMSMVCDTO.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Role");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Created = new DateTime(2023, 3, 4, 13, 15, 8, 483, DateTimeKind.Local).AddTicks(801),
-                            IsDeleted = false,
-                            Modified = new DateTime(2023, 3, 4, 13, 15, 8, 483, DateTimeKind.Local).AddTicks(812),
-                            RoleDescription = "Staff",
-                            RoleName = "SuperAdmin"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Created = new DateTime(2023, 3, 4, 13, 15, 8, 483, DateTimeKind.Local).AddTicks(815),
-                            IsDeleted = false,
-                            Modified = new DateTime(2023, 3, 4, 13, 15, 8, 483, DateTimeKind.Local).AddTicks(816),
-                            RoleDescription = "Staff",
-                            RoleName = "SalesManager"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Created = new DateTime(2023, 3, 4, 13, 15, 8, 483, DateTimeKind.Local).AddTicks(818),
-                            IsDeleted = false,
-                            Modified = new DateTime(2023, 3, 4, 13, 15, 8, 483, DateTimeKind.Local).AddTicks(819),
-                            RoleDescription = "Staff",
-                            RoleName = "Attendant"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Created = new DateTime(2023, 3, 4, 13, 15, 8, 483, DateTimeKind.Local).AddTicks(820),
-                            IsDeleted = false,
-                            Modified = new DateTime(2023, 3, 4, 13, 15, 8, 483, DateTimeKind.Local).AddTicks(821),
-                            RoleDescription = "Staff",
-                            RoleName = "Customer"
-                        });
                 });
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.SalesManager", b =>
@@ -467,19 +432,6 @@ namespace SMSMVCDTO.Migrations
                         .IsUnique();
 
                     b.ToTable("SuperAdmins");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Created = new DateTime(2023, 3, 4, 13, 15, 8, 483, DateTimeKind.Local).AddTicks(1136),
-                            DateOfBirth = new DateTime(2023, 3, 4, 13, 15, 8, 483, DateTimeKind.Local).AddTicks(1134),
-                            Gender = 1,
-                            IsDeleted = false,
-                            MaritalStatus = 2,
-                            Modified = new DateTime(2023, 3, 4, 13, 15, 8, 483, DateTimeKind.Local).AddTicks(1137),
-                            UserId = 1
-                        });
                 });
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Transaction", b =>
@@ -568,23 +520,6 @@ namespace SMSMVCDTO.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Created = new DateTime(2023, 3, 4, 13, 15, 8, 483, DateTimeKind.Local).AddTicks(1107),
-                            Email = "Abdulsuper@gmail.com",
-                            FirstName = "Abdulsuper",
-                            IsActive = true,
-                            IsDeleted = false,
-                            LastName = "Salamsuper",
-                            Modified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Password = "pass",
-                            PhoneNumber = "08066117783",
-                            RoleId = 1,
-                            StaffId = "SUP001"
-                        });
                 });
 
             modelBuilder.Entity("SMS_MVCDTO.Models.Entities.Wallet", b =>

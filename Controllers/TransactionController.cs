@@ -58,7 +58,7 @@ namespace SMS_MVCDTO.Controllers
             var craeteTransact = new CreateTransactionRequestModel
             {
                 TotalAmount = cartTotal,
-                CustomeName = $"{customer.FirstName} {customer.LastName}",
+                CustomeName = $"{customer.User.FirstName} {customer.User.LastName}",
                 AttendanId = int.Parse(User?.FindFirst(ClaimTypes.NameIdentifier).Value),
                 CustomerId = id,
             };

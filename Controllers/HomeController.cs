@@ -57,7 +57,8 @@ namespace SMS_MVCDTO.Controllers
             //checking if the l=TagHelperServicesExtensions details is null
             if (loginDetails == null)
             {
-                return NotFound();
+                TempData["failed"] = "Login Failed...";
+                return View();
             }
 
 
@@ -82,8 +83,8 @@ namespace SMS_MVCDTO.Controllers
                 {
                     new Claim(ClaimTypes.Role, user.Data.RoleId.ToString()),
                     new Claim(ClaimTypes.NameIdentifier, user.Data.StaffId),
-                    //new Claim(ClaimTypes.Name, user.Data.FirstName),
-                    //new Claim(ClaimTypes.Email, user.Data.LastName),
+                    new Claim(ClaimTypes.Name, user.Data.Name),
+                    new Claim(ClaimTypes.Email, user.Data.Email),
                 };
 
             var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

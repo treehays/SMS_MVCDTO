@@ -149,7 +149,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link text-dark" asp-area=""
                                asp-controller="SuperAdmin"
-                               asp-action="Details" asp-route-staffId="@StaffId"> @User?.FindFirst(ClaimTypes.Name).Value</a>
+                               asp-action="Details" asp-route-staffId="@StaffId"> Welcome @User?.FindFirst(ClaimTypes.Name).Value</a>
                                     </li>
 
                                 }
@@ -159,7 +159,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link text-dark" asp-area=""
                                asp-controller="SalesManager"
-                               asp-action="Details" asp-route-staffId="@StaffId"> @User?.FindFirst(ClaimTypes.Name).Value</a>
+                               asp-action="Details" asp-route-staffId="@StaffId"> Welcome @User?.FindFirst(ClaimTypes.Name).Value</a>
                                     </li>
                                 }
                                 else if (loginUser.Value == 3.ToString())
@@ -172,7 +172,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link text-dark" asp-area=""
                                asp-controller="Attendant"
-                               asp-action="Details" asp-route-staffId="@StaffId"> @User?.FindFirst(ClaimTypes.Name).Value</a>
+                               asp-action="Details" asp-route-staffId="@StaffId"> Welcome @User?.FindFirst(ClaimTypes.Name).Value</a>
                                     </li>
                                 }
                                 else
@@ -181,7 +181,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link text-dark" asp-area=""
                                asp-controller="customer"
-                               asp-action="Details" asp-route-staffId="@StaffId"> @User?.FindFirst(ClaimTypes.Name).Value</a>
+                               asp-action="Details" asp-route-staffId="@StaffId"> Welcome @User?.FindFirst(ClaimTypes.Name).Value</a>
                                     </li>
                                 }
 

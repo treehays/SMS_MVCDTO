@@ -18,12 +18,12 @@
 					<input asp-for="FirstName" class="form-control" />
 					<span asp-validation-for="FirstName" class="text-danger"></span>
 				</div>
+
 				<div class="form-group">
 					<label asp-for="LastName" class="control-label"></label>
 					<input asp-for="LastName" class="form-control" />
 					<span asp-validation-for="LastName" class="text-danger"></span>
 				</div>
-
 				
 				<div class="form-group">
 					<label asp-for="Email" class="control-label"></label>
@@ -48,6 +48,7 @@
 					<input asp-for="ResidentialAddress" class="form-control" />
 					<span asp-validation-for="ResidentialAddress" class="text-danger"></span>
 				</div>
+				*@
 
 				
 				<div class="form-group">
@@ -55,11 +56,6 @@
 					<input asp-for="DateOfBirth" class="form-control" />
 					<span asp-validation-for="DateOfBirth" class="text-danger"></span>
 				</div>
-				*@
-
-
-
-
 
 				<div class="form-group">
 					<label asp-for="Gender" class="control-label" for="Gender"></label>
@@ -82,6 +78,7 @@
 					<input asp-for="BankAccountNumber" class="form-control" />
 					<span asp-validation-for="BankAccountNumber" class="text-danger"></span>
 				</div>
+
 				<div class="form-group">
 					<label asp-for="BankName" class="control-label"></label>
 					<input asp-for="BankName" class="form-control" />
@@ -100,6 +97,12 @@
 					<span asp-validation-for="GuarantorPhoneNumber" class="text-danger"></span>
 				</div>
 
+				<div class="form-group">
+					<label asp-for="StreetName" class="control-label"></label>
+					<input asp-for="StreetName" class="form-control" />
+					<span asp-validation-for="StreetName" class="text-danger"></span>
+				</div>
+
 
 
 				<div class="form-group">
@@ -108,12 +111,23 @@
 					<span asp-validation-for="Password" class="text-danger"></span>
 				</div>
 
-				<div class="form-group">
-					<label asp-for="ProfilePicture" style="width: 100%;"></label>
+
+				<div class="">
+					@Html.LabelFor(x => x.ConfirmPassword, new {@class = "control-label"})
+					@Html.PasswordFor(x => x.ConfirmPassword, new {@class = "form-control"})
+					@Html.ValidationMessageFor(x => x.ConfirmPassword,"", new
+				{@class="text-danger"})
+				</div>
 
 
-					<input asp-for="ProfilePicture" type="file" accept=".png,.jpg,.jpeg,.gif,.tif" class="form-control" style="border:0px!important;padding: 0px;padding-top: 10px;padding-bottom: 30px;" onchange="document.getElementById('profilePicture').src = window.URL.createObjectURL(this.files[0])" />
-					<span asp-validation-for="ProfilePicture" class="text-danger"></span>
+				<div class="col-md-6">
+					@*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+					<div class="form-group">
+						<label asp-for="ProfilePicture" style="width: 100%;"></label>
+
+						<input asp-for="ProfilePicture" type="file" accept=".png,.jpg,.jpeg,.gif,.tif" class="form-control" style="border:0px!important;padding: 0px;padding-top: 10px;padding-bottom: 30px;" onchange="document.getElementById('profilePicture').src = window.URL.createObjectURL(this.files[0])" />
+						<span asp-validation-for="ProfilePicture" class="text-danger"></span>
+					</div>
 				</div>
 
 

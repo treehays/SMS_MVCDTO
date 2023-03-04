@@ -12,6 +12,90 @@
 <h1>Sales manager Dashboard</h1>
 
 
+
+<div id="">
+
+
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+
+    <table class="table table-info">
+        <thead>
+            <tr>
+                <th>S/N</th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Data.StaffId)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Data.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Data.LastName)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Data.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Data.PhoneNumber)
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int serialNumber = 1;
+            }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @serialNumber
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data.StaffId)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data.LastName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data.PhoneNumber)
+                    </td>
+
+
+                    <td>
+                        <a asp-action="Edit" asp-route-staffId="@item.Data.StaffId">Edit</a> |
+                        <a asp-action="Details" asp-route-staffId="@item.Data.StaffId">Details</a> |
+                        <a asp-action="DeletePreview" asp-route-staffId="@item.Data.StaffId">Delete</a>
+                    </td>
+                </tr>
+                serialNumber++;
+            }
+        </tbody>
+    </table>
+
+
+
+
+
+</div>
+
+
+@*
 <div class="dropdown">
     <button class="dropbtn"> Manage Attendant</button>
     <div class="dropdown-menu">
@@ -31,12 +115,14 @@
         <a asp-controller="Product" asp-action="Create">Add new product</a>
         <br />
         @* <a asp-controller="Product" asp-action="Index">Manage all products</a>
-        <br />*@
+        <br />
     </div>
 </div>
+
 <a asp-controller="Transaction" asp-action="Dashboard">Manage Transactions</a>
 <br />
 <a asp-controller="Product" asp-action="Dashboard">Manage Inventory</a>
+*@
 <br />
 <br />
 <br />

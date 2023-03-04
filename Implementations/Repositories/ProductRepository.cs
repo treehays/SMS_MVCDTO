@@ -1,4 +1,5 @@
-﻿using SMS_MVCDTO.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using SMS_MVCDTO.Context;
 using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Models.Entities;
 namespace SMS_MVCDTO.Implementations.Repositories
@@ -47,6 +48,12 @@ namespace SMS_MVCDTO.Implementations.Repositories
         public Product GetById(int id)
         {
             var product = _context.Products.SingleOrDefault(a => !a.IsDeleted && a.IsAvailable && a.Id == id);
+            return product;
+        }
+        
+        public Product GetByBarCode(string barCode)
+        {
+            var product = _context.Products.Include(b => b.ProductCategory).SingleOrDefault(a => !a.IsDeleted && a.IsAvailable && a.Barcode == barCode);
             return product;
         }
 

@@ -1,4 +1,5 @@
-﻿using SMS_MVCDTO.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using SMS_MVCDTO.Context;
 using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Models.Entities;
 
@@ -45,7 +46,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public IEnumerable<SuperAdmin> GetByName(string name)
         {
-            var superAdmins = _context.SuperAdmins.Where(w => w.User.IsActive && !w.IsDeleted && name.All(x => (w.FirstName + w.LastName).Contains(x)));
+            var superAdmins = _context.SuperAdmins.Where(w => w.User.IsActive && !w.IsDeleted && name.All(x => (w.User.FirstName + w.User.LastName).Contains(x)));
             return superAdmins;
         }
 
@@ -57,7 +58,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public IEnumerable<SuperAdmin> GetSuperAdmins()
         {
-            var superAdmins = _context.SuperAdmins.Where(w => w.User.IsActive && !w.IsDeleted);
+            var superAdmins = _context.SuperAdmins.Include(a => a.User).ThenInclude(b => b.Role).Where(w => w.User.IsActive && !w.IsDeleted);
             return superAdmins;
         }
 

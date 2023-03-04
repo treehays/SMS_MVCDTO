@@ -45,7 +45,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public IEnumerable<Customer> GetByName(string name)
         {
-            var customers = _context.Customers.Where(w => w.User.IsActive && !w.IsDeleted && name.All(x => (w.LastName + w.FirstName).Contains(x)));
+            var customers = _context.Customers.Where(w => w.User.IsActive && !w.IsDeleted && name.All(x => (w.User.LastName + w.User.FirstName).Contains(x)));
             return customers;
         }
 

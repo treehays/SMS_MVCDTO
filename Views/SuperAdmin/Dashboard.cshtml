@@ -26,6 +26,12 @@ IEnumerable<SMS_MVCDTO.Models.DTOs.SuperAdminDTOs.SuperAdminResponseModel> *@
                     <tr>
                         <th>S/N</th>
 
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Data.StaffId)
+                        </th>
+
+
                         <th>
                             @Html.DisplayNameFor(model => model.Data.FirstName)
                         </th>
@@ -35,10 +41,30 @@ IEnumerable<SMS_MVCDTO.Models.DTOs.SuperAdminDTOs.SuperAdminResponseModel> *@
                         <th>
                             @Html.DisplayNameFor(model => model.Data.Gender)
                         </th>
+
                         <th>
+                            @Html.DisplayNameFor(model => model.Data.Email)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Data.PhoneNumber)
+                        </th>
+
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Data.MaritalStatus)
+                        </th>
+
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Data.RoleName)
+                        </th>
+
+
+                        @*  <th>
                             @Html.DisplayNameFor(model =>
                             model.Data.GuarantorName)
-                        </th>
+                        </th>*@
                         <th></th>
                     </tr>
                 </thead>
@@ -52,8 +78,12 @@ IEnumerable<SMS_MVCDTO.Models.DTOs.SuperAdminDTOs.SuperAdminResponseModel> *@
                         <tr>
                             <td>
                                 @serialNumber
-                                serialNumber++;
                             </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data.StaffId)
+                            </td>
+
                             <td>
                                 @Html.DisplayFor(modelItem => item.Data.FirstName)
                             </td>
@@ -64,10 +94,31 @@ IEnumerable<SMS_MVCDTO.Models.DTOs.SuperAdminDTOs.SuperAdminResponseModel> *@
                                 @Html.DisplayFor(modelItem => item.Data.Gender)
                             </td>
 
+
                             <td>
+                                @Html.DisplayFor(modelItem => item.Data.Email)
+                            </td>
+
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data.PhoneNumber)
+                            </td>
+
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data.MaritalStatus)
+                            </td>
+
+
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Data.RoleName)
+                            </td>
+
+                            @* <td>
                                 @Html.DisplayFor(modelItem =>
                             item.Data.GuarantorName)
-                            </td>
+                            </td>*@
                             <td>
                                 <a asp-action="Edit"
                                 asp-route-staffId="@item.Data.StaffId">Edit</a>
@@ -78,6 +129,9 @@ IEnumerable<SMS_MVCDTO.Models.DTOs.SuperAdminDTOs.SuperAdminResponseModel> *@
                                 <a asp-action="DeletePreview"
                                 asp-route-staffId="@item.Data.StaffId">Delete</a>
                             </td>
+                        @{
+                            serialNumber++;
+                        }
                         </tr>
                     }
                 </tbody>

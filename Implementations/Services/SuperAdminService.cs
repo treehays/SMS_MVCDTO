@@ -29,6 +29,8 @@ namespace SMS_MVCDTO.Implementations.Service
             var user = new User
             {
                 StaffId = sid,
+                FirstName = superAdmin.FirstName,
+                LastName = superAdmin.LastName,
                 Password = superAdmin.Password,
                 RoleId = 1,
                 Email = superAdmin.Email,
@@ -42,8 +44,6 @@ namespace SMS_MVCDTO.Implementations.Service
             var superAdmi = new SuperAdmin
             {
                 UserId = user.Id,
-                FirstName = superAdmin.FirstName,
-                LastName = superAdmin.LastName,
                 DateOfBirth = superAdmin.DateOfBirth,
                 Gender = superAdmin.Gender,
                 MaritalStatus = superAdmin.MaritalStatus,
@@ -99,18 +99,18 @@ namespace SMS_MVCDTO.Implementations.Service
                 Message = "Sales Manager retrieved sucessfully.",
                 Data = new SuperAdminDTOs
                 {
-                    FirstName = superAdmin.FirstName,
-                    LastName = superAdmin.LastName,
+                    FirstName = superAdmin.User.FirstName,
+                    LastName = superAdmin.User.LastName,
                     Email = superAdmin.User.Email,
                     PhoneNumber = superAdmin.User.PhoneNumber,
-                    //HomeAddress = superAdmin.User.Address.StreetName,
                     DateOfBirth = superAdmin.DateOfBirth,
                     Gender = superAdmin.Gender,
                     MaritalStatus = superAdmin.MaritalStatus,
-                    BankAccountNumber = superAdmin.User.BankDetail.BankAccountNumber,
-                    BankName = superAdmin.User.BankDetail.BankName,
                     RoleName = superAdmin.User.Role.RoleName,
                     StaffId = superAdmin.User.StaffId,
+                    //HomeAddress = superAdmin.User.Address.StreetName,
+                    //BankAccountNumber = superAdmin.User.BankDetail.BankAccountNumber,
+                    //BankName = superAdmin.User.BankDetail.BankName,
                 }
             };
             return superAdmi;
@@ -129,6 +129,7 @@ namespace SMS_MVCDTO.Implementations.Service
             {
                 return null;
             }
+
             var user = _userRepository.GetById(staffId);
             var superAdmi = new SuperAdminResponseModel
             {
@@ -136,19 +137,19 @@ namespace SMS_MVCDTO.Implementations.Service
                 Message = "Sales Manager retrieved sucessfully.",
                 Data = new SuperAdminDTOs
                 {
-                    FirstName = superAdmin.FirstName,
-                    LastName = superAdmin.LastName,
+                    FirstName = superAdmin.User.FirstName,
+                    LastName = superAdmin.User.LastName,
                     Email = superAdmin.User.Email,
                     PhoneNumber = superAdmin.User.PhoneNumber,
-                    //HomeAddress = superAdmin.User.Address.StreetName,
                     DateOfBirth = superAdmin.DateOfBirth,
                     Gender = superAdmin.Gender,
                     MaritalStatus = superAdmin.MaritalStatus,
-                    BankAccountNumber = superAdmin.User.BankDetail.BankAccountNumber,
-                    BankName = superAdmin.User.BankDetail.BankName,
                     RoleName = superAdmin.User.Role.RoleName,
                     StaffId = superAdmin.User.StaffId,
                     ProfilePicture = user.ProfilePicture,
+                    //HomeAddress = superAdmin.User.Address.StreetName,
+                    //BankAccountNumber = superAdmin.User.BankDetail.BankAccountNumber,
+                    //BankName = superAdmin.User.BankDetail.BankName,
                 }
             };
             return superAdmi;
@@ -168,19 +169,19 @@ namespace SMS_MVCDTO.Implementations.Service
                 Message = "Super admin retrieved sucessfully.",
                 Data = new SuperAdminDTOs
                 {
-                    FirstName = superAdmin.FirstName,
-                    LastName = superAdmin.LastName,
+                    FirstName = superAdmin.User.FirstName,
+                    LastName = superAdmin.User.LastName,
                     Email = superAdmin.User.Email,
                     PhoneNumber = superAdmin.User.PhoneNumber,
-                    //HomeAddress = superAdmin.User.Address.StreetName,
                     DateOfBirth = superAdmin.DateOfBirth,
                     Gender = superAdmin.Gender,
                     MaritalStatus = superAdmin.MaritalStatus,
-                    BankAccountNumber = superAdmin.User.BankDetail.BankAccountNumber,
-                    BankName = superAdmin.User.BankDetail.BankName,
                     RoleName = superAdmin.User.Role.RoleName,
                     StaffId = superAdmin.User.StaffId,
                     ProfilePicture = superAdmin.User.ProfilePicture,
+                    //HomeAddress = superAdmin.User.Address.StreetName,
+                    //BankAccountNumber = superAdmin.User.BankDetail.BankAccountNumber,
+                    //BankName = superAdmin.User.BankDetail.BankName,
 
                 }
             }).ToList();
@@ -203,19 +204,19 @@ namespace SMS_MVCDTO.Implementations.Service
                 Message = "Sales Manager retrieved sucessfully.",
                 Data = new SuperAdminDTOs
                 {
-                    FirstName = superAdmin.FirstName,
-                    LastName = superAdmin.LastName,
+                    FirstName = superAdmin.User.FirstName,
+                    LastName = superAdmin.User.LastName,
                     Email = superAdmin.User.Email,
                     PhoneNumber = superAdmin.User.PhoneNumber,
-                    //HomeAddress = superAdmin.User.Address.StreetName,
                     DateOfBirth = superAdmin.DateOfBirth,
                     Gender = superAdmin.Gender,
                     MaritalStatus = superAdmin.MaritalStatus,
-                    BankAccountNumber = superAdmin.User.BankDetail.BankAccountNumber,
-                    BankName = superAdmin.User.BankDetail.BankName,
                     RoleName = superAdmin.User.Role.RoleName,
                     StaffId = superAdmin.User.StaffId,
                     ProfilePicture = superAdmin.User.ProfilePicture,
+                    //HomeAddress = superAdmin.User.Address.StreetName,
+                    //BankAccountNumber = superAdmin.User.BankDetail.BankAccountNumber,
+                    //BankName = superAdmin.User.BankDetail.BankName,
 
                 }
             };
@@ -239,19 +240,19 @@ namespace SMS_MVCDTO.Implementations.Service
                     Message = "Super admin retrieved sucessfully.",
                     Data = new SuperAdminDTOs
                     {
-                        FirstName = superAdmin.FirstName,
-                        LastName = superAdmin.LastName,
+                        FirstName = superAdmin.User.FirstName,
+                        LastName = superAdmin.User.LastName,
                         Email = superAdmin.User.Email,
                         PhoneNumber = superAdmin.User.PhoneNumber,
-                        //HomeAddress = superAdmin.User.Address.StreetName,
                         DateOfBirth = superAdmin.DateOfBirth,
                         Gender = superAdmin.Gender,
                         MaritalStatus = superAdmin.MaritalStatus,
-                        BankAccountNumber = superAdmin.User.BankDetail.BankAccountNumber,
-                        BankName = superAdmin.User.BankDetail.BankName,
                         RoleName = superAdmin.User.Role.RoleName,
                         StaffId = superAdmin.User.StaffId,
-                        ProfilePicture = superAdmin.User.ProfilePicture,
+                        //ProfilePicture = superAdmin.User.ProfilePicture,
+                        //HomeAddress = superAdmin.User.Address.StreetName,
+                        //BankAccountNumber = superAdmin.User.BankDetail.BankAccountNumber,
+                        //BankName = superAdmin.User.BankDetail.BankName,
 
                     }
                 };
@@ -270,18 +271,18 @@ namespace SMS_MVCDTO.Implementations.Service
                 return null;
             }
             user.StaffId = superAdmin.Data.StaffId ?? user.StaffId;
-            //user.SuperAdmin.FirstName = superAdmin.Data.FirstName ?? user.SuperAdmin.FirstName;
-            //user.SuperAdmin.LastName = superAdmin.Data.LastName ?? user.SuperAdmin.LastName;
             user.ProfilePicture = superAdmin.Data.ProfilePicture ?? user.ProfilePicture;
             var superAdmi = _superAdminRepository.GetById(superAdmin.Data.StaffId);
-            superAdmi.FirstName = superAdmin.Data.FirstName ?? superAdmi.FirstName;
-            superAdmi.LastName = superAdmin.Data.LastName ?? superAdmi.LastName;
-            // superAdmi.ResidentialAddress = superAdmin.Data.ResidentialAddress ?? superAdmi.ResidentialAddress;
+            superAdmi.User.FirstName = superAdmin.Data.FirstName ?? superAdmi.User.FirstName;
+            superAdmi.User.LastName = superAdmin.Data.LastName ?? superAdmi.User.LastName;
             superAdmi.MaritalStatus = superAdmin.Data.MaritalStatus;
+            superAdmi.Modified = DateTime.Now;
+            //user.SuperAdmin.FirstName = superAdmin.Data.FirstName ?? user.SuperAdmin.FirstName;
+            //user.SuperAdmin.LastName = superAdmin.Data.LastName ?? user.SuperAdmin.LastName;
+            // superAdmi.ResidentialAddress = superAdmin.Data.ResidentialAddress ?? superAdmi.ResidentialAddress;
             //superAdmi.BankName = superAdmin.Data.BankName;
             //superAdmi.BankAccountNumber = superAdmin.Data.BankAccountNumber ?? superAdmi.BankAccountNumber;
-            superAdmi.Modified = DateTime.Now;
-            //_superAdminRepository.Update(superAdmi);
+            _superAdminRepository.Update(superAdmi);
             return superAdmin;
         }
     }

@@ -70,7 +70,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
         {
             //var transactions = _context.Transactions.AsEnumerable().Where(a => !a.IsDeleted && customerName.All(b => a.CustomerName.Contains(b)));
 
-            var transactions = _context.Transactions.Include(x => x.Customer).AsEnumerable().Where(a => !a.IsDeleted && customerName.All(b => a.Customer.LastName.Contains(b)));
+            var transactions = _context.Transactions.Include(x => x.Customer).AsEnumerable().Where(a => !a.IsDeleted && customerName.All(b => a.Customer.User.LastName.Contains(b)));
             return transactions;
         }
 

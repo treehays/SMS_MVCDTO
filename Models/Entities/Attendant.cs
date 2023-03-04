@@ -12,12 +12,12 @@ namespace SMS_MVCDTO.Models.Entities
         public ICollection<Transaction> Transaction { get; set; } = new HashSet<Transaction>();
         public User User { get; set; }
         //public Address Address { get; set; }
-       // public BankDetail BankDetail { get; set; }
+        // public BankDetail BankDetail { get; set; }
         public int UserId { get; set; }
         public int SalesManagerID { get; set; }
 
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        //public string FirstName { get; set; }
+        //public string LastName { get; set; }
         public string CVPath { get; set; }
         public DateTime DateOfBirth { get; set; }
         public GenderType Gender { get; set; }

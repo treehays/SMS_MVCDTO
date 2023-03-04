@@ -22,6 +22,8 @@ namespace SMS_MVCDTO.Implementations.Services
             var user = new User
             {
                 StaffId = sid,
+                FirstName = customer.FirstName,
+                LastName = customer.LastName,
                 Password = customer.Password,
                 RoleId = 4,
                 Email = customer.Email,
@@ -32,8 +34,6 @@ namespace SMS_MVCDTO.Implementations.Services
 
             var custome = new Customer
             {
-                FirstName = customer.FirstName,
-                LastName = customer.LastName,
                 Gender = customer.Gender,
                 Created = DateTime.Now,
 
@@ -71,8 +71,8 @@ namespace SMS_MVCDTO.Implementations.Services
                 Status = true,
                 Data = new CustomerDTOs
                 {
-                    FirstName = customer.FirstName,
-                    LastName = customer.LastName,
+                    FirstName = customer.User.FirstName,
+                    LastName = customer.User.LastName,
                     PhoneNumber = customer.User.PhoneNumber,
                     Email = customer.User.Email,
                     Gender = customer.Gender,
@@ -101,8 +101,8 @@ namespace SMS_MVCDTO.Implementations.Services
                 Status = true,
                 Data = new CustomerDTOs
                 {
-                    FirstName = customer.FirstName,
-                    LastName = customer.LastName,
+                    FirstName = customer.User.FirstName,
+                    LastName = customer.User.LastName,
                     PhoneNumber = customer.User.PhoneNumber,
                     Email = customer.User.Email,
                     Gender = customer.Gender,
@@ -128,8 +128,8 @@ namespace SMS_MVCDTO.Implementations.Services
                     Status = true,
                     Data = new CustomerDTOs
                     {
-                        FirstName = customer.FirstName,
-                        LastName = customer.LastName,
+                        FirstName = customer.User.FirstName,
+                        LastName = customer.User.LastName,
                         PhoneNumber = customer.User.PhoneNumber,
                         Email = customer.User.Email,
                         Gender = customer.Gender,
@@ -159,8 +159,8 @@ namespace SMS_MVCDTO.Implementations.Services
                 Status = true,
                 Data = new CustomerDTOs
                 {
-                    FirstName = customer.FirstName,
-                    LastName = customer.LastName,
+                    FirstName = customer.User.FirstName,
+                    LastName = customer.User.LastName,
                     PhoneNumber = customer.User.PhoneNumber,
                     Email = customer.User.Email,
                     Gender = customer.Gender,
@@ -186,8 +186,8 @@ namespace SMS_MVCDTO.Implementations.Services
                     Status = true,
                     Data = new CustomerDTOs
                     {
-                        FirstName = customer.FirstName,
-                        LastName = customer.LastName,
+                        FirstName = customer.User.FirstName,
+                        LastName = customer.User.LastName,
                         PhoneNumber = customer.User.PhoneNumber,
                         Email = customer.User.Email,
                         Gender = customer.Gender,
@@ -211,8 +211,8 @@ namespace SMS_MVCDTO.Implementations.Services
             {
                 return null;
             }
-            custome.FirstName = customer.Data.FirstName ?? custome.FirstName;
-            custome.LastName = customer.Data.LastName ?? custome.LastName;
+            custome.User.FirstName = customer.Data.FirstName ?? custome.User.FirstName;
+            custome.User.LastName = customer.Data.LastName ?? custome.User.LastName;
             custome.Modified = DateTime.Now;
             _customerRepository.Update(custome);
             return customer;

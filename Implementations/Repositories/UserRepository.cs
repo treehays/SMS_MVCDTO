@@ -1,4 +1,5 @@
-﻿using SMS_MVCDTO.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using SMS_MVCDTO.Context;
 using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Models.Entities;
 
@@ -27,13 +28,13 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
 		public User GetById(string staffId)
 		{
-			var user = _context.Users.SingleOrDefault(x => x.StaffId == staffId);
+			var user = _context.Users.Include(a => a.Role).SingleOrDefault(x => x.StaffId == staffId);
 			return user;
 		}
 
 		public User Login(User user)
 		{
-			var userr = _context.Users.SingleOrDefault(a => a.StaffId == user.StaffId && a.Password == user.Password);
+			var userr = _context.Users.Include(b => b.SuperAdmin).SingleOrDefault(a => a.StaffId == user.StaffId && a.Password == user.Password);
 			return userr;
 		}
 
