@@ -51,7 +51,7 @@ namespace SMS_MVCDTO.Implementations.Services
                     Status = true,
                     Data = new ProductCategoryDTOs
                     {
-                        CategoryCode = productCategory.CategoryCode,
+                        CategoryCode = productCategory.Id,
                         Name = productCategory.Name,
                         Description = productCategory.Description,
                         IsActive = productCategory.IsActive,

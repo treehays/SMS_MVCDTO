@@ -69,7 +69,7 @@
 
                         <td>
                             @*<a asp-action="Edit" asp-route-Barcode="@item.Data.Barcode">Edit</a> |*@
-                            <a asp-action="Details" asp-route-Barcode="@item.Data.Barcode">Details</a> |
+                            <a asp-action="DetailsBarCode" asp-route-Barcode="@item.Data.Barcode">Details</a> |
                             @*<a asp-action="DeletePreview" asp-route-Barcode="@item.Data.Barcode">Delete</a> |*@
                             <a asp-controller="Cart" asp-action="Create" asp-route-Barcode="@item.Data.Barcode">Buy</a>
                         </td>

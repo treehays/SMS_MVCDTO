@@ -39,18 +39,18 @@ namespace SMS_MVCDTO.Implementations.Repositories
         }
 
 
-        public IEnumerable<Product> GetByCategory(string productCategory)
+        public IEnumerable<Product> GetByCategory(int productCategoryId)
         {
-            var products = _context.Products.Where(s => s.IsAvailable && !s.IsDeleted);
+            var products = _context.Products.Include(a => a.ProductCategory).Where(s => s.IsAvailable && !s.IsDeleted && productCategoryId == s.ProductCategoryId);
             return products;
         }
 
         public Product GetById(int id)
         {
-            var product = _context.Products.SingleOrDefault(a => !a.IsDeleted && a.IsAvailable && a.Id == id);
+            var product = _context.Products.Include(b => b.ProductCategory).SingleOrDefault(a => !a.IsDeleted && a.IsAvailable && a.Id == id);
             return product;
         }
-        
+
         public Product GetByBarCode(string barCode)
         {
             var product = _context.Products.Include(b => b.ProductCategory).SingleOrDefault(a => !a.IsDeleted && a.IsAvailable && a.Barcode == barCode);

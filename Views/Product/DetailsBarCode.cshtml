@@ -1,0 +1,101 @@
+﻿@model SMS_MVCDTO.Models.DTOs.ProductDTOs.ProductResponseModel
+
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<partial name="_Notification" />
+
+
+
+<main class="main">
+    <!-- <div class="dashboard"> -->
+    <div class="form-container">
+
+        <div id="Data-form">
+
+
+
+
+
+            <div class="container1">
+                <div>
+                    <form asp-action="Edit">
+                        <h1> @Model.Data.Name </h1>
+
+                        <div class="form-group">
+                            <label asp-for="Data.Barcode" class="control-label"></label>
+                            <input asp-for="Data.Barcode" readonly class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Data.Name" class="control-label"></label>
+                            <input asp-for="Data.Name" readonly class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Data.Category" class="control-label"></label>
+                            <input asp-for="Data.Category" readonly class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Data.Quantity" class="control-label"></label>
+                            <input asp-for="Data.Quantity" readonly class="form-control" />
+                        </div>
+
+
+                        <div class="form-group">
+                            <label asp-for="Data.SellingPrice" class="control-label"></label>
+                            <input asp-for="Data.SellingPrice" readonly class="form-control" />
+
+                        </div>
+                        @*
+                        <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-success" />
+                        </div>
+                        *@
+
+                        <div>
+                            <a asp-action="Edit" asp-route-barcode="@Model.Data.Barcode" class="btn btn-success">Edit</a> |
+                            <a asp-action="Index" class="btn btn-warning">Back to List</a>
+                            @*<input type="submit" value="Save" class="btn btn-success" />*@
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+    <!-- search box  -->
+    <div class="search-container">
+        <form>
+            <input type="text" placeholder="Search...">
+            <button type="submit"><i class="fa fa-search"></i> Search </button>
+        </form>
+    </div>
+
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+</main>
+@* ends here *@
+
+
+
+
+
+
+

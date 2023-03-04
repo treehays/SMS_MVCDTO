@@ -18,6 +18,10 @@
         <div class="form-group">
             @Html.HiddenFor(x => x.UpdateProduct.Data.Barcode, new {@class = "form-control"})
         </div>
+        
+        <div class="form-group">
+            @Html.HiddenFor(x => x.UpdateProduct.Data.Id, new {@class = "form-control"})
+        </div>
 
         <div class="form-group">
             @Html.LabelFor(x => x.UpdateProduct.Data.Name, new {@class = "control-label"})

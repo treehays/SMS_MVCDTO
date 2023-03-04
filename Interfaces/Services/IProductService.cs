@@ -11,7 +11,7 @@ namespace SMS_MVCDTO.Interfaces.Services
         ProductResponseModel GetByBarCode(string barCode);
         ProductResponseModel GetById(int id);
         IEnumerable<ProductResponseModel> GetByName(string name);
-        IEnumerable<ProductResponseModel> GetByCategory(string productCategory);
+        IEnumerable<ProductResponseModel> GetByCategory(int productCategoryId);
         IEnumerable<ProductResponseModel> GetAll();
         IEnumerable<ProductResponseModel> GetByQuantityRemaining(int quantity);
         RestockProductRequestModel RestockProduct(RestockProductRequestModel product);

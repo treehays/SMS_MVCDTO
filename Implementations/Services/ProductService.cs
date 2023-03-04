@@ -8,12 +8,10 @@ namespace SMS_MVCDTO.Implementations.Services
     public class ProductService : IProductService
     {
         private readonly IProductRepository _productRepository;
-        private readonly IProductCategoryRepository _productCategoryRepository;
 
-        public ProductService(IProductRepository productRepository, IProductCategoryRepository productCategoryRepository)
+        public ProductService(IProductRepository productRepository)
         {
             _productRepository = productRepository;
-            _productCategoryRepository = productCategoryRepository;
         }
 
         public CreateProductRequestModel Create(CreateProductRequestModel product)
@@ -63,6 +61,7 @@ namespace SMS_MVCDTO.Implementations.Services
                 Status = true,
                 Data = new ProductDTOs
                 {
+                    Id = item.Id,
                     Barcode = item.Barcode,
                     Name = item.Name,
                     Description = item.Description,
@@ -74,9 +73,9 @@ namespace SMS_MVCDTO.Implementations.Services
             return products;
         }
 
-        public IEnumerable<ProductResponseModel> GetByCategory(string productCategory)
+        public IEnumerable<ProductResponseModel> GetByCategory(int productCategoryId)
         {
-            var product = _productRepository.GetByCategory(productCategory);
+            var product = _productRepository.GetByCategory(productCategoryId);
             if (product == null)
             {
                 return null;
@@ -107,7 +106,7 @@ namespace SMS_MVCDTO.Implementations.Services
                 return null;
             }
             //string categoryName = null;
-            var category = _productCategoryRepository.GetById(product.ProductCategoryId);
+            //var category = _productCategoryRepository.GetById(product.ProductCategoryId);
             //if (category == null) { categoryName = category.Name; }
             var produc = new ProductResponseModel
             {
@@ -115,18 +114,19 @@ namespace SMS_MVCDTO.Implementations.Services
                 Status = true,
                 Data = new ProductDTOs
                 {
+                    Id = product.Id,
                     Barcode = product.Barcode,
                     Name = product.Name,
                     Description = product.Description,
                     SellingPrice = product.SellingPrice,
                     Quantity = product.Quantity,
                     ReorderLevel = product.ReorderLevel,
-                    Category = category.Name,
+                    Category = product.ProductCategory.Name,
                 }
             };
             return produc;
         }
-        
+
 
         public ProductResponseModel GetByBarCode(string barCode)
         {
@@ -155,7 +155,7 @@ namespace SMS_MVCDTO.Implementations.Services
             };
             return produc;
         }
-        
+
         public IEnumerable<ProductResponseModel> GetByName(string name)
         {
             var product = _productRepository.GetByName(name);

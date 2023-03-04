@@ -80,9 +80,9 @@
                     *@
 
                         <td>
-                            <a asp-action="Edit" asp-route-Barcode="@item.Data.Barcode">Edit</a> |
-                            <a asp-action="Details" asp-route-Barcode="@item.Data.Barcode">Details</a> |
-                            <a asp-action="DeletePreview" asp-route-Barcode="@item.Data.Barcode">Delete</a> |
+                            <a asp-action="Edit" asp-route-Id="@item.Data.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-Id="@item.Data.Id">Details</a> |
+                            <a asp-action="DeletePreview" asp-route-Id="@item.Data.Id">Delete</a> |
                             <a asp-controller="Cart" asp-action="Create" asp-route-Barcode="@item.Data.Barcode"><i class="fa fa-cart-circle-plus"></i></a>
                         </td>
                     </tr>
