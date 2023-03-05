@@ -85,6 +85,7 @@ namespace SMS_MVCDTO.Controllers
                     new Claim(ClaimTypes.NameIdentifier, user.Data.StaffId),
                     new Claim(ClaimTypes.Name, user.Data.Name),
                     new Claim(ClaimTypes.Email, user.Data.Email),
+                    new Claim(ClaimTypes.PrimarySid, user.Data.Id.ToString()),
                 };
 
             var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

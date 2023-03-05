@@ -5,9 +5,9 @@ namespace SMS_MVCDTO.Models.DTOs.UserDTOs
 {
 	public class UserDTOs
 	{
-		[Required]
+
+		public int Id { get; set; }
 		public string StaffId { get; set; }
-		[Required]
 		public string Password { get; set; }
 		public int RoleId { get; set; }
 		public string Email { get; set; }

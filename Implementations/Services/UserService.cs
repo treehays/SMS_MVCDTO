@@ -72,13 +72,14 @@ namespace SMS_MVCDTO.Implementations.Services
                     Status = true,
                     Data = new UserDTOs
                     {
+                        Id = user.Id,
                         StaffId = user.StaffId,
                         Password = user.Password,
                         RoleId = user.RoleId,
                         Email = user.Email,
                         PhoneNumber = user.PhoneNumber,
                         ProfilePicture = user.ProfilePicture,
-                        Name = user.SuperAdmin.User.FirstName,
+                        Name = user.FirstName,
                     }
                 };
                 return userResponse;

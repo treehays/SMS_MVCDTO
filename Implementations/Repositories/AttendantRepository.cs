@@ -1,4 +1,5 @@
-﻿using SMS_MVCDTO.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using SMS_MVCDTO.Context;
 using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Models.Entities;
 using System.Linq.Expressions;
@@ -28,7 +29,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public IEnumerable<Attendant> GetAttendants()
         {
-            var attendants = _context.Attendants.Where(w => !w.IsDeleted && w.User.IsActive).ToList();
+            var attendants = _context.Attendants.Include(a => a.User).ThenInclude(c => c.BankDetail).Where(w => !w.IsDeleted && w.User.IsActive).ToList();
             //var attendants = _context.Attendants.Include(w => )
             return attendants;
         }
@@ -41,7 +42,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
         public Attendant GetByEmail(string email)
         {
-            var attendant = _context.Attendants.SingleOrDefault(w => w.User.Email.ToLower() == email.ToLower());
+            var attendant = _context.Attendants.Include(a => a.User).SingleOrDefault(w => w.User.Email.ToLower() == email.ToLower());
             return attendant;
         }
 

@@ -51,8 +51,7 @@
 
 
         <header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm
-                                                            navbar-light bg-white border-bottom box-shadow mb-3">
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
                 <div class="container-fluid">
                     <a class="navbar-brand" asp-area=""
                    asp-controller="Home"
@@ -63,13 +62,12 @@
                             data-bs-target=".navbar-collapse"
                             aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle
-                                                                    navigation">
+                                                                            navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     @* MDelete *@
 
-                    <div class="navbar-collapse collapse d-sm-inline-flex
-                                                                    justify-content-between">
+                    <div class="navbar-collapse collapse d-sm-inline-flex  justify-content-between">
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area=""
@@ -147,50 +145,39 @@
                                 @if (loginUser.Value == 1.ToString())
                                 {
                                     <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area=""
-                               asp-controller="SuperAdmin"
-                               asp-action="Details" asp-route-staffId="@StaffId"> Welcome @User?.FindFirst(ClaimTypes.Name).Value</a>
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="SuperAdmin" asp-action="Details" asp-route-staffId="@StaffId"> Welcome @User?.FindFirst(ClaimTypes.Name).Value</a>
                                     </li>
 
                                 }
                                 else if (loginUser.Value == 2.ToString())
                                 {
-
                                     <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area=""
-                               asp-controller="SalesManager"
-                               asp-action="Details" asp-route-staffId="@StaffId"> Welcome @User?.FindFirst(ClaimTypes.Name).Value</a>
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="SalesManager" asp-action="Details" asp-route-staffId="@StaffId"> Welcome @User?.FindFirst(ClaimTypes.Name).Value</a>
                                     </li>
                                 }
                                 else if (loginUser.Value == 3.ToString())
                                 {
-                                //<li>
-                                    //    <img src="data:image/jpeg;base64,@Convert.ToBase64String((byte[])ViewData["ImageData"])" />
+                                    //<li>
+                                //    <img src="data:image/jpeg;base64,@Convert.ToBase64String((byte[])ViewData["ImageData"])" />
 
                                     //</li>
 
                                     <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area=""
-                               asp-controller="Attendant"
-                               asp-action="Details" asp-route-staffId="@StaffId"> Welcome @User?.FindFirst(ClaimTypes.Name).Value</a>
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Attendant" asp-action="Details" asp-route-staffId="@StaffId"> Welcome @User?.FindFirst(ClaimTypes.Name).Value</a>
                                     </li>
                                 }
                                 else
                                 {
 
                                     <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area=""
-                               asp-controller="customer"
-                               asp-action="Details" asp-route-staffId="@StaffId"> Welcome @User?.FindFirst(ClaimTypes.Name).Value</a>
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="customer" asp-action="Details" asp-route-staffId="@StaffId"> Welcome @User?.FindFirst(ClaimTypes.Name).Value</a>
                                     </li>
                                 }
 
 
 
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area=""
-                               asp-controller="Home"
-                               asp-action="Logout">Logout</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
                                 </li>
 
                             }
@@ -199,9 +186,7 @@
                             @if (loginUser == null)
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area=""
-                               asp-controller="SuperAdmin"
-                               asp-action="Create">Sign-Up</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="SuperAdmin" asp-action="Create">Sign-Up</a>
                                 </li>
                             }
                             else { }
@@ -218,16 +203,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
         @*SIDE BAR*@
         <div class="bodycontain bd-oline">
 
@@ -235,17 +210,16 @@
             {
                 @if (loginUser.Value == 1.ToString() || loginUser.Value == 2.ToString() || loginUser.Value == 3.ToString())
                 {
-
                     <div class="sidebar ">
                         <h3>Navigation</h3>
                         <ul>
 
                             <li><a asp-area="" asp-controller="" asp-action="">Home</a></li>
-                
+
                             <li class="dropdown">
                                 <a href="#">Attendants</a>
                                 <ul class="dropdown-content">
-                                    @if (loginUser.Value == 1.ToString())
+                                    @if (loginUser.Value == 1.ToString() || loginUser.Value == 2.ToString())
                                     {
                                         <li>
                                             <a asp-area="" asp-controller="Attendant"
@@ -257,8 +231,6 @@
                                asp-action="Dashboard">Manage Attendants</a>
                                         </li>
 
-
-
                                         <li>
                                             <a asp-area="" asp-controller="Attendant"
                                asp-action="">View all attendants</a>
@@ -268,7 +240,7 @@
 
                                 </ul>
                             </li>
-                
+
                             @if (loginUser.Value == 1.ToString() || loginUser.Value == 3.ToString() || loginUser.Value == 2.ToString())
                             {
                                 <li class="dropdown">
@@ -290,8 +262,6 @@
                                 </li>
                             }
                             else { }
-                            @*}*@
-
 
 
 
@@ -377,15 +347,6 @@
 
         </div>
 
-
-
-        @* <div> *@
-
-        @* <div class="footercontain bd-gline"> *@
-
-
-
-        @* </div> *@
 
 
         <script src="~/lib/jquery/dist/jquery.min.js"></script>

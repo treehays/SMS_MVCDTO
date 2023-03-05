@@ -3,6 +3,7 @@ using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.DTOs.AttendantDTOs;
 using SMS_MVCDTO.Models.Entities;
+using System.Security.Claims;
 
 namespace SMS_MVCDTO.Implementations.Service
 {
@@ -12,13 +13,16 @@ namespace SMS_MVCDTO.Implementations.Service
         private readonly IUserRepository _userRepository;
         private readonly IAddressRepository _addressRepository;
         private readonly IBankDetailRepository _bankDetailRepository;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public AttendantService(IAttendantRepository attendantRepository, IUserRepository userRepository, IAddressRepository addressRepository, IBankDetailRepository bankDetailRepository)
+
+        public AttendantService(IAttendantRepository attendantRepository, IUserRepository userRepository, IAddressRepository addressRepository, IBankDetailRepository bankDetailRepository, IHttpContextAccessor httpContextAccessor)
         {
             _attendantRepository = attendantRepository;
             _userRepository = userRepository;
             _addressRepository = addressRepository;
             _bankDetailRepository = bankDetailRepository;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         //Done
@@ -44,9 +48,12 @@ namespace SMS_MVCDTO.Implementations.Service
 
             };
             _userRepository.Create(user);
-
+            var id = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.PrimarySid).Value;
             var attend = new Attendant
             {
+                UserId = user.Id,
+                SalesManagerID = 1,
+                //SalesManagerID = int.Parse(id),
                 DateOfBirth = attendant.DateOfBirth,
                 Gender = attendant.Gender,
                 GuarantorName = attendant.GuarantorName,
@@ -104,8 +111,8 @@ namespace SMS_MVCDTO.Implementations.Service
                 Status = true,
                 Data = new AttendantDTOs
                 {
-                    BankAccountNumber = attendant.User.BankDetail.BankAccountNumber,
-                    BankName = attendant.User.BankDetail.BankName,
+                    BankAccountNumber = attendant.User.BankDetail == null ? null : attendant.User.BankDetail.BankAccountNumber,
+                    BankName = attendant.User.BankDetail == null ? null : attendant.User.BankDetail.BankName,
                     GuarantorName = attendant.GuarantorName,
                     DateOfBirth = attendant.DateOfBirth,
                     Email = attendant.User.Email,
@@ -117,7 +124,7 @@ namespace SMS_MVCDTO.Implementations.Service
                     PhoneNumber = attendant.User.PhoneNumber,
                     //ResidentialAddress = $"{attendant.User.Address.StreetName}, {attendant.User.Address.City}",
                     StaffId = attendant.User.StaffId,
-                    RoleName = attendant.User.Role.RoleName,
+                    //RoleName = attendant.User.Role.RoleName,
                 }
             }).ToList();
             return attendantResponseModels;
@@ -170,8 +177,8 @@ namespace SMS_MVCDTO.Implementations.Service
                     Status = true,
                     Data = new AttendantDTOs
                     {
-                        BankAccountNumber = attendant.User.BankDetail.BankAccountNumber,
-                        BankName = attendant.User.BankDetail.BankName,
+                        BankAccountNumber = attendant.User.BankDetail == null ? null : attendant.User.BankDetail.BankAccountNumber,
+                        BankName = attendant.User.BankDetail == null ? null : attendant.User.BankDetail.BankName,
                         GuarantorName = attendant.GuarantorName,
                         DateOfBirth = attendant.DateOfBirth,
                         Email = attendant.User.Email,
