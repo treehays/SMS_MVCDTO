@@ -1,9 +1,10 @@
-﻿using Org.BouncyCastle.Asn1.Ocsp;
-using SMS_MVCDTO.Enums;
+﻿
 using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.DTOs.SuperAdminDTOs;
 using SMS_MVCDTO.Models.Entities;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace SMS_MVCDTO.Implementations.Service
 {
@@ -24,6 +25,29 @@ namespace SMS_MVCDTO.Implementations.Service
 
         public CreateSuperAdminRequestModel Create(CreateSuperAdminRequestModel superAdmin)
         {
+            //this encrypt the password to base 64 strring (Very week)
+            //var encryptPasswordBase64 = System.Text.Encoding.UTF8.GetBytes(superAdmin.Password);
+            //superAdmin.Password = System.Convert.ToBase64String(encryptPasswordBase64);
+
+
+            //using RFC Encryption
+            var encryptionKey = "QWhtYWQxMjM=";
+            var clearBytes = Encoding.Unicode.GetBytes(superAdmin.Password);
+            using (Aes encryptor = Aes.Create())
+            {
+                var pbd = new Rfc2898DeriveBytes(encryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+                encryptor.Key = pbd.GetBytes(32);
+                encryptor.IV = pbd.GetBytes(16);
+                using (var ms = new MemoryStream())
+                {
+                    using (var cs = new CryptoStream(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write))
+                    {
+                        cs.Write(clearBytes, 0, clearBytes.Length);
+                        cs.Close();
+                    }
+                    superAdmin.Password = Convert.ToBase64String(ms.ToArray());
+                }
+            }
 
             var sid = User.GenerateRandomId("S");
             var user = new User

@@ -16,6 +16,7 @@ namespace SMS_MVCDTO.Models.Entities
 
 
         public string Password { get; set; }
+        public string PasswordResetToken { get; set; }
         public string StaffId { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }

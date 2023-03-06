@@ -5,11 +5,12 @@ namespace SMS_MVCDTO.Models.DTOs.UserDTOs
 {
     public class LoginRequestModel
     {
-        [Required]
-        [DisplayName("Confirm Password")]
+        //[Required]
+        //[DisplayName("Confirm Password")]
         public string StaffId { get; set; }
-        [Required]
+        //[Required]
         public string Password { get; set; }
+        public string PasswordToken { get; set; }
 
     }
 }

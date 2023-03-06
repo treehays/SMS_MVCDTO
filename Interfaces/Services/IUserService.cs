@@ -10,6 +10,7 @@ namespace SMS_MVCDTO.Interfaces.Services
         void Delete(string staffId);
         UserResponseModel GetById(string staffId);
         UpdateUserPasswordRequestModel UpdatePassword(UpdateUserPasswordRequestModel user);
+        LoginRequestModel ForgotPassword(LoginRequestModel loginDetails);
         UpdateUserRoleRequestModel UpdateRole(UpdateUserRoleRequestModel user);
     }
 }
