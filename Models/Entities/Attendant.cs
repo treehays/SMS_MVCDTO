@@ -13,8 +13,8 @@ namespace SMS_MVCDTO.Models.Entities
         public User User { get; set; }
         //public Address Address { get; set; }
         // public BankDetail BankDetail { get; set; }
-        public int UserId { get; set; }
-        public int SalesManagerID { get; set; }
+        public string UserId { get; set; }
+        public string SalesManagerID { get; set; }
 
         //public string FirstName { get; set; }
         //public string LastName { get; set; }

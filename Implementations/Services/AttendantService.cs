@@ -36,7 +36,7 @@ namespace SMS_MVCDTO.Implementations.Service
                 FirstName = attendant.FirstName,
                 LastName = attendant.LastName,
                 Password = attendant.Password,
-                RoleId = 3,
+                RoleId = "3",
                 Created = DateTime.Now,
                 ProfilePicture = attendant.ProfilePicture,
                 Email = attendant.Email,
@@ -52,7 +52,7 @@ namespace SMS_MVCDTO.Implementations.Service
             var attend = new Attendant
             {
                 UserId = user.Id,
-                SalesManagerID = 1,
+                SalesManagerID = "1",
                 //SalesManagerID = int.Parse(id),
                 DateOfBirth = attendant.DateOfBirth,
                 Gender = attendant.Gender,
@@ -87,7 +87,7 @@ namespace SMS_MVCDTO.Implementations.Service
             return attendant;
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             var attendant = _attendantRepository.GetById(id);
             if (attendant != null)
@@ -199,7 +199,7 @@ namespace SMS_MVCDTO.Implementations.Service
             return null;
         }
 
-        public AttendantResponseModel GetById(int id)
+        public AttendantResponseModel GetById(string id)
         {
             var attendant = _attendantRepository.GetById(id);
             if (attendant != null)

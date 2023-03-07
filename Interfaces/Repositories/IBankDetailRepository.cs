@@ -7,7 +7,7 @@ namespace SMS_MVCDTO.Interfaces.Repositories
         BankDetail Create(BankDetail bankDetail);
         BankDetail Update(BankDetail bankDetail);
         void Delete(BankDetail bankDetail);
-        BankDetail GetById(int id);
+        BankDetail GetById(string id);
 
     }
 }

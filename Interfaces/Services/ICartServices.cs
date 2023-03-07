@@ -7,15 +7,15 @@ namespace SMS_MVCDTO.Interfaces.Services
     {
         CreateCartRequestModel Create(CreateCartRequestModel cart);
         //string Update(int customerId);
-        void Delete(int id);
+        void Delete(string id);
         IEnumerable<CartResponseModel> GetAll();
         IEnumerable<CartResponseModel> GetAllPendingTransaction();
 
-        IEnumerable<CartResponseModel> NotPaidByCustomerId(int customerId);
-        IEnumerable<CartResponseModel> GetByTransactionId(int transactionId);
-        CartResponseModel GetById(int id);
-        CartResponseModel NotPaidExist(int customerId);
-        double GetCartTotal(int customerId);
+        IEnumerable<CartResponseModel> NotPaidByCustomerId(string customerId);
+        IEnumerable<CartResponseModel> GetByTransactionId(string transactionId);
+        CartResponseModel GetById(string id);
+        CartResponseModel NotPaidExist(string customerId);
+        double GetCartTotal(string customerId);
 
         //IEnumerable<Cart> GetAllOrderByDate();
         /* CartResponseModel GetById(int id);

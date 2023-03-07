@@ -48,7 +48,7 @@ namespace SMS_MVCDTO.Controllers
         }
 
 
-        public IActionResult Edit(int categoryCode)
+        public IActionResult Edit(string categoryCode)
         {
             var productCategory = _productCategory.GetById(categoryCode);
             if (productCategory == null)
@@ -70,9 +70,9 @@ namespace SMS_MVCDTO.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Delete(int categoryCode)
+        public IActionResult Delete(string categoryCode)
         {
-            if (categoryCode != 0)
+            if (categoryCode != null)
             {
                 _productCategory.Delete(categoryCode);
                 return RedirectToAction(nameof(Index));
@@ -80,9 +80,9 @@ namespace SMS_MVCDTO.Controllers
             return NotFound();
         }
 
-        public IActionResult DeletePreview(int categoryCode)
+        public IActionResult DeletePreview(string categoryCode)
         {
-            if (categoryCode != 0)
+            if (categoryCode != null)
             {
                 var productCategory = _productCategory.GetById(categoryCode);
 

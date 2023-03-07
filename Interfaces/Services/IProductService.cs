@@ -7,11 +7,11 @@ namespace SMS_MVCDTO.Interfaces.Services
     {
         CreateProductRequestModel Create(CreateProductRequestModel product);
         ProductResponseModel Update(ProductResponseModel product);
-        void Delete(int id);
+        void Delete(string id);
         ProductResponseModel GetByBarCode(string barCode);
-        ProductResponseModel GetById(int id);
+        ProductResponseModel GetById(string id);
         IEnumerable<ProductResponseModel> GetByName(string name);
-        IEnumerable<ProductResponseModel> GetByCategory(int productCategoryId);
+        IEnumerable<ProductResponseModel> GetByCategory(string productCategoryId);
         IEnumerable<ProductResponseModel> GetAll();
         IEnumerable<ProductResponseModel> GetByQuantityRemaining(int quantity);
         RestockProductRequestModel RestockProduct(RestockProductRequestModel product);

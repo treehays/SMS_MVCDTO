@@ -89,7 +89,7 @@ namespace SMS_MVCDTO.Controllers
             // }
         }
 
-        public IActionResult Edit(int id)
+        public IActionResult Edit(string id)
         {
 
             var product = _product.GetById(id);
@@ -122,9 +122,9 @@ namespace SMS_MVCDTO.Controllers
         }
 
 
-        public IActionResult DeletePreview(int id)
+        public IActionResult DeletePreview(string id)
         {
-            if (id != 0)
+            if (id != null)
             {
                 var product = _product.GetById(id);
                 if (product != null)
@@ -137,9 +137,9 @@ namespace SMS_MVCDTO.Controllers
             return NotFound();
         }
 
-        public IActionResult Delete(int id)
+        public IActionResult Delete(string id)
         {
-            if (id != 0)
+            if (id != null)
             {
                 _product.Delete(id);
                 return RedirectToAction(nameof(Index));
@@ -147,9 +147,9 @@ namespace SMS_MVCDTO.Controllers
             return NotFound();
         }
 
-        public IActionResult Details(int id)
+        public IActionResult Details(string id)
         {
-            if (id == 0)
+            if (id == null)
             {
                 return NotFound();
             }
@@ -178,9 +178,9 @@ namespace SMS_MVCDTO.Controllers
             return View(product);
         }
 
-        public IActionResult GetById(int id)
+        public IActionResult GetById(string id)
         {
-            if (id != 0)
+            if (id != null)
             {
                 var product = _product.GetById(id);
                 if (product != null)

@@ -25,7 +25,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
             throw new NotImplementedException();
         }
 
-        public Address GetById(int id)
+        public Address GetById(string id)
         {
             throw new NotImplementedException();
         }

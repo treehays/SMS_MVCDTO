@@ -76,9 +76,9 @@ namespace SMS_MVCDTO.Controllers
             }
         }
 
-        public IActionResult Edit(int id)
+        public IActionResult Edit(string id)
         {
-            if (id != 0)
+            if (id != null)
             {
                 var attendant = _attendant.GetById(id);
                 if (attendant != null)
@@ -100,9 +100,9 @@ namespace SMS_MVCDTO.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult DeletePreview(int id)
+        public IActionResult DeletePreview(string id)
         {
-            if (id != 0)
+            if (id != null)
             {
                 var attendant = _attendant.GetById(id);
 
@@ -118,9 +118,9 @@ namespace SMS_MVCDTO.Controllers
 
         //[ValidateAntiForgeryToken]
         //[HttpPost, ActionName("Delete")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(string id)
         {
-            if (id != 0)
+            if (id != null)
             {
                 _attendant.Delete(id);
                 return RedirectToAction(nameof(Index));
@@ -129,9 +129,9 @@ namespace SMS_MVCDTO.Controllers
             return View();
         }
 
-        public IActionResult Details(int id)
+        public IActionResult Details(string id)
         {
-            if (id != 0)
+            if (id != null)
             {
                 var attendant = _attendant.GetById(id);
 
@@ -147,9 +147,9 @@ namespace SMS_MVCDTO.Controllers
         }
 
         //get  single  by stff id
-        public IActionResult GetByStaffId(int id)
+        public IActionResult GetByStaffId(string id)
         {
-            if (id != 0)
+            if (id != null)
             {
                 var user = _attendant.GetById(id);
 

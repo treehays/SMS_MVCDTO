@@ -34,7 +34,7 @@ namespace SMS_MVCDTO.Implementations.Service
                 FirstName = salesManager.FirstName,
                 LastName = salesManager.LastName,
                 Password = salesManager.Password,
-                RoleId = 2,
+                RoleId = "2",
                 Created = DateTime.Now,
                 Email = salesManager.Email,
                 PhoneNumber = salesManager.PhoneNumber,

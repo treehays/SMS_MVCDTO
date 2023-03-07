@@ -37,7 +37,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
             return customer;
         }
 
-        public Customer GetById(int id)
+        public Customer GetById(string id)
         {
             var customer = _context.Customers.SingleOrDefault(x => x.User.Id == id);
             return customer;

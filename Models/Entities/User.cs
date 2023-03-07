@@ -12,7 +12,7 @@ namespace SMS_MVCDTO.Models.Entities
         public Customer Customer { get; set; }
         public Address Address { get; set; }
         public BankDetail BankDetail { get; set; }
-        public int RoleId { get; set; }
+        public string RoleId { get; set; }
 
 
         public string Password { get; set; }

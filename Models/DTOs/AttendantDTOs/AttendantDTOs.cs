@@ -6,7 +6,7 @@ namespace SMS_MVCDTO.Models.DTOs.AttendantDTOs
 {
     public class AttendantDTOs
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string StaffId { get; set; }
         [DisplayName("First Name")]
         public string FirstName { get; set; }

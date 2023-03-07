@@ -45,7 +45,7 @@ namespace SMS_MVCDTO.Implementations.Services
             return cart;
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             var cart = _cartRepository.GetById(id);
             _cartRepository.Delete(cart);
@@ -92,7 +92,7 @@ namespace SMS_MVCDTO.Implementations.Services
             return cartResponseModel;
         }
 
-        public CartResponseModel GetById(int id)
+        public CartResponseModel GetById(string id)
         {
             var cart = _cartRepository.GetById(id);
             var cartResponseModel = new CartResponseModel
@@ -112,7 +112,7 @@ namespace SMS_MVCDTO.Implementations.Services
             return cartResponseModel;
         }
 
-        public IEnumerable<CartResponseModel> GetByTransactionId(int transactionId)
+        public IEnumerable<CartResponseModel> GetByTransactionId(string transactionId)
         {
             var carts = _cartRepository.GetByTransactionId(transactionId);
             var cartsResponseModel = carts.Select(item => new CartResponseModel
@@ -136,7 +136,7 @@ namespace SMS_MVCDTO.Implementations.Services
         /// </summary>
         /// <param name="customerId"></param>
         /// <returns>null if not fund and return list of carts</returns>
-        public IEnumerable<CartResponseModel> NotPaidByCustomerId(int customerId)
+        public IEnumerable<CartResponseModel> NotPaidByCustomerId(string customerId)
         {
             var carts = _cartRepository.NotPaidByCustomerId(customerId);
             if (carts == null)
@@ -184,7 +184,7 @@ namespace SMS_MVCDTO.Implementations.Services
             return listCartsResponseModel;
         }
 
-        public double GetCartTotal(int customerId)
+        public double GetCartTotal(string customerId)
         {
             var cartTotal = _cartRepository.GetCartTotal(customerId);
             return cartTotal;
@@ -192,7 +192,7 @@ namespace SMS_MVCDTO.Implementations.Services
 
 
         //will be deleted later
-        public CartResponseModel NotPaidExist(int customerId)
+        public CartResponseModel NotPaidExist(string customerId)
         {
             var cart = _cartRepository.NotPaidExist(customerId);
             var cartResponseModel = new CartResponseModel

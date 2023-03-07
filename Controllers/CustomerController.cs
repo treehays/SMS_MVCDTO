@@ -51,7 +51,7 @@ namespace SMS_MVCDTO.Controllers
             return View();
         }
 
-        public IActionResult Edit(int id)
+        public IActionResult Edit(string id)
         {
             var customer = _customer.GetById(id);
             if (customer == null)
@@ -70,9 +70,9 @@ namespace SMS_MVCDTO.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult DeletePreview(int id)
+        public IActionResult DeletePreview(string id)
         {
-            if (id != 0)
+            if (id != null)
             {
                 var customer = _customer.GetById(id);
                 if (customer != null)
@@ -85,9 +85,9 @@ namespace SMS_MVCDTO.Controllers
             return NotFound();
         }
 
-        public IActionResult Delete(int id)
+        public IActionResult Delete(string id)
         {
-            if (id != 0)
+            if (id != null)
             {
                 _customer.Delete(id);
                 return RedirectToAction(nameof(Index));
@@ -95,9 +95,9 @@ namespace SMS_MVCDTO.Controllers
             return NotFound();
         }
 
-        public IActionResult Details(int id)
+        public IActionResult Details(string id)
         {
-            if (id != 0)
+            if (id != null)
             {
                 var customer = _customer.GetById(id);
                 if (customer != null)

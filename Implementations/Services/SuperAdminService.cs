@@ -56,7 +56,7 @@ namespace SMS_MVCDTO.Implementations.Service
                 FirstName = superAdmin.FirstName,
                 LastName = superAdmin.LastName,
                 Password = superAdmin.Password,
-                RoleId = 1,
+                RoleId = "1",
                 Email = superAdmin.Email,
                 PhoneNumber = superAdmin.PhoneNumber,
                 ProfilePicture = superAdmin.ProfilePicture,

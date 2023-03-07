@@ -5,7 +5,7 @@ namespace SMS_MVCDTO.Models.DTOs.ProductCategoriesDTOs
 {
     public class CreateProductCategoryRequestModel
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         [Required(ErrorMessage = "Category must have a name")]
         [DisplayName("Category Name")]
         public string Name { get; set; }

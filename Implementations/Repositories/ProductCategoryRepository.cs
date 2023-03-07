@@ -31,7 +31,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
             return productCategory;
         }
 
-        public ProductCategory GetById(int id)
+        public ProductCategory GetById(string id)
         {
             var productCategory = _context.ProductCategories.SingleOrDefault(x => x.CategoryCode == id);
             return productCategory;

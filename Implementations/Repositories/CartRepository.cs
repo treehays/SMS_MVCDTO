@@ -41,18 +41,18 @@ namespace SMS_MVCDTO.Implementations.Repositories
 
 
 
-        public Cart GetById(int id)
+        public Cart GetById(string id)
         {
             var carts = _context.Carts.SingleOrDefault(x => !x.IsPaid && !x.IsDeleted && x.Id == id);
             return carts;
         }
 
-        public IEnumerable<Cart> NotPaidByCustomerId(int customerId)
+        public IEnumerable<Cart> NotPaidByCustomerId(string customerId)
         {
             var carts = _context.Carts.Where(x => !x.IsPaid && !x.IsDeleted && x.CustomerId == customerId);
             return carts;
         }
-        public double GetCartTotal(int customerId)
+        public double GetCartTotal(string customerId)
         {
             var cartTotal = _context.Carts.Include(a => a.Product).Where(x => !x.IsPaid && !x.IsDeleted && x.CustomerId == customerId).Sum(y => (y.Quantity * y.Product.SellingPrice));
             return cartTotal;
@@ -74,7 +74,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
          }
         */
 
-        public int Update(int customerId)
+        public string Update(string customerId)
         {
 
             var carts = _context.Carts.Where(x => x.CustomerId == customerId);
@@ -87,14 +87,14 @@ namespace SMS_MVCDTO.Implementations.Repositories
             return customerId;
         }
 
-        public IEnumerable<Cart> GetByTransactionId(int transactionId)
+        public IEnumerable<Cart> GetByTransactionId(string transactionId)
         {
             var carts = _context.Carts.Include(a => a.Transaction).Where(x => !x.IsDeleted && x.Transaction.Id == transactionId);
             return carts;
 
         }
 
-        public Cart NotPaidExist(int customerId)
+        public Cart NotPaidExist(string customerId)
         {
             var carts = _context.Carts.Include(a => a.Customer).FirstOrDefault(x => !x.IsPaid && !x.IsDeleted && x.Customer.Id == customerId);
             return carts;

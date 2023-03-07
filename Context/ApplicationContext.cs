@@ -21,6 +21,7 @@ namespace SMS_MVCDTO.Context
         public DbSet<BankDetail> BankDetails { get; set; }
         public DbSet<Address> Addresses { get; set; }
 
+        /*
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Role>().HasData(
@@ -98,5 +99,6 @@ namespace SMS_MVCDTO.Context
                 );
 
         }
+    */
     }
 }

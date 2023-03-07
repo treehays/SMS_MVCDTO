@@ -7,6 +7,6 @@ namespace SMS_MVCDTO.Interfaces.Repositories
         Address Create(Address address);
         Address Update(Address address);
         void Delete(Address address);
-        Address GetById(int id);
+        Address GetById(string id);
     }
 }

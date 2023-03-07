@@ -25,7 +25,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
             throw new NotImplementedException();
         }
 
-        public BankDetail GetById(int id)
+        public BankDetail GetById(string id)
         {
             throw new NotImplementedException();
         }

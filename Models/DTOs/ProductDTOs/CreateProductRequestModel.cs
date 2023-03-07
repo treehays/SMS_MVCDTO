@@ -8,10 +8,10 @@ namespace SMS_MVCDTO.Models.DTOs.ProductDTOs
     {
         //public IList<ProductCategoryResponseModel> Categories { get; set; }
         //public String  Category { get; set; }
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Barcode { get; set; }
         public string Name { get; set; }
-        public int CategoryId { get; set; }
+        public string CategoryId { get; set; }
         public string Description { get; set; }
 
         [DisplayName("Selling Price")]

@@ -37,7 +37,7 @@ namespace SMS_MVCDTO.Implementations.Services
 
 
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             var product = _productRepository.GetById(id);
             if (product == null)
@@ -73,7 +73,7 @@ namespace SMS_MVCDTO.Implementations.Services
             return products;
         }
 
-        public IEnumerable<ProductResponseModel> GetByCategory(int productCategoryId)
+        public IEnumerable<ProductResponseModel> GetByCategory(string productCategoryId)
         {
             var product = _productRepository.GetByCategory(productCategoryId);
             if (product == null)
@@ -98,7 +98,7 @@ namespace SMS_MVCDTO.Implementations.Services
 
         }
 
-        public ProductResponseModel GetById(int id)
+        public ProductResponseModel GetById(string id)
         {
             var product = _productRepository.GetById(id);
             if (product == null)

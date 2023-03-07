@@ -47,7 +47,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
         }
 
         //To be fixed later
-        public Attendant GetById(int id)
+        public Attendant GetById(string id)
         {
             //bool emailExists = _context.Attendants.Any(x => x.StaffId == staffId.ToLower());
             var attendant = _context.Attendants.SingleOrDefault(x => x.UserId == id);

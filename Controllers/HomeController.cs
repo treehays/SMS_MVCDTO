@@ -308,28 +308,28 @@ namespace SMS_MVCDTO.Controllers
             var principal = new ClaimsPrincipal(claimIdentity);
             HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, authenticationProperties);
 
-            if (user.Data.RoleId == 3)
+            if (user.Data.RoleId == "3")
             {
                 // ViewBag.ShowElement1 = true;
                 TempData["success"] = "Login successful";
                 return RedirectToAction(nameof(Index), "Attendant");
 
             }
-            else if (user.Data.RoleId == 1)
+            else if (user.Data.RoleId == "1")
             {
                 // ViewBag.ShowElement1 = true;
                 TempData["success"] = "Login successful";
                 return RedirectToAction(nameof(Index), "SuperAdmin");
 
             }
-            else if (user.Data.RoleId == 4)
+            else if (user.Data.RoleId == "4")
             {
                 // ViewBag.ShowElement1 = true;
                 TempData["success"] = "Login successful";
                 return RedirectToAction(nameof(Index), "Customer");
 
             }
-            else if (user.Data.RoleId == 2)
+            else if (user.Data.RoleId == "2")
             {
                 // ViewBag.ShowElement1 = true;
                 TempData["success"] = "Login successful";

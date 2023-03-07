@@ -20,7 +20,7 @@ namespace SMS_MVCDTO.Controllers
             return View();
         }
 
-        public IActionResult Create(int id)
+        public IActionResult Create(string id)
         {
             var product = _product.GetById(id);
             if (product == null)
@@ -98,7 +98,7 @@ namespace SMS_MVCDTO.Controllers
                 }
         */
 
-        public IActionResult ViewCustomerCart(int customerId)
+        public IActionResult ViewCustomerCart(string customerId)
         {
             var cartId = _cart.NotPaidExist(customerId);
             if (cartId == null)

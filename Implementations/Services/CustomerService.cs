@@ -25,7 +25,7 @@ namespace SMS_MVCDTO.Implementations.Services
                 FirstName = customer.FirstName,
                 LastName = customer.LastName,
                 Password = customer.Password,
-                RoleId = 4,
+                RoleId = "4",
                 Email = customer.Email,
                 PhoneNumber = customer.PhoneNumber,
                 Created = DateTime.Now
@@ -49,7 +49,7 @@ namespace SMS_MVCDTO.Implementations.Services
             return customer;
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             var customer = _customerRepository.GetById(id);
             customer.IsDeleted = true;
@@ -87,7 +87,7 @@ namespace SMS_MVCDTO.Implementations.Services
             return customerResponseModel;
         }
 
-        public CustomerResponseModel GetById(int id)
+        public CustomerResponseModel GetById(string id)
         {
             var customer = _customerRepository.GetById(id);
             if (customer == null)

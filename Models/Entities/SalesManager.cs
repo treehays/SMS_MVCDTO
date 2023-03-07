@@ -9,7 +9,7 @@ namespace SMS_MVCDTO.Models.Entities
     {
         public ICollection<Attendant> Attendants { get; set; }
         public User User { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         //public Address Address { get; set; }
         // public BankDetail BankDetail { get; set; }
 
