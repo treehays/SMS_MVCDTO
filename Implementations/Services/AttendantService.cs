@@ -49,11 +49,12 @@ namespace SMS_MVCDTO.Implementations.Service
             };
             _userRepository.Create(user);
             var id = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.PrimarySid).Value;
+            //int a = int.Parse(id);
             var attend = new Attendant
             {
                 UserId = user.Id,
-                SalesManagerID = "1",
-                //SalesManagerID = int.Parse(id),
+                //SalesManagerID = "1",
+                //SalesManagerID = id,
                 DateOfBirth = attendant.DateOfBirth,
                 Gender = attendant.Gender,
                 GuarantorName = attendant.GuarantorName,

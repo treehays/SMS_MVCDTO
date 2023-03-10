@@ -49,6 +49,26 @@
               "target": "Package",
               "version": "[1.6.0, )"
             },
+            "FluentEmail.Core": {
+              "target": "Package",
+              "version": "[3.0.2, )"
+            },
+            "FluentEmail.Mailgun": {
+              "target": "Package",
+              "version": "[3.0.2, )"
+            },
+            "FluentEmail.Razor": {
+              "target": "Package",
+              "version": "[3.0.2, )"
+            },
+            "FluentEmail.SendGrid": {
+              "target": "Package",
+              "version": "[3.0.2, )"
+            },
+            "FluentEmail.Smtp": {
+              "target": "Package",
+              "version": "[3.0.2, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.0, )"

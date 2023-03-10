@@ -10,7 +10,16 @@ using System.Security.Claims;
 using sib_api_v3_sdk.Api;
 using sib_api_v3_sdk.Client;
 using sib_api_v3_sdk.Model;
-
+using FluentEmail.Core;
+using FluentEmail.Razor;
+using FluentEmail.Smtp;
+using System.Text;
+using System.Net.Mail;
+using RestSharp.Portable.Authenticators;
+using RestSharp.Portable.HttpClient;
+using RestSharp.Portable;
+using Microsoft.Extensions.Options;
+using SMS_MVCDTO.Models.DTOs;
 
 namespace SMS_MVCDTO.Controllers
 {
@@ -20,11 +29,16 @@ namespace SMS_MVCDTO.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IUserService _user;
         private readonly IConfiguration _config;
-        public HomeController(IUserService user, ILogger<HomeController> logger, IConfiguration config)
+        private readonly EmailConfiguration _configuration;
+        //private readonly IServiceCollection _services;
+        //public HomeController(IUserService user, ILogger<HomeController> logger, IConfiguration config, IServiceCollection services)
+        public HomeController(IUserService user, ILogger<HomeController> logger, IConfiguration config, IOptions<EmailConfiguration> configuration)
         {
             _user = user;
             _logger = logger;
             _config = config;
+            _configuration = configuration.Value;
+            //_services = services;
         }
 
         public IActionResult Index()
@@ -57,24 +71,16 @@ namespace SMS_MVCDTO.Controllers
             return View();
         }
 
+
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult ForgotPassword(LoginRequestModel loginDetails)
         {
-            //loginDetails.PasswordToken = Guid.NewGuid().ToString().Replace('-', 'c');
-            //var urlToken = $"/Home/ResetPassword/{loginDetails.PasswordToken}";
-            //loginDetails.Password = $"{Request.Scheme}://{Request.Host}{urlToken}";
-            ////var url = $"{Request.Scheme}://{Request.Host}{urlToken}";
-            //var userExit = _user.GetById(loginDetails.StaffId);
-            //if (userExit == null)
-            //{
-            //    return NotFound();
-            //}
-            //_user.ForgotPassword(loginDetails);
-            //ViewBag.Message = "Reset password link has been sent to your email id.";
-
+            var tokeenKey = _configuration.TokenKey;
             Configuration.Default.ApiKey.Clear();
-            Configuration.Default.ApiKey.Add("api-key", "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");
+            Configuration.Default.ApiKey.Add("api-key", tokeenKey);
 
             var apiInstance = new TransactionalEmailsApi();
             string SenderName = "Abdulsalam Ahmad Sende";
@@ -141,114 +147,6 @@ namespace SMS_MVCDTO.Controllers
             }
 
 
-            /*
-             * var con = _config.GetConnectionString("EmailKey");
-            Configuration.Default.ApiKey.Clear();
-            Configuration.Default.ApiKey.Add("api-key", "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");
-
-            var apiInstance = new TransactionalEmailsApi();
-            var SenderName = "Abdulsalam Ahmad";
-            var SenderEmail = "treehays90@gmail.com";
-            SendSmtpEmailSender Email = new SendSmtpEmailSender(SenderName, SenderEmail);
-
-            var ToEmail = "aymoneyay@gmail.com";
-            var ToName = "Abdulsalam Ahmad Ayoola";
-            SendSmtpEmailTo smtpEmailTo = new SendSmtpEmailTo(ToEmail, ToName);
-            List<SendSmtpEmailTo> To = new List<SendSmtpEmailTo>();
-            To.Add(smtpEmailTo);
-
-            var BccName = "Akinkunmi Alabi";
-            var BccEmail = "abdulsalamayoola@gmail.com";
-            SendSmtpEmailBcc BccData = new SendSmtpEmailBcc(BccEmail, BccName);
-            List<SendSmtpEmailBcc> Bcc = new List<SendSmtpEmailBcc>();
-            Bcc.Add(BccData);
-
-            var CcName = "Akeye Walli";
-            var CcEmail = "treehays90@yahoo.com";
-            SendSmtpEmailCc CcData = new SendSmtpEmailCc(CcEmail, CcName);
-            List<SendSmtpEmailCc> Cc = new List<SendSmtpEmailCc>();
-            Cc.Add(CcData);
-
-            var HtmlContent = "<html><body> <h4>HELP SPREAD THE EMAIL</h4> <h1> All from AHmad This is my first transactional email </h1></body></html>";
-            var TextContent = "All from and this is text content";
-            var Subject = "My Testing Mail";
-            var ReplyToName = "Reply Ahmad Doe";
-            var ReplyToEmail = "treehays90@gmail.com";
-            SendSmtpEmailReplyTo ReplyTo = new SendSmtpEmailReplyTo(ReplyToEmail, ReplyToName);
-
-            //string AttachmentUrl = null;
-            //var stringInBase64 = "aGVsbG8gdGhpcyBpcyB0ZXN0";
-            //byte[] Content = System.Convert.FromBase64String(stringInBase64);
-            //var AttachmentName = "test.txt";
-            //SendSmtpEmailAttachment AttachmentContent = new SendSmtpEmailAttachment(AttachmentUrl, Content, AttachmentName);
-            //List<SendSmtpEmailAttachment> Attachment = new List<SendSmtpEmailAttachment>();
-            //Attachment.Add(AttachmentContent);
-
-            JObject Headers = new JObject();
-            Headers.Add("Some-Custom-Name", "unique-id-1234");
-            long? TemplateId = null;
-            JObject Params = new JObject();
-            Params.Add("parameter", "My param value");
-            Params.Add("subject", "New Subject");
-            List<string> Tags = new List<string>();
-            Tags.Add("mytag");
-            SendSmtpEmailTo1 smtpEmailTo1 = new SendSmtpEmailTo1("aymoneyay@gmail.com", "Testing from my side");
-            List<SendSmtpEmailTo1> To1 = new List<SendSmtpEmailTo1>();
-            To1.Add(smtpEmailTo1);
-
-            Dictionary<string, object> _parmas = new Dictionary<string, object>();
-            _parmas.Add("params", Params);
-            SendSmtpEmailReplyTo1 ReplyTo1 = new SendSmtpEmailReplyTo1(ReplyToEmail, ReplyToName);
-            //SendSmtpEmailMessageVersions messageVersion = new SendSmtpEmailMessageVersions(To1, _parmas, Bcc, Cc, ReplyTo1, Subject);
-            SendSmtpEmailMessageVersions messageVersion = new SendSmtpEmailMessageVersions
-            {
-                //(To1, _parmas, Bcc, Cc, ReplyTo1, Subject);
-                To = To1,
-                Params = _parmas,
-                Bcc = Bcc,
-                Cc = Cc,
-                ReplyTo = ReplyTo1,
-                Subject = Subject,
-            };
-            List<SendSmtpEmailMessageVersions> messageVersiopns = new List<SendSmtpEmailMessageVersions>();
-            messageVersiopns.Add(messageVersion);
-            try
-            {
-                var sendSmtpEmail = new SendSmtpEmail
-                {
-                    Sender = Email,
-                    To = To,
-                    Bcc = Bcc,
-                    Cc = Cc,
-                    HtmlContent = HtmlContent,
-                    TextContent = TextContent,
-                    Subject = Subject,
-                    ReplyTo = ReplyTo,
-                    //Attachment = Attachment,
-                    Headers = Headers,
-                    TemplateId = TemplateId,
-                    Params = Params,
-                    MessageVersions = messageVersiopns,
-                    Tags = Tags,
-                    //ScheduledAt = scheduledAt,
-                    //BatchId = batchId,
-
-                };///(Email, To, Bcc, Cc, HtmlContent, TextContent, Subject, ReplyTo, Attachment, Headers, TemplateId, Params, messageVersiopns, Tags);
-                CreateSmtpEmail result = apiInstance.SendTransacEmail(sendSmtpEmail);
-                //Configuration.Default.ApiKey.Clear();
-                //Debug.WriteLine(result.ToJson());
-                //Console.WriteLine(result.ToJson());
-                //Console.ReadLine();
-            }
-            catch (Exception)
-            {
-                return View();
-                //Debug.WriteLine(e.Message);
-                //Console.WriteLine(e.Message);
-                //Console.ReadLine();
-            }
-            */
-
             return View();
         }
 
@@ -284,14 +182,12 @@ namespace SMS_MVCDTO.Controllers
                 TempData["failed"] = "Login Failed...";
                 return View();
             }
-            byte[] imageData = user.Data.ProfilePicture;
+            //byte[] imageData = user.Data.ProfilePicture;
 
             /*
                         ViewBag.Image = "data:image/jpeg;base64," + Convert.ToBase64String(imageData);
                         ViewData["ImageData"] = imageData;
             */
-
-
 
             var roles = new List<string>();
             var claims = new List<Claim>
@@ -310,28 +206,24 @@ namespace SMS_MVCDTO.Controllers
 
             if (user.Data.RoleId == "3")
             {
-                // ViewBag.ShowElement1 = true;
                 TempData["success"] = "Login successful";
                 return RedirectToAction(nameof(Index), "Attendant");
 
             }
             else if (user.Data.RoleId == "1")
             {
-                // ViewBag.ShowElement1 = true;
                 TempData["success"] = "Login successful";
                 return RedirectToAction(nameof(Index), "SuperAdmin");
 
             }
             else if (user.Data.RoleId == "4")
             {
-                // ViewBag.ShowElement1 = true;
                 TempData["success"] = "Login successful";
                 return RedirectToAction(nameof(Index), "Customer");
 
             }
             else if (user.Data.RoleId == "2")
             {
-                // ViewBag.ShowElement1 = true;
                 TempData["success"] = "Login successful";
                 return RedirectToAction(nameof(Index), "SalesManager");
 
@@ -352,6 +244,43 @@ namespace SMS_MVCDTO.Controllers
             HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction(nameof(Login));
         }
+
+
+
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        ////public async Task<IActionResult> SendSingleEmail([FromServices] IFluentEmail singleEmail)
+        //public async Task<IActionResult> ForgotPasswordAS([FromServices] IFluentEmail singleEmail)
+        //{
+        //    //        //        var email = await Email
+        //    //        //.From("bill.gates@microsoft.com")
+        //    //        //.To("luke.lowrey@example.com", "Luke")
+        //    //        //.Subject("Hi Luke!")
+        //    //        //.Body("Fluent email looks great!")
+        //    //        //.SendAsync();
+        //    //        var email = singleEmail
+        //    //        .To("treehays90@gmail.com")
+        //    //        .Subject("TesAhmadt email")
+        //    //        .Body("This is a sajvjaingle email");
+
+        //    //        var ccc = await email.SendAsync();
+
+
+
+
+        //    //        await new Email()
+        //    //.To("treehays90@gmail.com")
+        //    //.Subject("from Ahmad")
+        //    //.Body("Email ahmad email from the body")
+        //    //.Tag("tagname") //the Mailgun sender supports tags
+        //    //.SendAsync(); //this will use the MailgunSender
+
+
+
+        //    return Ok();
+        //}
+
 
     }
 }

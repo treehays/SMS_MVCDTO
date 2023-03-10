@@ -7,6 +7,7 @@ using SMS_MVCDTO.Implementations.Service;
 using SMS_MVCDTO.Implementations.Services;
 using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Interfaces.Services;
+using SMS_MVCDTO.Models.DTOs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,9 +40,20 @@ builder.Services.AddScoped<IWalletRepository, WalletRepository>();
 builder.Services.AddScoped<IWalletService, WalletService>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<IBankDetailRepository, BankDetailRepository>();
-//builder.Services.AddScoped<IBankDetailService, BankDetailService>();
 builder.Services.AddScoped<IAddressRepository, AddressRepository>();
+builder.Services.Configure<EmailConfiguration>(builder.Configuration.GetSection("EmailConfiguration"));
+
+//builder.Services.AddScoped<IBankDetailService, BankDetailService>();
 //builder.Services.AddScoped<IAddressService, AddressService>();  
+//builder.Services.AddFluentEmail("treehays90@gmail.com","Abdulsalam AHmad");
+//builder.Services.AddSmtpSender("smtp.gmail.com");
+builder.Services
+        .AddFluentEmail("postmaster@sandbox2e6052c24ced4a088a011daf8707cca1.mailgun.org")
+        .AddMailGunSender("http://localhost:7113/", "pubkey-b5f040806c4bedbcacc0fededc2faa42", FluentEmail.Mailgun.MailGunRegion.USA);
+//.AddRazorRenderer()
+//.AddMailGunSender("domainname.com", " bb744daa8eab96ab3f3cc6121b50e80f-7764770b-2c634ca4", FluentEmail.Mailgun.MailGunRegion.USA);
+//.AddSmtpSender("smtp.gmail.com", 587, "clhprojecttest@gmail.com","CLH12345");
+//.AddFluentEmail("fromemail@test.test")
 
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

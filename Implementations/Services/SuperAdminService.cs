@@ -1,4 +1,5 @@
 ﻿
+using BCrypt.Net;
 using SMS_MVCDTO.Interfaces.Repositories;
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.DTOs.SuperAdminDTOs;
@@ -25,37 +26,16 @@ namespace SMS_MVCDTO.Implementations.Service
 
         public CreateSuperAdminRequestModel Create(CreateSuperAdminRequestModel superAdmin)
         {
-            //this encrypt the password to base 64 strring (Very week)
-            //var encryptPasswordBase64 = System.Text.Encoding.UTF8.GetBytes(superAdmin.Password);
-            //superAdmin.Password = System.Convert.ToBase64String(encryptPasswordBase64);
 
-
-            //using RFC Encryption
-            var encryptionKey = "QWhtYWQxMjM=";
-            var clearBytes = Encoding.Unicode.GetBytes(superAdmin.Password);
-            using (Aes encryptor = Aes.Create())
-            {
-                var pbd = new Rfc2898DeriveBytes(encryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
-                encryptor.Key = pbd.GetBytes(32);
-                encryptor.IV = pbd.GetBytes(16);
-                using (var ms = new MemoryStream())
-                {
-                    using (var cs = new CryptoStream(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write))
-                    {
-                        cs.Write(clearBytes, 0, clearBytes.Length);
-                        cs.Close();
-                    }
-                    superAdmin.Password = Convert.ToBase64String(ms.ToArray());
-                }
-            }
-
+            var saltPass = $"{superAdmin.Password}{Guid.NewGuid()}";
             var sid = User.GenerateRandomId("S");
             var user = new User
             {
+                Id = Guid.NewGuid().ToString(),
                 StaffId = sid,
                 FirstName = superAdmin.FirstName,
                 LastName = superAdmin.LastName,
-                Password = superAdmin.Password,
+                Password = BCrypt.Net.BCrypt.HashPassword(superAdmin.Password, saltPass),
                 RoleId = "1",
                 Email = superAdmin.Email,
                 PhoneNumber = superAdmin.PhoneNumber,
@@ -67,6 +47,7 @@ namespace SMS_MVCDTO.Implementations.Service
 
             var superAdmi = new SuperAdmin
             {
+                Id = Guid.NewGuid().ToString(),
                 UserId = user.Id,
                 DateOfBirth = superAdmin.DateOfBirth,
                 Gender = superAdmin.Gender,
@@ -77,6 +58,7 @@ namespace SMS_MVCDTO.Implementations.Service
 
             var address = new Address
             {
+                Id = Guid.NewGuid().ToString(),
                 UserId = user.Id,
                 StreetName = superAdmin.StreetName,
                 City = superAdmin.City,
@@ -88,6 +70,7 @@ namespace SMS_MVCDTO.Implementations.Service
 
             var bankDetails = new BankDetail
             {
+                Id = Guid.NewGuid().ToString(),
                 UserId = user.Id,
                 BankAccountNumber = superAdmin.BankAccountNumber,
                 BankName = superAdmin.BankName,

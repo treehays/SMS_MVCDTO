@@ -21,14 +21,14 @@ namespace SMS_MVCDTO.Context
         public DbSet<BankDetail> BankDetails { get; set; }
         public DbSet<Address> Addresses { get; set; }
 
-        /*
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Role>().HasData(
 
                 new Role
                 {
-                    Id = 1,
+                    Id = "1",
                     RoleName = "SuperAdmin",
                     RoleDescription = "Staff",
                     Created = DateTime.Now,
@@ -37,7 +37,7 @@ namespace SMS_MVCDTO.Context
                 },
                 new Role
                 {
-                    Id = 2,
+                    Id = "2",
                     RoleName = "SalesManager",
                     RoleDescription = "Staff",
                     Created = DateTime.Now,
@@ -46,7 +46,7 @@ namespace SMS_MVCDTO.Context
                 },
                 new Role
                 {
-                    Id = 3,
+                    Id = "3",
                     RoleName = "Attendant",
                     RoleDescription = "Staff",
                     Created = DateTime.Now,
@@ -55,7 +55,7 @@ namespace SMS_MVCDTO.Context
                 },
                 new Role
                 {
-                    Id = 4,
+                    Id = "4",
                     RoleName = "Customer",
                     RoleDescription = "Staff",
                     Created = DateTime.Now,
@@ -63,17 +63,19 @@ namespace SMS_MVCDTO.Context
                     Modified = DateTime.Now,
                 }
                 );
+            var userPassword = "pass";
+            var saltPass = $"{userPassword}{Guid.NewGuid().ToString()}";
 
             modelBuilder.Entity<User>()
                 .HasData(
                     new User
                     {
-                        Id = 1,
+                        Id = "1",
                         StaffId = "SUP001",
                         FirstName = "Abdulsuper",
                         LastName = "Salamsuper",
-                        Password = "pass",
-                        RoleId = 1,
+                        Password = BCrypt.Net.BCrypt.HashPassword(userPassword, saltPass),
+                        RoleId = "1",
                         Email = "Abdulsuper@gmail.com",
                         PhoneNumber = "08066117783",
                         IsActive = true,
@@ -87,8 +89,8 @@ namespace SMS_MVCDTO.Context
                 .HasData(
                     new SuperAdmin
                     {
-                        Id = 1,
-                        UserId = 1,
+                        Id = "1",
+                        UserId = "1",
                         DateOfBirth = DateTime.Now,
                         Gender = Enums.GenderType.Male,
                         MaritalStatus = Enums.MaritalStatusType.Married,
@@ -99,6 +101,6 @@ namespace SMS_MVCDTO.Context
                 );
 
         }
-    */
+
     }
 }

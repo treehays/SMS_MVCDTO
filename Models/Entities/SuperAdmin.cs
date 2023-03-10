@@ -1,6 +1,6 @@
 ﻿
 using SMS_MVCDTO.Enums;
-
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SMS_MVCDTO.Models.Entities
 {
@@ -9,6 +9,7 @@ namespace SMS_MVCDTO.Models.Entities
     public class SuperAdmin : BaseEntity
     {
         public User User { get; set; }
+        [ForeignKey(nameof(User))]
         public string UserId { get; set; }
         //public BankDetail BankDetail { get; set; }
         //   public Address Address { get; set; }

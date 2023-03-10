@@ -1,4 +1,6 @@
-﻿namespace SMS_MVCDTO.Models.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace SMS_MVCDTO.Models.Entities
 {
     public class BankDetail : BaseEntity
     {
@@ -9,6 +11,7 @@
         //public SuperAdmin SuperAdmin { get; set; }
         // public int SuperAdminId { get; set; }
         public User User { get; set; }
+        [ForeignKey("User")]
         public string UserId { get; set; }
         public string BankAccountNumber { get; set; }
         public string BankName { get; set; }

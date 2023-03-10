@@ -60,73 +60,20 @@ namespace SMS_MVCDTO.Implementations.Services
 
         public UserResponseModel Login(LoginRequestModel login)
         {
-            // decrypting password
-            //var decryptPasswordBase64 = Convert.FromBase64String(login.Password);
-            //login.Password = System.Text.Encoding.UTF8.GetString(decryptPasswordBase64);
 
 
-
-
-            //this encrypt the password to base 64 strring (Very week)
-            //var encryptPasswordBase64 = System.Text.Encoding.UTF8.GetBytes(login.Password);
-            //login.Password = Convert.ToBase64String(encryptPasswordBase64);
-
-
-
-
-            //using RFC Encryption
-            //var encryptionKey = "QWhtYWQxMjM=";
-            //var clearBytes = Encoding.Unicode.GetBytes(login.Password);
-            //using (var encryptor = Aes.Create())
+            //var userr = new User
             //{
-            //    var pbd = new Rfc2898DeriveBytes(encryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
-            //    encryptor.Key = pbd.GetBytes(32);
-            //    encryptor.IV = pbd.GetBytes(16);
-            //    using (var ms = new MemoryStream())
-            //    {
-            //        using (var cs = new CryptoStream(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write))
-            //        {
-            //            cs.Write(clearBytes, 0, clearBytes.Length);
-            //            cs.Close();
-            //        }
-            //        login.Password = Convert.ToBase64String(ms.ToArray());
-            //    }
-            //}
+            //    StaffId = login.StaffId,
+            //    Password = login.Password,
+            //};
+            //var 
 
+            //var user = _userRepository.Login(userr);
+            var user = _userRepository.GetById(login.StaffId);
+            var userPass = BCrypt.Net.BCrypt.Verify(login.Password, user.Password);
 
-
-
-            //Decryprion
-            var encryptionKey = "QWhtYWQxMjM=";
-            var cipherBytes = Convert.FromBase64String(login.Password);
-            using (var encryptor = Aes.Create())
-            {
-                var pbd = new Rfc2898DeriveBytes(encryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
-                encryptor.Key = pbd.GetBytes(32);
-                encryptor.IV = pbd.GetBytes(16);
-
-                using (var ms = new MemoryStream())
-                {
-                    using (var cs = new CryptoStream(ms, encryptor.CreateDecryptor(), CryptoStreamMode.Write))
-                    {
-                        cs.Write(cipherBytes, 0, cipherBytes.Length);
-                        cs.Close();
-                    }
-                    login.Password = Encoding.Unicode.GetString(ms.ToArray());
-                }
-            }
-
-
-
-
-            var userr = new User
-            {
-                StaffId = login.StaffId,
-                Password = login.Password,
-            };
-
-            var user = _userRepository.Login(userr);
-            if (user != null)
+            if (userPass)
             {
                 var userResponse = new UserResponseModel
                 {

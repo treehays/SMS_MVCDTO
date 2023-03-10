@@ -22,8 +22,10 @@ namespace SMS_MVCDTO.Controllers
         // [Authorize(Roles = "SuperAdmin")]
         public IActionResult Index()
         {
+            TempData["TheKey"] = "Welcome";
             //var superAdmin = _superAdmin.GetSuperAdmins();
             var transactions = _transaction.GetAll();
+            ViewBag.Title = transactions;
             var products = _product.BelowReorderLevel();
             var productTransaction = new TransactionProductListsViewModel
             {

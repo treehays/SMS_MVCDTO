@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SMS_MVCDTO.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace SMS_MVCDTO.Models.Entities
 {
     //[Index(nameof(Email), IsUnique = true)]
@@ -11,9 +13,10 @@ namespace SMS_MVCDTO.Models.Entities
         public ICollection<AttendantCustomer> AttendantCustomers { get; set; } = new HashSet<AttendantCustomer>();
         public ICollection<Transaction> Transaction { get; set; } = new HashSet<Transaction>();
         public User User { get; set; }
+        [ForeignKey("User")]
+        public string UserId { get; set; }
         //public Address Address { get; set; }
         // public BankDetail BankDetail { get; set; }
-        public string UserId { get; set; }
         public string SalesManagerID { get; set; }
 
         //public string FirstName { get; set; }
