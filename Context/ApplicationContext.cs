@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BCrypt.Net;
+using Microsoft.EntityFrameworkCore;
 using SMS_MVCDTO.Models.Entities;
 namespace SMS_MVCDTO.Context
 {
@@ -63,8 +64,7 @@ namespace SMS_MVCDTO.Context
                     Modified = DateTime.Now,
                 }
                 );
-            var userPassword = "pass";
-            var saltPass = $"{userPassword}{Guid.NewGuid().ToString()}";
+
 
             modelBuilder.Entity<User>()
                 .HasData(
@@ -74,9 +74,9 @@ namespace SMS_MVCDTO.Context
                         StaffId = "SUP001",
                         FirstName = "Abdulsuper",
                         LastName = "Salamsuper",
-                        Password = BCrypt.Net.BCrypt.HashPassword(userPassword, saltPass),
+                        Password = BCrypt.Net.BCrypt.HashPassword("SUP001", SaltRevision.Revision2B),
                         RoleId = "1",
-                        Email = "Abdulsuper@gmail.com",
+                        Email = "aymoneyay@gmail.com",
                         PhoneNumber = "08066117783",
                         IsActive = true,
                         Created = DateTime.Now,

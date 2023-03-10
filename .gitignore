@@ -79,3 +79,4 @@ _[Ss]cripts
 *.dot[Cc]over
 /obj/Debug/net6.0/SMS_MVCDTO.csproj.FileListAbsolute.txt
 /obj/Debug/net6.0/SMS_MVCDTO.assets.cache
+/appsettings.json

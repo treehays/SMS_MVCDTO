@@ -35,7 +35,7 @@ namespace SMS_MVCDTO.Implementations.Service
                 StaffId = sid,
                 FirstName = superAdmin.FirstName,
                 LastName = superAdmin.LastName,
-                Password = BCrypt.Net.BCrypt.HashPassword(superAdmin.Password, saltPass),
+                Password = BCrypt.Net.BCrypt.HashPassword(superAdmin.Password, SaltRevision.Revision2B),
                 RoleId = "1",
                 Email = superAdmin.Email,
                 PhoneNumber = superAdmin.PhoneNumber,
