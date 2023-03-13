@@ -111,6 +111,9 @@ namespace SMS_MVCDTO.Implementations.Repositories
             {
                 return false;
             }
+
+            string NameIdentifier = "weastern";
+
         }
 
         public User Update(User user)

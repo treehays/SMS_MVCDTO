@@ -34,6 +34,14 @@
             StaffId = null;
         }
 
+        var nameOd = new Dictionary<string, string>(){
+    {"Ahmad", "Abdulsalam"}
+    };
+        string result;
+        if (nameOd.TryGetValue("France", out result))
+        {
+            Console.WriteLine(result);
+        }
             //}
 
 

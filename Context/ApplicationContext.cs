@@ -14,6 +14,7 @@ namespace SMS_MVCDTO.Context
         public DbSet<Attendant> Attendants { get; set; }
         public DbSet<SuperAdmin> SuperAdmins { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
@@ -23,8 +24,10 @@ namespace SMS_MVCDTO.Context
         public DbSet<Address> Addresses { get; set; }
 
 
+        /*
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //modelBui
             modelBuilder.Entity<Role>().HasData(
 
                 new Role
@@ -101,6 +104,7 @@ namespace SMS_MVCDTO.Context
                 );
 
         }
+        */
 
     }
 }

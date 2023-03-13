@@ -83,6 +83,11 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 //app.UseResponseCompression();
+
+//seeding into databse first methos
+ApplicationDbInitializer.SeedData(app);
+
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
