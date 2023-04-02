@@ -9,7 +9,7 @@ namespace SMS_MVCDTO.Models.Entities
     {
         public ICollection<Attendant> Attendants { get; set; }
         public User User { get; set; }
-        [ForeignKey(nameof(User))]
+        //[ForeignKey(nameof(User))]
         public string UserId { get; set; }
         //public Address Address { get; set; }
         // public BankDetail BankDetail { get; set; }

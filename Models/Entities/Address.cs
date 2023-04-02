@@ -14,7 +14,7 @@ namespace SMS_MVCDTO.Models.Entities
         //public string Id { get; set; }
 
         public User User { get; set; }
-        [ForeignKey(nameof(User))]
+        //[ForeignKey(nameof(User))]
         public string UserId { get; set; }
         public string StreetName { get; set; }
         public string City { get; set; }

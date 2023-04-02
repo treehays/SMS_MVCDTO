@@ -15,6 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 //if you dont want to it your decision
 builder.Services.AddControllersWithViews();
 var configuration = builder.Configuration.GetConnectionString("DefaultConnection");
+//builder.Services.AddDbContext<ApplicationContext>(options => options.UseMySQL(configuration));
 builder.Services.AddDbContext<ApplicationContext>(options => options.UseMySql(configuration, ServerVersion.AutoDetect(configuration)));
 
 
@@ -85,7 +86,21 @@ app.UseAuthorization();
 //app.UseResponseCompression();
 
 //seeding into databse first methos
-ApplicationDbInitializer.SeedData(app);
+//ApplicationDbInitializer.SeedData(app);
+
+
+////Another way pof seeding
+//try
+//{
+var srt = app.Services.CreateScope().ServiceProvider;
+AnotherSeedWay.InitializeDb(srt);
+
+//}
+//catch (Exception)
+//{
+
+//    throw;
+//}
 
 
 app.MapControllerRoute(

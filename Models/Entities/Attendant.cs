@@ -13,14 +13,8 @@ namespace SMS_MVCDTO.Models.Entities
         public ICollection<AttendantCustomer> AttendantCustomers { get; set; } = new HashSet<AttendantCustomer>();
         public ICollection<Transaction> Transaction { get; set; } = new HashSet<Transaction>();
         public User User { get; set; }
-        [ForeignKey("User")]
         public string UserId { get; set; }
-        //public Address Address { get; set; }
-        // public BankDetail BankDetail { get; set; }
         public string SalesManagerID { get; set; }
-
-        //public string FirstName { get; set; }
-        //public string LastName { get; set; }
         public string CVPath { get; set; }
         public DateTime DateOfBirth { get; set; }
         public GenderType Gender { get; set; }
@@ -28,6 +22,12 @@ namespace SMS_MVCDTO.Models.Entities
 
         public string GuarantorName { get; set; }
         public string GuarantorPhoneNumber { get; set; }
+
+        //[ForeignKey("User")]
+        //public Address Address { get; set; }
+        // public BankDetail BankDetail { get; set; }
+        //public string FirstName { get; set; }
+        //public string LastName { get; set; }
 
     }
 }

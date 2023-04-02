@@ -9,15 +9,15 @@ namespace SMS_MVCDTO.Models.Entities
     public class SuperAdmin : BaseEntity
     {
         public User User { get; set; }
-        [ForeignKey(nameof(User))]
         public string UserId { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public GenderType Gender { get; set; }
+        public MaritalStatusType MaritalStatus { get; set; }
+        //[ForeignKey(nameof(User))]
         //public BankDetail BankDetail { get; set; }
         //   public Address Address { get; set; }
         //public string FirstName { get; set; }
         //public string LastName { get; set; }
-        public DateTime DateOfBirth { get; set; }
-        public GenderType Gender { get; set; }
-        public MaritalStatusType MaritalStatus { get; set; }
         //public string BankAccountNumber { get; set; }
         //public string BankName { get; set; }
     }

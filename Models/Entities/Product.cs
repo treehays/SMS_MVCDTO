@@ -7,7 +7,7 @@ namespace SMS_MVCDTO.Models.Entities
     //[Index(nameof(Barcode), IsUnique = true)]
     public class Product : BaseEntity
     {
-        [ForeignKey(nameof(ProductCategory))]
+        //[ForeignKey(nameof(ProductCategory))]
         public string ProductCategoryId { get; set; }
         public ProductCategory ProductCategory { get; set; }
         public Cart Cart { get; set; }

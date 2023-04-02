@@ -17,6 +17,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
         {
             _context.SuperAdmins.Add(superAdmin);
             _context.SaveChanges();
+            //_context.Entry(superAdmin).State = EntityState.Added;
             return superAdmin;
         }
 

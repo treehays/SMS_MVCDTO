@@ -5,14 +5,14 @@ namespace SMS_MVCDTO.Models.Entities
     public class Cart : BaseEntity
     {
         //public ICollection<Product> Products { get; set; } = new HashSet<Product>();
-        [ForeignKey("Product")]
+        //[ForeignKey("Product")]
 
         public string ProductId { get; set; }
         public Product Product { get; set; }
         public Customer Customer { get; set; }
-        [ForeignKey(nameof(Customer))]
+        //[ForeignKey(nameof(Customer))]
         public string CustomerId { get; set; }
-        [ForeignKey(nameof(Transaction))]
+        //[ForeignKey(nameof(Transaction))]
         public string TransactionId { get; set; }
         public Transaction Transaction { get; set; }
         public int Quantity { get; set; }

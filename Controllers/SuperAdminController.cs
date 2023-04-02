@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 using SMS_MVCDTO.Interfaces.Services;
 using SMS_MVCDTO.Models.DTOs.SuperAdminDTOs;
 using SMS_MVCDTO.Models.ViewModels;
@@ -12,11 +13,13 @@ namespace SMS_MVCDTO.Controllers
         private readonly ISuperAdminService _superAdmin;
         private readonly ITransactionService _transaction;
         private readonly IProductService _product;
-        public SuperAdminController(ISuperAdminService superAdmin, ITransactionService transaction, IProductService product)
+        private readonly IWebHostEnvironment _hostEnvironment;
+        public SuperAdminController(ISuperAdminService superAdmin, ITransactionService transaction, IProductService product, IWebHostEnvironment hostEnvironment)
         {
             _superAdmin = superAdmin;
             _transaction = transaction;
             _product = product;
+            _hostEnvironment = hostEnvironment;
         }
 
         // [Authorize(Roles = "SuperAdmin")]
@@ -50,13 +53,43 @@ namespace SMS_MVCDTO.Controllers
             return View();
         }
 
+        // [Authorize(Roles = "null")]
+        public IActionResult Creates()
+        {
+            return View();
+        }
+
+
+        public async Task<IActionResult> Creates(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+            {
+                return BadRequest("No file was uploaded.");
+            }
+
+            var uploadsFolder = Path.Combine(_hostEnvironment.WebRootPath, "uploads");
+            if (!Directory.Exists(uploadsFolder))
+            {
+                Directory.CreateDirectory(uploadsFolder);
+            }
+
+            var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+            var filePath = Path.Combine(uploadsFolder, fileName);
+
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+            return View();
+        }
+
 
         // [Authorize(Roles = "null")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CreateSuperAdminRequestModel createSuperAdmin)
         {
-            if (createSuperAdmin != null)
+            if (ModelState.IsValid)
             {
                 var emailExist = _superAdmin.EmailExist(createSuperAdmin.Email);
                 if (!emailExist)

@@ -45,6 +45,7 @@ namespace SMS_MVCDTO.Controllers
 
         public IActionResult Index()
         {
+            /*
             //ViewBag.ShowElement1 = true;
             var tokeenKey = _configuration.TokenKey;
             Configuration.Default.ApiKey.Clear();
@@ -114,6 +115,7 @@ namespace SMS_MVCDTO.Controllers
                 //Console.WriteLine(e.Message);
                 //Console.ReadLine();
             }
+            */
 
             return View();
         }

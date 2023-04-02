@@ -14,7 +14,7 @@ namespace SMS_MVCDTO.Models.Entities
         public Customer Customer { get; set; }
         public Address Address { get; set; }
         public BankDetail BankDetail { get; set; }
-        [ForeignKey(nameof(Role))]
+        //[ForeignKey(nameof(Role))]
         public string RoleId { get; set; }
 
 

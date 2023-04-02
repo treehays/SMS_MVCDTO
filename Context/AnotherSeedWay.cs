@@ -4,20 +4,14 @@ using SMS_MVCDTO.Models.Entities;
 
 namespace SMS_MVCDTO.Context
 {
-    public class ApplicationDbInitializer
+    public class AnotherSeedWay
     {
-        public static void SeedData(IApplicationBuilder applicationBuilder)
+        public static void InitializeDb(IServiceProvider serviceProvider)
         {
-
-            using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
+            using (var context = new ApplicationContext(serviceProvider.GetRequiredService<DbContextOptions<ApplicationContext>>()))
             {
-                var context = serviceScope.ServiceProvider.GetService<ApplicationContext>();
 
-                //context.Database.EnsureDeleted();
-                //context.Database.EnsureCreated();
                 context.Database.Migrate();
-
-
                 if (!context.Roles.Any())
                 {
                     context.Roles.AddRange(new List<Role>()
@@ -65,22 +59,21 @@ namespace SMS_MVCDTO.Context
 
                 if (!context.Users.Any())
                 {
-                    context.Users.AddRange(new List<User>()
+                    context.Users.Add(new User()
                     {
-                        new User
-                        {
-                            Id = "1",
-                            StaffId = "SUP001",
-                            FirstName = "Abdulsuper",
-                            LastName = "Salamsuper",
-                            Password = BCrypt.Net.BCrypt.HashPassword("SUP001", SaltRevision.Revision2B),
-                            RoleId = "1",
-                            Email = "aymoneyay@gmail.com",
-                            PhoneNumber = "08066117783",
-                            IsActive = true,
-                            Created = DateTime.Now,
-                            IsDeleted = false,
-                        }
+
+                        Id = "1",
+                        StaffId = "SUP001",
+                        FirstName = "Abdulsuper",
+                        LastName = "Salamsuper",
+                        Password = BCrypt.Net.BCrypt.HashPassword("SUP001", SaltRevision.Revision2B),
+                        RoleId = "1",
+                        Email = "aymoneyay@gmail.com",
+                        PhoneNumber = "08066117783",
+                        IsActive = true,
+                        Created = DateTime.Now,
+                        IsDeleted = false,
+
                     });
                     context.SaveChanges();
                 }
@@ -88,25 +81,20 @@ namespace SMS_MVCDTO.Context
 
                 if (!context.SuperAdmins.Any())
                 {
-                    context.SuperAdmins.AddRange(new List<SuperAdmin>()
+                    context.SuperAdmins.Add(new SuperAdmin()
                     {
-                         new SuperAdmin
-                        {
-                            Id = "1",
-                            UserId = "1",
-                            DateOfBirth = DateTime.Now,
-                            Gender = Enums.GenderType.Male,
-                            MaritalStatus = Enums.MaritalStatusType.Married,
-                            Created = DateTime.Now,
-                            IsDeleted = false,
-                            Modified = DateTime.Now,
-                        }
+                        Id = "1",
+                        UserId = "1",
+                        DateOfBirth = DateTime.Now,
+                        Gender = Enums.GenderType.Male,
+                        MaritalStatus = Enums.MaritalStatusType.Married,
+                        Created = DateTime.Now,
+                        IsDeleted = false,
+                        Modified = DateTime.Now,
                     });
                     context.SaveChanges();
                 }
-
             }
         }
-
     }
 }

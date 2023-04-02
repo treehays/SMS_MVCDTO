@@ -6,6 +6,7 @@ namespace SMS_MVCDTO.Models.DTOs.SuperAdminDTOs
 {
     public class CreateSuperAdminRequestModel
     {
+
         [Required(ErrorMessage = "Name can't be empty")]
         [DisplayName("First Name")]
         public string FirstName { get; set; }

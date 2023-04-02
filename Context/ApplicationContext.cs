@@ -5,10 +5,14 @@ namespace SMS_MVCDTO.Context
 {
     public class ApplicationContext : DbContext
     {
-        public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
+        public ApplicationContext(DbContextOptions options) : base(options)
         {
-
         }
+
+        /* public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
+{
+
+}*/
         public DbSet<Customer> Customers { get; set; }
         public DbSet<SalesManager> SalesManagers { get; set; }
         public DbSet<Attendant> Attendants { get; set; }

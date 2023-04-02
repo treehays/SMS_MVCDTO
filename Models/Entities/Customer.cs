@@ -10,7 +10,7 @@ namespace SMS_MVCDTO.Models.Entities
         public ICollection<Transaction> Transactions { get; set; } = new HashSet<Transaction>();
         public ICollection<Cart> Carts { get; set; } = new HashSet<Cart>();
         public User User { get; set; }
-        [ForeignKey(nameof(User))]
+        //[ForeignKey(nameof(User))]
         public string UserId { get; set; }
         public GenderType Gender { get; set; }
         //public Address Address { get; set; }

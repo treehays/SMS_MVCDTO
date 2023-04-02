@@ -11,7 +11,7 @@ namespace SMS_MVCDTO.Models.Entities
         //public SuperAdmin SuperAdmin { get; set; }
         // public int SuperAdminId { get; set; }
         public User User { get; set; }
-        [ForeignKey("User")]
+        //[ForeignKey("User")]
         public string UserId { get; set; }
         public string BankAccountNumber { get; set; }
         public string BankName { get; set; }

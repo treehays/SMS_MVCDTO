@@ -25,6 +25,7 @@ namespace SMS_MVCDTO.Implementations.Repositories
         {
             _context.Users.Add(user);
             _context.SaveChanges();
+            //_context.Entry(user).State = EntityState.Added;
             return user;
         }
 
